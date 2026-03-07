@@ -43,7 +43,7 @@ export default function App() {
       <main className="max-w-2xl mx-auto px-4 py-6">
         <div className="text-center mb-6">
           <p className="text-base text-gray-500 tracking-wide">
-            서버 없이 브라우저에서 동작하는 <span className="font-medium text-gray-700">사주팔자 · 자미두수 · 서양 점성술</span> 계산기
+            서버 없이 브라우저에서 동작하는<br className="sm:hidden" /> <span className="font-medium text-gray-700">사주팔자 · 자미두수 · 서양 점성술</span> 계산기
           </p>
           <p className="text-sm text-gray-400 mt-1">십신, 대운, 명반, 사화, 출생차트까지 한 번에</p>
         </div>
@@ -54,7 +54,7 @@ export default function App() {
             {/* 탭 네비게이션 */}
             <div ref={resultsRef} className="flex items-center border-b border-gray-200 mt-6 mb-4">
               <button
-                className={`px-4 py-2 text-sm sm:text-base font-medium border-b-2 transition-colors ${
+                className={`px-2 sm:px-4 py-2 text-sm sm:text-base font-medium whitespace-nowrap border-b-2 transition-colors ${
                   tab === 'saju'
                     ? 'border-gray-800 text-gray-800'
                     : 'border-transparent text-gray-500 hover:text-gray-700'
@@ -64,7 +64,7 @@ export default function App() {
                 사주팔자
               </button>
               <button
-                className={`px-4 py-2 text-sm sm:text-base font-medium border-b-2 transition-colors ${
+                className={`px-2 sm:px-4 py-2 text-sm sm:text-base font-medium whitespace-nowrap border-b-2 transition-colors ${
                   tab === 'ziwei'
                     ? 'border-gray-800 text-gray-800'
                     : 'border-transparent text-gray-500 hover:text-gray-700'
@@ -74,7 +74,7 @@ export default function App() {
                 자미두수
               </button>
               <button
-                className={`px-4 py-2 text-sm sm:text-base font-medium border-b-2 transition-colors ${
+                className={`px-2 sm:px-4 py-2 text-sm sm:text-base font-medium whitespace-nowrap border-b-2 transition-colors ${
                   tab === 'natal'
                     ? 'border-gray-800 text-gray-800'
                     : 'border-transparent text-gray-500 hover:text-gray-700'
@@ -85,7 +85,7 @@ export default function App() {
               </button>
               <div className="ml-auto pb-1">
                 <CopyButton
-                  label="AI 해석용 전부 복사"
+                  label={<>AI 해석용<br />전부 복사</>}
                   getText={async () => {
                     const saju = calculateSaju(birthInput)
                     const parts = [sajuToText(saju)]

@@ -58,7 +58,7 @@ export default function TransitView({ natalPillars }: Props) {
                 <span className={`w-8 shrink-0 ${tr.type === '月運' ? 'text-blue-600' : ''}`}>
                   {tr.type}
                 </span>
-                <span className="font-hanja w-6 shrink-0">{tr.transit}</span>
+                <span className="font-hanja shrink-0 whitespace-nowrap">{tr.transit}</span>
                 <span className="text-gray-400">↔</span>
                 <span className="w-8 shrink-0">{tr.natalName}</span>
                 <span>{relStrs.join(', ')}</span>

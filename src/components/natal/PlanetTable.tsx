@@ -63,7 +63,7 @@ export default function PlanetTable({ planets, angles }: Props) {
               ['DESC', angles.desc],
               ['IC', angles.ic],
             ] as const).map(([label, a]) => (
-              <div key={label} className="flex items-center gap-2">
+              <div key={label} className="flex items-center gap-2 whitespace-nowrap">
                 <span className="font-medium text-gray-700 w-10">{label}</span>
                 <span>{ZODIAC_SYMBOLS[a.sign]}</span>
                 <span className="text-gray-600 sm:hidden">{ZODIAC_KO[a.sign].slice(0, -2)}</span>

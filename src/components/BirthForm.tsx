@@ -99,7 +99,7 @@ export default function BirthForm({ onSubmit }: Props) {
           <img
             src={logo}
             alt="혼천의"
-            className="w-80 max-w-full md:w-64"
+            className="w-48 md:w-64"
           />
           <span className="text-base text-gray-400 font-hanja -mt-1">혼천의(渾天儀)</span>
         </div>
