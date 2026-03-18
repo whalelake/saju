@@ -5,7 +5,26 @@
 
 브라우저 기반 명리학 도구. 사주팔자(四柱八字), 자미두수(紫微斗數), 서양 점성술 출생차트(Natal Chart)를 백엔드 없이 클라이언트에서 계산합니다.
 
-**[라이브 데모 →](https://rath.github.io/orrery/)**
+**[라이브 데모 →](https://saju-wheat.vercel.app)**
+
+## 주요 기능
+
+### AI 해석
+- GPT-4o 기반 명식 종합 해석
+- 맥락 인식 (본인/자녀/연인/친구)
+- 성격 분석, 인생 조언, 종합 해석 선택
+- 따뜻하고 친근한 상담 톤
+
+### 궁합 비교
+- 두 사람의 사주 비교
+- 오행 상생/상극 분석
+- 육합 관계 점수 계산
+
+### 편의 기능
+- 계산 기록 자동 저장 (최근 10개)
+- SNS 공유 (X, 카카오톡, 링크 복사)
+- AI용 데이터 복사 (ChatGPT/Claude에 직접 질문)
+- 다크/라이트 테마
 
 ## 크레딧
 
@@ -65,11 +84,20 @@ bun run build
 bun test
 ```
 
+## 환경 변수 (선택)
+
+AI 해석 기능을 사용하려면 Vercel 환경 변수에 OpenAI API 키를 설정하세요:
+
+```
+OPENAI_API_KEY=sk-...
+```
+
 ## 기술 스택
 
 - React 19 + TypeScript 5
 - Vite 7
-- Tailwind CSS 4
+- Tailwind CSS 4 + DaisyUI 5
+- Vercel Edge Functions (AI 해석)
 - lunar-javascript (음력 변환)
 - Vitest (테스트)
 

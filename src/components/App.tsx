@@ -1,7 +1,13 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import BirthForm from './BirthForm.tsx'
 import Guide from './Guide.tsx'
 import CopyButton from './CopyButton.tsx'
+import InterpretModal from './InterpretModal.tsx'
+import Hero from './Hero.tsx'
+import History from './History.tsx'
+import ShareCard from './ShareCard.tsx'
+import CompareView from './CompareView.tsx'
+import Settings from './Settings.tsx'
 import SajuView from './saju/SajuView.tsx'
 import ZiweiView from './ziwei/ZiweiView.tsx'
 import NatalView from './natal/NatalView.tsx'
@@ -13,105 +19,240 @@ import type { BirthInput } from '@orrery/core/types'
 
 type Tab = 'saju' | 'ziwei' | 'natal'
 
+function ThemeToggle() {
+  const [theme, setTheme] = useState<'oriental' | 'oriental-dark'>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('theme')
+      if (saved === 'oriental' || saved === 'oriental-dark') return saved
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'oriental-dark' : 'oriental'
+    }
+    return 'oriental'
+  })
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+    localStorage.setItem('theme', theme)
+  }, [theme])
+
+  return (
+    <button
+      className="btn btn-ghost btn-sm btn-circle"
+      onClick={() => setTheme(t => t === 'oriental' ? 'oriental-dark' : 'oriental')}
+      aria-label="테마 전환"
+    >
+      {theme === 'oriental' ? (
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+      ) : (
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+      )}
+    </button>
+  )
+}
+
 export default function App() {
   const [tab, setTab] = useState<Tab>('saju')
   const [birthInput, setBirthInput] = useState<BirthInput | null>(null)
+  const [showHero, setShowHero] = useState(true)
+  const [interpretOpen, setInterpretOpen] = useState(false)
+  const [shareOpen, setShareOpen] = useState(false)
+  const [compareOpen, setCompareOpen] = useState(false)
+  const [settingsOpen, setSettingsOpen] = useState(false)
   const resultsRef = useRef<HTMLDivElement>(null)
+  const formRef = useRef<HTMLDivElement>(null)
 
   function handleSubmit(input: BirthInput) {
     setBirthInput(input)
+    setShowHero(false)
     requestAnimationFrame(() => {
       resultsRef.current?.scrollIntoView({ behavior: 'smooth' })
     })
   }
 
-  return (
-    <div className="min-h-screen bg-gray-50 relative">
-      <a
-        href="https://github.com/rath/orrery"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed top-0 right-0 z-50"
-        aria-label="View source on GitHub"
-      >
-        <svg width="60" height="60" viewBox="0 0 250 250" className="fill-gray-700 text-white" aria-hidden="true">
-          <path d="M0 0l115 115h15l12 27 108 108V0z" />
-          <path d="M128.3 109c-14.5-9.3-9.3-19.4-9.3-19.4 3-6.9 1.5-11 1.5-11-1.3-6.6 2.9-2.3 2.9-2.3 3.9 4.6 2.1 11 2.1 11-2.6 10.3 5.1 14.6 8.9 15.9" fill="currentColor" style={{ transformOrigin: '130px 106px' }} />
-          <path d="M115 115c-.1.1 3.7 1.5 4.8.4l13.9-13.8c3.2-2.4 6.2-3.2 8.5-3 -8.4-10.6-14.7-24.2 1.6-40.6 4.7-4.6 10.2-6.8 15.9-7 .6-1.6 3.5-7.4 11.7-10.9 0 0 4.7 2.4 7.4 16.1 4.3 2.4 8.4 5.6 12.1 9.2 3.6 3.6 6.8 7.8 9.2 12.2 13.7 2.6 16.2 7.3 16.2 7.3-3.6 8.2-9.4 11.1-10.9 11.7-.3 5.8-2.4 11.2-7.1 15.9-16.4 16.4-29.4 11.6-36.4 8.8 .2 2.8-1 6.8-5 10.8L141 136.5c-1.2 1.2.6 5.4.8 5.3z" fill="currentColor" />
-        </svg>
-      </a>
-      <main className="max-w-2xl mx-auto px-4 py-6">
-        <div className="text-center mb-6">
-          <p className="text-base text-gray-500 tracking-wide">
-            서버 없이 브라우저에서 동작하는<br className="sm:hidden" /> <span className="font-medium text-gray-700">사주팔자 · 자미두수 · 서양 점성술</span> 계산기
-          </p>
-          <p className="text-sm text-gray-400 mt-1">십신, 대운, 명반, 사화, 출생차트까지 한 번에</p>
-        </div>
-        <BirthForm onSubmit={handleSubmit} />
+  function handleStart() {
+    setShowHero(false)
+    requestAnimationFrame(() => {
+      formRef.current?.scrollIntoView({ behavior: 'smooth' })
+    })
+  }
 
+  function handleHistorySelect(input: BirthInput) {
+    setBirthInput(input)
+    setShowHero(false)
+    requestAnimationFrame(() => {
+      resultsRef.current?.scrollIntoView({ behavior: 'smooth' })
+    })
+  }
+
+  async function getAllData(): Promise<string> {
+    if (!birthInput) return ''
+    const saju = calculateSaju(birthInput)
+    const parts = [sajuToText(saju)]
+    if (!birthInput.unknownTime) {
+      const chart = createChart(birthInput.year, birthInput.month, birthInput.day, birthInput.hour, birthInput.minute, birthInput.gender === 'M')
+      parts.push(ziweiToText(chart))
+    }
+    const natal = await calculateNatal(birthInput)
+    parts.push(natalToText(natal))
+    return parts.join('\n\n')
+  }
+
+  return (
+    <div className="min-h-screen bg-base-200 bg-hanji">
+      {/* 헤더 */}
+      <header className="navbar bg-base-100 border-b border-base-300 sticky top-0 z-40">
+        <div className="navbar-start">
+          <History onSelect={handleHistorySelect} currentInput={birthInput} />
+        </div>
+        <div className="navbar-center">
+          {birthInput && (
+            <button
+              className="btn btn-ghost btn-sm gap-1"
+              onClick={() => setCompareOpen(true)}
+            >
+              <span className="font-hanja">合</span>
+              <span className="hidden sm:inline">궁합</span>
+            </button>
+          )}
+        </div>
+        <div className="navbar-end gap-1">
+          <button
+            className="btn btn-ghost btn-sm btn-circle"
+            onClick={() => setSettingsOpen(true)}
+            aria-label="설정"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </button>
+          <ThemeToggle />
+          <a
+            href="https://github.com/rath/orrery"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-ghost btn-sm btn-circle"
+            aria-label="GitHub"
+          >
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+            </svg>
+          </a>
+        </div>
+      </header>
+
+      {/* 히어로 섹션 */}
+      {showHero && !birthInput && (
+        <Hero onStart={handleStart} />
+      )}
+
+      {/* 메인 콘텐츠 */}
+      <main className="max-w-2xl mx-auto px-4 py-6">
+        {/* 입력 폼 */}
+        <div ref={formRef} className="card bg-base-100 border-oriental mb-6">
+          <div className="card-body p-4 sm:p-6">
+            <BirthForm onSubmit={handleSubmit} />
+          </div>
+        </div>
+
+        {/* 결과 영역 */}
         {birthInput && (
-          <>
-            {/* 탭 네비게이션 */}
-            <div ref={resultsRef} className="flex items-center border-b border-gray-200 mt-6 mb-4">
-              <button
-                className={`px-2 sm:px-4 py-2 text-sm sm:text-base font-medium whitespace-nowrap border-b-2 transition-colors ${
-                  tab === 'saju'
-                    ? 'border-gray-800 text-gray-800'
-                    : 'border-transparent text-gray-500 hover:text-gray-700'
-                }`}
-                onClick={() => setTab('saju')}
-              >
-                사주팔자
-              </button>
-              <button
-                className={`px-2 sm:px-4 py-2 text-sm sm:text-base font-medium whitespace-nowrap border-b-2 transition-colors ${
-                  tab === 'ziwei'
-                    ? 'border-gray-800 text-gray-800'
-                    : 'border-transparent text-gray-500 hover:text-gray-700'
-                }`}
-                onClick={() => setTab('ziwei')}
-              >
-                자미두수
-              </button>
-              <button
-                className={`px-2 sm:px-4 py-2 text-sm sm:text-base font-medium whitespace-nowrap border-b-2 transition-colors ${
-                  tab === 'natal'
-                    ? 'border-gray-800 text-gray-800'
-                    : 'border-transparent text-gray-500 hover:text-gray-700'
-                }`}
-                onClick={() => setTab('natal')}
-              >
-                출생차트
-              </button>
-              <div className="ml-auto pb-1">
-                <CopyButton
-                  label={<>AI 해석용<br />전부 복사</>}
-                  getText={async () => {
-                    const saju = calculateSaju(birthInput)
-                    const parts = [sajuToText(saju)]
-                    if (!birthInput.unknownTime) {
-                      const chart = createChart(birthInput.year, birthInput.month, birthInput.day, birthInput.hour, birthInput.minute, birthInput.gender === 'M')
-                      parts.push(ziweiToText(chart))
-                    }
-                    const natal = await calculateNatal(birthInput)
-                    parts.push(natalToText(natal))
-                    return parts.join('\n\n')
-                  }}
-                />
+          <div ref={resultsRef} className="card bg-base-100 border-oriental">
+            <div className="card-body p-0">
+              {/* 탭 네비게이션 */}
+              <div className="flex items-center border-b border-base-300 px-2 sm:px-4">
+                <div role="tablist" className="tabs tabs-bordered flex-1">
+                  <button
+                    role="tab"
+                    className={`tab tab-lg font-hanja ${tab === 'saju' ? 'tab-active text-primary' : ''}`}
+                    onClick={() => setTab('saju')}
+                  >
+                    四柱八字
+                  </button>
+                  <button
+                    role="tab"
+                    className={`tab tab-lg font-hanja ${tab === 'ziwei' ? 'tab-active text-primary' : ''}`}
+                    onClick={() => setTab('ziwei')}
+                  >
+                    紫微斗數
+                  </button>
+                  <button
+                    role="tab"
+                    className={`tab tab-lg font-hanja ${tab === 'natal' ? 'tab-active text-primary' : ''}`}
+                    onClick={() => setTab('natal')}
+                  >
+                    出生圖
+                  </button>
+                </div>
+                <div className="ml-2 flex gap-1">
+                  <CopyButton
+                    label={<span className="text-xs">복사</span>}
+                    getText={getAllData}
+                  />
+                  <button
+                    className="btn btn-sm btn-ghost gap-1"
+                    onClick={() => setShareOpen(true)}
+                  >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                    </svg>
+                  </button>
+                  <button
+                    className="btn btn-sm btn-primary gap-1"
+                    onClick={() => setInterpretOpen(true)}
+                  >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
+                    <span className="text-xs">AI 해석</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* 탭 콘텐츠 */}
+              <div className="p-4 sm:p-6">
+                {tab === 'saju' && <SajuView input={birthInput} />}
+                {tab === 'ziwei' && <ZiweiView input={birthInput} />}
+                {tab === 'natal' && <NatalView input={birthInput} />}
               </div>
             </div>
-
-            {tab === 'saju' && <SajuView input={birthInput} />}
-            {tab === 'ziwei' && <ZiweiView input={birthInput} />}
-            {tab === 'natal' && <NatalView input={birthInput} />}
-          </>
+          </div>
         )}
 
-        <Guide />
+        {/* 가이드 */}
+        <div className="mt-6">
+          <Guide />
+        </div>
       </main>
-      <footer className="text-center text-xs text-gray-400 py-6">
-        <p>&copy; 2026 Jang-Ho Hwang &middot; <a href="https://x.com/xrath" target="_blank" rel="noopener noreferrer" className="hover:text-gray-600">@xrath</a> &middot; <a href="https://x.com/xrath/status/2022548658562937028" target="_blank" rel="noopener noreferrer" className="hover:text-gray-600">소개글</a></p>
-      </footer>
+
+      {/* 모달들 */}
+      <InterpretModal
+        isOpen={interpretOpen}
+        onClose={() => setInterpretOpen(false)}
+        getData={getAllData}
+      />
+
+      {birthInput && (
+        <ShareCard
+          input={birthInput}
+          isOpen={shareOpen}
+          onClose={() => setShareOpen(false)}
+        />
+      )}
+
+      <CompareView
+        isOpen={compareOpen}
+        onClose={() => setCompareOpen(false)}
+        initialInput={birthInput}
+      />
+
+      <Settings
+        isOpen={settingsOpen}
+        onClose={() => setSettingsOpen(false)}
+      />
     </div>
   )
 }

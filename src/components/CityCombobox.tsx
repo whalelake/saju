@@ -7,10 +7,6 @@ interface Props {
   onSelect: (city: City) => void
 }
 
-const inputClass =
-  'w-full h-10 px-3 border border-gray-200 rounded-lg text-base text-gray-800 bg-white ' +
-  'focus:outline-none focus:ring-2 focus:ring-gray-800/20 focus:border-gray-400 transition-all'
-
 /** 포커스 시 보여줄 기본 도시 목록 (한국 주요 도시) */
 const DEFAULT_CITIES = KOREAN_CITIES.slice(0, 8) as City[]
 
@@ -108,7 +104,7 @@ export default function CityCombobox({ selectedCity, onSelect }: Props) {
   function renderOptions() {
     if (flatResults.length === 0) {
       return (
-        <li className="px-3 py-2 text-base text-gray-400 text-center">
+        <li className="px-3 py-2 text-sm text-base-content/50 text-center">
           검색 결과 없음
         </li>
       )
@@ -119,7 +115,7 @@ export default function CityCombobox({ selectedCity, onSelect }: Props) {
 
     if (koreanResults.length > 0) {
       items.push(
-        <li key="header-kr" className="px-3 pt-1.5 pb-1 text-sm font-medium text-gray-400" role="presentation">
+        <li key="header-kr" className="px-3 pt-2 pb-1 text-xs font-medium text-base-content/40 uppercase tracking-wide" role="presentation">
           한국
         </li>
       )
@@ -132,11 +128,11 @@ export default function CityCombobox({ selectedCity, onSelect }: Props) {
     if (worldResults.length > 0) {
       if (koreanResults.length > 0) {
         items.push(
-          <li key="divider" className="border-t border-gray-100 my-1" role="presentation" />
+          <li key="divider" className="divider my-0 h-px" role="presentation" />
         )
       }
       items.push(
-        <li key="header-world" className="px-3 pt-1.5 pb-1 text-sm font-medium text-gray-400" role="presentation">
+        <li key="header-world" className="px-3 pt-2 pb-1 text-xs font-medium text-base-content/40 uppercase tracking-wide" role="presentation">
           세계
         </li>
       )
@@ -157,8 +153,8 @@ export default function CityCombobox({ selectedCity, onSelect }: Props) {
         key={`${city.name}-${city.country ?? 'kr'}`}
         role="option"
         aria-selected={isHighlighted}
-        className={`px-3 py-2 text-base cursor-pointer transition-colors ${
-          isHighlighted ? 'bg-gray-100 text-gray-900' : 'text-gray-700 hover:bg-gray-50'
+        className={`px-3 py-2 text-sm cursor-pointer transition-colors ${
+          isHighlighted ? 'bg-primary/10 text-primary' : 'text-base-content hover:bg-base-200'
         }`}
         onMouseDown={e => handleOptionMouseDown(e, city)}
         onMouseEnter={() => setHighlightIndex(index)}
@@ -171,7 +167,7 @@ export default function CityCombobox({ selectedCity, onSelect }: Props) {
   const displayValue = isOpen ? query : (selectedCity ? formatCityName(selectedCity) : '')
 
   return (
-    <div ref={containerRef} className="relative">
+    <div ref={containerRef} className="dropdown dropdown-open w-full">
       <input
         ref={inputRef}
         type="text"
@@ -180,7 +176,7 @@ export default function CityCombobox({ selectedCity, onSelect }: Props) {
         aria-controls={listboxId}
         aria-activedescendant={highlightIndex >= 0 ? `city-option-${highlightIndex}` : undefined}
         autoComplete="off"
-        className={inputClass}
+        className="input input-bordered input-sm sm:input-md w-full pr-8"
         placeholder="도시 이름을 입력하세요"
         value={displayValue}
         onFocus={handleFocus}
@@ -190,7 +186,7 @@ export default function CityCombobox({ selectedCity, onSelect }: Props) {
       />
       {/* 드롭다운 아이콘 */}
       <svg
-        className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
+        className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-base-content/40"
         viewBox="0 0 20 20"
         fill="currentColor"
       >
@@ -206,7 +202,7 @@ export default function CityCombobox({ selectedCity, onSelect }: Props) {
           ref={listRef}
           id={listboxId}
           role="listbox"
-          className="absolute z-50 mt-1 w-full max-h-60 overflow-auto rounded-lg border border-gray-200 bg-white shadow-lg py-1"
+          className="dropdown-content menu bg-base-100 rounded-box z-50 w-full max-h-60 overflow-auto shadow-lg border border-base-300 p-0"
         >
           {renderOptions()}
         </ul>

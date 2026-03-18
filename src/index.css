@@ -1,13 +1,100 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
+/* 프리미엄 동양풍 라이트 테마 */
+@plugin "daisyui/theme" {
+  name: "oriental";
+  default: true;
+  color-scheme: light;
+
+  --color-base-100: oklch(97% 0.01 80);
+  --color-base-200: oklch(94% 0.015 75);
+  --color-base-300: oklch(90% 0.02 70);
+  --color-base-content: oklch(18% 0.02 60);
+
+  --color-primary: oklch(65% 0.18 85);
+  --color-primary-content: oklch(15% 0.02 60);
+
+  --color-secondary: oklch(55% 0.2 25);
+  --color-secondary-content: oklch(98% 0 0);
+
+  --color-accent: oklch(60% 0.12 175);
+  --color-accent-content: oklch(15% 0.02 60);
+
+  --color-neutral: oklch(25% 0.02 60);
+  --color-neutral-content: oklch(92% 0.01 60);
+
+  --color-info: oklch(65% 0.15 240);
+  --color-success: oklch(65% 0.18 150);
+  --color-warning: oklch(75% 0.18 70);
+  --color-error: oklch(60% 0.22 25);
+
+  --radius-box: 0.25rem;
+  --radius-btn: 0.125rem;
+  --radius-badge: 0.125rem;
+}
+
+/* 프리미엄 동양풍 다크 테마 */
+@plugin "daisyui/theme" {
+  name: "oriental-dark";
+  prefersdark: true;
+  color-scheme: dark;
+
+  --color-base-100: oklch(13% 0.015 60);
+  --color-base-200: oklch(16% 0.015 60);
+  --color-base-300: oklch(20% 0.015 60);
+  --color-base-content: oklch(92% 0.01 75);
+
+  --color-primary: oklch(75% 0.18 85);
+  --color-primary-content: oklch(12% 0.02 60);
+
+  --color-secondary: oklch(60% 0.2 25);
+  --color-secondary-content: oklch(98% 0 0);
+
+  --color-accent: oklch(65% 0.12 175);
+  --color-accent-content: oklch(12% 0.02 60);
+
+  --color-neutral: oklch(20% 0.01 60);
+  --color-neutral-content: oklch(90% 0.01 60);
+
+  --color-info: oklch(70% 0.15 240);
+  --color-success: oklch(70% 0.18 150);
+  --color-warning: oklch(80% 0.18 70);
+  --color-error: oklch(65% 0.22 25);
+
+  --radius-box: 0.25rem;
+  --radius-btn: 0.125rem;
+  --radius-badge: 0.125rem;
+}
+
+/* ===== 오행 색상 시스템 ===== */
 :root {
   --color-tree: #22c55e;
   --color-fire: #ef4444;
   --color-earth: #eab308;
   --color-metal: #9ca3af;
-  --color-water: #1a1a1a;
+  --color-water: #1e3a5f;
 }
 
+.el-tree { color: var(--color-tree); }
+.el-fire { color: var(--color-fire); }
+.el-earth { color: var(--color-earth); }
+.el-metal { color: var(--color-metal); }
+.el-water { color: var(--color-water); }
+
+.bg-el-tree { background-color: color-mix(in srgb, var(--color-tree) 12%, transparent); }
+.bg-el-fire { background-color: color-mix(in srgb, var(--color-fire) 12%, transparent); }
+.bg-el-earth { background-color: color-mix(in srgb, var(--color-earth) 12%, transparent); }
+.bg-el-metal { background-color: color-mix(in srgb, var(--color-metal) 12%, transparent); }
+.bg-el-water { background-color: color-mix(in srgb, var(--color-water) 12%, transparent); }
+
+.bg-el-solid-tree  { background-color: var(--color-tree); color: #fff; }
+.bg-el-solid-fire  { background-color: var(--color-fire); color: #fff; }
+.bg-el-solid-earth { background-color: var(--color-earth); color: #1a1a1a; }
+.bg-el-solid-metal { background-color: #e5e7eb; color: #1a1a1a; border: 1px solid #d1d5db; }
+.bg-el-solid-water { background-color: var(--color-water); color: #fff; }
+
+/* ===== 타이포그래피 ===== */
 body {
   margin: 0;
   font-family:
@@ -21,25 +108,48 @@ body {
 
 .font-hanja {
   font-family:
+    'Noto Serif KR', 'Source Han Serif K',
     'Noto Sans KR',
     'Apple SD Gothic Neo', 'Malgun Gothic',
-    sans-serif;
+    serif;
 }
 
-.el-tree { color: var(--color-tree); }
-.el-fire { color: var(--color-fire); }
-.el-earth { color: var(--color-earth); }
-.el-metal { color: var(--color-metal); }
-.el-water { color: var(--color-water); }
+.font-mono-num {
+  font-variant-numeric: tabular-nums;
+}
 
-.bg-el-tree { background-color: color-mix(in srgb, var(--color-tree) 15%, transparent); }
-.bg-el-fire { background-color: color-mix(in srgb, var(--color-fire) 15%, transparent); }
-.bg-el-earth { background-color: color-mix(in srgb, var(--color-earth) 15%, transparent); }
-.bg-el-metal { background-color: color-mix(in srgb, var(--color-metal) 15%, transparent); }
-.bg-el-water { background-color: color-mix(in srgb, var(--color-water) 15%, transparent); }
+/* ===== 동양풍 장식 요소 ===== */
+.border-oriental {
+  border: 1px solid oklch(65% 0.15 85 / 0.3);
+  box-shadow:
+    inset 0 0 0 1px oklch(65% 0.15 85 / 0.1),
+    0 1px 3px oklch(0% 0 0 / 0.05);
+}
 
-.bg-el-solid-tree  { background-color: var(--color-tree); color: #fff; }
-.bg-el-solid-fire  { background-color: var(--color-fire); color: #fff; }
-.bg-el-solid-earth { background-color: var(--color-earth); color: #1a1a1a; }
-.bg-el-solid-metal { background-color: #fff; color: #000; box-shadow: inset 0 0 0 1px #d1d5db; }
-.bg-el-solid-water { background-color: var(--color-water); color: #fff; }
+.gold-accent {
+  background: linear-gradient(
+    135deg,
+    oklch(70% 0.18 85) 0%,
+    oklch(80% 0.15 80) 50%,
+    oklch(65% 0.2 90) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-hanji {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+/* ===== 반응형 유틸리티 ===== */
+@media (max-width: 640px) {
+  .btn { min-height: 2.75rem; }
+  .input, .select { min-height: 2.75rem; }
+}
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; }
+  .card { box-shadow: none; border: 1px solid #ddd; }
+}

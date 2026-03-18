@@ -4,7 +4,6 @@ import { isKoreanDaylightTime } from '@orrery/core/natal'
 import type { City } from '@orrery/core/cities'
 import { SEOUL } from '@orrery/core/cities'
 import CityCombobox from './CityCombobox.tsx'
-import logo from '../assets/icon-512.png'
 
 interface Props {
   onSubmit: (input: BirthInput) => void
@@ -40,14 +39,6 @@ function loadSaved(): SavedFormState | null {
 const now = new Date()
 const currentYear = now.getFullYear()
 const saved = loadSaved()
-
-const selectClass =
-  'w-full h-10 pl-3 pr-8 border border-gray-200 rounded-lg text-base text-gray-800 bg-white ' +
-  'appearance-none bg-[length:16px_16px] bg-[position:right_8px_center] bg-no-repeat ' +
-  "bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22%239ca3af%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M5.23%207.21a.75.75%200%20011.06.02L10%2011.168l3.71-3.938a.75.75%200%20111.08%201.04l-4.25%204.5a.75.75%200%2001-1.08%200l-4.25-4.5a.75.75%200%2001.02-1.06z%22%20clip-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E')] " +
-  'focus:outline-none focus:ring-2 focus:ring-gray-800/20 focus:border-gray-400 ' +
-  'transition-all disabled:opacity-40 disabled:bg-gray-50'
-
 
 export default function BirthForm({ onSubmit }: Props) {
   const [year, setYear] = useState(saved?.year ?? currentYear - 20)
@@ -92,234 +83,210 @@ export default function BirthForm({ onSubmit }: Props) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
-      <div className="flex flex-col items-center md:flex-row md:items-start gap-5">
-        {/* 로고 */}
-        <div className="flex flex-col items-center shrink-0">
-          <img
-            src={logo}
-            alt="혼천의"
-            className="w-48 md:w-64"
-          />
-          <span className="text-base text-gray-400 font-hanja -mt-1">혼천의(渾天儀)</span>
-        </div>
-
-        {/* 폼 필드 전체 */}
-        <div className="w-full min-w-0">
-          {/* 생년월일 */}
-          <fieldset>
-            <legend className="text-sm font-medium text-gray-500 mb-2">생년월일 (양력)</legend>
-            <div className="grid grid-cols-3 gap-2">
-              <select
-                value={year}
-                onChange={e => setYear(Number(e.target.value))}
-                className={selectClass}
-              >
-                {Array.from({ length: currentYear - 1900 + 1 }, (_, i) => {
-                  const y = currentYear - i
-                  return <option key={y} value={y}>{y}년</option>
-                })}
-              </select>
-              <select
-                value={month}
-                onChange={e => setMonth(Number(e.target.value))}
-                className={selectClass}
-              >
-                {Array.from({ length: 12 }, (_, i) => (
-                  <option key={i + 1} value={i + 1}>{i + 1}월</option>
-                ))}
-              </select>
-              <select
-                value={day}
-                onChange={e => setDay(Number(e.target.value))}
-                className={selectClass}
-              >
-                {Array.from({ length: 31 }, (_, i) => (
-                  <option key={i + 1} value={i + 1}>{i + 1}일</option>
-                ))}
-              </select>
-            </div>
-          </fieldset>
-
-          {isKDT && (
-            <div className="mt-2 px-3 py-2 bg-amber-50 border border-amber-200 rounded-lg text-sm text-amber-700 leading-relaxed">
-              88올림픽 하계표준시(KDT, UTC+10) 적용 기간입니다. 모든 계산에 자동 반영됩니다.
-            </div>
-          )}
-
-          {/* 시간 + 성별 */}
-          <fieldset className="mt-4">
-            <div className="flex items-center justify-between mb-2">
-              <legend className="text-sm font-medium text-gray-500">시간</legend>
-              <label className="flex items-center gap-1.5 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={unknownTime}
-                  onChange={e => setUnknownTime(e.target.checked)}
-                  className="sr-only peer"
-                />
-                <div className="w-8 h-[18px] bg-gray-200 rounded-full peer-checked:bg-gray-800 relative transition-colors after:content-[''] after:absolute after:top-[3px] after:left-[3px] after:w-3 after:h-3 after:bg-white after:rounded-full after:transition-transform peer-checked:after:translate-x-3.5" />
-                <span className="text-sm text-gray-500">모름</span>
-              </label>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-[1fr_1fr_auto] gap-2 items-end">
-              <select
-                value={hour}
-                onChange={e => setHour(Number(e.target.value))}
-                disabled={unknownTime}
-                className={selectClass}
-              >
-                {Array.from({ length: 24 }, (_, i) => (
-                  <option key={i} value={i}>{String(i).padStart(2, '0')}시</option>
-                ))}
-              </select>
-              <select
-                value={minute}
-                onChange={e => setMinute(Number(e.target.value))}
-                disabled={unknownTime}
-                className={selectClass}
-              >
-                {Array.from({ length: 60 }, (_, i) => (
-                  <option key={i} value={i}>{String(i).padStart(2, '0')}분</option>
-                ))}
-              </select>
-
-              {/* 성별 — segmented control */}
-              <div>
-                <div className="inline-flex h-10 rounded-lg bg-gray-100 p-1">
-                  {(['M', 'F'] as const).map(g => (
-                    <button
-                      key={g}
-                      type="button"
-                      onClick={() => setGender(g)}
-                      className={`px-4 text-base rounded-md transition-all ${
-                        gender === g
-                          ? 'bg-white text-gray-800 shadow-sm font-medium'
-                          : 'text-gray-500 hover:text-gray-700'
-                      }`}
-                    >
-                      {g === 'M' ? '남' : '여'}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </fieldset>
-
-          {/* 위치 (Natal Chart용) */}
-          <fieldset className="mt-4">
-            <div className="flex items-center justify-between mb-2">
-              <legend className="text-sm font-medium text-gray-500">출생 위치 (Natal Chart)</legend>
-              <label className="flex items-center gap-1.5 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={manualCoords}
-                  onChange={e => {
-                    setManualCoords(e.target.checked)
-                    if (!e.target.checked && selectedCity) {
-                      setLatitude(selectedCity.lat)
-                      setLongitude(selectedCity.lon)
-                    }
-                  }}
-                  className="sr-only peer"
-                />
-                <div className="w-8 h-[18px] bg-gray-200 rounded-full peer-checked:bg-gray-800 relative transition-colors after:content-[''] after:absolute after:top-[3px] after:left-[3px] after:w-3 after:h-3 after:bg-white after:rounded-full after:transition-transform peer-checked:after:translate-x-3.5" />
-                <span className="text-sm text-gray-500">직접 입력</span>
-              </label>
-            </div>
-            {manualCoords ? (
-              <div className="grid grid-cols-2 gap-2">
-                <div>
-                  <label className="block text-sm text-gray-400 mb-1">위도</label>
-                  <input
-                    type="number"
-                    step="0.0001"
-                    value={latitude}
-                    onChange={e => setLatitude(Number(e.target.value))}
-                    className="w-full h-10 px-3 border border-gray-200 rounded-lg text-base text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-gray-800/20 focus:border-gray-400 transition-all"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm text-gray-400 mb-1">경도</label>
-                  <input
-                    type="number"
-                    step="0.0001"
-                    value={longitude}
-                    onChange={e => setLongitude(Number(e.target.value))}
-                    className="w-full h-10 px-3 border border-gray-200 rounded-lg text-base text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-gray-800/20 focus:border-gray-400 transition-all"
-                  />
-                </div>
-              </div>
-            ) : (
-              <CityCombobox selectedCity={selectedCity} onSelect={handleCitySelect} />
-            )}
-          </fieldset>
-
-          {/* 고급 설정 */}
-          {!unknownTime && (
-            <div className="mt-4">
-              <button
-                type="button"
-                onClick={() => setShowAdvanced(v => !v)}
-                className="flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 transition-colors"
-              >
-                <svg
-                  className={`w-3 h-3 transition-transform ${showAdvanced ? 'rotate-90' : ''}`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-                고급 설정
-              </button>
-              {showAdvanced && (
-                <fieldset className="mt-2">
-                  <legend className="text-sm font-medium text-gray-500 mb-2">자시법 (子時法)</legend>
-                  <div className="inline-flex h-10 rounded-lg bg-gray-100 p-1">
-                    {([
-                      { value: 'unified' as const, label: '통자시' },
-                      { value: 'split' as const, label: '야자시' },
-                    ]).map(opt => (
-                      <button
-                        key={opt.value}
-                        type="button"
-                        onClick={() => setJasiMethod(opt.value)}
-                        className={`px-4 text-base rounded-md transition-all ${
-                          jasiMethod === opt.value
-                            ? 'bg-white text-gray-800 shadow-sm font-medium'
-                            : 'text-gray-500 hover:text-gray-700'
-                        }`}
-                      >
-                        {opt.label}
-                      </button>
-                    ))}
-                  </div>
-                  <p className="mt-1.5 text-sm text-gray-400 leading-relaxed">
-                    {jasiMethod === 'unified'
-                      ? '23:30부터 子시, 일주를 다음날로 넘깁니다.'
-                      : '23:30~00:00(야자시)은 子시이나, 일주는 당일 유지합니다.'}
-                  </p>
-                </fieldset>
-              )}
-            </div>
-          )}
-
-          {/* 계산 버튼 */}
-          <button
-            type="submit"
-            className="mt-5 w-full h-11 bg-gray-800 text-white text-base font-medium rounded-lg hover:bg-gray-700 active:scale-[0.98] transition-all"
+    <form onSubmit={handleSubmit} className="space-y-4">
+      {/* 생년월일 */}
+      <div className="form-control">
+        <label className="label">
+          <span className="label-text font-medium">생년월일 (양력)</span>
+        </label>
+        <div className="grid grid-cols-3 gap-2">
+          <select
+            value={year}
+            onChange={e => setYear(Number(e.target.value))}
+            className="select select-bordered select-sm sm:select-md"
           >
-            계산
-          </button>
-
-          <p className="mt-3 text-center text-sm text-gray-400 leading-relaxed">
-            🔒 모든 계산은 브라우저에서 처리되며,<br />
-            입력하신 정보는 어떤 서버에도 전송되지 않습니다.
-          </p>
+            {Array.from({ length: currentYear - 1900 + 1 }, (_, i) => {
+              const y = currentYear - i
+              return <option key={y} value={y}>{y}년</option>
+            })}
+          </select>
+          <select
+            value={month}
+            onChange={e => setMonth(Number(e.target.value))}
+            className="select select-bordered select-sm sm:select-md"
+          >
+            {Array.from({ length: 12 }, (_, i) => (
+              <option key={i + 1} value={i + 1}>{i + 1}월</option>
+            ))}
+          </select>
+          <select
+            value={day}
+            onChange={e => setDay(Number(e.target.value))}
+            className="select select-bordered select-sm sm:select-md"
+          >
+            {Array.from({ length: 31 }, (_, i) => (
+              <option key={i + 1} value={i + 1}>{i + 1}일</option>
+            ))}
+          </select>
         </div>
       </div>
+
+      {/* KDT 경고 */}
+      {isKDT && (
+        <div role="alert" className="alert alert-warning text-sm py-2">
+          <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-5 w-5" fill="none" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+          <span>88올림픽 하계표준시(KDT, UTC+10) 기간입니다. 자동 반영됩니다.</span>
+        </div>
+      )}
+
+      {/* 시간 + 성별 */}
+      <div className="form-control">
+        <label className="label">
+          <span className="label-text font-medium">시간</span>
+          <label className="label cursor-pointer gap-2 p-0">
+            <span className="label-text-alt">모름</span>
+            <input
+              type="checkbox"
+              checked={unknownTime}
+              onChange={e => setUnknownTime(e.target.checked)}
+              className="toggle toggle-sm toggle-primary"
+            />
+          </label>
+        </label>
+        <div className="grid grid-cols-2 sm:grid-cols-[1fr_1fr_auto] gap-2 items-end">
+          <select
+            value={hour}
+            onChange={e => setHour(Number(e.target.value))}
+            disabled={unknownTime}
+            className="select select-bordered select-sm sm:select-md"
+          >
+            {Array.from({ length: 24 }, (_, i) => (
+              <option key={i} value={i}>{String(i).padStart(2, '0')}시</option>
+            ))}
+          </select>
+          <select
+            value={minute}
+            onChange={e => setMinute(Number(e.target.value))}
+            disabled={unknownTime}
+            className="select select-bordered select-sm sm:select-md"
+          >
+            {Array.from({ length: 60 }, (_, i) => (
+              <option key={i} value={i}>{String(i).padStart(2, '0')}분</option>
+            ))}
+          </select>
+
+          {/* 성별 — join 버튼 그룹 */}
+          <div className="join">
+            {(['M', 'F'] as const).map(g => (
+              <button
+                key={g}
+                type="button"
+                onClick={() => setGender(g)}
+                className={`join-item btn btn-sm sm:btn-md ${
+                  gender === g ? 'btn-primary' : 'btn-ghost'
+                }`}
+              >
+                {g === 'M' ? '남' : '여'}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* 위치 */}
+      <div className="form-control">
+        <label className="label">
+          <span className="label-text font-medium">출생 위치</span>
+          <label className="label cursor-pointer gap-2 p-0">
+            <span className="label-text-alt">직접 입력</span>
+            <input
+              type="checkbox"
+              checked={manualCoords}
+              onChange={e => {
+                setManualCoords(e.target.checked)
+                if (!e.target.checked && selectedCity) {
+                  setLatitude(selectedCity.lat)
+                  setLongitude(selectedCity.lon)
+                }
+              }}
+              className="toggle toggle-sm toggle-primary"
+            />
+          </label>
+        </label>
+        {manualCoords ? (
+          <div className="grid grid-cols-2 gap-2">
+            <div className="form-control">
+              <label className="label py-1">
+                <span className="label-text-alt">위도</span>
+              </label>
+              <input
+                type="number"
+                step="0.0001"
+                value={latitude}
+                onChange={e => setLatitude(Number(e.target.value))}
+                className="input input-bordered input-sm sm:input-md"
+              />
+            </div>
+            <div className="form-control">
+              <label className="label py-1">
+                <span className="label-text-alt">경도</span>
+              </label>
+              <input
+                type="number"
+                step="0.0001"
+                value={longitude}
+                onChange={e => setLongitude(Number(e.target.value))}
+                className="input input-bordered input-sm sm:input-md"
+              />
+            </div>
+          </div>
+        ) : (
+          <CityCombobox selectedCity={selectedCity} onSelect={handleCitySelect} />
+        )}
+      </div>
+
+      {/* 고급 설정 */}
+      {!unknownTime && (
+        <div className="collapse collapse-arrow bg-base-200">
+          <input
+            type="checkbox"
+            checked={showAdvanced}
+            onChange={e => setShowAdvanced(e.target.checked)}
+          />
+          <div className="collapse-title text-sm font-medium py-2 min-h-0">
+            고급 설정
+          </div>
+          <div className="collapse-content">
+            <div className="form-control pt-2">
+              <label className="label py-1">
+                <span className="label-text font-medium font-hanja">子時法 (자시법)</span>
+              </label>
+              <div className="join w-full">
+                {([
+                  { value: 'unified' as const, label: '통자시', desc: '23:30부터 子시, 일주 다음날' },
+                  { value: 'split' as const, label: '야자시', desc: '야자시는 子시이나 일주 당일' },
+                ]).map(opt => (
+                  <button
+                    key={opt.value}
+                    type="button"
+                    onClick={() => setJasiMethod(opt.value)}
+                    className={`join-item btn btn-sm flex-1 ${
+                      jasiMethod === opt.value ? 'btn-primary' : 'btn-ghost'
+                    }`}
+                  >
+                    {opt.label}
+                  </button>
+                ))}
+              </div>
+              <p className="text-xs text-base-content/50 mt-2">
+                {jasiMethod === 'unified'
+                  ? '23:30부터 子시로 보고, 일주를 다음날로 넘깁니다.'
+                  : '23:30~00:00(야자시)은 子시이나, 일주는 당일을 유지합니다.'}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 계산 버튼 */}
+      <button type="submit" className="btn btn-primary btn-block">
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+        </svg>
+        명식 계산
+      </button>
     </form>
   )
 }
