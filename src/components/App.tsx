@@ -131,7 +131,7 @@ export default function App() {
           </button>
           <ThemeToggle />
           <a
-            href="https://github.com/rath/orrery"
+            href="https://github.com/whalelake/saju"
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-ghost btn-sm btn-circle"
