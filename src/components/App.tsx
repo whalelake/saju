@@ -10,6 +10,7 @@ import CompareView from './CompareView.tsx'
 import Settings from './Settings.tsx'
 import PrivacyPolicy from './PrivacyPolicy.tsx'
 import TermsOfService from './TermsOfService.tsx'
+import AdBanner from './AdBanner.tsx'
 import SajuView from './saju/SajuView.tsx'
 import ZiweiView from './ziwei/ZiweiView.tsx'
 import NatalView from './natal/NatalView.tsx'
@@ -225,6 +226,11 @@ export default function App() {
             </div>
           </div>
         )}
+
+        {/* 광고 */}
+        <div className="mt-6">
+          <AdBanner slot="1234567890" format="horizontal" />
+        </div>
 
         {/* 가이드 */}
         <div className="mt-6">
