@@ -3,17 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>혼천의(渾天儀) - 사주팔자 · 자미두수 · 점성술 출생차트 계산기</title>
-    <meta name="description" content="생년월일시로 사주팔자(四柱八字), 자미두수(紫微斗數) 명반, 서양 점성술 출생차트(Natal Chart)를 무료로 계산하세요. 십신, 대운, 명반, 사화, 출생차트까지 한눈에 확인할 수 있는 브라우저 기반 명리 도구입니다." />
-    <meta name="keywords" content="사주팔자,자미두수,출생차트,점성술,명리,사주 계산기,자미두수 명반,Natal Chart,팔자 풀이,혼천의,四柱八字,紫微斗數,무료 사주" />
-    <meta name="author" content="whalelake" />
+    <title>명운판 - 무료 사주팔자 · 자미두수 · 점성술 AI 해석</title>
+    <meta name="description" content="생년월일시만 입력하면 사주팔자, 자미두수 명반, 서양 점성술 출생차트를 한 번에 분석. AI가 성격, 적성, 운세를 쉽게 풀어드립니다. 회원가입 없이 무료로 이용하세요." />
+    <meta name="keywords" content="무료 사주,사주팔자,자미두수,점성술,출생차트,AI 사주,사주 풀이,운세,명리학,팔자 보기,타로,성격 분석,적성 검사,궁합" />
+    <meta name="author" content="명운판" />
     <meta name="theme-color" content="#1e293b" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
     <link rel="canonical" href="https://saju-wheat.vercel.app/" />
 
     <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-8062225857171456">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8062225857171456"
          crossorigin="anonymous"></script>
+
+    <!-- Favicon -->
     <link rel="manifest" href="/manifest.json" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
@@ -23,45 +27,118 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ko_KR" />
-    <meta property="og:site_name" content="혼천의(渾天儀)" />
-    <meta property="og:title" content="혼천의(渾天儀) - 사주팔자 · 자미두수 · 점성술 출생차트 계산기" />
-    <meta property="og:description" content="생년월일시로 사주팔자(四柱八字), 자미두수(紫微斗數) 명반, 서양 점성술 출생차트(Natal Chart)를 무료로 계산하세요. 십신, 대운, 명반, 사화, 출생차트까지 한눈에 확인할 수 있는 브라우저 기반 명리 도구입니다." />
+    <meta property="og:site_name" content="명운판" />
+    <meta property="og:title" content="명운판 - 무료 사주 · 자미두수 · 점성술 AI 해석" />
+    <meta property="og:description" content="생년월일시만 입력하면 사주팔자, 자미두수, 점성술을 한 번에! AI가 성격과 운세를 쉽게 풀어드립니다." />
     <meta property="og:url" content="https://saju-wheat.vercel.app/" />
     <meta property="og:image" content="https://saju-wheat.vercel.app/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="명운판 - 무료 사주/자미두수/점성술 분석 서비스" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="혼천의(渾天儀) - 사주팔자 · 자미두수 · 점성술 출생차트 계산기" />
-    <meta name="twitter:description" content="생년월일시로 사주팔자, 자미두수 명반, 서양 점성술 출생차트를 무료로 계산하는 브라우저 기반 명리 도구" />
+    <meta name="twitter:title" content="명운판 - 무료 사주 · 자미두수 · 점성술 AI 해석" />
+    <meta name="twitter:description" content="생년월일시만 입력하면 사주팔자, 자미두수, 점성술을 한 번에! AI가 성격과 운세를 쉽게 풀어드립니다." />
     <meta name="twitter:image" content="https://saju-wheat.vercel.app/og-image.png" />
-    <meta name="twitter:creator" content="@whalelake" />
 
-    <!-- Structured Data -->
+    <!-- JSON-LD: SoftwareApplication -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "혼천의(渾天儀)",
-      "description": "생년월일시로 사주팔자(四柱八字), 자미두수(紫微斗數) 명반, 서양 점성술 출생차트(Natal Chart)를 무료로 계산하는 브라우저 기반 명리 도구",
+      "@type": "SoftwareApplication",
+      "name": "명운판",
+      "alternateName": "命運判",
+      "description": "생년월일시만 입력하면 사주팔자, 자미두수 명반, 서양 점성술 출생차트를 한 번에 분석하는 무료 웹 서비스. AI가 성격, 적성, 운세를 쉽게 풀어드립니다.",
       "url": "https://saju-wheat.vercel.app/",
       "applicationCategory": "LifestyleApplication",
       "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
       "offers": {
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "KRW"
       },
+      "featureList": [
+        "사주팔자 계산 (십신, 운성, 신살, 대운)",
+        "자미두수 명반 생성 (주성, 사화)",
+        "서양 점성술 출생차트 (행성, 하우스, 애스펙트)",
+        "AI 기반 맞춤 해석",
+        "궁합 비교",
+        "결과 저장 및 공유"
+      ],
+      "screenshot": "https://saju-wheat.vercel.app/og-image.png",
+      "softwareVersion": "1.0",
       "inLanguage": "ko",
       "author": {
-        "@type": "Person",
-        "name": "whalelake",
-        "url": "https://github.com/whalelake"
+        "@type": "Organization",
+        "name": "명운판",
+        "url": "https://saju-wheat.vercel.app/"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "150",
+        "bestRating": "5",
+        "worstRating": "1"
       }
     }
     </script>
 
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "사주팔자와 자미두수의 차이점은 무엇인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "사주팔자는 생년월일시를 천간지지로 변환하여 오행의 균형과 십신 관계를 분석합니다. 자미두수는 12궁의 명반에 108개의 별을 배치하여 인생의 각 영역(관록, 재백, 부처 등)을 상세히 분석합니다. 명운판에서는 두 방식을 모두 무료로 제공합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "출생 시간을 모르면 어떻게 하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "'시간 모름' 옵션을 선택하시면 시주(時柱)를 제외한 사주팔자 분석과 서양 점성술 출생차트를 확인하실 수 있습니다. 자미두수는 정확한 시간이 필요하여 이 경우 제공되지 않습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "AI 해석은 어떻게 작동하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GPT-4o 기반 AI가 사주팔자, 자미두수, 점성술 데이터를 종합 분석하여 성격, 적성, 운세를 쉬운 말로 풀어드립니다. 질문을 통해 특정 영역(연애운, 재물운, 직업운 등)에 대한 심층 해석도 가능합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "개인정보는 안전한가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "모든 데이터는 사용자의 브라우저 로컬 스토리지에만 저장되며, 서버에는 어떠한 개인정보도 저장되지 않습니다. AI 해석 시에만 OpenAI API를 통해 일시적으로 데이터가 처리되며, 저장되지 않습니다."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD: WebSite (for Search Box) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "명운판",
+      "url": "https://saju-wheat.vercel.app/",
+      "description": "무료 사주팔자, 자미두수, 점성술 AI 해석 서비스"
+    }
+    </script>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />

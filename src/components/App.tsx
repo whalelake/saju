@@ -301,7 +301,7 @@ export default function App() {
               </a>
             </div>
             <div>
-              &copy; 2025 혼천의. AGPL-3.0 License.
+              &copy; 2025 명운판. AGPL-3.0 License.
             </div>
           </div>
         </div>
