@@ -1,79 +1,93 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-/* 프리미엄 동양풍 라이트 테마 */
+/* ===== 명운판 라이트 테마 (Clean & Minimal) ===== */
 @plugin "daisyui/theme" {
   name: "oriental";
   default: true;
   color-scheme: light;
 
-  --color-base-100: oklch(97% 0.01 80);
-  --color-base-200: oklch(94% 0.015 75);
-  --color-base-300: oklch(90% 0.02 70);
-  --color-base-content: oklch(18% 0.02 60);
+  /* 배경: 따뜻한 화이트 톤 */
+  --color-base-100: oklch(99% 0.005 80);
+  --color-base-200: oklch(96% 0.008 75);
+  --color-base-300: oklch(92% 0.01 70);
+  --color-base-content: oklch(20% 0.01 60);
 
-  --color-primary: oklch(65% 0.18 85);
-  --color-primary-content: oklch(15% 0.02 60);
+  /* Primary: 절제된 남색 (신뢰감) */
+  --color-primary: oklch(45% 0.12 250);
+  --color-primary-content: oklch(98% 0 0);
 
-  --color-secondary: oklch(55% 0.2 25);
-  --color-secondary-content: oklch(98% 0 0);
+  /* Secondary: 차분한 금색/베이지 */
+  --color-secondary: oklch(70% 0.08 80);
+  --color-secondary-content: oklch(20% 0.02 60);
 
-  --color-accent: oklch(60% 0.12 175);
-  --color-accent-content: oklch(15% 0.02 60);
+  /* Accent: 포인트 적색 (절제된 톤) */
+  --color-accent: oklch(55% 0.15 25);
+  --color-accent-content: oklch(98% 0 0);
 
-  --color-neutral: oklch(25% 0.02 60);
-  --color-neutral-content: oklch(92% 0.01 60);
+  /* Neutral: 웜 그레이 */
+  --color-neutral: oklch(35% 0.01 60);
+  --color-neutral-content: oklch(95% 0 0);
 
-  --color-info: oklch(65% 0.15 240);
-  --color-success: oklch(65% 0.18 150);
-  --color-warning: oklch(75% 0.18 70);
-  --color-error: oklch(60% 0.22 25);
+  /* 상태 색상 */
+  --color-info: oklch(60% 0.12 240);
+  --color-success: oklch(60% 0.15 150);
+  --color-warning: oklch(75% 0.14 80);
+  --color-error: oklch(55% 0.18 25);
 
-  --radius-box: 0.25rem;
-  --radius-btn: 0.125rem;
-  --radius-badge: 0.125rem;
+  /* 부드러운 모서리 */
+  --radius-box: 0.75rem;
+  --radius-btn: 0.5rem;
+  --radius-badge: 0.375rem;
 }
 
-/* 프리미엄 동양풍 다크 테마 */
+/* ===== 명운판 다크 테마 (Clean & Minimal) ===== */
 @plugin "daisyui/theme" {
   name: "oriental-dark";
   prefersdark: true;
   color-scheme: dark;
 
-  --color-base-100: oklch(13% 0.015 60);
-  --color-base-200: oklch(16% 0.015 60);
-  --color-base-300: oklch(20% 0.015 60);
-  --color-base-content: oklch(92% 0.01 75);
+  /* 배경: 깊은 네이비 */
+  --color-base-100: oklch(15% 0.015 250);
+  --color-base-200: oklch(18% 0.015 250);
+  --color-base-300: oklch(22% 0.015 250);
+  --color-base-content: oklch(92% 0.005 80);
 
-  --color-primary: oklch(75% 0.18 85);
-  --color-primary-content: oklch(12% 0.02 60);
+  /* Primary: 밝은 남색 */
+  --color-primary: oklch(65% 0.12 250);
+  --color-primary-content: oklch(15% 0.01 250);
 
-  --color-secondary: oklch(60% 0.2 25);
-  --color-secondary-content: oklch(98% 0 0);
+  /* Secondary: 밝은 금색 */
+  --color-secondary: oklch(75% 0.1 80);
+  --color-secondary-content: oklch(15% 0.02 60);
 
-  --color-accent: oklch(65% 0.12 175);
-  --color-accent-content: oklch(12% 0.02 60);
+  /* Accent: 밝은 적색 */
+  --color-accent: oklch(65% 0.15 25);
+  --color-accent-content: oklch(15% 0.01 25);
 
-  --color-neutral: oklch(20% 0.01 60);
-  --color-neutral-content: oklch(90% 0.01 60);
+  /* Neutral: 차분한 그레이 */
+  --color-neutral: oklch(25% 0.01 250);
+  --color-neutral-content: oklch(90% 0 0);
 
-  --color-info: oklch(70% 0.15 240);
-  --color-success: oklch(70% 0.18 150);
-  --color-warning: oklch(80% 0.18 70);
-  --color-error: oklch(65% 0.22 25);
+  /* 상태 색상 */
+  --color-info: oklch(70% 0.12 240);
+  --color-success: oklch(70% 0.15 150);
+  --color-warning: oklch(80% 0.14 80);
+  --color-error: oklch(65% 0.18 25);
 
-  --radius-box: 0.25rem;
-  --radius-btn: 0.125rem;
-  --radius-badge: 0.125rem;
+  /* 부드러운 모서리 */
+  --radius-box: 0.75rem;
+  --radius-btn: 0.5rem;
+  --radius-badge: 0.375rem;
 }
 
-/* ===== 오행 색상 시스템 ===== */
+/* ===== 오행 색상 시스템 (Minimal 톤) ===== */
 :root {
-  --color-tree: #22c55e;
-  --color-fire: #ef4444;
-  --color-earth: #eab308;
-  --color-metal: #9ca3af;
-  --color-water: #1e3a5f;
+  --color-tree: oklch(55% 0.15 145);   /* 木 - 차분한 초록 */
+  --color-fire: oklch(55% 0.18 25);    /* 火 - 절제된 적색 */
+  --color-earth: oklch(70% 0.12 85);   /* 土 - 부드러운 황금색 */
+  --color-metal: oklch(65% 0.01 250);  /* 金 - 은은한 실버 */
+  --color-water: oklch(45% 0.1 250);   /* 水 - 깊은 남색 */
 }
 
 .el-tree { color: var(--color-tree); }
@@ -82,16 +96,16 @@
 .el-metal { color: var(--color-metal); }
 .el-water { color: var(--color-water); }
 
-.bg-el-tree { background-color: color-mix(in srgb, var(--color-tree) 12%, transparent); }
-.bg-el-fire { background-color: color-mix(in srgb, var(--color-fire) 12%, transparent); }
-.bg-el-earth { background-color: color-mix(in srgb, var(--color-earth) 12%, transparent); }
-.bg-el-metal { background-color: color-mix(in srgb, var(--color-metal) 12%, transparent); }
-.bg-el-water { background-color: color-mix(in srgb, var(--color-water) 12%, transparent); }
+.bg-el-tree { background-color: color-mix(in oklch, var(--color-tree) 10%, transparent); }
+.bg-el-fire { background-color: color-mix(in oklch, var(--color-fire) 10%, transparent); }
+.bg-el-earth { background-color: color-mix(in oklch, var(--color-earth) 10%, transparent); }
+.bg-el-metal { background-color: color-mix(in oklch, var(--color-metal) 10%, transparent); }
+.bg-el-water { background-color: color-mix(in oklch, var(--color-water) 10%, transparent); }
 
 .bg-el-solid-tree  { background-color: var(--color-tree); color: #fff; }
 .bg-el-solid-fire  { background-color: var(--color-fire); color: #fff; }
 .bg-el-solid-earth { background-color: var(--color-earth); color: #1a1a1a; }
-.bg-el-solid-metal { background-color: #e5e7eb; color: #1a1a1a; border: 1px solid #d1d5db; }
+.bg-el-solid-metal { background-color: oklch(90% 0.005 250); color: #1a1a1a; border: 1px solid oklch(80% 0.01 250); }
 .bg-el-solid-water { background-color: var(--color-water); color: #fff; }
 
 /* ===== 타이포그래피 ===== */
@@ -118,28 +132,27 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-/* ===== 동양풍 장식 요소 ===== */
+/* ===== 미니멀 장식 요소 ===== */
 .border-oriental {
-  border: 1px solid oklch(65% 0.15 85 / 0.3);
-  box-shadow:
-    inset 0 0 0 1px oklch(65% 0.15 85 / 0.1),
-    0 1px 3px oklch(0% 0 0 / 0.05);
+  border: 1px solid oklch(50% 0.02 250 / 0.15);
+  box-shadow: 0 1px 3px oklch(0% 0 0 / 0.04);
 }
 
 .gold-accent {
   background: linear-gradient(
     135deg,
-    oklch(70% 0.18 85) 0%,
-    oklch(80% 0.15 80) 50%,
-    oklch(65% 0.2 90) 100%
+    oklch(65% 0.1 80) 0%,
+    oklch(75% 0.08 85) 50%,
+    oklch(60% 0.12 75) 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
+/* 한지 텍스처 제거 - 클린한 배경 */
 .bg-hanji {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  background: transparent;
 }
 
 /* ===== 반응형 유틸리티 ===== */
