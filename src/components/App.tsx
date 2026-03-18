@@ -8,6 +8,8 @@ import History from './History.tsx'
 import ShareCard from './ShareCard.tsx'
 import CompareView from './CompareView.tsx'
 import Settings from './Settings.tsx'
+import PrivacyPolicy from './PrivacyPolicy.tsx'
+import TermsOfService from './TermsOfService.tsx'
 import SajuView from './saju/SajuView.tsx'
 import ZiweiView from './ziwei/ZiweiView.tsx'
 import NatalView from './natal/NatalView.tsx'
@@ -61,6 +63,8 @@ export default function App() {
   const [shareOpen, setShareOpen] = useState(false)
   const [compareOpen, setCompareOpen] = useState(false)
   const [settingsOpen, setSettingsOpen] = useState(false)
+  const [privacyOpen, setPrivacyOpen] = useState(false)
+  const [termsOpen, setTermsOpen] = useState(false)
   const resultsRef = useRef<HTMLDivElement>(null)
   const formRef = useRef<HTMLDivElement>(null)
 
@@ -253,6 +257,49 @@ export default function App() {
         isOpen={settingsOpen}
         onClose={() => setSettingsOpen(false)}
       />
+
+      <PrivacyPolicy
+        isOpen={privacyOpen}
+        onClose={() => setPrivacyOpen(false)}
+      />
+
+      <TermsOfService
+        isOpen={termsOpen}
+        onClose={() => setTermsOpen(false)}
+      />
+
+      {/* 푸터 */}
+      <footer className="border-t border-base-300 bg-base-100 mt-8">
+        <div className="max-w-2xl mx-auto px-4 py-6">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-base-content/60">
+            <div className="flex gap-4">
+              <button
+                className="hover:text-base-content transition-colors"
+                onClick={() => setPrivacyOpen(true)}
+              >
+                개인정보처리방침
+              </button>
+              <button
+                className="hover:text-base-content transition-colors"
+                onClick={() => setTermsOpen(true)}
+              >
+                이용약관
+              </button>
+              <a
+                href="https://github.com/whalelake/saju/issues"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-base-content transition-colors"
+              >
+                문의하기
+              </a>
+            </div>
+            <div>
+              &copy; 2025 혼천의. AGPL-3.0 License.
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
