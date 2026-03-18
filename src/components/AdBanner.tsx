@@ -50,7 +50,7 @@ export default function AdBanner({ slot, format = 'auto', className = '' }: AdBa
       ref={adRef}
       className={`adsbygoogle block ${className}`}
       style={{ display: 'block' }}
-      data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+      data-ad-client="ca-pub-8062225857171456"
       data-ad-slot={slot}
       data-ad-format={format}
       data-full-width-responsive="true"
