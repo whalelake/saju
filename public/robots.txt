@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rath.github.io/orrery/sitemap.xml
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+Sitemap: https://saju-wheat.vercel.app/sitemap.xml
