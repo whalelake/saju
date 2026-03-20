@@ -13,11 +13,11 @@ export default function PlanetTable({ planets, angles }: Props) {
 
   return (
     <div>
-      <h3 className="text-sm font-medium text-gray-500 mb-2">{t.natal.planets}</h3>
+      <h3 className="text-sm font-medium text-base-content/70 mb-2">{t.natal.planets}</h3>
       <div className="overflow-x-auto">
         <table className="w-full text-base">
           <thead>
-            <tr className="text-sm text-gray-400 border-b border-gray-100">
+            <tr className="text-sm text-base-content/60 border-b border-base-200">
               <th className="text-left py-1 pr-2">{t.natal.planet}</th>
               <th className="text-left py-1 pr-2">{t.natal.sign}</th>
               <th className="text-right py-1 pr-2">{t.natal.degree}</th>
@@ -27,24 +27,24 @@ export default function PlanetTable({ planets, angles }: Props) {
           </thead>
           <tbody>
             {planets.map(p => (
-              <tr key={p.id} className="border-b border-gray-50">
+              <tr key={p.id} className="border-b border-base-200">
                 <td className="py-1.5 pr-2">
                   <span className="mr-1">{PLANET_SYMBOLS[p.id]}</span>
-                  <span className="text-gray-600">{PLANET_KO[p.id]}</span>
+                  <span className="text-base-content/80">{PLANET_KO[p.id]}</span>
                 </td>
                 <td className="py-1.5 pr-2 whitespace-nowrap">
                   <span className="mr-1">{ZODIAC_SYMBOLS[p.sign]}</span>
-                  <span className="text-gray-600 sm:hidden">{ZODIAC_KO[p.sign].slice(0, -2)}</span>
-                  <span className="text-gray-600 hidden sm:inline">{ZODIAC_KO[p.sign]}</span>
+                  <span className="text-base-content/80 sm:hidden">{ZODIAC_KO[p.sign].slice(0, -2)}</span>
+                  <span className="text-base-content/80 hidden sm:inline">{ZODIAC_KO[p.sign]}</span>
                 </td>
-                <td className="py-1.5 pr-2 text-right font-mono text-gray-700">
+                <td className="py-1.5 pr-2 text-right font-mono text-base-content">
                   {formatDegree(p.longitude)}
                 </td>
                 <td className="py-1.5 pr-2 text-center text-red-500">
                   {p.isRetrograde ? 'R' : ''}
                 </td>
                 {showHouse && (
-                  <td className="py-1.5 text-center text-gray-600">
+                  <td className="py-1.5 text-center text-base-content/80">
                     {p.house != null ? ROMAN[p.house - 1] : ''}
                   </td>
                 )}
@@ -56,8 +56,8 @@ export default function PlanetTable({ planets, angles }: Props) {
 
       {/* Angles — 시간 있을 때만 */}
       {angles && (
-        <div className="mt-3 pt-3 border-t border-gray-100">
-          <h3 className="text-sm font-medium text-gray-500 mb-2">{t.natal.angles}</h3>
+        <div className="mt-3 pt-3 border-t border-base-200">
+          <h3 className="text-sm font-medium text-base-content/70 mb-2">{t.natal.angles}</h3>
           <div className="grid grid-cols-2 gap-2 text-base">
             {([
               ['ASC', angles.asc],
@@ -66,11 +66,11 @@ export default function PlanetTable({ planets, angles }: Props) {
               ['IC', angles.ic],
             ] as const).map(([label, a]) => (
               <div key={label} className="flex items-center gap-2 whitespace-nowrap">
-                <span className="font-medium text-gray-700 w-10">{label}</span>
+                <span className="font-medium text-base-content w-10">{label}</span>
                 <span>{ZODIAC_SYMBOLS[a.sign]}</span>
-                <span className="text-gray-600 sm:hidden">{ZODIAC_KO[a.sign].slice(0, -2)}</span>
-                <span className="text-gray-600 hidden sm:inline">{ZODIAC_KO[a.sign]}</span>
-                <span className="font-mono text-gray-700">{formatDegree(a.longitude)}</span>
+                <span className="text-base-content/80 sm:hidden">{ZODIAC_KO[a.sign].slice(0, -2)}</span>
+                <span className="text-base-content/80 hidden sm:inline">{ZODIAC_KO[a.sign]}</span>
+                <span className="font-mono text-base-content">{formatDegree(a.longitude)}</span>
               </div>
             ))}
           </div>

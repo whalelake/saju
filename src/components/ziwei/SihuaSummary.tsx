@@ -28,16 +28,16 @@ export default function SihuaSummary({ chart }: Props) {
 
   return (
     <section>
-      <h3 className="text-base font-medium text-gray-700 mb-2">{t.ziwei.sihua}</h3>
+      <h3 className="text-base font-medium text-base-content mb-2">{t.ziwei.sihua}</h3>
       <div className="space-y-0.5">
         {Object.entries(siHuaInfo).map(([huaType, info]) => {
           if (!info) return null
           return (
-            <div key={huaType} className="text-base text-gray-600">
+            <div key={huaType} className="text-base text-base-content/80">
               <span className={colorMap[huaType] || ''}>{huaType}</span>
-              <span className="text-gray-400 mx-1">:</span>
+              <span className="text-base-content/60 mx-1">:</span>
               <span className="font-hanja">{info.star}</span>
-              <span className="text-gray-400 mx-1">在</span>
+              <span className="text-base-content/60 mx-1">在</span>
               <span>{info.palace}</span>
             </div>
           )

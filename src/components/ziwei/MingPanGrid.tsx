@@ -27,7 +27,7 @@ function siHuaColor(siHua: string): string {
 function brightnessColor(b: string): string {
   if (b === '廟' || b === '旺') return 'text-green-600'
   if (b === '陷') return 'text-red-500'
-  return 'text-gray-500'
+  return 'text-base-content/70'
 }
 
 function getPalaceByZhi(chart: ZiweiChart, zhi: string): ZiweiPalace | undefined {
@@ -47,11 +47,11 @@ function PalaceCell({ palace, daxianRange }: { palace: ZiweiPalace; daxianRange?
       {/* 궁명 + 신궁 + 간지 */}
       <div>
         <div className="flex items-baseline justify-between gap-1">
-          <span className="font-medium text-gray-800">
+          <span className="font-medium text-base-content">
             {palace.name}
             {palace.isShenGong && <span className="text-purple-600 ml-0.5">·身</span>}
           </span>
-          <span className="text-gray-400 font-hanja text-xs">{palace.ganZhi}</span>
+          <span className="text-base-content/60 font-hanja text-xs">{palace.ganZhi}</span>
         </div>
 
         {/* 주성 */}
@@ -69,13 +69,13 @@ function PalaceCell({ palace, daxianRange }: { palace: ZiweiPalace; daxianRange?
               </div>
             ))
           ) : (
-            <div className="text-gray-400">(空宮)</div>
+            <div className="text-base-content/60">(空宮)</div>
           )}
         </div>
 
         {/* 보성 / 살성 */}
         {(luckyStars.length > 0 || shaStars.length > 0) && (
-          <div className="mt-1 pt-1 border-t border-dashed border-gray-200">
+          <div className="mt-1 pt-1 border-t border-dashed border-base-300">
             {luckyStars.length > 0 && (
               <div className="text-green-600">{luckyStars.map(s => s.name).join(' ')}</div>
             )}
@@ -88,7 +88,7 @@ function PalaceCell({ palace, daxianRange }: { palace: ZiweiPalace; daxianRange?
 
       {/* 대한 나이 범위 */}
       {daxianRange && (
-        <div className="text-xs text-gray-400 text-right mt-1">{daxianRange}</div>
+        <div className="text-xs text-base-content/60 text-right mt-1">{daxianRange}</div>
       )}
     </div>
   )
@@ -115,7 +115,7 @@ export default function MingPanGrid({ chart }: Props) {
   return (
     <div className="overflow-x-auto">
       <div
-        className="grid grid-cols-4 grid-rows-4 border-t border-l border-gray-300 min-w-[600px]"
+        className="grid grid-cols-4 grid-rows-4 border-t border-l border-base-300 min-w-[600px]"
       >
         {/* 12궁 셀 */}
         {DI_ZHI.split('').map(zhi => {
@@ -127,7 +127,7 @@ export default function MingPanGrid({ chart }: Props) {
           return (
             <div
               key={zhi}
-              className="border-r border-b border-gray-300 min-h-[120px]"
+              className="border-r border-b border-base-300 min-h-[120px]"
               style={{ gridRow: pos[0], gridColumn: pos[1] }}
             >
               <PalaceCell palace={palace} daxianRange={daxianByZhi.get(zhi)} />
@@ -137,39 +137,39 @@ export default function MingPanGrid({ chart }: Props) {
 
         {/* 중앙 패널 (row 2-3, col 2-3) */}
         <div
-          className="border-r border-b border-gray-300 flex flex-col items-center justify-center p-3"
+          className="border-r border-b border-base-300 flex flex-col items-center justify-center p-3"
           style={{ gridRow: '2 / 4', gridColumn: '2 / 4' }}
         >
-          <div className="space-y-0.5 text-sm text-gray-600 w-full max-w-[200px]">
+          <div className="space-y-0.5 text-sm text-base-content/80 w-full max-w-[200px]">
             <div>
-              <span className="text-gray-400">陽曆:</span>{' '}
+              <span className="text-base-content/60">陽曆:</span>{' '}
               {chart.solarYear}年 {chart.solarMonth}月 {chart.solarDay}日 {chart.hour}時 {chart.minute}分
             </div>
             <div>
-              <span className="text-gray-400">陰曆:</span>{' '}
+              <span className="text-base-content/60">陰曆:</span>{' '}
               {chart.lunarYear}年 {chart.lunarMonth}月 {chart.lunarDay}日
               {chart.isLeapMonth && <span className="text-orange-600 ml-1">(閏月)</span>}
             </div>
             <div>
-              <span className="text-gray-400">性別:</span> {genderChar}
+              <span className="text-base-content/60">性別:</span> {genderChar}
             </div>
             <div className="pt-1">
-              <span className="text-gray-400">年柱:</span>{' '}
+              <span className="text-base-content/60">年柱:</span>{' '}
               <span className="font-hanja">{chart.yearGan}{chart.yearZhi}</span>
             </div>
             <div>
-              <span className="text-gray-400">命宮:</span>{' '}
+              <span className="text-base-content/60">命宮:</span>{' '}
               <span className="font-hanja">{chart.palaces['命宮']?.ganZhi}</span>
             </div>
             <div>
-              <span className="text-gray-400">身宮:</span>{' '}
+              <span className="text-base-content/60">身宮:</span>{' '}
               {shenPalaceName} (<span className="font-hanja">{chart.shenGongZhi}</span>)
             </div>
             <div>
-              <span className="text-gray-400">五行局:</span> {chart.wuXingJu.name}
+              <span className="text-base-content/60">五行局:</span> {chart.wuXingJu.name}
             </div>
             <div>
-              <span className="text-gray-400">大限起始:</span> {chart.daXianStartAge}歲
+              <span className="text-base-content/60">大限起始:</span> {chart.daXianStartAge}歲
             </div>
           </div>
         </div>

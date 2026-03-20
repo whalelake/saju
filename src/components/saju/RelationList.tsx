@@ -20,9 +20,9 @@ function getRelKind(type: string): RelKind {
 }
 
 const KIND_STYLES: Record<RelKind, string> = {
-  good: 'bg-blue-50 text-blue-700',
-  bad: 'bg-red-50 text-red-700',
-  neutral: 'bg-gray-100 text-gray-600',
+  good: 'bg-info/10 text-info',
+  bad: 'bg-error/10 text-error',
+  neutral: 'bg-base-200 text-base-content/80',
 }
 
 function formatRelation(r: RelationResult, char1: string, char2: string) {
@@ -70,12 +70,12 @@ export default function RelationList({ relations, pillars }: Props) {
 
   return (
     <section>
-      <h3 className="text-base font-medium text-gray-700 mb-2">八字關係</h3>
+      <h3 className="text-base font-medium text-base-content mb-2">八字關係</h3>
       <div className="space-y-1.5">
         {lines.map((line, i) => (
           <div key={i} className="flex items-center gap-2 text-base">
             {line.label && (
-              <span className="text-gray-400 w-10 shrink-0">{line.label}</span>
+              <span className="text-base-content/60 w-10 shrink-0">{line.label}</span>
             )}
             <div className="flex flex-wrap gap-1.5">
               {line.tags.map((tag, j) => (

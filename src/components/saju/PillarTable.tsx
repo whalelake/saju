@@ -22,7 +22,7 @@ export default function PillarTable({ pillars, unknownTime }: Props) {
     <div className="overflow-x-auto">
       <table className="w-full text-center text-base">
         <thead>
-          <tr className="text-sm text-gray-500">
+          <tr className="text-sm text-base-content/70">
             <td className="py-1 pr-2 text-right w-12"></td>
             {labels.map(label => (
               <th key={label} className="py-1 px-1 sm:px-3 font-normal">{label}</th>
@@ -31,10 +31,10 @@ export default function PillarTable({ pillars, unknownTime }: Props) {
         </thead>
         <tbody className="font-hanja">
           {/* 천간 십신 */}
-          <tr className="text-sm text-gray-600">
-            <td className="pr-2 text-right text-gray-400 whitespace-nowrap">{t.saju.sipsin}</td>
+          <tr className="text-sm text-base-content/80">
+            <td className="pr-2 text-right text-base-content/60 whitespace-nowrap">{t.saju.sipsin}</td>
             {pillars.map((p, i) => (
-              <td key={i} className={`py-0.5 px-1 sm:px-3 ${i === 0 && unknownTime ? 'text-gray-300' : stemColorClass(p.pillar.stem)}`}>
+              <td key={i} className={`py-0.5 px-1 sm:px-3 ${i === 0 && unknownTime ? 'text-base-content/40' : stemColorClass(p.pillar.stem)}`}>
                 {i === 0 && unknownTime ? '?' : p.stemSipsin}
               </td>
             ))}
@@ -42,11 +42,11 @@ export default function PillarTable({ pillars, unknownTime }: Props) {
 
           {/* 천간 */}
           <tr className="text-2xl">
-            <td className="pr-2 text-right text-sm text-gray-400 whitespace-nowrap">{t.saju.cheongan}</td>
+            <td className="pr-2 text-right text-sm text-base-content/60 whitespace-nowrap">{t.saju.cheongan}</td>
             {pillars.map((p, i) => (
               <td key={i} className="py-1 px-1 sm:px-3">
                 {i === 0 && unknownTime
-                  ? <span className="inline-flex items-center justify-center w-10 h-10 leading-none rounded pb-[3px] bg-gray-100 text-gray-300">?</span>
+                  ? <span className="inline-flex items-center justify-center w-10 h-10 leading-none rounded pb-[3px] bg-base-200 text-base-content/40">?</span>
                   : <span className={`inline-flex items-center justify-center w-10 h-10 leading-none rounded pb-[3px] ${stemSolidBgClass(p.pillar.stem)}`}>{p.pillar.stem}</span>
                 }
               </td>
@@ -55,11 +55,11 @@ export default function PillarTable({ pillars, unknownTime }: Props) {
 
           {/* 지지 */}
           <tr className="text-2xl">
-            <td className="pr-2 text-right text-sm text-gray-400 whitespace-nowrap">{t.saju.jiji}</td>
+            <td className="pr-2 text-right text-sm text-base-content/60 whitespace-nowrap">{t.saju.jiji}</td>
             {pillars.map((p, i) => (
               <td key={i} className="py-1 px-1 sm:px-3">
                 {i === 0 && unknownTime
-                  ? <span className="inline-flex items-center justify-center w-10 h-10 leading-none rounded pb-[3px] bg-gray-100 text-gray-300">?</span>
+                  ? <span className="inline-flex items-center justify-center w-10 h-10 leading-none rounded pb-[3px] bg-base-200 text-base-content/40">?</span>
                   : <span className={`inline-flex items-center justify-center w-10 h-10 leading-none rounded pb-[3px] ${branchSolidBgClass(p.pillar.branch)}`}>{p.pillar.branch}</span>
                 }
               </td>
@@ -67,10 +67,10 @@ export default function PillarTable({ pillars, unknownTime }: Props) {
           </tr>
 
           {/* 지지 십신 */}
-          <tr className="text-sm text-gray-600">
-            <td className="pr-2 text-right text-gray-400 whitespace-nowrap">{t.saju.sipsin}</td>
+          <tr className="text-sm text-base-content/80">
+            <td className="pr-2 text-right text-base-content/60 whitespace-nowrap">{t.saju.sipsin}</td>
             {pillars.map((p, i) => (
-              <td key={i} className={`py-0.5 px-1 sm:px-3 ${i === 0 && unknownTime ? 'text-gray-300' : branchColorClass(p.pillar.branch)}`}>
+              <td key={i} className={`py-0.5 px-1 sm:px-3 ${i === 0 && unknownTime ? 'text-base-content/40' : branchColorClass(p.pillar.branch)}`}>
                 {i === 0 && unknownTime ? '?' : p.branchSipsin}
               </td>
             ))}
@@ -79,25 +79,25 @@ export default function PillarTable({ pillars, unknownTime }: Props) {
           {/* 구분선 */}
           <tr>
             <td colSpan={5} className="py-1">
-              <div className="border-t border-gray-200" />
+              <div className="border-t border-base-300" />
             </td>
           </tr>
 
           {/* 운성 */}
-          <tr className="text-sm text-gray-600">
-            <td className="pr-2 text-right text-gray-400 whitespace-nowrap">{t.saju.unseong}</td>
+          <tr className="text-sm text-base-content/80">
+            <td className="pr-2 text-right text-base-content/60 whitespace-nowrap">{t.saju.unseong}</td>
             {pillars.map((p, i) => (
-              <td key={i} className={`py-0.5 px-1 sm:px-3 ${i === 0 && unknownTime ? 'text-gray-300' : ''}`}>
+              <td key={i} className={`py-0.5 px-1 sm:px-3 ${i === 0 && unknownTime ? 'text-base-content/40' : ''}`}>
                 {i === 0 && unknownTime ? '?' : p.unseong}
               </td>
             ))}
           </tr>
 
           {/* 신살 */}
-          <tr className="text-sm text-gray-600">
-            <td className="pr-2 text-right text-gray-400 whitespace-nowrap">{t.saju.sinsal}</td>
+          <tr className="text-sm text-base-content/80">
+            <td className="pr-2 text-right text-base-content/60 whitespace-nowrap">{t.saju.sinsal}</td>
             {pillars.map((p, i) => (
-              <td key={i} className={`py-0.5 px-1 sm:px-3 ${i === 0 && unknownTime ? 'text-gray-300' : ''}`}>
+              <td key={i} className={`py-0.5 px-1 sm:px-3 ${i === 0 && unknownTime ? 'text-base-content/40' : ''}`}>
                 {i === 0 && unknownTime ? '?' : p.sinsal}
               </td>
             ))}
@@ -105,11 +105,11 @@ export default function PillarTable({ pillars, unknownTime }: Props) {
 
           {/* 지장간 */}
           <tr className="text-sm">
-            <td className="pr-2 text-right text-gray-400 whitespace-nowrap">{t.saju.janggan}</td>
+            <td className="pr-2 text-right text-base-content/60 whitespace-nowrap">{t.saju.janggan}</td>
             {pillars.map((p, i) => (
               <td key={i} className="py-0.5 px-1 sm:px-3">
                 {i === 0 && unknownTime
-                  ? <span className="text-gray-300">?</span>
+                  ? <span className="text-base-content/40">?</span>
                   : <span className="inline-flex gap-0.5 justify-center">
                       {[...p.jigang].map((ch, j) =>
                         ch === ' '

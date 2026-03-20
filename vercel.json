@@ -4,5 +4,9 @@
   "devCommand": "bun run dev",
   "outputDirectory": "dist",
   "installCommand": "bun install",
-  "framework": "vite"
+  "framework": "vite",
+  "rewrites": [
+    { "source": "/(ko|en|ja|zh)/(.*)", "destination": "/index.html" },
+    { "source": "/(ko|en|ja|zh)", "destination": "/index.html" }
+  ]
 }

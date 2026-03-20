@@ -24,20 +24,23 @@ interface I18nContextType {
 
 const I18nContext = createContext<I18nContextType | undefined>(undefined)
 
-export function I18nProvider({ children }: { children: ReactNode }) {
+interface I18nProviderProps {
+  children: ReactNode
+  initialLanguage?: Language
+}
+
+export function I18nProvider({ children, initialLanguage }: I18nProviderProps) {
   const [language, setLanguageState] = useState<Language>(() => {
-    // 1. URL 파라미터 우선 확인 (?lang=ja 등)
-    const params = new URLSearchParams(window.location.search)
-    const langParam = params.get('lang')
-    if (langParam === 'ko' || langParam === 'en' || langParam === 'ja' || langParam === 'zh') {
-      return langParam
+    // 1. URL 경로에서 전달된 언어 우선 사용
+    if (initialLanguage) {
+      return initialLanguage
     }
 
-    // 2. localStorage 확인
+    // 2. localStorage 확인 (fallback)
     const saved = localStorage.getItem('language')
     if (saved === 'ko' || saved === 'en' || saved === 'ja' || saved === 'zh') return saved
 
-    // 3. 브라우저 언어 감지
+    // 3. 브라우저 언어 감지 (fallback)
     const browserLang = navigator.language.toLowerCase()
     if (browserLang.startsWith('ko')) return 'ko'
     if (browserLang.startsWith('ja')) return 'ja'

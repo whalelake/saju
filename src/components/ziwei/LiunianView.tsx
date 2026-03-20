@@ -41,38 +41,38 @@ export default function LiunianView({ chart }: Props) {
   return (
     <section>
       <div className="flex items-center gap-3 mb-3">
-        <h3 className="text-base font-medium text-gray-700">{t.ziwei.liunian}</h3>
+        <h3 className="text-base font-medium text-base-content">{t.ziwei.liunian}</h3>
         <input
           type="number"
           value={year}
           onChange={e => setYear(Number(e.target.value))}
           min={chart.solarYear}
           max={chart.solarYear + 100}
-          className="w-20 text-base border border-gray-300 rounded px-2 py-0.5 text-gray-700"
+          className="input input-bordered input-sm w-20"
         />
-        <span className="text-sm text-gray-400 font-hanja">{liunian.gan}{liunian.zhi}年</span>
+        <span className="text-sm text-base-content/60 font-hanja">{liunian.gan}{liunian.zhi}年</span>
       </div>
 
       {/* 대한 정보 */}
-      <div className="text-base text-gray-600 mb-2">
-        <span className="font-medium text-gray-700">大限</span>
-        <span className="text-gray-400 mx-1">:</span>
+      <div className="text-base text-base-content/80 mb-2">
+        <span className="font-medium text-base-content">大限</span>
+        <span className="text-base-content/60 mx-1">:</span>
         {liunian.daxianAgeStart}-{liunian.daxianAgeEnd}歲 {liunian.daxianPalaceName}
       </div>
 
       {/* 유년 명궁 */}
-      <div className="text-base text-gray-600 mb-3">
-        <span className="font-medium text-gray-700">流年命宮</span>
-        <span className="text-gray-400 mx-1">:</span>
+      <div className="text-base text-base-content/80 mb-3">
+        <span className="font-medium text-base-content">流年命宮</span>
+        <span className="text-base-content/60 mx-1">:</span>
         <span className="font-hanja">{liunian.mingGongZhi}</span>宮 → 本命 {liunian.natalPalaceAtMing}
-        <span className="text-gray-400 ml-1">
+        <span className="text-base-content/60 ml-1">
           ({getMainStarsAtZhi(chart, liunian.mingGongZhi).join(', ') || '空宮'})
         </span>
       </div>
 
       {/* 유년 사화 */}
       <div className="mb-3">
-        <div className="text-base font-medium text-gray-700 mb-1">流年四化</div>
+        <div className="text-base font-medium text-base-content mb-1">流年四化</div>
         <div className="space-y-0.5">
           {['化祿', '化權', '化科', '化忌'].map(huaType => {
             let starName = ''
@@ -82,11 +82,11 @@ export default function LiunianView({ chart }: Props) {
             const palaceName = liunian.siHuaPalaces[huaType] || '?'
             if (!starName) return null
             return (
-              <div key={huaType} className="text-base text-gray-600">
+              <div key={huaType} className="text-base text-base-content/80">
                 <span className={colorMap[huaType]}>{huaType}</span>
-                <span className="text-gray-400 mx-1">:</span>
+                <span className="text-base-content/60 mx-1">:</span>
                 <span className="font-hanja">{starName}</span>
-                <span className="text-gray-400 mx-1">→</span>
+                <span className="text-base-content/60 mx-1">→</span>
                 <span>{palaceName}</span>
               </div>
             )
@@ -96,7 +96,7 @@ export default function LiunianView({ chart }: Props) {
 
       {/* 유월 */}
       <div>
-        <div className="text-base font-medium text-gray-700 mb-1">流月運勢</div>
+        <div className="text-base font-medium text-base-content mb-1">流月運勢</div>
         <div className="space-y-0.5">
           {liunian.liuyue.map(ly => {
             const stars = getMainStarsAtZhi(chart, ly.mingGongZhi)
@@ -104,12 +104,12 @@ export default function LiunianView({ chart }: Props) {
             return (
               <div
                 key={ly.month}
-                className={`text-base ${hasMain ? 'text-gray-600' : 'text-gray-400'}`}
+                className={`text-base ${hasMain ? 'text-base-content/80' : 'text-base-content/60'}`}
               >
                 <span className="w-10 inline-block">{LUNAR_MONTH_NAMES[ly.month - 1]}</span>
-                <span className="font-hanja text-sm text-gray-400 mx-1">({ly.mingGongZhi})</span>
+                <span className="font-hanja text-sm text-base-content/60 mx-1">({ly.mingGongZhi})</span>
                 <span className="mr-1">{ly.natalPalaceName}</span>
-                <span className="text-gray-400 text-sm">
+                <span className="text-base-content/60 text-sm">
                   {hasMain ? `- ${stars.join(', ')}` : '- (空宮)'}
                 </span>
               </div>

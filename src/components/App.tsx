@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react'
-import { useI18n } from '../i18n'
+import { useNavigate } from 'react-router'
+import { useI18n, type Language } from '../i18n'
 import BirthForm from './BirthForm.tsx'
 import Guide from './Guide.tsx'
 import CopyButton from './CopyButton.tsx'
@@ -27,19 +28,52 @@ import type { BirthInput } from '@orrery/core/types'
 
 type Tab = 'saju' | 'ziwei' | 'natal'
 
+const LANGUAGE_LABELS: Record<Language, string> = {
+  ko: '한국어',
+  en: 'English',
+  ja: '日本語',
+  zh: '中文',
+}
+
+const LANGUAGE_ORDER: Language[] = ['ko', 'en', 'ja', 'zh']
+
 function LanguageToggle() {
-  const { language, setLanguage } = useI18n()
+  const { language } = useI18n()
+  const navigate = useNavigate()
+
+  const handleLanguageChange = (newLang: Language) => {
+    localStorage.setItem('language', newLang)
+    navigate(`/${newLang}/`)
+  }
 
   return (
-    <button
-      className="btn btn-ghost btn-sm btn-circle"
-      onClick={() => setLanguage(language === 'ko' ? 'en' : 'ko')}
-      aria-label="언어 전환"
-    >
-      <span className="text-sm font-bold">
-        {language === 'ko' ? 'EN' : 'KO'}
-      </span>
-    </button>
+    <div className="dropdown dropdown-end">
+      <button
+        tabIndex={0}
+        className="btn btn-ghost btn-sm gap-1"
+        aria-label="언어 전환"
+      >
+        <span className="text-sm font-bold uppercase">{language}</span>
+        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <ul
+        tabIndex={0}
+        className="dropdown-content menu bg-base-100 rounded-box z-50 w-32 p-2 shadow-lg border border-base-300"
+      >
+        {LANGUAGE_ORDER.map(lang => (
+          <li key={lang}>
+            <button
+              className={lang === language ? 'active' : ''}
+              onClick={() => handleLanguageChange(lang)}
+            >
+              {LANGUAGE_LABELS[lang]}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
 
