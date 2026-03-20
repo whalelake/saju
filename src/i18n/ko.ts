@@ -1,4 +1,17 @@
 export const ko = {
+  // 표시용 한자/텍스트 (언어별 다르게 표시)
+  display: {
+    brandName: '命運判',
+    brandChar: '判',
+    sajuTab: '四柱八字',
+    ziweiTab: '紫微斗數',
+    natalTab: '出生圖',
+    systemsList: '四柱八字 · 紫微斗數 · 西洋占星術',
+    sajuStat: '八字',
+    ziweiStat: '命盤',
+    natalStat: '星圖',
+  },
+
   // 공통
   common: {
     loading: '로딩 중...',
@@ -6,6 +19,7 @@ export const ko = {
     close: '닫기',
     cancel: '취소',
     confirm: '확인',
+    done: '완료',
     save: '저장',
     delete: '삭제',
     edit: '편집',
@@ -19,6 +33,9 @@ export const ko = {
     compatibility: '궁합',
     settings: '설정',
     github: 'GitHub',
+    guide: '명리학 가이드',
+    languageSwitch: '언어 전환',
+    themeSwitch: '테마 전환',
   },
 
   // Hero
@@ -130,6 +147,49 @@ export const ko = {
     injongbeop: '인종법',
     daewoon: '대운',
     transit: '트랜짓',
+    // 대운 테이블
+    daewoonTitle: '大運',
+    daewoonNoData: '대운 데이터가 없습니다.',
+    daewoonTimeWarning: '출생 시간 없이 정오(12:00) 기준으로 계산하여 대운 시작 시기에 수개월 오차가 있을 수 있습니다.',
+    age: '세',
+    // 좌법
+    jwabeopTitle: '坐法',
+    jwabeopDesc: '각 주 지장간이 일지에서 어떤 운성에 좌(坐)하는지',
+    seated: '坐',
+    // 인종법
+    injongbeopTitle: '引從法',
+    injongbeopDayBranch: '日支',
+    injongbeopHiddenStems: '지장간',
+    injongbeopMissingDesc: '누락 십성의 양간 인종',
+    follows: '從',
+    // 운세 (트랜짓)
+    transitTitle: '運勢',
+    transitMonth1: '1개월',
+    transitMonth3: '3개월',
+    transitMonth6: '6개월',
+    transitPast: '과거',
+    transitFuture: '미래',
+    transitNoRelations: '특별한 관계 없음',
+    // 신살 이름
+    sinsalTitle: '神殺',
+    cheonul: '천을귀인',
+    cheonduk: '천덕귀인',
+    wolduk: '월덕귀인',
+    munchang: '문창귀인',
+    geumyeo: '금여록',
+    yangin: '양인살',
+    dohwa: '도화살',
+    baekho: '백호살',
+    goegang: '괴강살',
+    hongyeom: '홍염살',
+    // 팔자 관계
+    relationsTitle: '八字關係',
+    pairHourDay: '時-日',
+    pairHourMonth: '時-月',
+    pairHourYear: '時-年',
+    pairDayMonth: '日-月',
+    pairDayYear: '日-年',
+    pairMonthYear: '月-年',
   },
 
   // 자미두수 결과
@@ -188,6 +248,33 @@ export const ko = {
     compare: '궁합 보기',
     compatibility: '궁합도',
     analysis: '궁합 분석',
+  },
+
+  // 공유
+  share: {
+    title: '공유하기',
+    mySaju: '나의 사주팔자',
+    born: '생',
+    share: '공유',
+    copyLink: '링크 복사',
+    copied: '복사됨!',
+    twitter: 'X (트위터)',
+    kakao: '카카오톡',
+    yearPillar: '년',
+    monthPillar: '월',
+    dayPillar: '일',
+    hourPillar: '시',
+  },
+
+  // 기록
+  history: {
+    title: '기록',
+    recentRecords: '최근 계산 기록',
+    clearAll: '전체 삭제',
+    justNow: '방금 전',
+    minutesAgo: '분 전',
+    hoursAgo: '시간 전',
+    daysAgo: '일 전',
   },
 
   // 가이드

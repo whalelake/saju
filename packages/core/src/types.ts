@@ -28,6 +28,8 @@ export interface BirthInput {
   latitude?: number;
   /** 경도 (기본값: 127.0992 서울) */
   longitude?: number;
+  /** 출생 도시 이름 */
+  cityName?: string;
 }
 
 /** 천간 정보 */

@@ -1,6 +1,19 @@
 import type { TranslationKeys } from './ko'
 
 export const en: TranslationKeys = {
+  // Display text (language-specific)
+  display: {
+    brandName: 'Myungunpan',
+    brandChar: 'M',
+    sajuTab: 'Four Pillars',
+    ziweiTab: 'Zi Wei Dou Shu',
+    natalTab: 'Natal Chart',
+    systemsList: 'Four Pillars · Zi Wei Dou Shu · Western Astrology',
+    sajuStat: 'Pillars',
+    ziweiStat: 'Chart',
+    natalStat: 'Stars',
+  },
+
   // Common
   common: {
     loading: 'Loading...',
@@ -8,6 +21,7 @@ export const en: TranslationKeys = {
     close: 'Close',
     cancel: 'Cancel',
     confirm: 'Confirm',
+    done: 'Done',
     save: 'Save',
     delete: 'Delete',
     edit: 'Edit',
@@ -21,6 +35,9 @@ export const en: TranslationKeys = {
     compatibility: 'Compatibility',
     settings: 'Settings',
     github: 'GitHub',
+    guide: 'Fortune Guide',
+    languageSwitch: 'Switch Language',
+    themeSwitch: 'Switch Theme',
   },
 
   // Hero
@@ -132,6 +149,49 @@ export const en: TranslationKeys = {
     injongbeop: 'Injongbeop',
     daewoon: 'Major Cycles',
     transit: 'Transit',
+    // Major Cycles Table
+    daewoonTitle: 'Major Cycles',
+    daewoonNoData: 'No major cycle data available.',
+    daewoonTimeWarning: 'Calculated at noon (12:00) without birth time. Major cycle start dates may have several months of error.',
+    age: 'yrs',
+    // Jwabeop
+    jwabeopTitle: 'Seated Method',
+    jwabeopDesc: 'Which star each hidden stem sits on in the day branch',
+    seated: 'seated',
+    // Injongbeop
+    injongbeopTitle: 'Following Method',
+    injongbeopDayBranch: 'Day Branch',
+    injongbeopHiddenStems: 'Hidden Stems',
+    injongbeopMissingDesc: 'Missing ten gods following yang stems',
+    follows: 'follows',
+    // Transit
+    transitTitle: 'Fortune',
+    transitMonth1: '1 month',
+    transitMonth3: '3 months',
+    transitMonth6: '6 months',
+    transitPast: 'Past',
+    transitFuture: 'Future',
+    transitNoRelations: 'No significant relations',
+    // Special Stars names
+    sinsalTitle: 'Special Stars',
+    cheonul: 'Noble Star',
+    cheonduk: 'Heaven Virtue',
+    wolduk: 'Moon Virtue',
+    munchang: 'Literary Star',
+    geumyeo: 'Golden Carriage',
+    yangin: 'Blade Star',
+    dohwa: 'Peach Blossom',
+    baekho: 'White Tiger',
+    goegang: 'Mighty Star',
+    hongyeom: 'Red Flame',
+    // Pillar Relations
+    relationsTitle: 'Pillar Relations',
+    pairHourDay: 'Hour-Day',
+    pairHourMonth: 'Hour-Month',
+    pairHourYear: 'Hour-Year',
+    pairDayMonth: 'Day-Month',
+    pairDayYear: 'Day-Year',
+    pairMonthYear: 'Month-Year',
   },
 
   // Ziwei Results
@@ -190,6 +250,33 @@ export const en: TranslationKeys = {
     compare: 'Compare',
     compatibility: 'Compatibility',
     analysis: 'Analysis',
+  },
+
+  // Share
+  share: {
+    title: 'Share',
+    mySaju: 'My Four Pillars',
+    born: 'Born',
+    share: 'Share',
+    copyLink: 'Copy Link',
+    copied: 'Copied!',
+    twitter: 'X (Twitter)',
+    kakao: 'KakaoTalk',
+    yearPillar: 'Year',
+    monthPillar: 'Month',
+    dayPillar: 'Day',
+    hourPillar: 'Hour',
+  },
+
+  // History
+  history: {
+    title: 'History',
+    recentRecords: 'Recent Calculations',
+    clearAll: 'Clear All',
+    justNow: 'Just now',
+    minutesAgo: 'm ago',
+    hoursAgo: 'h ago',
+    daysAgo: 'd ago',
   },
 
   // Guide

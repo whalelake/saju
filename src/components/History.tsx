@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import type { BirthInput } from '@orrery/core/types'
+import { useI18n } from '../i18n'
 
 interface HistoryItem {
   id: string
@@ -17,10 +18,11 @@ const STORAGE_KEY = 'orrery-history'
 const MAX_HISTORY = 10
 
 export default function History({ onSelect, currentInput }: Props) {
+  const { t, language } = useI18n()
   const [history, setHistory] = useState<HistoryItem[]>([])
   const [isOpen, setIsOpen] = useState(false)
 
-  // 로컬스토리지에서 히스토리 로드
+  // Load history from localStorage
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY)
     if (saved) {
@@ -75,11 +77,12 @@ export default function History({ onSelect, currentInput }: Props) {
     const hours = Math.floor(diff / 3600000)
     const days = Math.floor(diff / 86400000)
 
-    if (minutes < 1) return '방금 전'
-    if (minutes < 60) return `${minutes}분 전`
-    if (hours < 24) return `${hours}시간 전`
-    if (days < 7) return `${days}일 전`
-    return new Date(timestamp).toLocaleDateString('ko-KR')
+    if (minutes < 1) return t.history.justNow
+    if (minutes < 60) return `${minutes}${t.history.minutesAgo}`
+    if (hours < 24) return `${hours}${t.history.hoursAgo}`
+    if (days < 7) return `${days}${t.history.daysAgo}`
+    const locale = language === 'ko' ? 'ko-KR' : language === 'ja' ? 'ja-JP' : language === 'zh' ? 'zh-CN' : 'en-US'
+    return new Date(timestamp).toLocaleDateString(locale)
   }
 
   function handleDelete(id: string, e: React.MouseEvent) {
@@ -108,7 +111,7 @@ export default function History({ onSelect, currentInput }: Props) {
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        <span className="hidden sm:inline">기록</span>
+        <span className="hidden sm:inline">{t.history.title}</span>
         <span className="badge badge-sm badge-primary">{history.length}</span>
       </button>
 
@@ -118,12 +121,12 @@ export default function History({ onSelect, currentInput }: Props) {
           className="dropdown-content menu bg-base-100 rounded-box z-50 w-72 p-2 shadow-xl border border-base-300"
         >
           <li className="menu-title flex flex-row justify-between items-center">
-            <span>최근 계산 기록</span>
+            <span>{t.history.recentRecords}</span>
             <button
               className="btn btn-ghost btn-xs text-error"
               onClick={handleClearAll}
             >
-              전체 삭제
+              {t.history.clearAll}
             </button>
           </li>
 
@@ -140,7 +143,7 @@ export default function History({ onSelect, currentInput }: Props) {
                   <span className="font-medium">
                     {formatDate(item.input)}
                     <span className="ml-1 text-xs text-base-content/50">
-                      ({item.input.gender === 'M' ? '남' : '여'})
+                      ({item.input.gender === 'M' ? t.form.male : t.form.female})
                     </span>
                   </span>
                   <span className="text-xs text-base-content/50">

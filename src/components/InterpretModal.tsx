@@ -12,7 +12,7 @@ type InterpretType = 'personality' | 'advice' | 'general'
 type ContextType = 'self' | 'child' | 'partner' | 'friend' | 'other'
 
 export default function InterpretModal({ isOpen, onClose, getData }: Props) {
-  const { t } = useI18n()
+  const { t, language } = useI18n()
   const [step, setStep] = useState<1 | 2 | 3>(1)
   const [context, setContext] = useState<ContextType>('self')
   const [type, setType] = useState<InterpretType>('general')
@@ -46,7 +46,7 @@ export default function InterpretModal({ isOpen, onClose, getData }: Props) {
       const response = await fetch('/api/interpret', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ data, type, context, question: question.trim() }),
+        body: JSON.stringify({ data, type, context, question: question.trim(), language }),
       })
 
       if (!response.ok) {

@@ -1,6 +1,19 @@
 import type { TranslationKeys } from './ko'
 
 export const ja: TranslationKeys = {
+  // 表示用テキスト（言語別）
+  display: {
+    brandName: '命運判',
+    brandChar: '判',
+    sajuTab: '四柱推命',
+    ziweiTab: '紫微斗数',
+    natalTab: '出生図',
+    systemsList: '四柱推命 · 紫微斗数 · 西洋占星術',
+    sajuStat: '八字',
+    ziweiStat: '命盤',
+    natalStat: '星図',
+  },
+
   // 共通
   common: {
     loading: '読み込み中...',
@@ -8,6 +21,7 @@ export const ja: TranslationKeys = {
     close: '閉じる',
     cancel: 'キャンセル',
     confirm: '確認',
+    done: '完了',
     save: '保存',
     delete: '削除',
     edit: '編集',
@@ -21,6 +35,9 @@ export const ja: TranslationKeys = {
     compatibility: '相性',
     settings: '設定',
     github: 'GitHub',
+    guide: '占術ガイド',
+    languageSwitch: '言語切替',
+    themeSwitch: 'テーマ切替',
   },
 
   // Hero
@@ -132,6 +149,49 @@ export const ja: TranslationKeys = {
     injongbeop: '印綬法',
     daewoon: '大運',
     transit: 'トランジット',
+    // 大運テーブル
+    daewoonTitle: '大運',
+    daewoonNoData: '大運データがありません。',
+    daewoonTimeWarning: '出生時刻なしで正午（12:00）基準で計算しているため、大運開始時期に数ヶ月の誤差がある可能性があります。',
+    age: '歳',
+    // 坐法
+    jwabeopTitle: '坐法',
+    jwabeopDesc: '各柱の蔵干が日支でどの星に坐するか',
+    seated: '坐',
+    // 印綬法
+    injongbeopTitle: '印綬法',
+    injongbeopDayBranch: '日支',
+    injongbeopHiddenStems: '蔵干',
+    injongbeopMissingDesc: '欠落十神の陽干印綬',
+    follows: '從',
+    // 運勢（トランジット）
+    transitTitle: '運勢',
+    transitMonth1: '1ヶ月',
+    transitMonth3: '3ヶ月',
+    transitMonth6: '6ヶ月',
+    transitPast: '過去',
+    transitFuture: '未来',
+    transitNoRelations: '特別な関係なし',
+    // 神殺名
+    sinsalTitle: '神殺',
+    cheonul: '天乙貴人',
+    cheonduk: '天徳貴人',
+    wolduk: '月徳貴人',
+    munchang: '文昌貴人',
+    geumyeo: '金輿禄',
+    yangin: '羊刃殺',
+    dohwa: '桃花殺',
+    baekho: '白虎殺',
+    goegang: '魁罡殺',
+    hongyeom: '紅艶殺',
+    // 八字関係
+    relationsTitle: '八字関係',
+    pairHourDay: '時-日',
+    pairHourMonth: '時-月',
+    pairHourYear: '時-年',
+    pairDayMonth: '日-月',
+    pairDayYear: '日-年',
+    pairMonthYear: '月-年',
   },
 
   // 紫微斗数結果
@@ -190,6 +250,33 @@ export const ja: TranslationKeys = {
     compare: '相性を見る',
     compatibility: '相性度',
     analysis: '相性分析',
+  },
+
+  // 共有
+  share: {
+    title: '共有',
+    mySaju: '私の四柱推命',
+    born: '生まれ',
+    share: '共有',
+    copyLink: 'リンクをコピー',
+    copied: 'コピー完了！',
+    twitter: 'X (Twitter)',
+    kakao: 'カカオトーク',
+    yearPillar: '年',
+    monthPillar: '月',
+    dayPillar: '日',
+    hourPillar: '時',
+  },
+
+  // 履歴
+  history: {
+    title: '履歴',
+    recentRecords: '最近の計算記録',
+    clearAll: 'すべて削除',
+    justNow: 'たった今',
+    minutesAgo: '分前',
+    hoursAgo: '時間前',
+    daysAgo: '日前',
   },
 
   // ガイド

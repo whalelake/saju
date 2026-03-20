@@ -1,14 +1,10 @@
 import type { AllRelations, RelationResult } from '@orrery/core/types'
 import { ELEMENT_HANJA } from '@orrery/core/constants'
+import { useI18n } from '../../i18n'
 
 interface Props {
   relations: AllRelations
   pillars: string[]  // 간지 [시, 일, 월, 년]
-}
-
-const PAIR_NAMES: Record<string, string> = {
-  '0,1': '時-日', '0,2': '時-月', '0,3': '時-年',
-  '1,2': '日-月', '1,3': '日-年', '2,3': '月-年',
 }
 
 type RelKind = 'good' | 'bad' | 'neutral'
@@ -33,6 +29,11 @@ function formatRelation(r: RelationResult, char1: string, char2: string) {
 }
 
 export default function RelationList({ relations, pillars }: Props) {
+  const { t } = useI18n()
+  const PAIR_NAMES: Record<string, string> = {
+    '0,1': t.saju.pairHourDay, '0,2': t.saju.pairHourMonth, '0,3': t.saju.pairHourYear,
+    '1,2': t.saju.pairDayMonth, '1,3': t.saju.pairDayYear, '2,3': t.saju.pairMonthYear,
+  }
   const lines: Array<{ label: string; tags: Array<{ text: string; kind: RelKind }> }> = []
 
   // 주 쌍 관계
@@ -70,7 +71,7 @@ export default function RelationList({ relations, pillars }: Props) {
 
   return (
     <section>
-      <h3 className="text-base font-medium text-base-content mb-2">八字關係</h3>
+      <h3 className="text-base font-medium text-base-content mb-2">{t.saju.relationsTitle}</h3>
       <div className="space-y-1.5">
         {lines.map((line, i) => (
           <div key={i} className="flex items-center gap-2 text-base">

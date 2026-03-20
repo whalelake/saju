@@ -1,6 +1,19 @@
 import type { TranslationKeys } from './ko'
 
 export const zh: TranslationKeys = {
+  // 显示文字（按语言）
+  display: {
+    brandName: '命运判',
+    brandChar: '判',
+    sajuTab: '四柱八字',
+    ziweiTab: '紫微斗数',
+    natalTab: '出生图',
+    systemsList: '四柱八字 · 紫微斗数 · 西方占星术',
+    sajuStat: '八字',
+    ziweiStat: '命盘',
+    natalStat: '星图',
+  },
+
   // 通用
   common: {
     loading: '加载中...',
@@ -8,6 +21,7 @@ export const zh: TranslationKeys = {
     close: '关闭',
     cancel: '取消',
     confirm: '确认',
+    done: '完成',
     save: '保存',
     delete: '删除',
     edit: '编辑',
@@ -21,6 +35,9 @@ export const zh: TranslationKeys = {
     compatibility: '合盘',
     settings: '设置',
     github: 'GitHub',
+    guide: '命理指南',
+    languageSwitch: '切换语言',
+    themeSwitch: '切换主题',
   },
 
   // Hero
@@ -132,6 +149,49 @@ export const zh: TranslationKeys = {
     injongbeop: '印绶法',
     daewoon: '大运',
     transit: '流年',
+    // 大运表
+    daewoonTitle: '大运',
+    daewoonNoData: '无大运数据。',
+    daewoonTimeWarning: '未输入出生时间，按正午（12:00）计算，大运开始时间可能有数月误差。',
+    age: '岁',
+    // 坐法
+    jwabeopTitle: '坐法',
+    jwabeopDesc: '各柱藏干在日支坐于哪个星曜',
+    seated: '坐',
+    // 印绶法
+    injongbeopTitle: '印绶法',
+    injongbeopDayBranch: '日支',
+    injongbeopHiddenStems: '藏干',
+    injongbeopMissingDesc: '缺失十神的阳干印绶',
+    follows: '从',
+    // 运势（流年）
+    transitTitle: '运势',
+    transitMonth1: '1个月',
+    transitMonth3: '3个月',
+    transitMonth6: '6个月',
+    transitPast: '过去',
+    transitFuture: '未来',
+    transitNoRelations: '无特殊关系',
+    // 神煞名称
+    sinsalTitle: '神煞',
+    cheonul: '天乙贵人',
+    cheonduk: '天德贵人',
+    wolduk: '月德贵人',
+    munchang: '文昌贵人',
+    geumyeo: '金舆禄',
+    yangin: '羊刃煞',
+    dohwa: '桃花煞',
+    baekho: '白虎煞',
+    goegang: '魁罡煞',
+    hongyeom: '红艳煞',
+    // 八字关系
+    relationsTitle: '八字关系',
+    pairHourDay: '时-日',
+    pairHourMonth: '时-月',
+    pairHourYear: '时-年',
+    pairDayMonth: '日-月',
+    pairDayYear: '日-年',
+    pairMonthYear: '月-年',
   },
 
   // 紫微斗数结果
@@ -190,6 +250,33 @@ export const zh: TranslationKeys = {
     compare: '查看合盘',
     compatibility: '契合度',
     analysis: '合盘分析',
+  },
+
+  // 分享
+  share: {
+    title: '分享',
+    mySaju: '我的四柱八字',
+    born: '出生',
+    share: '分享',
+    copyLink: '复制链接',
+    copied: '已复制！',
+    twitter: 'X (推特)',
+    kakao: 'KakaoTalk',
+    yearPillar: '年',
+    monthPillar: '月',
+    dayPillar: '日',
+    hourPillar: '时',
+  },
+
+  // 历史
+  history: {
+    title: '历史',
+    recentRecords: '最近计算记录',
+    clearAll: '全部删除',
+    justNow: '刚刚',
+    minutesAgo: '分钟前',
+    hoursAgo: '小时前',
+    daysAgo: '天前',
   },
 
   // 指南

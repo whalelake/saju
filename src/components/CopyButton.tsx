@@ -1,11 +1,14 @@
 import { useState } from 'react'
+import { useI18n } from '../i18n'
 
 interface Props {
   getText: () => string | Promise<string>
   label?: React.ReactNode
 }
 
-export default function CopyButton({ getText, label = '복사' }: Props) {
+export default function CopyButton({ getText, label }: Props) {
+  const { t } = useI18n()
+  const defaultLabel = label ?? t.common.copy
   const [copied, setCopied] = useState(false)
   const [loading, setLoading] = useState(false)
 
@@ -49,7 +52,7 @@ export default function CopyButton({ getText, label = '복사' }: Props) {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
         </svg>
       )}
-      {copied ? '완료' : label}
+      {copied ? t.common.done : defaultLabel}
     </button>
   )
 }

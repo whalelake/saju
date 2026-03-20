@@ -1,6 +1,7 @@
 import { useRef, useEffect } from 'react'
 import type { DaewoonItem } from '@orrery/core/types'
 import { stemColorClass, branchColorClass, stemSolidBgClass, branchSolidBgClass } from '../../utils/format.ts'
+import { useI18n } from '../../i18n'
 
 interface Props {
   daewoon: DaewoonItem[]
@@ -19,11 +20,13 @@ function findActiveDaewoonIndex(daewoon: DaewoonItem[]): number {
 }
 
 export default function DaewoonTable({ daewoon, unknownTime }: Props) {
+  const { t } = useI18n()
+
   if (daewoon.length === 0) {
     return (
       <section>
-        <h3 className="text-base font-medium text-base-content mb-2">大運</h3>
-        <p className="text-base text-base-content/60">대운 데이터가 없습니다.</p>
+        <h3 className="text-base font-medium text-base-content mb-2">{t.saju.daewoonTitle}</h3>
+        <p className="text-base text-base-content/60">{t.saju.daewoonNoData}</p>
       </section>
     )
   }
@@ -42,10 +45,10 @@ export default function DaewoonTable({ daewoon, unknownTime }: Props) {
 
   return (
     <section>
-      <h3 className="text-base font-medium text-base-content mb-2">大運</h3>
+      <h3 className="text-base font-medium text-base-content mb-2">{t.saju.daewoonTitle}</h3>
       {unknownTime && (
         <p className="text-sm text-amber-600 mb-2">
-          출생 시간 없이 정오(12:00) 기준으로 계산하여 대운 시작 시기에 수개월 오차가 있을 수 있습니다.
+          {t.saju.daewoonTimeWarning}
         </p>
       )}
       <div ref={scrollRef} className="overflow-x-auto py-1">
@@ -60,7 +63,7 @@ export default function DaewoonTable({ daewoon, unknownTime }: Props) {
                 ref={isActive ? activeRef : undefined}
                 className={`flex flex-col items-center gap-0.5 rounded-lg px-1 py-1 ${isActive ? 'ring-2 ring-amber-400 bg-warning/10' : ''}`}
               >
-                <span className="text-xs text-base-content/70">{dw.age}세</span>
+                <span className="text-xs text-base-content/70">{dw.age}{t.saju.age}</span>
                 <span className={`text-sm ${stemColorClass(stem)}`}>{dw.stemSipsin}</span>
                 <span className={`inline-flex items-center justify-center w-8 h-8 leading-none text-base rounded pb-[2px] ${stemSolidBgClass(stem)}`}>
                   {stem}

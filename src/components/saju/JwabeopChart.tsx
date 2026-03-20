@@ -1,5 +1,6 @@
 import type { JwaEntry, PillarDetail } from '@orrery/core/types'
 import { stemColorClass } from '../../utils/format.ts'
+import { useI18n } from '../../i18n'
 
 interface Props {
   jwabeop: JwaEntry[][]   // [시, 일, 월, 년]
@@ -7,17 +8,18 @@ interface Props {
   unknownTime?: boolean
 }
 
-const LABELS = ['時柱', '日柱', '月柱', '年柱']
-
 export default function JwabeopChart({ jwabeop, pillars, unknownTime }: Props) {
+  const { t } = useI18n()
+  const LABELS = [t.saju.hourPillar, t.saju.dayPillar, t.saju.monthPillar, t.saju.yearPillar]
+
   // 최대 지장간 수 (행 수)
   const maxRows = Math.max(...jwabeop.map(entries => entries.length))
   if (maxRows === 0) return null
 
   return (
     <section>
-      <h3 className="text-base font-medium text-base-content mb-2">坐法</h3>
-      <p className="text-sm text-base-content/60 mb-2">각 주 지장간이 일지에서 어떤 운성에 좌(坐)하는지</p>
+      <h3 className="text-base font-medium text-base-content mb-2">{t.saju.jwabeopTitle}</h3>
+      <p className="text-sm text-base-content/60 mb-2">{t.saju.jwabeopDesc}</p>
       <div className="overflow-x-auto">
         <table className="w-full text-center text-base font-hanja">
           <thead>
@@ -42,7 +44,7 @@ export default function JwabeopChart({ jwabeop, pillars, unknownTime }: Props) {
                     <td key={col} className="py-0.5 px-2">
                       <span className={`${stemColorClass(entry.stem)}`}>{entry.stem}</span>
                       <span className="text-base-content/70 text-sm ml-1">{entry.sipsin}</span>
-                      <span className="text-base-content/60 text-sm ml-1">{entry.unseong}坐</span>
+                      <span className="text-base-content/60 text-sm ml-1">{entry.unseong}{t.saju.seated}</span>
                     </td>
                   )
                 })}

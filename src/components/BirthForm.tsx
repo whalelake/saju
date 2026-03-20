@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react'
 import type { BirthInput, Gender, JasiMethod } from '@orrery/core/types'
 import { isKoreanDaylightTime } from '@orrery/core/natal'
 import type { City } from '@orrery/core/cities'
-import { SEOUL } from '@orrery/core/cities'
+import { SEOUL, formatCityName } from '@orrery/core/cities'
 import CityCombobox from './CityCombobox.tsx'
 import { useI18n } from '../i18n'
 
@@ -81,6 +81,7 @@ export default function BirthForm({ onSubmit }: Props) {
       ...(!unknownTime && { jasiMethod }),
       latitude,
       longitude,
+      cityName: selectedCity ? formatCityName(selectedCity) : undefined,
     })
   }
 

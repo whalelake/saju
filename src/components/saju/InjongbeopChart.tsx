@@ -2,6 +2,7 @@ import type { InjongEntry, PillarDetail } from '@orrery/core/types'
 import { ELEMENT_HANJA } from '@orrery/core/constants'
 import { STEM_INFO } from '@orrery/core/constants'
 import { stemColorClass } from '../../utils/format.ts'
+import { useI18n } from '../../i18n'
 
 interface Props {
   injongbeop: InjongEntry[]
@@ -9,6 +10,8 @@ interface Props {
 }
 
 export default function InjongbeopChart({ injongbeop, pillars }: Props) {
+  const { t } = useI18n()
+
   if (injongbeop.length === 0) return null
 
   const dayBranch = pillars[1].pillar.branch
@@ -23,11 +26,11 @@ export default function InjongbeopChart({ injongbeop, pillars }: Props) {
 
   return (
     <section>
-      <h3 className="text-base font-medium text-base-content mb-2">引從法</h3>
+      <h3 className="text-base font-medium text-base-content mb-2">{t.saju.injongbeopTitle}</h3>
       <p className="text-sm text-base-content/60 mb-2">
-        日支 <span className="font-hanja">{dayBranch}</span> 지장간:
+        {t.saju.injongbeopDayBranch} <span className="font-hanja">{dayBranch}</span> {t.saju.injongbeopHiddenStems}:
         <span className="font-hanja ml-1">{jigangSummary}</span>
-        — 누락 십성의 양간 인종
+        — {t.saju.injongbeopMissingDesc}
       </p>
       <div className="flex flex-wrap gap-3">
         {injongbeop.map(entry => (
@@ -40,7 +43,7 @@ export default function InjongbeopChart({ injongbeop, pillars }: Props) {
             </span>
             <span className="text-base-content/70 font-hanja">{entry.category}</span>
             <span className="text-base-content/60">→</span>
-            <span className="font-hanja">{entry.unseong}從</span>
+            <span className="font-hanja">{entry.unseong}{t.saju.follows}</span>
           </div>
         ))}
       </div>
