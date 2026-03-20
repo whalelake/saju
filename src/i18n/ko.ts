@@ -341,6 +341,12 @@ export const ko = {
     responseTime: '응답 시간',
     responseTimeDesc: '문의 내용에 따라 1-3일 내에 답변 드리겠습니다. 오픈소스 프로젝트 특성상 응답이 지연될 수 있습니다.',
   },
+
+  // 쿠팡 파트너스
+  coupang: {
+    title: '명리학 공부에 도움되는 추천 도서',
+    disclaimer: '이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.',
+  },
 }
 
 export type TranslationKeys = typeof ko

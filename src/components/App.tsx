@@ -27,31 +27,6 @@ import type { BirthInput } from '@orrery/core/types'
 
 type Tab = 'saju' | 'ziwei' | 'natal'
 
-// 쿠팡 파트너스 상품 데이터
-const fortuneBooks = [
-  {
-    id: 'book1',
-    title: '사주명리학 입문',
-    imageUrl: '/placeholder-book.jpg',
-    price: 18000,
-    category: 'book' as const
-  },
-  {
-    id: 'book2',
-    title: '자미두수 완전 정복',
-    imageUrl: '/placeholder-book.jpg',
-    price: 25000,
-    category: 'book' as const
-  },
-  {
-    id: 'book3',
-    title: '서양 점성술 가이드',
-    imageUrl: '/placeholder-book.jpg',
-    price: 22000,
-    category: 'book' as const
-  }
-]
-
 function LanguageToggle() {
   const { language, setLanguage } = useI18n()
 
@@ -304,10 +279,7 @@ export default function App() {
           </div>
 
           {/* 쿠팡 파트너스 */}
-          <CoupangPartner
-            title="명리학 공부에 도움되는 추천 도서"
-            products={fortuneBooks}
-          />
+          <CoupangPartner keyword="사주 명리 점성술" />
           </>
         )}
 

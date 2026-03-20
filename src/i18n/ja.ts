@@ -343,4 +343,10 @@ export const ja: TranslationKeys = {
     responseTime: '応答時間',
     responseTimeDesc: 'お問い合わせ内容に応じて1〜3日以内に返信いたします。オープンソースプロジェクトの特性上、返信が遅れる場合があります。',
   },
+
+  // Coupang Partners (韓国のみ、型互換性のために必要)
+  coupang: {
+    title: 'おすすめ書籍',
+    disclaimer: 'この投稿はクーパンパートナーズ活動の一環であり、それに伴い一定額の手数料を受け取っています。',
+  },
 }

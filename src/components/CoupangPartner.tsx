@@ -1,44 +1,80 @@
-interface Product {
-  id: string
-  title: string
-  imageUrl: string
-  price: number
-  category: 'book' | 'software'
-}
+import { useEffect, useRef } from 'react'
+import { useI18n } from '../i18n'
+
+const COUPANG_PARTNER_ID = 'AF6700033'
 
 interface CoupangPartnerProps {
+  keyword?: string
   title?: string
-  products: Product[]
 }
 
-export default function CoupangPartner({ title = '추천 도서', products }: CoupangPartnerProps) {
+export default function CoupangPartner({ keyword = '사주 명리', title }: CoupangPartnerProps) {
+  const { t, language } = useI18n()
+  const containerRef = useRef<HTMLDivElement>(null)
+  const scriptLoaded = useRef(false)
+
+  // 한국어 사용자만 표시 (쿠팡은 한국 서비스)
+  const showCoupang = language === 'ko'
+
+  useEffect(() => {
+    if (!showCoupang || scriptLoaded.current || !containerRef.current) return
+
+    // 쿠팡 파트너스 스크립트 로드
+    const script = document.createElement('script')
+    script.src = 'https://ads-partners.coupang.com/g.js'
+    script.async = true
+    script.onload = () => {
+      if (window.PartnersCoupang && containerRef.current) {
+        new window.PartnersCoupang.G({
+          id: 807706,
+          template: 'carousel',
+          trackingCode: COUPANG_PARTNER_ID,
+          width: '100%',
+          height: 'auto',
+          ts498: keyword,
+        })
+        scriptLoaded.current = true
+      }
+    }
+    document.head.appendChild(script)
+
+    return () => {
+      // cleanup은 필요하지 않음 (스크립트 한 번만 로드)
+    }
+  }, [showCoupang, keyword])
+
+  if (!showCoupang) return null
+
   return (
     <div className="card bg-base-100 border-oriental mt-6">
       <div className="card-body">
-        <h3 className="card-title text-lg mb-4">{title}</h3>
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {products.map(product => (
-            <a
-              key={product.id}
-              href={`https://coupa.ng/PARTNER_ID/${product.id}`}
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-              className="card bg-base-200 hover:shadow-lg transition-shadow"
-            >
-              <figure className="px-4 pt-4">
-                <img src={product.imageUrl} alt={product.title} className="rounded-lg h-40 object-cover" />
-              </figure>
-              <div className="card-body p-4">
-                <p className="text-sm font-medium line-clamp-2">{product.title}</p>
-                <p className="text-primary font-bold">{product.price.toLocaleString()}원</p>
-              </div>
-            </a>
-          ))}
-        </div>
+        <h3 className="card-title text-lg mb-4">
+          {title || t.coupang?.title || '추천 상품'}
+        </h3>
+
+        {/* 쿠팡 파트너스 다이나믹 배너 영역 */}
+        <div ref={containerRef} className="min-h-[200px]" />
+
         <p className="text-xs text-base-content/50 mt-4">
-          이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
+          {t.coupang?.disclaimer || '이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.'}
         </p>
       </div>
     </div>
   )
+}
+
+// TypeScript 타입 선언
+declare global {
+  interface Window {
+    PartnersCoupang: {
+      G: new (config: {
+        id: number
+        template: string
+        trackingCode: string
+        width: string
+        height: string
+        ts498?: string
+      }) => void
+    }
+  }
 }
