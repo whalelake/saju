@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react'
 import { calculateLiunian } from '@orrery/core/ziwei'
 import type { ZiweiChart } from '@orrery/core/types'
 import { MAIN_STAR_NAMES } from '@orrery/core/constants'
+import { useI18n } from '../../i18n'
 
 interface Props {
   chart: ZiweiChart
@@ -24,6 +25,7 @@ function getMainStarsAtZhi(chart: ZiweiChart, zhi: string): string[] {
 }
 
 export default function LiunianView({ chart }: Props) {
+  const { t } = useI18n()
   const currentYear = new Date().getFullYear()
   const [year, setYear] = useState(currentYear)
 
@@ -39,7 +41,7 @@ export default function LiunianView({ chart }: Props) {
   return (
     <section>
       <div className="flex items-center gap-3 mb-3">
-        <h3 className="text-base font-medium text-gray-700">流年</h3>
+        <h3 className="text-base font-medium text-gray-700">{t.ziwei.liunian}</h3>
         <input
           type="number"
           value={year}

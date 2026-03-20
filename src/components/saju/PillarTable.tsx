@@ -7,6 +7,7 @@ import {
   elementSolidBgClass,
   stemElement,
 } from '../../utils/format.ts'
+import { useI18n } from '../../i18n'
 
 interface Props {
   pillars: PillarDetail[]  // [시, 일, 월, 년]
@@ -14,7 +15,8 @@ interface Props {
 }
 
 export default function PillarTable({ pillars, unknownTime }: Props) {
-  const labels = ['時柱', '日柱', '月柱', '年柱']
+  const { t } = useI18n()
+  const labels = [t.saju.hourPillar, t.saju.dayPillar, t.saju.monthPillar, t.saju.yearPillar]
 
   return (
     <div className="overflow-x-auto">
@@ -30,7 +32,7 @@ export default function PillarTable({ pillars, unknownTime }: Props) {
         <tbody className="font-hanja">
           {/* 천간 십신 */}
           <tr className="text-sm text-gray-600">
-            <td className="pr-2 text-right text-gray-400 whitespace-nowrap">십신</td>
+            <td className="pr-2 text-right text-gray-400 whitespace-nowrap">{t.saju.sipsin}</td>
             {pillars.map((p, i) => (
               <td key={i} className={`py-0.5 px-1 sm:px-3 ${i === 0 && unknownTime ? 'text-gray-300' : stemColorClass(p.pillar.stem)}`}>
                 {i === 0 && unknownTime ? '?' : p.stemSipsin}
@@ -40,7 +42,7 @@ export default function PillarTable({ pillars, unknownTime }: Props) {
 
           {/* 천간 */}
           <tr className="text-2xl">
-            <td className="pr-2 text-right text-sm text-gray-400 whitespace-nowrap">천간</td>
+            <td className="pr-2 text-right text-sm text-gray-400 whitespace-nowrap">{t.saju.cheongan}</td>
             {pillars.map((p, i) => (
               <td key={i} className="py-1 px-1 sm:px-3">
                 {i === 0 && unknownTime
@@ -53,7 +55,7 @@ export default function PillarTable({ pillars, unknownTime }: Props) {
 
           {/* 지지 */}
           <tr className="text-2xl">
-            <td className="pr-2 text-right text-sm text-gray-400 whitespace-nowrap">지지</td>
+            <td className="pr-2 text-right text-sm text-gray-400 whitespace-nowrap">{t.saju.jiji}</td>
             {pillars.map((p, i) => (
               <td key={i} className="py-1 px-1 sm:px-3">
                 {i === 0 && unknownTime
@@ -66,7 +68,7 @@ export default function PillarTable({ pillars, unknownTime }: Props) {
 
           {/* 지지 십신 */}
           <tr className="text-sm text-gray-600">
-            <td className="pr-2 text-right text-gray-400 whitespace-nowrap">십신</td>
+            <td className="pr-2 text-right text-gray-400 whitespace-nowrap">{t.saju.sipsin}</td>
             {pillars.map((p, i) => (
               <td key={i} className={`py-0.5 px-1 sm:px-3 ${i === 0 && unknownTime ? 'text-gray-300' : branchColorClass(p.pillar.branch)}`}>
                 {i === 0 && unknownTime ? '?' : p.branchSipsin}
@@ -83,7 +85,7 @@ export default function PillarTable({ pillars, unknownTime }: Props) {
 
           {/* 운성 */}
           <tr className="text-sm text-gray-600">
-            <td className="pr-2 text-right text-gray-400 whitespace-nowrap">운성</td>
+            <td className="pr-2 text-right text-gray-400 whitespace-nowrap">{t.saju.unseong}</td>
             {pillars.map((p, i) => (
               <td key={i} className={`py-0.5 px-1 sm:px-3 ${i === 0 && unknownTime ? 'text-gray-300' : ''}`}>
                 {i === 0 && unknownTime ? '?' : p.unseong}
@@ -93,7 +95,7 @@ export default function PillarTable({ pillars, unknownTime }: Props) {
 
           {/* 신살 */}
           <tr className="text-sm text-gray-600">
-            <td className="pr-2 text-right text-gray-400 whitespace-nowrap">신살</td>
+            <td className="pr-2 text-right text-gray-400 whitespace-nowrap">{t.saju.sinsal}</td>
             {pillars.map((p, i) => (
               <td key={i} className={`py-0.5 px-1 sm:px-3 ${i === 0 && unknownTime ? 'text-gray-300' : ''}`}>
                 {i === 0 && unknownTime ? '?' : p.sinsal}
@@ -103,7 +105,7 @@ export default function PillarTable({ pillars, unknownTime }: Props) {
 
           {/* 지장간 */}
           <tr className="text-sm">
-            <td className="pr-2 text-right text-gray-400 whitespace-nowrap">장간</td>
+            <td className="pr-2 text-right text-gray-400 whitespace-nowrap">{t.saju.janggan}</td>
             {pillars.map((p, i) => (
               <td key={i} className="py-0.5 px-1 sm:px-3">
                 {i === 0 && unknownTime

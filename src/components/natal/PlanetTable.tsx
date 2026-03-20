@@ -1,5 +1,6 @@
 import type { PlanetPosition, NatalAngles } from '@orrery/core/types'
 import { PLANET_SYMBOLS, PLANET_KO, ZODIAC_SYMBOLS, ZODIAC_KO, ROMAN, formatDegree } from '@orrery/core/natal'
+import { useI18n } from '../../i18n'
 
 interface Props {
   planets: PlanetPosition[]
@@ -7,20 +8,21 @@ interface Props {
 }
 
 export default function PlanetTable({ planets, angles }: Props) {
+  const { t } = useI18n()
   const showHouse = planets.some(p => p.house != null)
 
   return (
     <div>
-      <h3 className="text-sm font-medium text-gray-500 mb-2">Planets</h3>
+      <h3 className="text-sm font-medium text-gray-500 mb-2">{t.natal.planets}</h3>
       <div className="overflow-x-auto">
         <table className="w-full text-base">
           <thead>
             <tr className="text-sm text-gray-400 border-b border-gray-100">
-              <th className="text-left py-1 pr-2">행성</th>
-              <th className="text-left py-1 pr-2">별자리</th>
-              <th className="text-right py-1 pr-2">도수</th>
+              <th className="text-left py-1 pr-2">{t.natal.planet}</th>
+              <th className="text-left py-1 pr-2">{t.natal.sign}</th>
+              <th className="text-right py-1 pr-2">{t.natal.degree}</th>
               <th className="text-center py-1 pr-2">Rx</th>
-              {showHouse && <th className="text-center py-1">하우스</th>}
+              {showHouse && <th className="text-center py-1">{t.natal.house}</th>}
             </tr>
           </thead>
           <tbody>
@@ -55,7 +57,7 @@ export default function PlanetTable({ planets, angles }: Props) {
       {/* Angles — 시간 있을 때만 */}
       {angles && (
         <div className="mt-3 pt-3 border-t border-gray-100">
-          <h3 className="text-sm font-medium text-gray-500 mb-2">Angles</h3>
+          <h3 className="text-sm font-medium text-gray-500 mb-2">{t.natal.angles}</h3>
           <div className="grid grid-cols-2 gap-2 text-base">
             {([
               ['ASC', angles.asc],

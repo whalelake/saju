@@ -1,16 +1,15 @@
-import { useState, useRef, useEffect, useCallback } from 'react'
+import { useState, useRef, useEffect, useCallback, useMemo } from 'react'
 import type { City } from '@orrery/core/cities'
-import { KOREAN_CITIES, filterCities, formatCityName } from '@orrery/core/cities'
+import { filterCities, formatCityName, getDefaultCities, groupCitiesByRegion } from '@orrery/core/cities'
+import { useI18n } from '../i18n'
 
 interface Props {
   selectedCity: City | null
   onSelect: (city: City) => void
 }
 
-/** 포커스 시 보여줄 기본 도시 목록 (한국 주요 도시) */
-const DEFAULT_CITIES = KOREAN_CITIES.slice(0, 8) as City[]
-
 export default function CityCombobox({ selectedCity, onSelect }: Props) {
+  const { language, t } = useI18n()
   const [query, setQuery] = useState('')
   const [isOpen, setIsOpen] = useState(false)
   const [highlightIndex, setHighlightIndex] = useState(-1)
@@ -18,10 +17,15 @@ export default function CityCombobox({ selectedCity, onSelect }: Props) {
   const listRef = useRef<HTMLUListElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
 
-  const results = query ? filterCities(query) : DEFAULT_CITIES
-  const koreanResults = results.filter(c => !c.country)
-  const worldResults = results.filter(c => !!c.country)
-  const flatResults = results // 이미 한국 우선 정렬됨
+  // 언어에 따른 기본 도시 목록
+  const defaultCities = useMemo(() => getDefaultCities(language), [language])
+
+  const results = query ? filterCities(query, language) : defaultCities
+  const { primary, secondary, primaryLabel, secondaryLabel } = useMemo(
+    () => groupCitiesByRegion(results, language),
+    [results, language]
+  )
+  const flatResults = results
 
   // 하이라이트된 항목이 보이도록 스크롤
   useEffect(() => {
@@ -105,7 +109,7 @@ export default function CityCombobox({ selectedCity, onSelect }: Props) {
     if (flatResults.length === 0) {
       return (
         <li className="px-3 py-2 text-sm text-base-content/50 text-center">
-          검색 결과 없음
+          {t.form.noResults}
         </li>
       )
     }
@@ -113,30 +117,30 @@ export default function CityCombobox({ selectedCity, onSelect }: Props) {
     const items: React.ReactNode[] = []
     let optionIndex = 0
 
-    if (koreanResults.length > 0) {
+    if (primary.length > 0) {
       items.push(
-        <li key="header-kr" className="px-3 pt-2 pb-1 text-xs font-medium text-base-content/40 uppercase tracking-wide" role="presentation">
-          한국
+        <li key="header-primary" className="px-3 pt-2 pb-1 text-xs font-medium text-base-content/40 uppercase tracking-wide" role="presentation">
+          {primaryLabel}
         </li>
       )
-      for (const city of koreanResults) {
+      for (const city of primary) {
         const idx = optionIndex++
         items.push(renderOption(city, idx))
       }
     }
 
-    if (worldResults.length > 0) {
-      if (koreanResults.length > 0) {
+    if (secondary.length > 0) {
+      if (primary.length > 0) {
         items.push(
           <li key="divider" className="divider my-0 h-px" role="presentation" />
         )
       }
       items.push(
-        <li key="header-world" className="px-3 pt-2 pb-1 text-xs font-medium text-base-content/40 uppercase tracking-wide" role="presentation">
-          세계
+        <li key="header-secondary" className="px-3 pt-2 pb-1 text-xs font-medium text-base-content/40 uppercase tracking-wide" role="presentation">
+          {secondaryLabel}
         </li>
       )
-      for (const city of worldResults) {
+      for (const city of secondary) {
         const idx = optionIndex++
         items.push(renderOption(city, idx))
       }
@@ -150,7 +154,7 @@ export default function CityCombobox({ selectedCity, onSelect }: Props) {
     const label = formatCityName(city)
     return (
       <li
-        key={`${city.name}-${city.country ?? 'kr'}`}
+        key={`${city.name}-${city.country ?? 'kr'}-${index}`}
         role="option"
         aria-selected={isHighlighted}
         className={`px-3 py-2 text-sm cursor-pointer transition-colors ${
@@ -177,7 +181,7 @@ export default function CityCombobox({ selectedCity, onSelect }: Props) {
         aria-activedescendant={highlightIndex >= 0 ? `city-option-${highlightIndex}` : undefined}
         autoComplete="off"
         className="input input-bordered input-sm sm:input-md w-full pr-8"
-        placeholder="도시 이름을 입력하세요"
+        placeholder={t.form.cityPlaceholder}
         value={displayValue}
         onFocus={handleFocus}
         onBlur={handleBlur}

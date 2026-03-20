@@ -362,6 +362,57 @@ export const WORLD_CITIES: readonly City[] = [
 export const SEOUL = KOREAN_CITIES[0]
 
 // =============================================
+// 언어별 도시 필터
+// =============================================
+
+/** 일본 도시 필터 */
+export const JAPANESE_CITIES = WORLD_CITIES.filter(c => c.country === '일본')
+
+/** 중국 도시 필터 (홍콩, 대만 포함) */
+export const CHINESE_CITIES = WORLD_CITIES.filter(c =>
+  c.country === '중국' || c.country === '대만'
+)
+
+/** 영어권 국가 필터 (미국, 영국, 캐나다, 호주, 뉴질랜드 등) */
+export const ENGLISH_CITIES = WORLD_CITIES.filter(c =>
+  c.country === '미국' || c.country === '영국' || c.country === '캐나다' ||
+  c.country === '호주' || c.country === '뉴질랜드' || c.country === '아일랜드' ||
+  c.country === '싱가포르'
+)
+
+export type Language = 'ko' | 'en' | 'ja' | 'zh'
+
+/** 언어에 따른 기본 도시 목록 (포커스 시) */
+export function getDefaultCities(lang: Language): City[] {
+  switch (lang) {
+    case 'ja':
+      return JAPANESE_CITIES.slice(0, 8)
+    case 'zh':
+      return CHINESE_CITIES.slice(0, 8)
+    case 'en':
+      return ENGLISH_CITIES.slice(0, 8)
+    case 'ko':
+    default:
+      return KOREAN_CITIES.slice(0, 8) as City[]
+  }
+}
+
+/** 언어에 따른 기본 도시 (첫 번째) */
+export function getDefaultCity(lang: Language): City {
+  switch (lang) {
+    case 'ja':
+      return JAPANESE_CITIES[0] // 도쿄
+    case 'zh':
+      return CHINESE_CITIES[0] // 베이징
+    case 'en':
+      return ENGLISH_CITIES[0] // 뉴욕
+    case 'ko':
+    default:
+      return SEOUL
+  }
+}
+
+// =============================================
 // 검색 / 필터링
 // =============================================
 
@@ -379,8 +430,8 @@ export function formatCityName(city: City): string {
   return city.name
 }
 
-/** 쿼리로 도시 필터링 (최대 20개, 한국 도시 우선) */
-export function filterCities(query: string): City[] {
+/** 쿼리로 도시 필터링 (최대 20개, 언어에 따라 우선순위 결정) */
+export function filterCities(query: string, lang: Language = 'ko'): City[] {
   const q = query.trim()
   if (!q) return []
 
@@ -412,5 +463,58 @@ export function filterCities(query: string): City[] {
     }
   }
 
-  return [...koreanResults, ...worldResults].slice(0, 20)
+  // 언어에 따라 결과 순서 조정
+  if (lang === 'ko') {
+    return [...koreanResults, ...worldResults].slice(0, 20)
+  }
+
+  // 비-한국어: 해당 언어권 도시를 먼저 표시
+  const priorityCities = lang === 'ja' ? JAPANESE_CITIES
+    : lang === 'zh' ? CHINESE_CITIES
+    : ENGLISH_CITIES
+
+  const prioritySet = new Set(priorityCities)
+  const priorityResults = worldResults.filter(c => prioritySet.has(c))
+  const otherWorldResults = worldResults.filter(c => !prioritySet.has(c))
+
+  return [...priorityResults, ...koreanResults, ...otherWorldResults].slice(0, 20)
+}
+
+/** 도시 검색 결과를 지역별로 그룹화 */
+export function groupCitiesByRegion(cities: City[], lang: Language = 'ko'): {
+  primary: City[]
+  secondary: City[]
+  primaryLabel: string
+  secondaryLabel: string
+} {
+  const koreanCities = cities.filter(c => !c.country)
+  const worldCities = cities.filter(c => !!c.country)
+
+  if (lang === 'ko') {
+    return {
+      primary: koreanCities,
+      secondary: worldCities,
+      primaryLabel: '한국',
+      secondaryLabel: '세계',
+    }
+  }
+
+  const priorityCities = lang === 'ja' ? JAPANESE_CITIES
+    : lang === 'zh' ? CHINESE_CITIES
+    : ENGLISH_CITIES
+
+  const prioritySet = new Set(priorityCities)
+  const primaryResults = worldCities.filter(c => prioritySet.has(c))
+  const secondaryResults = [...koreanCities, ...worldCities.filter(c => !prioritySet.has(c))]
+
+  const primaryLabel = lang === 'ja' ? '日本'
+    : lang === 'zh' ? '中国'
+    : 'Popular'
+
+  return {
+    primary: primaryResults,
+    secondary: secondaryResults,
+    primaryLabel,
+    secondaryLabel: lang === 'ja' ? 'その他' : lang === 'zh' ? '其他' : 'Other',
+  }
 }

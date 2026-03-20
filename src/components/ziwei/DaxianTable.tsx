@@ -2,6 +2,7 @@ import { useRef, useEffect } from 'react'
 import type { ZiweiChart } from '@orrery/core/types'
 import { getDaxianList } from '@orrery/core/ziwei'
 import { stemSolidBgClass, branchSolidBgClass } from '../../utils/format.ts'
+import { useI18n } from '../../i18n'
 
 interface Props {
   chart: ZiweiChart
@@ -19,6 +20,7 @@ function findActiveDaxianIndex(
 }
 
 export default function DaxianTable({ chart }: Props) {
+  const { t } = useI18n()
   const daxianList = getDaxianList(chart)
   const activeIdx = findActiveDaxianIndex(daxianList, chart.solarYear)
   const activeRef = useRef<HTMLDivElement>(null)
@@ -34,7 +36,7 @@ export default function DaxianTable({ chart }: Props) {
 
   return (
     <section>
-      <h3 className="text-base font-medium text-gray-700 mb-2">大限</h3>
+      <h3 className="text-base font-medium text-gray-700 mb-2">{t.ziwei.daxian}</h3>
       <div ref={scrollRef} className="overflow-x-auto py-1">
         <div className="flex flex-row-reverse gap-1 w-fit font-hanja">
           {daxianList.map((dx, i) => {

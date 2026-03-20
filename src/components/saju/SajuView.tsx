@@ -9,6 +9,7 @@ import DaewoonTable from './DaewoonTable.tsx'
 import TransitView from './TransitView.tsx'
 import CopyButton from '../CopyButton.tsx'
 import { sajuToText } from '../../utils/text-export.ts'
+import { useI18n } from '../../i18n'
 import type { BirthInput } from '@orrery/core/types'
 
 interface Props {
@@ -16,6 +17,7 @@ interface Props {
 }
 
 export default function SajuView({ input }: Props) {
+  const { t } = useI18n()
   const result = useMemo(() => calculateSaju(input), [input])
 
   const ganzis = result.pillars.map(p => p.pillar.ganzi)
@@ -26,8 +28,8 @@ export default function SajuView({ input }: Props) {
       {/* 명식 테이블 */}
       <section className="bg-white rounded-lg border border-gray-200 p-4">
         <div className="flex items-center justify-between mb-3">
-          <h2 className="text-base font-medium text-gray-700">四柱八字</h2>
-          <CopyButton getText={() => sajuToText(result)} label="AI 해석용 복사" />
+          <h2 className="text-base font-medium text-gray-700">{t.saju.title}</h2>
+          <CopyButton getText={() => sajuToText(result)} label={t.results.copyForAI} />
         </div>
         <PillarTable pillars={result.pillars} unknownTime={input.unknownTime} />
       </section>

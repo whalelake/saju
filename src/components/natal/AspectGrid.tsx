@@ -1,16 +1,18 @@
 import type { NatalAspect } from '@orrery/core/types'
 import { PLANET_SYMBOLS, PLANET_KO, ASPECT_SYMBOLS } from '@orrery/core/natal'
+import { useI18n } from '../../i18n'
 
 interface Props {
   aspects: NatalAspect[]
 }
 
 export default function AspectGrid({ aspects }: Props) {
+  const { t } = useI18n()
   const top = aspects.slice(0, 15)
 
   return (
     <div>
-      <h3 className="text-sm font-medium text-gray-500 mb-2">Major Aspects</h3>
+      <h3 className="text-sm font-medium text-gray-500 mb-2">{t.natal.aspects}</h3>
       <div className="space-y-0.5">
         {top.map((a, i) => (
           <div key={i} className="flex items-center gap-2 text-base py-0.5">

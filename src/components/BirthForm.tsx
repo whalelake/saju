@@ -4,6 +4,7 @@ import { isKoreanDaylightTime } from '@orrery/core/natal'
 import type { City } from '@orrery/core/cities'
 import { SEOUL } from '@orrery/core/cities'
 import CityCombobox from './CityCombobox.tsx'
+import { useI18n } from '../i18n'
 
 interface Props {
   onSubmit: (input: BirthInput) => void
@@ -41,6 +42,7 @@ const currentYear = now.getFullYear()
 const saved = loadSaved()
 
 export default function BirthForm({ onSubmit }: Props) {
+  const { t } = useI18n()
   const [year, setYear] = useState(saved?.year ?? currentYear - 20)
   const [month, setMonth] = useState(saved?.month ?? now.getMonth() + 1)
   const [day, setDay] = useState(saved?.day ?? now.getDate())
@@ -87,7 +89,7 @@ export default function BirthForm({ onSubmit }: Props) {
       {/* 생년월일 */}
       <div className="form-control">
         <label className="label">
-          <span className="label-text font-medium">생년월일 (양력)</span>
+          <span className="label-text font-medium">{t.form.birthDate}</span>
         </label>
         <div className="grid grid-cols-3 gap-2">
           <select
@@ -97,7 +99,7 @@ export default function BirthForm({ onSubmit }: Props) {
           >
             {Array.from({ length: currentYear - 1900 + 1 }, (_, i) => {
               const y = currentYear - i
-              return <option key={y} value={y}>{y}년</option>
+              return <option key={y} value={y}>{y}{t.form.year}</option>
             })}
           </select>
           <select
@@ -106,7 +108,7 @@ export default function BirthForm({ onSubmit }: Props) {
             className="select select-bordered select-sm sm:select-md"
           >
             {Array.from({ length: 12 }, (_, i) => (
-              <option key={i + 1} value={i + 1}>{i + 1}월</option>
+              <option key={i + 1} value={i + 1}>{i + 1}{t.form.month}</option>
             ))}
           </select>
           <select
@@ -115,7 +117,7 @@ export default function BirthForm({ onSubmit }: Props) {
             className="select select-bordered select-sm sm:select-md"
           >
             {Array.from({ length: 31 }, (_, i) => (
-              <option key={i + 1} value={i + 1}>{i + 1}일</option>
+              <option key={i + 1} value={i + 1}>{i + 1}{t.form.day}</option>
             ))}
           </select>
         </div>
@@ -127,16 +129,16 @@ export default function BirthForm({ onSubmit }: Props) {
           <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-5 w-5" fill="none" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
           </svg>
-          <span>88올림픽 하계표준시(KDT, UTC+10) 기간입니다. 자동 반영됩니다.</span>
+          <span>{t.form.kdtWarning}</span>
         </div>
       )}
 
       {/* 시간 + 성별 */}
       <div className="form-control">
         <label className="label">
-          <span className="label-text font-medium">시간</span>
+          <span className="label-text font-medium">{t.form.time}</span>
           <label className="label cursor-pointer gap-2 p-0">
-            <span className="label-text-alt">모름</span>
+            <span className="label-text-alt">{t.form.unknownTime}</span>
             <input
               type="checkbox"
               checked={unknownTime}
@@ -153,7 +155,7 @@ export default function BirthForm({ onSubmit }: Props) {
             className="select select-bordered select-sm sm:select-md"
           >
             {Array.from({ length: 24 }, (_, i) => (
-              <option key={i} value={i}>{String(i).padStart(2, '0')}시</option>
+              <option key={i} value={i}>{String(i).padStart(2, '0')}{t.form.hour}</option>
             ))}
           </select>
           <select
@@ -163,7 +165,7 @@ export default function BirthForm({ onSubmit }: Props) {
             className="select select-bordered select-sm sm:select-md"
           >
             {Array.from({ length: 60 }, (_, i) => (
-              <option key={i} value={i}>{String(i).padStart(2, '0')}분</option>
+              <option key={i} value={i}>{String(i).padStart(2, '0')}{t.form.minute}</option>
             ))}
           </select>
 
@@ -178,7 +180,7 @@ export default function BirthForm({ onSubmit }: Props) {
                   gender === g ? 'btn-primary' : 'btn-ghost'
                 }`}
               >
-                {g === 'M' ? '남' : '여'}
+                {g === 'M' ? t.form.male : t.form.female}
               </button>
             ))}
           </div>
@@ -188,9 +190,9 @@ export default function BirthForm({ onSubmit }: Props) {
       {/* 위치 */}
       <div className="form-control">
         <label className="label">
-          <span className="label-text font-medium">출생 위치</span>
+          <span className="label-text font-medium">{t.form.birthLocation}</span>
           <label className="label cursor-pointer gap-2 p-0">
-            <span className="label-text-alt">직접 입력</span>
+            <span className="label-text-alt">{t.form.manualInput}</span>
             <input
               type="checkbox"
               checked={manualCoords}
@@ -209,7 +211,7 @@ export default function BirthForm({ onSubmit }: Props) {
           <div className="grid grid-cols-2 gap-2">
             <div className="form-control">
               <label className="label py-1">
-                <span className="label-text-alt">위도</span>
+                <span className="label-text-alt">{t.form.latitude}</span>
               </label>
               <input
                 type="number"
@@ -221,7 +223,7 @@ export default function BirthForm({ onSubmit }: Props) {
             </div>
             <div className="form-control">
               <label className="label py-1">
-                <span className="label-text-alt">경도</span>
+                <span className="label-text-alt">{t.form.longitude}</span>
               </label>
               <input
                 type="number"
@@ -246,17 +248,17 @@ export default function BirthForm({ onSubmit }: Props) {
             onChange={e => setShowAdvanced(e.target.checked)}
           />
           <div className="collapse-title text-sm font-medium py-2 min-h-0">
-            고급 설정
+            {t.form.advancedSettings}
           </div>
           <div className="collapse-content">
             <div className="form-control pt-2">
               <label className="label py-1">
-                <span className="label-text font-medium font-hanja">子時法 (자시법)</span>
+                <span className="label-text font-medium">{t.form.jasiMethod}</span>
               </label>
               <div className="join w-full">
                 {([
-                  { value: 'unified' as const, label: '통자시', desc: '23:30부터 子시, 일주 다음날' },
-                  { value: 'split' as const, label: '야자시', desc: '야자시는 子시이나 일주 당일' },
+                  { value: 'unified' as const, label: t.form.jasiUnified },
+                  { value: 'split' as const, label: t.form.jasiSplit },
                 ]).map(opt => (
                   <button
                     key={opt.value}
@@ -271,9 +273,7 @@ export default function BirthForm({ onSubmit }: Props) {
                 ))}
               </div>
               <p className="text-xs text-base-content/50 mt-2">
-                {jasiMethod === 'unified'
-                  ? '23:30부터 子시로 보고, 일주를 다음날로 넘깁니다.'
-                  : '23:30~00:00(야자시)은 子시이나, 일주는 당일을 유지합니다.'}
+                {jasiMethod === 'unified' ? t.form.jasiUnifiedDesc : t.form.jasiSplitDesc}
               </p>
             </div>
           </div>
@@ -285,7 +285,7 @@ export default function BirthForm({ onSubmit }: Props) {
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
         </svg>
-        명식 계산
+        {t.form.calculate}
       </button>
     </form>
   )

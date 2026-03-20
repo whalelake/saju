@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
+import { useI18n } from '../i18n'
 
 interface Props {
   isOpen: boolean
@@ -10,30 +11,8 @@ interface Props {
 type InterpretType = 'personality' | 'advice' | 'general'
 type ContextType = 'self' | 'child' | 'partner' | 'friend' | 'other'
 
-const TYPE_OPTIONS: { value: InterpretType; label: string; emoji: string }[] = [
-  { value: 'personality', label: '성격 분석', emoji: '🌟' },
-  { value: 'advice', label: '인생 조언', emoji: '💫' },
-  { value: 'general', label: '종합 해석', emoji: '📖' },
-]
-
-const CONTEXT_OPTIONS: { value: ContextType; label: string; emoji: string }[] = [
-  { value: 'self', label: '나 자신', emoji: '🙋' },
-  { value: 'child', label: '내 자녀', emoji: '👶' },
-  { value: 'partner', label: '연인/배우자', emoji: '💕' },
-  { value: 'friend', label: '친구', emoji: '🤝' },
-  { value: 'other', label: '그 외', emoji: '👤' },
-]
-
-const QUESTION_SUGGESTIONS = [
-  '성격의 강점과 약점이 궁금해요',
-  '어떤 직업이 잘 맞을까요?',
-  '연애 스타일이 궁금해요',
-  '올해 운세가 어떤가요?',
-  '인간관계에서 주의할 점은?',
-  '어떻게 하면 더 행복해질까요?',
-]
-
 export default function InterpretModal({ isOpen, onClose, getData }: Props) {
+  const { t } = useI18n()
   const [step, setStep] = useState<1 | 2 | 3>(1)
   const [context, setContext] = useState<ContextType>('self')
   const [type, setType] = useState<InterpretType>('general')
@@ -41,6 +20,20 @@ export default function InterpretModal({ isOpen, onClose, getData }: Props) {
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
+
+  const TYPE_OPTIONS: { value: InterpretType; label: string; emoji: string }[] = [
+    { value: 'personality', label: t.interpret.personality, emoji: '🌟' },
+    { value: 'advice', label: t.interpret.advice, emoji: '💫' },
+    { value: 'general', label: t.interpret.general, emoji: '📖' },
+  ]
+
+  const CONTEXT_OPTIONS: { value: ContextType; label: string; emoji: string }[] = [
+    { value: 'self', label: t.interpret.self, emoji: '🙋' },
+    { value: 'child', label: t.interpret.child, emoji: '👶' },
+    { value: 'partner', label: t.interpret.partner, emoji: '💕' },
+    { value: 'friend', label: t.interpret.friend, emoji: '🤝' },
+    { value: 'other', label: t.interpret.other, emoji: '👤' },
+  ]
 
   async function handleInterpret() {
     setLoading(true)
@@ -58,13 +51,13 @@ export default function InterpretModal({ isOpen, onClose, getData }: Props) {
 
       if (!response.ok) {
         const errorData = await response.json()
-        throw new Error(errorData.error || '해석 요청에 실패했습니다')
+        throw new Error(errorData.error || t.common.error)
       }
 
       const { interpretation } = await response.json()
       setResult(interpretation)
     } catch (err) {
-      setError(err instanceof Error ? err.message : '알 수 없는 오류가 발생했습니다')
+      setError(err instanceof Error ? err.message : t.common.error)
       setStep(2)
     } finally {
       setLoading(false)
@@ -103,15 +96,15 @@ export default function InterpretModal({ isOpen, onClose, getData }: Props) {
           <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
           </svg>
-          AI 해석
+          {t.interpret.title}
         </h3>
 
         {/* 진행 단계 표시 */}
         {!result && !loading && (
           <ul className="steps steps-horizontal w-full mb-6 text-sm">
-            <li className={`step ${step >= 1 ? 'step-primary' : ''}`}>누구의 명식?</li>
-            <li className={`step ${step >= 2 ? 'step-primary' : ''}`}>무엇이 궁금해요?</li>
-            <li className={`step ${step >= 3 ? 'step-primary' : ''}`}>AI에게 물어보기</li>
+            <li className={`step ${step >= 1 ? 'step-primary' : ''}`}>{t.interpret.step1Title}</li>
+            <li className={`step ${step >= 2 ? 'step-primary' : ''}`}>{t.interpret.step2Title}</li>
+            <li className={`step ${step >= 3 ? 'step-primary' : ''}`}>{t.interpret.step3Title}</li>
           </ul>
         )}
 
@@ -119,10 +112,6 @@ export default function InterpretModal({ isOpen, onClose, getData }: Props) {
         {step === 1 && !loading && !result && (
           <div className="space-y-4">
             <div>
-              <p className="text-base-content/70 mb-4">
-                누구의 명식을 분석하시나요?<br />
-                <span className="text-sm text-base-content/50">맥락에 맞게 더 친절하게 해석해드릴게요</span>
-              </p>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                 {CONTEXT_OPTIONS.map(opt => (
                   <button
@@ -141,10 +130,10 @@ export default function InterpretModal({ isOpen, onClose, getData }: Props) {
 
             <div className="modal-action">
               <button className="btn btn-ghost" onClick={handleClose}>
-                취소
+                {t.common.cancel}
               </button>
               <button className="btn btn-primary" onClick={handleNext}>
-                다음
+                {t.common.confirm}
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
@@ -159,32 +148,18 @@ export default function InterpretModal({ isOpen, onClose, getData }: Props) {
             {/* 궁금한 점 입력 */}
             <div>
               <label className="label">
-                <span className="label-text font-medium">가장 궁금한 게 있으신가요? (선택)</span>
+                <span className="label-text font-medium">{t.interpret.suggestions}</span>
               </label>
               <textarea
                 className="textarea textarea-bordered w-full h-20"
-                placeholder="예: 어떤 직업이 잘 맞을까요? / 연애운이 궁금해요 / 올해 주의할 점은?"
+                placeholder={t.interpret.questionPlaceholder}
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
               />
-              <div className="flex flex-wrap gap-1 mt-2">
-                {QUESTION_SUGGESTIONS.map((q, i) => (
-                  <button
-                    key={i}
-                    className="btn btn-xs btn-ghost"
-                    onClick={() => setQuestion(q)}
-                  >
-                    {q}
-                  </button>
-                ))}
-              </div>
             </div>
 
             {/* 해석 유형 선택 */}
             <div>
-              <label className="label">
-                <span className="label-text font-medium">해석 유형</span>
-              </label>
               <div className="grid grid-cols-3 gap-2">
                 {TYPE_OPTIONS.map(opt => (
                   <button
@@ -215,13 +190,12 @@ export default function InterpretModal({ isOpen, onClose, getData }: Props) {
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
-                이전
               </button>
               <button className="btn btn-primary" onClick={handleInterpret}>
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
-                AI에게 물어보기
+                {t.results.aiInterpret}
               </button>
             </div>
           </div>
@@ -232,14 +206,7 @@ export default function InterpretModal({ isOpen, onClose, getData }: Props) {
           <div className="py-12 text-center">
             <span className="loading loading-spinner loading-lg text-primary" />
             <p className="mt-4 text-base-content/70">
-              {context === 'child' && '아이의 명반을 따뜻하게 분석하고 있어요...'}
-              {context === 'self' && '당신의 명반을 정성껏 해석하고 있어요...'}
-              {context === 'partner' && '소중한 분의 명반을 분석하고 있어요...'}
-              {context === 'friend' && '친구의 명반을 살펴보고 있어요...'}
-              {context === 'other' && 'AI가 명반을 분석하고 있어요...'}
-            </p>
-            <p className="text-sm text-base-content/50 mt-1">
-              약 15~30초 정도 소요됩니다
+              {t.interpret.analyzing}
             </p>
           </div>
         )}
@@ -276,7 +243,7 @@ export default function InterpretModal({ isOpen, onClose, getData }: Props) {
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
                 </svg>
-                복사
+                {t.common.copy}
               </button>
               <button
                 className="btn btn-outline btn-sm"
@@ -285,10 +252,10 @@ export default function InterpretModal({ isOpen, onClose, getData }: Props) {
                   setStep(2)
                 }}
               >
-                다른 질문하기
+                {t.interpret.askAnother}
               </button>
               <button className="btn btn-primary btn-sm" onClick={handleClose}>
-                닫기
+                {t.common.close}
               </button>
             </div>
           </div>

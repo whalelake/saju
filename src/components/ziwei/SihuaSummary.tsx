@@ -1,10 +1,12 @@
 import type { ZiweiChart } from '@orrery/core/types'
+import { useI18n } from '../../i18n'
 
 interface Props {
   chart: ZiweiChart
 }
 
 export default function SihuaSummary({ chart }: Props) {
+  const { t } = useI18n()
   const siHuaInfo: Record<string, { star: string; palace: string } | null> = {
     '化祿': null, '化權': null, '化科': null, '化忌': null,
   }
@@ -26,7 +28,7 @@ export default function SihuaSummary({ chart }: Props) {
 
   return (
     <section>
-      <h3 className="text-base font-medium text-gray-700 mb-2">四化</h3>
+      <h3 className="text-base font-medium text-gray-700 mb-2">{t.ziwei.sihua}</h3>
       <div className="space-y-0.5">
         {Object.entries(siHuaInfo).map(([huaType, info]) => {
           if (!info) return null

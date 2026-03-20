@@ -279,7 +279,7 @@ export default function App() {
           </div>
 
           {/* 쿠팡 파트너스 */}
-          <CoupangPartner keyword="사주 명리 점성술" />
+          <CoupangPartner />
           </>
         )}
 
