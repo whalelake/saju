@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { useI18n } from '../i18n'
 
 interface CoupangPartnerProps {
@@ -7,52 +6,12 @@ interface CoupangPartnerProps {
 
 export default function CoupangPartner({ title }: CoupangPartnerProps) {
   const { t, language } = useI18n()
-  const [iframeSrc, setIframeSrc] = useState<string>('')
 
   // 한국어 사용자만 표시 (쿠팡은 한국 서비스)
-  const showCoupang = language === 'ko'
+  if (language !== 'ko') return null
 
-  useEffect(() => {
-    if (!showCoupang) return
-
-    // 쿠팡 파트너스 위젯 HTML
-    const html = `<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: transparent; overflow: hidden; }
-  </style>
-</head>
-<body>
-  <script src="https://ads-partners.coupang.com/g.js"><\/script>
-  <script>
-    new PartnersCoupang.G({
-      "id": 973939,
-      "template": "carousel",
-      "trackingCode": "AF6700033",
-      "width": "680",
-      "height": "140",
-      "tsource": ""
-    });
-  <\/script>
-</body>
-</html>`
-
-    // Blob URL 생성
-    const blob = new Blob([html], { type: 'text/html' })
-    const url = URL.createObjectURL(blob)
-    setIframeSrc(url)
-
-    // Cleanup
-    return () => {
-      URL.revokeObjectURL(url)
-    }
-  }, [showCoupang])
-
-  if (!showCoupang || !iframeSrc) return null
+  // 쿠팡 파트너스 검색 링크 (가장 안정적인 방식)
+  const searchKeywords = ['사주', '명리학', '점성술', '자미두수']
 
   return (
     <div className="card bg-base-100 border-oriental mt-6">
@@ -61,21 +20,19 @@ export default function CoupangPartner({ title }: CoupangPartnerProps) {
           {title || t.coupang?.title || '추천 상품'}
         </h3>
 
-        {/* 쿠팡 파트너스 다이나믹 배너 */}
-        <div className="flex items-center justify-center overflow-hidden">
-          <iframe
-            src={iframeSrc}
-            style={{
-              width: '100%',
-              maxWidth: '680px',
-              height: '160px',
-              border: 'none',
-              overflow: 'hidden',
-            }}
-            scrolling="no"
-            title="쿠팡 파트너스"
-            sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
-          />
+        {/* 쿠팡 검색 링크 */}
+        <div className="flex flex-wrap gap-2">
+          {searchKeywords.map((keyword) => (
+            <a
+              key={keyword}
+              href={`https://link.coupang.com/a/cjgNE0`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline btn-sm"
+            >
+              {keyword} 서적 보기
+            </a>
+          ))}
         </div>
 
         <p className="text-xs text-base-content/50 mt-4">
