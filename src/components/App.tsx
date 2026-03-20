@@ -11,6 +11,7 @@ import CompareView from './CompareView.tsx'
 import Settings from './Settings.tsx'
 import PrivacyPolicy from './PrivacyPolicy.tsx'
 import TermsOfService from './TermsOfService.tsx'
+import FortuneInfo from './FortuneInfo.tsx'
 import AdBanner from './AdBanner.tsx'
 import SajuView from './saju/SajuView.tsx'
 import ZiweiView from './ziwei/ZiweiView.tsx'
@@ -83,6 +84,7 @@ export default function App() {
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [privacyOpen, setPrivacyOpen] = useState(false)
   const [termsOpen, setTermsOpen] = useState(false)
+  const [infoOpen, setInfoOpen] = useState(false)
   const resultsRef = useRef<HTMLDivElement>(null)
   const formRef = useRef<HTMLDivElement>(null)
 
@@ -141,6 +143,15 @@ export default function App() {
           )}
         </div>
         <div className="navbar-end gap-1">
+          <button
+            className="btn btn-ghost btn-sm btn-circle"
+            onClick={() => setInfoOpen(true)}
+            aria-label="명리학 가이드"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          </button>
           <button
             className="btn btn-ghost btn-sm btn-circle"
             onClick={() => setSettingsOpen(true)}
@@ -292,11 +303,33 @@ export default function App() {
         onClose={() => setTermsOpen(false)}
       />
 
+      {/* 명리학 가이드 모달 */}
+      <dialog className={`modal ${infoOpen ? 'modal-open' : ''}`}>
+        <div className="modal-box max-w-4xl max-h-[90vh] overflow-y-auto">
+          <button
+            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+            onClick={() => setInfoOpen(false)}
+          >
+            ✕
+          </button>
+          <FortuneInfo />
+        </div>
+        <form method="dialog" className="modal-backdrop" onClick={() => setInfoOpen(false)}>
+          <button>close</button>
+        </form>
+      </dialog>
+
       {/* 푸터 */}
       <footer className="border-t border-base-300 bg-base-100 mt-8">
         <div className="max-w-2xl mx-auto px-4 py-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-base-content/60">
-            <div className="flex gap-4">
+            <div className="flex gap-4 flex-wrap justify-center">
+              <button
+                className="hover:text-base-content transition-colors"
+                onClick={() => setInfoOpen(true)}
+              >
+                명리학 가이드
+              </button>
               <button
                 className="hover:text-base-content transition-colors"
                 onClick={() => setPrivacyOpen(true)}
