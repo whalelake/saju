@@ -13,6 +13,7 @@ import PrivacyPolicy from './PrivacyPolicy.tsx'
 import TermsOfService from './TermsOfService.tsx'
 import FortuneInfo from './FortuneInfo.tsx'
 import AdBanner from './AdBanner.tsx'
+import CoupangPartner from './CoupangPartner.tsx'
 import SajuView from './saju/SajuView.tsx'
 import ZiweiView from './ziwei/ZiweiView.tsx'
 import NatalView from './natal/NatalView.tsx'
@@ -23,6 +24,31 @@ import { sajuToText, ziweiToText, natalToText } from '../utils/text-export.ts'
 import type { BirthInput } from '@orrery/core/types'
 
 type Tab = 'saju' | 'ziwei' | 'natal'
+
+// 쿠팡 파트너스 상품 데이터
+const fortuneBooks = [
+  {
+    id: 'book1',
+    title: '사주명리학 입문',
+    imageUrl: '/placeholder-book.jpg',
+    price: 18000,
+    category: 'book' as const
+  },
+  {
+    id: 'book2',
+    title: '자미두수 완전 정복',
+    imageUrl: '/placeholder-book.jpg',
+    price: 25000,
+    category: 'book' as const
+  },
+  {
+    id: 'book3',
+    title: '서양 점성술 가이드',
+    imageUrl: '/placeholder-book.jpg',
+    price: 22000,
+    category: 'book' as const
+  }
+]
 
 function LanguageToggle() {
   const { language, setLanguage } = useI18n()
@@ -180,7 +206,13 @@ export default function App() {
 
       {/* 히어로 섹션 */}
       {showHero && !birthInput && (
-        <Hero onStart={handleStart} />
+        <>
+          <Hero onStart={handleStart} />
+          {/* 광고: Hero 하단 */}
+          <div className="max-w-2xl mx-auto px-4 mt-4">
+            <AdBanner slot="SLOT_HERO_BOTTOM" format="horizontal" />
+          </div>
+        </>
       )}
 
       {/* 메인 콘텐츠 */}
@@ -192,9 +224,15 @@ export default function App() {
           </div>
         </div>
 
+        {/* 광고: 폼 하단 */}
+        <div className="mb-6">
+          <AdBanner slot="SLOT_FORM_BOTTOM" format="horizontal" />
+        </div>
+
         {/* 결과 영역 */}
         {birthInput && (
-          <div ref={resultsRef} className="card bg-base-100 border-oriental">
+          <>
+            <div ref={resultsRef} className="card bg-base-100 border-oriental">
             <div className="card-body p-0">
               {/* 탭 네비게이션 */}
               <div className="flex items-center border-b border-base-300 px-2 sm:px-4">
@@ -254,6 +292,18 @@ export default function App() {
               </div>
             </div>
           </div>
+
+          {/* 광고: 결과 하단 */}
+          <div className="mt-6">
+            <AdBanner slot="SLOT_RESULT_TOP" format="horizontal" />
+          </div>
+
+          {/* 쿠팡 파트너스 */}
+          <CoupangPartner
+            title="명리학 공부에 도움되는 추천 도서"
+            products={fortuneBooks}
+          />
+          </>
         )}
 
         {/* 광고 */}

@@ -2,13 +2,18 @@ import { createContext, useContext, useState, useEffect } from 'react'
 import type { ReactNode } from 'react'
 import { ko } from './ko'
 import { en } from './en'
+import { ja } from './ja'
+import { zh } from './zh'
 
-export type Language = 'ko' | 'en'
+// Language type
+export type Language = 'ko' | 'en' | 'ja' | 'zh'
 export type Translations = typeof ko
 
 const translations: Record<Language, Translations> = {
   ko,
   en,
+  ja,
+  zh,
 }
 
 interface I18nContextType {
@@ -21,11 +26,23 @@ const I18nContext = createContext<I18nContextType | undefined>(undefined)
 
 export function I18nProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>(() => {
+    // 1. URL 파라미터 우선 확인 (?lang=ja 등)
+    const params = new URLSearchParams(window.location.search)
+    const langParam = params.get('lang')
+    if (langParam === 'ko' || langParam === 'en' || langParam === 'ja' || langParam === 'zh') {
+      return langParam
+    }
+
+    // 2. localStorage 확인
     const saved = localStorage.getItem('language')
-    if (saved === 'ko' || saved === 'en') return saved
-    // 브라우저 언어 감지
+    if (saved === 'ko' || saved === 'en' || saved === 'ja' || saved === 'zh') return saved
+
+    // 3. 브라우저 언어 감지
     const browserLang = navigator.language.toLowerCase()
-    return browserLang.startsWith('ko') ? 'ko' : 'en'
+    if (browserLang.startsWith('ko')) return 'ko'
+    if (browserLang.startsWith('ja')) return 'ja'
+    if (browserLang.startsWith('zh')) return 'zh'
+    return 'en'
   })
 
   const setLanguage = (lang: Language) => {

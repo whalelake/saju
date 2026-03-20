@@ -6,6 +6,10 @@ export interface City {
   country?: string
   /** 한국어 광역 지역명 (예: '경기도', '강원도') */
   region?: string
+  /** 영어 이름 (검색용) */
+  nameEn?: string
+  /** 현지어 이름 (일본어/중국어 등, 검색용) */
+  nameLocal?: string
   lat: number
   lon: number
 }
@@ -137,22 +141,45 @@ export const KOREAN_CITIES: readonly City[] = [
 ] as const
 
 export const WORLD_CITIES: readonly City[] = [
-  // ── 동아시아 ──
-  { name: '도쿄', country: '일본', lat: 35.6762, lon: 139.6503 },
-  { name: '오사카', country: '일본', lat: 34.6937, lon: 135.5023 },
-  { name: '교토', country: '일본', lat: 35.0116, lon: 135.7681 },
-  { name: '후쿠오카', country: '일본', lat: 33.5904, lon: 130.4017 },
-  { name: '삿포로', country: '일본', lat: 43.0618, lon: 141.3545 },
-  { name: '나고야', country: '일본', lat: 35.1815, lon: 136.9066 },
-  { name: '베이징', country: '중국', lat: 39.9042, lon: 116.4074 },
-  { name: '상하이', country: '중국', lat: 31.2304, lon: 121.4737 },
-  { name: '광저우', country: '중국', lat: 23.1291, lon: 113.2644 },
-  { name: '선전', country: '중국', lat: 22.5431, lon: 114.0579 },
-  { name: '청두', country: '중국', lat: 30.5728, lon: 104.0668 },
-  { name: '충칭', country: '중국', lat: 29.4316, lon: 106.9123 },
-  { name: '시안', country: '중국', lat: 34.3416, lon: 108.9398 },
-  { name: '홍콩', country: '중국', lat: 22.3193, lon: 114.1694 },
-  { name: '타이베이', country: '대만', lat: 25.0330, lon: 121.5654 },
+  // ── 동아시아 - 일본 ──
+  { name: '도쿄', country: '일본', nameEn: 'Tokyo', nameLocal: '東京', lat: 35.6762, lon: 139.6503 },
+  { name: '오사카', country: '일본', nameEn: 'Osaka', nameLocal: '大阪', lat: 34.6937, lon: 135.5023 },
+  { name: '교토', country: '일본', nameEn: 'Kyoto', nameLocal: '京都', lat: 35.0116, lon: 135.7681 },
+  { name: '요코하마', country: '일본', nameEn: 'Yokohama', nameLocal: '横浜', lat: 35.4437, lon: 139.6380 },
+  { name: '나고야', country: '일본', nameEn: 'Nagoya', nameLocal: '名古屋', lat: 35.1815, lon: 136.9066 },
+  { name: '후쿠오카', country: '일본', nameEn: 'Fukuoka', nameLocal: '福岡', lat: 33.5904, lon: 130.4017 },
+  { name: '삿포로', country: '일본', nameEn: 'Sapporo', nameLocal: '札幌', lat: 43.0618, lon: 141.3545 },
+  { name: '고베', country: '일본', nameEn: 'Kobe', nameLocal: '神戸', lat: 34.6901, lon: 135.1955 },
+  { name: '센다이', country: '일본', nameEn: 'Sendai', nameLocal: '仙台', lat: 38.2682, lon: 140.8694 },
+  { name: '히로시마', country: '일본', nameEn: 'Hiroshima', nameLocal: '広島', lat: 34.3853, lon: 132.4553 },
+  { name: '가와사키', country: '일본', nameEn: 'Kawasaki', nameLocal: '川崎', lat: 35.5307, lon: 139.7028 },
+  { name: '사이타마', country: '일본', nameEn: 'Saitama', nameLocal: 'さいたま', lat: 35.8617, lon: 139.6455 },
+  { name: '나가사키', country: '일본', nameEn: 'Nagasaki', nameLocal: '長崎', lat: 32.7503, lon: 129.8779 },
+  { name: '가나자와', country: '일본', nameEn: 'Kanazawa', nameLocal: '金沢', lat: 36.5613, lon: 136.6562 },
+  { name: '니가타', country: '일본', nameEn: 'Niigata', nameLocal: '新潟', lat: 37.9026, lon: 139.0232 },
+  { name: '오키나와', country: '일본', nameEn: 'Okinawa', nameLocal: '沖縄', lat: 26.2124, lon: 127.6809 },
+  // ── 동아시아 - 중국 ──
+  { name: '베이징', country: '중국', nameEn: 'Beijing', nameLocal: '北京', lat: 39.9042, lon: 116.4074 },
+  { name: '상하이', country: '중국', nameEn: 'Shanghai', nameLocal: '上海', lat: 31.2304, lon: 121.4737 },
+  { name: '광저우', country: '중국', nameEn: 'Guangzhou', nameLocal: '广州', lat: 23.1291, lon: 113.2644 },
+  { name: '선전', country: '중국', nameEn: 'Shenzhen', nameLocal: '深圳', lat: 22.5431, lon: 114.0579 },
+  { name: '청두', country: '중국', nameEn: 'Chengdu', nameLocal: '成都', lat: 30.5728, lon: 104.0668 },
+  { name: '충칭', country: '중국', nameEn: 'Chongqing', nameLocal: '重庆', lat: 29.4316, lon: 106.9123 },
+  { name: '시안', country: '중국', nameEn: "Xi'an", nameLocal: '西安', lat: 34.3416, lon: 108.9398 },
+  { name: '항저우', country: '중국', nameEn: 'Hangzhou', nameLocal: '杭州', lat: 30.2741, lon: 120.1551 },
+  { name: '난징', country: '중국', nameEn: 'Nanjing', nameLocal: '南京', lat: 32.0603, lon: 118.7969 },
+  { name: '톈진', country: '중국', nameEn: 'Tianjin', nameLocal: '天津', lat: 39.3434, lon: 117.3616 },
+  { name: '우한', country: '중국', nameEn: 'Wuhan', nameLocal: '武汉', lat: 30.5928, lon: 114.3055 },
+  { name: '쑤저우', country: '중국', nameEn: 'Suzhou', nameLocal: '苏州', lat: 31.2989, lon: 120.5853 },
+  { name: '시먼', country: '중국', nameEn: 'Xiamen', nameLocal: '厦门', lat: 24.4798, lon: 118.0894 },
+  { name: '다롄', country: '중국', nameEn: 'Dalian', nameLocal: '大连', lat: 38.9140, lon: 121.6147 },
+  { name: '칭다오', country: '중국', nameEn: 'Qingdao', nameLocal: '青岛', lat: 36.0671, lon: 120.3826 },
+  { name: '홍콩', country: '중국', nameEn: 'Hong Kong', nameLocal: '香港', lat: 22.3193, lon: 114.1694 },
+  // ── 동아시아 - 대만 ──
+  { name: '타이베이', country: '대만', nameEn: 'Taipei', nameLocal: '台北', lat: 25.0330, lon: 121.5654 },
+  { name: '가오슝', country: '대만', nameEn: 'Kaohsiung', nameLocal: '高雄', lat: 22.6273, lon: 120.3014 },
+  { name: '타이중', country: '대만', nameEn: 'Taichung', nameLocal: '台中', lat: 24.1477, lon: 120.6736 },
+  // ── 동아시아 - 기타 ──
   { name: '울란바토르', country: '몽골', lat: 47.8864, lon: 106.9057 },
   { name: '평양', country: '북한', lat: 39.0392, lon: 125.7625 },
   // ── 동남아시아 ──
@@ -375,7 +402,13 @@ export function filterCities(query: string): City[] {
       if (matchChosung(city.name, q)) worldResults.push(city)
     } else {
       const label = formatCityName(city)
-      if (label.includes(q)) worldResults.push(city)
+      const nameEn = city.nameEn?.toLowerCase() || ''
+      const nameLocal = city.nameLocal || ''
+      const queryLower = q.toLowerCase()
+
+      if (label.includes(q) || nameEn.includes(queryLower) || nameLocal.includes(q)) {
+        worldResults.push(city)
+      }
     }
   }
 

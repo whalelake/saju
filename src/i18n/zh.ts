@@ -1,0 +1,233 @@
+import type { TranslationKeys } from './ko'
+
+export const zh: TranslationKeys = {
+  // 通用
+  common: {
+    loading: '加载中...',
+    error: '发生错误',
+    close: '关闭',
+    cancel: '取消',
+    confirm: '确认',
+    save: '保存',
+    delete: '删除',
+    edit: '编辑',
+    copy: '复制',
+    share: '分享',
+    download: '下载',
+  },
+
+  // 头部
+  header: {
+    compatibility: '合盘',
+    settings: '设置',
+    github: 'GitHub',
+  },
+
+  // Hero
+  hero: {
+    title: '命运盘',
+    subtitle: '为您解读命运',
+    description: '东西方命理学一站式服务，AI轻松解读',
+    free: '完全免费',
+    secure: '隐私安全',
+    ai: 'AI解读',
+    cta: '查看我的命运',
+    saju: '四柱八字',
+    sajuDesc: '十神·星曜·大运',
+    ziwei: '紫微斗数',
+    ziweiDesc: '主星·副星·四化',
+    natal: '西方占星术',
+    natalDesc: '行星·宫位·相位',
+    // 附加说明
+    intro: '命运盘是一个免费的命理学平台，在这里您可以一次性查看东方的四柱八字和紫微斗数，以及西方的占星术。只需输入出生信息，即可立即计算三种体系的命盘，并由基于GPT-4o的AI用简单易懂的语言进行解读。',
+    why: '为什么选择命运盘？',
+    whyDesc: '命运盘不会将个人信息发送到服务器，所有计算都在浏览器中完成。复杂的命理学理论由AI用通俗易懂的语言解释，并作为开源项目透明公开，任何人都可以验证和改进。',
+    feature1: '三种体系整合',
+    feature1Desc: '一次查看东方的四柱八字、紫微斗数和西方的出生图。',
+    feature2: '基于AI的解读',
+    feature2Desc: 'GPT-4o用简单的语言解释复杂的术语和理论。',
+    feature3: '完美的隐私保护',
+    feature3Desc: '所有计算都在浏览器中进行，个人信息不会向外部传输。',
+    feature4: '合盘比较',
+    feature4Desc: '比较两个人的命盘，分析关系的和谐与互补之处。',
+  },
+
+  // 输入表单
+  form: {
+    year: '年',
+    month: '月',
+    day: '日',
+    hour: '时',
+    minute: '分',
+    gender: '性别',
+    male: '男',
+    female: '女',
+    calendar: '历法',
+    solar: '公历',
+    lunar: '农历',
+    unknownTime: '时辰不详',
+    calculate: '开始计算',
+    city: '出生地',
+    cityPlaceholder: '输入城市名称...',
+    leapMonth: '闰月',
+  },
+
+  // 结果
+  results: {
+    pillars: '四柱',
+    year: '年柱',
+    month: '月柱',
+    day: '日柱',
+    hour: '时柱',
+    heavenlyStem: '天干',
+    earthlyBranch: '地支',
+    hiddenStems: '藏干',
+    tenGods: '十神',
+    stars: '星曜',
+    majorCycles: '大运',
+    age: '岁',
+    copy: '复制',
+    aiInterpret: 'AI解读',
+  },
+
+  // AI解读
+  interpret: {
+    title: 'AI解读',
+    step1Title: '这是谁的命盘？',
+    step2Title: '您想了解什么？',
+    step3Title: 'AI解读结果',
+    self: '本人',
+    child: '子女',
+    partner: '恋人/配偶',
+    friend: '朋友',
+    other: '其他',
+    personality: '性格分析',
+    advice: '人生建议',
+    compatibility: '合盘',
+    general: '综合解读',
+    questionPlaceholder: '例：今年财运如何？',
+    askAnother: '提出其他问题',
+    analyzing: '分析中...',
+    suggestions: '推荐问题',
+  },
+
+  // 合盘
+  compare: {
+    title: '合盘比较',
+    person1: '第一人',
+    person2: '第二人',
+    compare: '查看合盘',
+    compatibility: '契合度',
+    analysis: '合盘分析',
+  },
+
+  // 指南
+  guide: {
+    title: '使用指南',
+    features: '主要功能',
+    aiFeature: 'AI解读',
+    aiDesc: 'GPT-4o综合分析四柱八字/紫微斗数/占星术',
+    compatibilityFeature: '合盘比较',
+    compatibilityDesc: '比较分析两人的命盘',
+    historyFeature: '记录管理',
+    historyDesc: '保存和加载过去的分析结果',
+    shareFeature: '结果分享',
+    shareDesc: '保存为图片分享',
+    copyFeature: '文本复制',
+    copyDesc: '将结果复制为文本',
+    // 使用步骤
+    step1: '输入出生年月日时和性别。',
+    step2: '点击按钮。',
+    step3: '切换标签页查看四柱八字、紫微斗数、出生图。',
+    step4: '点击按钮让AI分析命盘。',
+    // AI提问
+    askAiTitle: '直接向AI提问',
+    askAiDesc: '点击按钮复制数据后，可以直接向ChatGPT或Claude提问。',
+    exampleLabel: '示例',
+    exampleText: '这是我的四柱八字、紫微斗数命盘和出生图。请分析我的性格优势和弱点。',
+    examplePlaceholder: '[粘贴复制的数据]',
+    // 命理学概念
+    concepts: '命理学概念',
+    sajuTitle: '什么是四柱八字？',
+    sajuDesc1: '四柱八字是东方命理学的核心，用天干和地支表示出生年月日时。年柱、月柱、日柱、时柱四个柱子各有天干和地支，共八个字。通过这些可以了解个人的先天命运和性格。',
+    sajuDesc2: '天干由甲、乙、丙、丁、戊、己、庚、辛、壬、癸10个组成，地支由子、丑、寅、卯、辰、巳、午、未、申、酉、戌、亥12个组成。',
+    sajuDesc3: '十神是以日干为中心，将与其他天干的关系分为比肩、劫财、食神、伤官、偏财、正财、偏官、正官、偏印、正印，是了解财运、官运、人际关系等的核心要素。',
+    ziweiTitle: '什么是紫微斗数？',
+    ziweiDesc1: '紫微斗数是中国宋代完成的命理学体系，根据出生时间在12个宫位配置星曜来分析命运。因以北极星"紫微星"为中心而得名，据说可以进行非常精确的预测。',
+    ziweiDesc2: '命盘分为12个宫位，各宫分别代表命宫（本人）、父母宫、福德宫、田宅宫、官禄宫、奴仆宫、迁移宫、疾厄宫、财帛宫、子女宫、夫妻宫、兄弟宫。通过各宫配置的主星、副星、四化来解读人生的各个领域。',
+    ziweiDesc3: '紫微斗数尤其可以具体预测人际关系、职业运、财运、健康运等，被认为是东方命理学中实用性较高的体系。',
+    natalTitle: '什么是西方占星术？',
+    natalDesc1: '西方占星术是在12个星座和12个宫位配置出生瞬间太阳系行星位置，分析个人性格和命运的体系。出生图可以说是个人独有的宇宙地图。',
+    natalDesc2: '太阳、月亮、水星、金星、火星、木星、土星、天王星、海王星、冥王星10颗行星位于哪个星座，以及对应12个宫位中的哪一个，决定了性格、才能、人际关系、职业等。',
+    natalDesc3: '相位表示行星间的角度关系，在合（0°）、六分（60°）、四分（90°）、三分（120°）、冲（180°）等角度显示行星之间如何相互影响。',
+    // 解读指南
+    interpretGuide: '解读指南',
+    pillarsGuide: '四柱八字解读技巧',
+    pillarsGuide1: '日干（日柱的天干）代表自己，是四柱八字解读的中心。',
+    pillarsGuide2: '年柱代表祖先和童年，月柱代表父母和青年，日柱代表本人和配偶，时柱代表子女和晚年。',
+    pillarsGuide3: '通过十神可以了解财运（财星）、职业运（官星）、学业运（印星）等。',
+    ziweiGuide: '紫微斗数解读技巧',
+    ziweiGuide1: '命宫中的主星决定整体性格和命运的基调。',
+    ziweiGuide2: '财帛宫代表财运，官禄宫代表职业运，夫妻宫代表配偶运。',
+    ziweiGuide3: '四化（化禄、化权、化科、化忌）是显示运势变化和流向的核心指标。',
+    natalGuide: '出生图解读技巧',
+    natalGuide1: '太阳代表自我和意志，月亮代表情感和内心，上升宫（ASC）代表外在形象。',
+    natalGuide2: '金星代表爱情和审美，火星代表行动力和欲望，水星代表思维方式和沟通。',
+    natalGuide3: '宫位代表人生领域（1宫：自我，2宫：财富，7宫：关系，10宫：职业等）。',
+    // FAQ
+    faq: '常见问题',
+    faqQ1: '如果不知道时辰怎么办？',
+    faqA1: '选择"时辰不详"选项，将仅用三柱计算，不包括时柱。但时柱代表晚年运，建议尽可能通过出生证明等确认。',
+    faqQ2: '输入农历还是公历？',
+    faqA2: '两者都可以。四柱八字传统上以农历为准，但输入公历日期后会自动转换为农历计算。',
+    faqQ3: 'AI解读准确吗？',
+    faqA3: 'AI解读基于丰富的命理学知识提供，但建议仅作参考。重要决定请咨询专业人士。',
+    faqQ4: '什么是大运？',
+    faqA4: '大运是每10年变化一次的大流年运势。从出生后几岁开始，取决于性别和年柱的阴阳。',
+    // 活用技巧
+    tips: '使用技巧',
+    tip1: '同时查看多个体系可以获得更立体的理解。',
+    tip2: '定期查看以了解当前运势和趋势。',
+    tip3: '比较家人或朋友的命盘有助于理解关系。',
+    disclaimer: '命运盘是开源项目，是用于娱乐和自我理解的参考工具。重要的人生决定请务必咨询专业人士。',
+  },
+
+  // 设置
+  settings: {
+    title: '设置',
+    language: '语言',
+    theme: '主题',
+    light: '浅色',
+    dark: '深色',
+    useTraditionalChars: '汉字显示',
+    useTraditionalCharsDesc: '以汉字显示天干地支',
+    showGuide: '显示指南',
+    showGuideDesc: '在底部显示使用指南',
+    defaultTab: '默认标签页',
+    autoSaveHistory: '自动保存计算历史',
+    autoSaveHistoryDesc: '在浏览器中保存结果（最多10条）',
+    resetData: '重置所有数据',
+    resetDataDesc: '删除所有设置和保存的历史',
+    done: '完成',
+  },
+
+  // 页脚
+  footer: {
+    privacy: '隐私政策',
+    terms: '使用条款',
+    contact: '联系我们',
+    copyright: '命运盘. AGPL-3.0 License.',
+  },
+
+  // 隐私政策
+  privacy: {
+    title: '隐私政策',
+    effectiveDate: '生效日期：2025年3月18日',
+  },
+
+  // 使用条款
+  terms: {
+    title: '使用条款',
+    effectiveDate: '生效日期：2025年3月18日',
+  },
+}

@@ -197,6 +197,16 @@ export const ko = {
     theme: '테마',
     light: '라이트',
     dark: '다크',
+    useTraditionalChars: '한자 표시',
+    useTraditionalCharsDesc: '천간/지지를 한자로 표시합니다',
+    showGuide: '가이드 표시',
+    showGuideDesc: '하단에 사용법 가이드를 표시합니다',
+    defaultTab: '기본 탭',
+    autoSaveHistory: '계산 기록 자동 저장',
+    autoSaveHistoryDesc: '계산 결과를 브라우저에 저장합니다 (최대 10개)',
+    resetData: '모든 데이터 초기화',
+    resetDataDesc: '설정과 저장된 기록을 모두 삭제합니다',
+    done: '완료',
   },
 
   // 푸터

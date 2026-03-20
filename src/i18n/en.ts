@@ -199,6 +199,16 @@ export const en: TranslationKeys = {
     theme: 'Theme',
     light: 'Light',
     dark: 'Dark',
+    useTraditionalChars: 'Show Chinese Characters',
+    useTraditionalCharsDesc: 'Display stems and branches in Chinese characters',
+    showGuide: 'Show Guide',
+    showGuideDesc: 'Display usage guide at the bottom',
+    defaultTab: 'Default Tab',
+    autoSaveHistory: 'Auto-save Calculation History',
+    autoSaveHistoryDesc: 'Save results in browser (max 10 entries)',
+    resetData: 'Reset All Data',
+    resetDataDesc: 'Delete all settings and saved history',
+    done: 'Done',
   },
 
   // Footer
