@@ -11,6 +11,8 @@ import CompareView from './CompareView.tsx'
 import Settings from './Settings.tsx'
 import PrivacyPolicy from './PrivacyPolicy.tsx'
 import TermsOfService from './TermsOfService.tsx'
+import AboutPage from './AboutPage.tsx'
+import ContactPage from './ContactPage.tsx'
 import FortuneInfo from './FortuneInfo.tsx'
 import AdBanner from './AdBanner.tsx'
 import CoupangPartner from './CoupangPartner.tsx'
@@ -101,6 +103,7 @@ function ThemeToggle() {
 }
 
 export default function App() {
+  const { t } = useI18n()
   const [tab, setTab] = useState<Tab>('saju')
   const [birthInput, setBirthInput] = useState<BirthInput | null>(null)
   const [showHero, setShowHero] = useState(true)
@@ -110,6 +113,8 @@ export default function App() {
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [privacyOpen, setPrivacyOpen] = useState(false)
   const [termsOpen, setTermsOpen] = useState(false)
+  const [aboutOpen, setAboutOpen] = useState(false)
+  const [contactOpen, setContactOpen] = useState(false)
   const [infoOpen, setInfoOpen] = useState(false)
   const resultsRef = useRef<HTMLDivElement>(null)
   const formRef = useRef<HTMLDivElement>(null)
@@ -353,6 +358,16 @@ export default function App() {
         onClose={() => setTermsOpen(false)}
       />
 
+      <AboutPage
+        isOpen={aboutOpen}
+        onClose={() => setAboutOpen(false)}
+      />
+
+      <ContactPage
+        isOpen={contactOpen}
+        onClose={() => setContactOpen(false)}
+      />
+
       {/* 명리학 가이드 모달 */}
       <dialog className={`modal ${infoOpen ? 'modal-open' : ''}`}>
         <div className="modal-box max-w-4xl max-h-[90vh] overflow-y-auto">
@@ -376,33 +391,37 @@ export default function App() {
             <div className="flex gap-4 flex-wrap justify-center">
               <button
                 className="hover:text-base-content transition-colors"
+                onClick={() => setAboutOpen(true)}
+              >
+                {t.about.title}
+              </button>
+              <button
+                className="hover:text-base-content transition-colors"
                 onClick={() => setInfoOpen(true)}
               >
-                명리학 가이드
+                {t.guide.title}
               </button>
               <button
                 className="hover:text-base-content transition-colors"
                 onClick={() => setPrivacyOpen(true)}
               >
-                개인정보처리방침
+                {t.footer.privacy}
               </button>
               <button
                 className="hover:text-base-content transition-colors"
                 onClick={() => setTermsOpen(true)}
               >
-                이용약관
+                {t.footer.terms}
               </button>
-              <a
-                href="https://github.com/whalelake/saju/issues"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
                 className="hover:text-base-content transition-colors"
+                onClick={() => setContactOpen(true)}
               >
-                문의하기
-              </a>
+                {t.footer.contact}
+              </button>
             </div>
             <div>
-              &copy; 2025 명운판. AGPL-3.0 License.
+              &copy; 2025 {t.footer.copyright}
             </div>
           </div>
         </div>
