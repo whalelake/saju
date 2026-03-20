@@ -133,6 +133,17 @@ export const ko = {
     shareDesc: '이미지로 저장하여 공유',
     copyFeature: '텍스트 복사',
     copyDesc: '결과를 텍스트로 복사',
+    // 사용법 단계
+    step1: '생년월일, 태어난 시간, 성별을 입력합니다.',
+    step2: '버튼을 누릅니다.',
+    step3: '탭을 전환하며 사주팔자, 자미두수, 출생차트를 확인합니다.',
+    step4: '버튼으로 AI가 명식을 분석해드립니다.',
+    // AI 질문
+    askAiTitle: '직접 AI에게 질문하기',
+    askAiDesc: '버튼으로 데이터를 복사한 뒤, ChatGPT나 Claude에게 직접 질문할 수 있습니다.',
+    exampleLabel: '예시',
+    exampleText: '다음은 내 사주팔자, 자미두수 명반, 출생차트야. 성격적 강점과 약점을 분석해줘.',
+    examplePlaceholder: '[복사한 데이터 붙여넣기]',
     // 명리학 개념
     concepts: '명리학 개념',
     sajuTitle: '사주팔자란?',

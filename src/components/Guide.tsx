@@ -39,16 +39,16 @@ export default function Guide() {
           {/* 기본 사용법 */}
           <ul className="steps steps-vertical text-sm">
             <li className="step step-primary">
-              <span className="text-left">{t.guide.aiDesc.includes('GPT') ? '생년월일, 태어난 시간, 성별을 입력합니다.' : 'Enter your birth year, month, day, time, and gender.'}</span>
+              <span className="text-left">{t.guide.step1}</span>
             </li>
             <li className="step step-primary">
-              <span className="text-left"><kbd className="kbd kbd-sm">{t.form.calculate}</kbd> {t.guide.aiDesc.includes('GPT') ? '버튼을 누릅니다.' : 'button to calculate.'}</span>
+              <span className="text-left"><kbd className="kbd kbd-sm">{t.form.calculate}</kbd> {t.guide.step2}</span>
             </li>
             <li className="step step-primary">
-              <span className="text-left">{t.guide.aiDesc.includes('GPT') ? '탭을 전환하며 사주팔자, 자미두수, 출생차트를 확인합니다.' : 'Switch tabs to view Saju, Zi Wei, and Natal Chart.'}</span>
+              <span className="text-left">{t.guide.step3}</span>
             </li>
             <li className="step step-primary">
-              <span className="text-left"><kbd className="kbd kbd-sm">{t.results.aiInterpret}</kbd> {t.guide.aiDesc.includes('GPT') ? '버튼으로 AI가 명식을 분석해드립니다.' : 'button for AI analysis.'}</span>
+              <span className="text-left"><kbd className="kbd kbd-sm">{t.results.aiInterpret}</kbd> {t.guide.step4}</span>
             </li>
           </ul>
 
@@ -214,26 +214,17 @@ export default function Guide() {
 
           {/* AI 프롬프트 예시 */}
           <div className="space-y-3">
-            <div className="divider text-xs text-base-content/40">{t.guide.aiDesc.includes('GPT') ? '직접 AI에게 질문하기' : 'Ask AI Directly'}</div>
+            <div className="divider text-xs text-base-content/40">{t.guide.askAiTitle}</div>
             <p className="text-xs text-base-content/50">
-              <kbd className="kbd kbd-xs">{t.common.copy}</kbd> {t.guide.aiDesc.includes('GPT') ? '버튼으로 데이터를 복사한 뒤, ChatGPT나 Claude에게 직접 질문할 수 있습니다.' : 'Copy your chart data and ask ChatGPT or Claude directly.'}
+              <kbd className="kbd kbd-xs">{t.common.copy}</kbd> {t.guide.askAiDesc}
             </p>
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <span className="badge badge-sm badge-outline">{t.guide.aiDesc.includes('GPT') ? '예시' : 'Example'}</span>
+                <span className="badge badge-sm badge-outline">{t.guide.exampleLabel}</span>
               </div>
               <ExampleBox>
-                {t.guide.aiDesc.includes('GPT') ? (
-                  <>
-                    다음은 내 사주팔자, 자미두수 명반, 출생차트야. 성격적 강점과 약점을 분석해줘.<br />
-                    <span className="text-base-content/40">[복사한 데이터 붙여넣기]</span>
-                  </>
-                ) : (
-                  <>
-                    Here's my Saju, Zi Wei chart, and Natal Chart. Analyze my personality strengths and weaknesses.<br />
-                    <span className="text-base-content/40">[Paste copied data here]</span>
-                  </>
-                )}
+                {t.guide.exampleText}<br />
+                <span className="text-base-content/40">{t.guide.examplePlaceholder}</span>
               </ExampleBox>
             </div>
           </div>

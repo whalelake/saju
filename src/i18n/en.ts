@@ -135,6 +135,17 @@ export const en: TranslationKeys = {
     shareDesc: 'Save as image and share',
     copyFeature: 'Copy Text',
     copyDesc: 'Copy results as text',
+    // Usage steps
+    step1: 'Enter your birth year, month, day, time, and gender.',
+    step2: 'button to calculate.',
+    step3: 'Switch tabs to view Saju, Zi Wei, and Natal Chart.',
+    step4: 'button for AI analysis.',
+    // Ask AI
+    askAiTitle: 'Ask AI Directly',
+    askAiDesc: 'Copy your chart data and ask ChatGPT or Claude directly.',
+    exampleLabel: 'Example',
+    exampleText: 'Here\'s my Saju, Zi Wei chart, and Natal Chart. Analyze my personality strengths and weaknesses.',
+    examplePlaceholder: '[Paste copied data here]',
     // Concepts
     concepts: 'Fortune-Telling Concepts',
     sajuTitle: 'What is Saju (Four Pillars)?',
