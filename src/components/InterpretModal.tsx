@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import ReactMarkdown from 'react-markdown'
 
 interface Props {
   isOpen: boolean
@@ -261,28 +262,8 @@ export default function InterpretModal({ isOpen, onClose, getData }: Props) {
               </div>
             </div>
 
-            <div className="prose prose-sm max-w-none">
-              {result.split('\n').map((line, i) => {
-                if (line.startsWith('##')) {
-                  return <h4 key={i} className="text-primary mt-4 mb-2 font-bold">{line.replace(/^##\s*/, '')}</h4>
-                }
-                if (line.startsWith('#')) {
-                  return <h3 key={i} className="text-lg font-bold mt-4 mb-2">{line.replace(/^#\s*/, '')}</h3>
-                }
-                if (line.startsWith('**') && line.endsWith('**')) {
-                  return <h4 key={i} className="font-bold mt-3 mb-1">{line.replace(/\*\*/g, '')}</h4>
-                }
-                if (line.startsWith('- ') || line.startsWith('* ')) {
-                  return <li key={i} className="ml-4">{line.replace(/^[-*]\s*/, '')}</li>
-                }
-                if (line.match(/^\d+\./)) {
-                  return <li key={i} className="ml-4">{line}</li>
-                }
-                if (line.trim() === '') {
-                  return <br key={i} />
-                }
-                return <p key={i} className="mb-2 leading-relaxed">{line}</p>
-              })}
+            <div className="prose prose-sm max-w-none prose-headings:text-primary prose-h1:text-xl prose-h2:text-lg prose-h3:text-base prose-strong:text-primary prose-strong:font-semibold prose-ul:list-disc prose-ol:list-decimal prose-li:ml-4 prose-p:leading-relaxed prose-p:mb-3">
+              <ReactMarkdown>{result}</ReactMarkdown>
             </div>
 
             <div className="modal-action mt-6 flex-wrap gap-2">
