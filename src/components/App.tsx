@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
+import { useI18n } from '../i18n'
 import BirthForm from './BirthForm.tsx'
 import Guide from './Guide.tsx'
 import CopyButton from './CopyButton.tsx'
@@ -21,6 +22,22 @@ import { sajuToText, ziweiToText, natalToText } from '../utils/text-export.ts'
 import type { BirthInput } from '@orrery/core/types'
 
 type Tab = 'saju' | 'ziwei' | 'natal'
+
+function LanguageToggle() {
+  const { language, setLanguage } = useI18n()
+
+  return (
+    <button
+      className="btn btn-ghost btn-sm btn-circle"
+      onClick={() => setLanguage(language === 'ko' ? 'en' : 'ko')}
+      aria-label="언어 전환"
+    >
+      <span className="text-sm font-bold">
+        {language === 'ko' ? 'EN' : 'KO'}
+      </span>
+    </button>
+  )
+}
 
 function ThemeToggle() {
   const [theme, setTheme] = useState<'oriental' | 'oriental-dark'>(() => {
@@ -134,6 +151,7 @@ export default function App() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
           </button>
+          <LanguageToggle />
           <ThemeToggle />
           <a
             href="https://github.com/whalelake/saju"
