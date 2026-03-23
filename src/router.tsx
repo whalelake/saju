@@ -3,6 +3,10 @@ import { I18nProvider, type Language } from './i18n'
 import App from './components/App'
 import GuideIndex from './pages/GuideIndex'
 import LandingPage from './pages/LandingPage'
+import PrivacyPage from './pages/PrivacyPage'
+import TermsPage from './pages/TermsPage'
+import ArticlesIndex from './pages/ArticlesIndex'
+import ArticlePage from './pages/ArticlePage'
 
 const SUPPORTED_LANGUAGES: Language[] = ['ko', 'en', 'ja', 'zh']
 
@@ -75,6 +79,22 @@ export const router = createBrowserRouter([
       {
         path: 'guide/:topic/:subtopic',
         element: <LandingPage />,
+      },
+      {
+        path: 'privacy',
+        element: <PrivacyPage />,
+      },
+      {
+        path: 'terms',
+        element: <TermsPage />,
+      },
+      {
+        path: 'articles',
+        element: <ArticlesIndex />,
+      },
+      {
+        path: 'articles/:articleId',
+        element: <ArticlePage />,
       },
     ],
   },

@@ -1,7 +1,8 @@
-import { useParams, Link } from 'react-router'
+import { useLocation, useParams, Link } from 'react-router'
 import { useI18n, type Language } from '../i18n'
 import Breadcrumb from '../components/Breadcrumb'
 import AdBanner from '../components/AdBanner'
+import SeoHead from '../components/SeoHead'
 
 interface PageContent {
   title: string
@@ -346,6 +347,7 @@ const pageContent: Record<Language, Record<string, PageContent>> = {
 }
 
 export default function LandingPage() {
+  const location = useLocation()
   const { lang, topic } = useParams<{ lang: string; topic: string }>()
   const { t } = useI18n()
   const language = (lang || 'ko') as Language
@@ -376,9 +378,22 @@ export default function LandingPage() {
     ziwei: { ko: '자미두수', en: 'Zi Wei', ja: '紫微斗数', zh: '紫微斗数' },
     natal: { ko: '출생차트', en: 'Natal Chart', ja: '出生図', zh: '出生图' },
   }
+  const pathSuffix = location.pathname.replace(/^\/(ko|en|ja|zh)/, '') || '/guide'
+  const pathByLanguage = {
+    ko: `/ko${pathSuffix}`,
+    en: `/en${pathSuffix}`,
+    ja: `/ja${pathSuffix}`,
+    zh: `/zh${pathSuffix}`,
+  }
 
   return (
     <div className="min-h-screen bg-base-200">
+      <SeoHead
+        language={language}
+        title={`${content.title} | ${language === 'ko' ? '명운판' : 'Myungunpan'}`}
+        description={content.description}
+        pathByLanguage={pathByLanguage}
+      />
       <header className="navbar bg-base-100 border-b border-base-300 sticky top-0 z-40">
         <div className="navbar-start">
           <Link to={`/${lang}/`} className="btn btn-ghost text-xl font-hanja">

@@ -1,24 +1,29 @@
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState, useEffect, lazy, Suspense } from 'react'
+import { Link, useParams } from 'react-router'
 import { useI18n, type Language } from '../i18n'
 import BirthForm from './BirthForm.tsx'
 import Guide from './Guide.tsx'
 import CopyButton from './CopyButton.tsx'
-import InterpretModal from './InterpretModal.tsx'
 import Hero from './Hero.tsx'
 import History from './History.tsx'
-import ShareCard from './ShareCard.tsx'
-import CompareView from './CompareView.tsx'
-import Settings from './Settings.tsx'
-import PrivacyPolicy from './PrivacyPolicy.tsx'
-import TermsOfService from './TermsOfService.tsx'
-import AboutPage from './AboutPage.tsx'
-import ContactPage from './ContactPage.tsx'
-import FortuneInfo from './FortuneInfo.tsx'
+import Settings, { useSettings } from './Settings.tsx'
 import AdBanner from './AdBanner.tsx'
 import CoupangPartner from './CoupangPartner.tsx'
+import ResultEngagementPanel from './ResultEngagementPanel.tsx'
+import SeoHead from './SeoHead.tsx'
 import SajuView from './saju/SajuView.tsx'
-import ZiweiView from './ziwei/ZiweiView.tsx'
-import NatalView from './natal/NatalView.tsx'
+
+// Lazy loaded components
+const ZiweiView = lazy(() => import('./ziwei/ZiweiView.tsx'))
+const NatalView = lazy(() => import('./natal/NatalView.tsx'))
+const InterpretModal = lazy(() => import('./InterpretModal.tsx'))
+const ShareCard = lazy(() => import('./ShareCard.tsx'))
+const CompareView = lazy(() => import('./CompareView.tsx'))
+const PrivacyPolicy = lazy(() => import('./PrivacyPolicy.tsx'))
+const TermsOfService = lazy(() => import('./TermsOfService.tsx'))
+const AboutPage = lazy(() => import('./AboutPage.tsx'))
+const ContactPage = lazy(() => import('./ContactPage.tsx'))
+const FortuneInfo = lazy(() => import('./FortuneInfo.tsx'))
 import { calculateSaju } from '@orrery/core/saju'
 import { createChart } from '@orrery/core/ziwei'
 import { calculateNatal } from '@orrery/core/natal'
@@ -26,6 +31,22 @@ import { sajuToText, ziweiToText, natalToText } from '../utils/text-export.ts'
 import type { BirthInput } from '@orrery/core/types'
 
 type Tab = 'saju' | 'ziwei' | 'natal'
+type InterpretType = 'personality' | 'advice' | 'general'
+type ContextType = 'self' | 'child' | 'partner' | 'friend' | 'other'
+type FollowupQuestionId = 'strength' | 'timing' | 'relationship' | 'career_money' | 'growth'
+
+interface InterpretPreset {
+  question?: string
+  type?: InterpretType
+  context?: ContextType
+}
+
+interface StoredHistoryItem {
+  id: string
+  input: BirthInput
+  createdAt: number
+  label?: string
+}
 
 const LANGUAGE_LABELS: Record<Language, string> = {
   ko: '한국어',
@@ -35,6 +56,113 @@ const LANGUAGE_LABELS: Record<Language, string> = {
 }
 
 const LANGUAGE_ORDER: Language[] = ['ko', 'en', 'ja', 'zh']
+
+const HOME_SEO: Record<Language, { title: string; description: string }> = {
+  ko: {
+    title: '명운판 - 무료 사주팔자 · 자미두수 · 점성술 AI 해석',
+    description: '무료 사주팔자, 자미두수, 서양 점성술 계산과 AI 해석을 한 번에. 출생 시간 모름 옵션, 오늘의 AI 운세, 관련 가이드와 기사까지 제공합니다.',
+  },
+  en: {
+    title: 'Myungunpan - Free Saju, Zi Wei Dou Shu, and Natal Chart AI Readings',
+    description: 'Calculate Saju, Zi Wei Dou Shu, and Western natal charts for free, then continue into AI interpretation, daily fortune prompts, guides, and articles.',
+  },
+  ja: {
+    title: '命運盤 - 無料の四柱推命・紫微斗数・出生チャート AI 解釈',
+    description: '四柱推命、紫微斗数、西洋占星術の出生チャートを無料で計算し、そのままAI解釈、今日の運勢、ガイド記事へ進めます。',
+  },
+  zh: {
+    title: '命运盘 - 免费四柱八字、紫微斗数、出生图 AI 解读',
+    description: '免费计算四柱八字、紫微斗数与西方出生图，并继续查看 AI 解读、今日运势、指南和文章。',
+  },
+}
+
+const FOLLOWUP_PRESETS: Record<FollowupQuestionId, InterpretPreset> = {
+  strength: {
+    question: '내 성격의 가장 큰 강점은 뭐야?',
+    type: 'personality',
+    context: 'self',
+  },
+  timing: {
+    question: '지금 시기에 가장 신경 써야 할 포인트는 뭐야?',
+    type: 'advice',
+    context: 'self',
+  },
+  relationship: {
+    question: '연애와 인간관계에서 내가 보이는 패턴은 뭐야?',
+    type: 'general',
+    context: 'self',
+  },
+  career_money: {
+    question: '직업과 돈 흐름에서 중요한 포인트는 뭐야?',
+    type: 'advice',
+    context: 'self',
+  },
+  growth: {
+    question: '내가 더 잘 풀리려면 어떤 방식으로 움직여야 해?',
+    type: 'general',
+    context: 'self',
+  },
+}
+
+const HISTORY_STORAGE_KEY = 'orrery-history'
+
+const DAILY_FORTUNE_COPY: Record<Language, {
+  title: string
+  description: string
+  button: string
+  helper: string
+  currentReady: string
+  historyReady: string
+}> = {
+  ko: {
+    title: '오늘의 AI 운세',
+    description: '최근 기록을 불러와서 오늘의 흐름을 짧고 선명하게 읽어드려요.',
+    button: '오늘의 흐름 보기',
+    helper: '기록이 있으면 계산을 다시 입력하지 않아도 돼요.',
+    currentReady: '현재 명식 준비됨',
+    historyReady: '최근 기록 준비됨',
+  },
+  en: {
+    title: 'Today’s AI Fortune',
+    description: 'Reuse your latest chart and get a short reading for today.',
+    button: 'See today’s reading',
+    helper: 'If you have history, you do not need to enter everything again.',
+    currentReady: 'Current chart ready',
+    historyReady: 'Recent chart ready',
+  },
+  ja: {
+    title: '今日のAI運勢',
+    description: '最近の記録を使って、今日の流れを短く読み解きます。',
+    button: '今日の流れを見る',
+    helper: '履歴があれば、もう一度入力しなくて大丈夫です。',
+    currentReady: '現在の命式で準備完了',
+    historyReady: '最近の履歴で準備完了',
+  },
+  zh: {
+    title: '今日 AI 运势',
+    description: '直接使用最近记录，快速查看今天的整体走势。',
+    button: '查看今日走势',
+    helper: '如果有历史记录，就不用重新输入了。',
+    currentReady: '当前命盘已就绪',
+    historyReady: '最近记录已就绪',
+  },
+}
+
+declare global {
+  interface Window {
+    gtag?: (
+      command: 'event',
+      eventName: string,
+      params?: Record<string, string | number | boolean | undefined>
+    ) => void
+  }
+}
+
+function trackEvent(eventName: string, params: Record<string, string | number | boolean | undefined>) {
+  if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+    window.gtag('event', eventName, params)
+  }
+}
 
 function LanguageToggle() {
   const { language, t } = useI18n()
@@ -111,11 +239,18 @@ function ThemeToggle() {
 }
 
 export default function App() {
-  const { t } = useI18n()
-  const [tab, setTab] = useState<Tab>('saju')
+  const { t, language } = useI18n()
+  const { lang } = useParams()
+  const currentLang = lang || language
+  const seoLanguage = currentLang as Language
+  const { settings, updateSettings } = useSettings()
+  const [tab, setTab] = useState<Tab>(() => settings.defaultTab)
   const [birthInput, setBirthInput] = useState<BirthInput | null>(null)
   const [showHero, setShowHero] = useState(true)
   const [interpretOpen, setInterpretOpen] = useState(false)
+  const [interpretPreset, setInterpretPreset] = useState<InterpretPreset | undefined>()
+  const [historySeedInput, setHistorySeedInput] = useState<BirthInput | null>(null)
+  const [pendingPreset, setPendingPreset] = useState<{ preset: InterpretPreset; entry: 'home_daily' } | null>(null)
   const [shareOpen, setShareOpen] = useState(false)
   const [compareOpen, setCompareOpen] = useState(false)
   const [settingsOpen, setSettingsOpen] = useState(false)
@@ -126,11 +261,26 @@ export default function App() {
   const [infoOpen, setInfoOpen] = useState(false)
   const resultsRef = useRef<HTMLDivElement>(null)
   const formRef = useRef<HTMLDivElement>(null)
+  const dailyFortuneInput = birthInput ?? historySeedInput
+  const dailyFortuneCopy = DAILY_FORTUNE_COPY[currentLang as Language]
+  const dailyFortuneStatus = birthInput
+    ? dailyFortuneCopy.currentReady
+    : dailyFortuneCopy.historyReady
 
   function handleSubmit(input: BirthInput) {
+    trackEvent('calc_submit', {
+      lang: currentLang,
+      tab_default: tab,
+      unknown_time: input.unknownTime,
+    })
     setBirthInput(input)
     setShowHero(false)
     requestAnimationFrame(() => {
+      trackEvent('calc_complete', {
+        lang: currentLang,
+        tab,
+        unknown_time: input.unknownTime,
+      })
       resultsRef.current?.scrollIntoView({ behavior: 'smooth' })
     })
   }
@@ -143,10 +293,44 @@ export default function App() {
   }
 
   function handleHistorySelect(input: BirthInput) {
+    setHistorySeedInput(input)
     setBirthInput(input)
     setShowHero(false)
     requestAnimationFrame(() => {
+      trackEvent('calc_complete', {
+        lang: currentLang,
+        tab,
+        unknown_time: input.unknownTime,
+      })
       resultsRef.current?.scrollIntoView({ behavior: 'smooth' })
+    })
+  }
+
+  function openInterpret(entry: 'result_summary' | 'ai_teaser' | 'followup_card' | 'home_daily' = 'result_summary', preset?: InterpretPreset) {
+    setInterpretPreset(preset)
+    setInterpretOpen(true)
+    trackEvent('ai_open', {
+      lang: currentLang,
+      tab,
+      entry,
+    })
+  }
+
+  function handleFollowupQuestion(questionId: FollowupQuestionId) {
+    const preset = FOLLOWUP_PRESETS[questionId]
+    trackEvent('ai_followup_click', {
+      lang: currentLang,
+      tab,
+      question_id: questionId,
+    })
+    openInterpret('followup_card', preset)
+  }
+
+  function handleRelatedArticleClick(targetPath: string) {
+    trackEvent('related_article_click', {
+      lang: currentLang,
+      tab,
+      target_slug: targetPath,
     })
   }
 
@@ -163,8 +347,72 @@ export default function App() {
     return parts.join('\n\n')
   }
 
+  function handleOpenDailyFortune() {
+    const preset: InterpretPreset = {
+      question: '오늘의 흐름을 짧고 선명하게 알려줘. 감정, 관계, 일과 돈 중심으로 정리해줘.',
+      type: 'advice',
+      context: 'self',
+    }
+
+    if (birthInput) {
+      trackEvent('daily_ai_fortune_open', {
+        lang: currentLang,
+        entry: 'home_daily',
+      })
+      openInterpret('home_daily', preset)
+      return
+    }
+
+    if (!historySeedInput) return
+
+    setBirthInput(historySeedInput)
+    setShowHero(false)
+    setPendingPreset({ preset, entry: 'home_daily' })
+    requestAnimationFrame(() => {
+      resultsRef.current?.scrollIntoView({ behavior: 'smooth' })
+    })
+  }
+
+  useEffect(() => {
+    if (birthInput || typeof window === 'undefined') return
+
+    const saved = localStorage.getItem(HISTORY_STORAGE_KEY)
+    if (!saved) return
+
+    try {
+      const parsed = JSON.parse(saved) as StoredHistoryItem[]
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        setHistorySeedInput(parsed[0].input)
+      }
+    } catch {
+      // ignore malformed history
+    }
+  }, [birthInput])
+
+  useEffect(() => {
+    if (!pendingPreset || !birthInput) return
+
+    trackEvent('daily_ai_fortune_open', {
+      lang: currentLang,
+      entry: pendingPreset.entry,
+    })
+    openInterpret('home_daily', pendingPreset.preset)
+    setPendingPreset(null)
+  }, [pendingPreset, birthInput, currentLang])
+
   return (
     <div className="min-h-screen bg-base-200 bg-hanji">
+      <SeoHead
+        language={seoLanguage}
+        title={HOME_SEO[seoLanguage].title}
+        description={HOME_SEO[seoLanguage].description}
+        pathByLanguage={{
+          ko: '/ko/',
+          en: '/en/',
+          ja: '/ja/',
+          zh: '/zh/',
+        }}
+      />
       {/* 헤더 */}
       <header className="navbar bg-base-100 border-b border-base-300 sticky top-0 z-40">
         <div className="navbar-start">
@@ -230,6 +478,29 @@ export default function App() {
 
       {/* 메인 콘텐츠 */}
       <main className="max-w-2xl mx-auto px-4 py-6">
+        {dailyFortuneInput && (
+          <section className="card border border-primary/25 bg-gradient-to-br from-primary/15 via-base-100 to-secondary/10 shadow-sm mb-6 overflow-hidden">
+            <div className="card-body gap-4">
+              <div className="flex flex-wrap items-center gap-2">
+                <div className="badge badge-primary badge-outline">AI</div>
+                <div className="badge badge-secondary badge-outline">{dailyFortuneStatus}</div>
+              </div>
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <p className="text-sm font-semibold text-primary">{dailyFortuneCopy.title}</p>
+                  <p className="text-sm text-base-content/80 mt-1">{dailyFortuneCopy.description}</p>
+                </div>
+                <button className="btn btn-primary btn-sm shrink-0" onClick={handleOpenDailyFortune}>
+                  {dailyFortuneCopy.button}
+                </button>
+              </div>
+              <div className="rounded-2xl border border-base-200 bg-base-100/80 px-4 py-3">
+                <p className="text-xs text-base-content/60">{dailyFortuneCopy.helper}</p>
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* 입력 폼 */}
         <div ref={formRef} className="card bg-base-100 border-oriental mb-6">
           <div className="card-body p-4 sm:p-6">
@@ -287,7 +558,7 @@ export default function App() {
                   </button>
                   <button
                     className="btn btn-sm btn-primary gap-1"
-                    onClick={() => setInterpretOpen(true)}
+                    onClick={() => openInterpret('result_summary')}
                   >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -300,8 +571,19 @@ export default function App() {
               {/* 탭 콘텐츠 */}
               <div className="p-4 sm:p-6">
                 {tab === 'saju' && <SajuView input={birthInput} />}
-                {tab === 'ziwei' && <ZiweiView input={birthInput} />}
-                {tab === 'natal' && <NatalView input={birthInput} />}
+                <Suspense fallback={<div className="flex justify-center py-8"><span className="loading loading-spinner loading-lg" /></div>}>
+                  {tab === 'ziwei' && <ZiweiView input={birthInput} />}
+                  {tab === 'natal' && <NatalView input={birthInput} />}
+                </Suspense>
+
+                <ResultEngagementPanel
+                  tab={tab}
+                  language={currentLang as Language}
+                  input={birthInput}
+                  onOpenInterpret={() => openInterpret('ai_teaser')}
+                  onSelectFollowupQuestion={handleFollowupQuestion}
+                  onSelectRelatedLink={handleRelatedArticleClick}
+                />
               </div>
             </div>
           </div>
@@ -322,77 +604,112 @@ export default function App() {
         </div>
 
         {/* 가이드 */}
-        <div className="mt-6">
-          <Guide />
-        </div>
+        {settings.showGuide && (
+          <div className="mt-6">
+            <Guide />
+          </div>
+        )}
       </main>
 
       {/* 모달들 */}
-      <InterpretModal
-        isOpen={interpretOpen}
-        onClose={() => setInterpretOpen(false)}
-        getData={getAllData}
-      />
+      <Suspense fallback={null}>
+        {interpretOpen && (
+          <InterpretModal
+            isOpen={interpretOpen}
+            onClose={() => {
+              setInterpretOpen(false)
+              setInterpretPreset(undefined)
+            }}
+            getData={getAllData}
+            preset={interpretPreset}
+            onComplete={({ type, context, question }) => {
+              trackEvent('ai_complete', {
+                lang: currentLang,
+                tab,
+                type,
+                context,
+                question: question || undefined,
+              })
+            }}
+          />
+        )}
 
-      {birthInput && (
-        <ShareCard
-          input={birthInput}
-          isOpen={shareOpen}
-          onClose={() => setShareOpen(false)}
-        />
-      )}
+        {birthInput && shareOpen && (
+          <ShareCard
+            input={birthInput}
+            isOpen={shareOpen}
+            onClose={() => setShareOpen(false)}
+          />
+        )}
 
-      <CompareView
-        isOpen={compareOpen}
-        onClose={() => setCompareOpen(false)}
-        initialInput={birthInput}
-      />
+        {compareOpen && (
+          <CompareView
+            isOpen={compareOpen}
+            onClose={() => setCompareOpen(false)}
+            initialInput={birthInput}
+          />
+        )}
+
+        {privacyOpen && (
+          <PrivacyPolicy
+            isOpen={privacyOpen}
+            onClose={() => setPrivacyOpen(false)}
+          />
+        )}
+
+        {termsOpen && (
+          <TermsOfService
+            isOpen={termsOpen}
+            onClose={() => setTermsOpen(false)}
+          />
+        )}
+
+        {aboutOpen && (
+          <AboutPage
+            isOpen={aboutOpen}
+            onClose={() => setAboutOpen(false)}
+          />
+        )}
+
+        {contactOpen && (
+          <ContactPage
+            isOpen={contactOpen}
+            onClose={() => setContactOpen(false)}
+          />
+        )}
+
+        {/* 명리학 가이드 모달 */}
+        {infoOpen && (
+          <dialog className="modal modal-open">
+            <div className="modal-box max-w-4xl max-h-[90vh] overflow-y-auto">
+              <button
+                className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                onClick={() => setInfoOpen(false)}
+              >
+                ✕
+              </button>
+              <FortuneInfo />
+            </div>
+            <form method="dialog" className="modal-backdrop" onClick={() => setInfoOpen(false)}>
+              <button>close</button>
+            </form>
+          </dialog>
+        )}
+      </Suspense>
 
       <Settings
         isOpen={settingsOpen}
         onClose={() => setSettingsOpen(false)}
+        onSettingsChange={(newSettings) => {
+          updateSettings(newSettings)
+          if (newSettings.defaultTab) setTab(newSettings.defaultTab)
+        }}
       />
-
-      <PrivacyPolicy
-        isOpen={privacyOpen}
-        onClose={() => setPrivacyOpen(false)}
-      />
-
-      <TermsOfService
-        isOpen={termsOpen}
-        onClose={() => setTermsOpen(false)}
-      />
-
-      <AboutPage
-        isOpen={aboutOpen}
-        onClose={() => setAboutOpen(false)}
-      />
-
-      <ContactPage
-        isOpen={contactOpen}
-        onClose={() => setContactOpen(false)}
-      />
-
-      {/* 명리학 가이드 모달 */}
-      <dialog className={`modal ${infoOpen ? 'modal-open' : ''}`}>
-        <div className="modal-box max-w-4xl max-h-[90vh] overflow-y-auto">
-          <button
-            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-            onClick={() => setInfoOpen(false)}
-          >
-            ✕
-          </button>
-          <FortuneInfo />
-        </div>
-        <form method="dialog" className="modal-backdrop" onClick={() => setInfoOpen(false)}>
-          <button>close</button>
-        </form>
-      </dialog>
 
       {/* 푸터 */}
       <footer className="border-t border-base-300 bg-base-100 mt-8">
         <div className="max-w-2xl mx-auto px-4 py-6">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-base-content/60">
+          <div className="flex flex-col items-center gap-4 text-sm text-base-content/60">
             <div className="flex gap-4 flex-wrap justify-center">
               <button
                 className="hover:text-base-content transition-colors"
@@ -406,6 +723,12 @@ export default function App() {
               >
                 {t.guide.title}
               </button>
+              <Link
+                to={`/${currentLang}/articles`}
+                className="hover:text-base-content transition-colors"
+              >
+                {t.footer.articles}
+              </Link>
               <button
                 className="hover:text-base-content transition-colors"
                 onClick={() => setPrivacyOpen(true)}
@@ -424,6 +747,11 @@ export default function App() {
               >
                 {t.footer.contact}
               </button>
+            </div>
+            <div className="text-center text-xs text-base-content/50 max-w-md">
+              <p>{t.footer.disclaimer}</p>
+              <p className="mt-1">{t.footer.disclaimerEn}</p>
+              <p className="mt-1">{t.footer.noDataStored}</p>
             </div>
             <div>
               &copy; 2025 {t.footer.copyright}

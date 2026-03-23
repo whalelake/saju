@@ -48,6 +48,13 @@ export function I18nProvider({ children, initialLanguage }: I18nProviderProps) {
     return 'en'
   })
 
+  // URL 경로 변경 시 언어 동기화
+  useEffect(() => {
+    if (initialLanguage && initialLanguage !== language) {
+      setLanguageState(initialLanguage)
+    }
+  }, [initialLanguage])
+
   const setLanguage = (lang: Language) => {
     setLanguageState(lang)
     localStorage.setItem('language', lang)

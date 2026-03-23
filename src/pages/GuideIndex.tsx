@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router'
 import { useI18n, type Language } from '../i18n'
 import Breadcrumb from '../components/Breadcrumb'
 import AdBanner from '../components/AdBanner'
+import SeoHead from '../components/SeoHead'
 
 interface GuideCategory {
   title: string
@@ -128,6 +129,20 @@ export default function GuideIndex() {
   const { lang } = useParams<{ lang: string }>()
   const { t } = useI18n()
   const language = (lang || 'ko') as Language
+  const seoTitle = language === 'ko'
+    ? '명리학 가이드 - 사주, 자미두수, 점성술 배우기'
+    : language === 'ja'
+      ? '占術ガイド - 四柱推命・紫微斗数・西洋占星術を学ぶ'
+      : language === 'zh'
+        ? '命理指南 - 学习四柱、紫微斗数与西方占星'
+        : 'Fortune Guide - Learn Saju, Zi Wei Dou Shu, and Astrology'
+  const seoDescription = language === 'ko'
+    ? '사주팔자, 자미두수, 서양 점성술을 쉽게 이해할 수 있도록 주제별로 정리한 가이드 모음입니다.'
+    : language === 'ja'
+      ? '四柱推命、紫微斗数、西洋占星術をテーマ別に学べるガイド一覧です。'
+      : language === 'zh'
+        ? '按主题整理的四柱、紫微斗数与西方占星指南合集。'
+        : 'A topic-based guide hub for learning Saju, Zi Wei Dou Shu, and Western astrology.'
 
   const categories = guideContent[language] || guideContent.ko
 
@@ -137,6 +152,17 @@ export default function GuideIndex() {
 
   return (
     <div className="min-h-screen bg-base-200">
+      <SeoHead
+        language={language}
+        title={seoTitle}
+        description={seoDescription}
+        pathByLanguage={{
+          ko: '/ko/guide',
+          en: '/en/guide',
+          ja: '/ja/guide',
+          zh: '/zh/guide',
+        }}
+      />
       <header className="navbar bg-base-100 border-b border-base-300 sticky top-0 z-40">
         <div className="navbar-start">
           <Link to={`/${lang}/`} className="btn btn-ghost text-xl font-hanja">

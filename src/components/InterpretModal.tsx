@@ -1,17 +1,89 @@
-import { useState } from 'react'
-import ReactMarkdown from 'react-markdown'
+import { useEffect, useRef, useState } from 'react'
+import ReactMarkdown, { type Components } from 'react-markdown'
 import { useI18n } from '../i18n'
+
+// 마크다운 커스텀 컴포넌트 - 가독성 향상
+const markdownComponents: Components = {
+  h1: ({ children }) => (
+    <h1 className="text-xl font-bold text-primary mb-4 pb-2 border-b border-primary/20">
+      {children}
+    </h1>
+  ),
+  h2: ({ children }) => (
+    <div className="card bg-base-200/50 shadow-sm mb-4">
+      <div className="card-body p-4">
+        <h2 className="card-title text-lg text-primary flex items-center gap-2">
+          <span className="w-1.5 h-5 bg-primary rounded-full" />
+          {children}
+        </h2>
+      </div>
+    </div>
+  ),
+  h3: ({ children }) => (
+    <h3 className="text-base font-semibold text-base-content mt-4 mb-2 flex items-center gap-2">
+      <span className="text-primary">▸</span>
+      {children}
+    </h3>
+  ),
+  p: ({ children }) => (
+    <p className="text-base-content/90 leading-7 mb-4 pl-1">
+      {children}
+    </p>
+  ),
+  ul: ({ children }) => (
+    <ul className="space-y-2 mb-4 pl-2">
+      {children}
+    </ul>
+  ),
+  ol: ({ children }) => (
+    <ol className="space-y-2 mb-4 pl-2 list-decimal list-inside">
+      {children}
+    </ol>
+  ),
+  li: ({ children }) => (
+    <li className="flex items-start gap-2 text-base-content/90 leading-relaxed">
+      <span className="text-primary mt-1.5 text-xs">●</span>
+      <span className="flex-1">{children}</span>
+    </li>
+  ),
+  strong: ({ children }) => (
+    <strong className="font-semibold text-primary">
+      {children}
+    </strong>
+  ),
+  em: ({ children }) => (
+    <em className="text-secondary italic">
+      {children}
+    </em>
+  ),
+  blockquote: ({ children }) => (
+    <blockquote className="border-l-4 border-primary/50 bg-primary/5 pl-4 py-2 my-4 rounded-r-lg">
+      {children}
+    </blockquote>
+  ),
+  hr: () => (
+    <hr className="my-6 border-base-300" />
+  ),
+}
+
+interface InterpretPreset {
+  question?: string
+  type?: InterpretType
+  context?: ContextType
+}
 
 interface Props {
   isOpen: boolean
   onClose: () => void
   getData: () => Promise<string>
+  preset?: InterpretPreset
+  onComplete?: (payload: { type: InterpretType; context: ContextType; question: string }) => void
 }
 
 type InterpretType = 'personality' | 'advice' | 'general'
 type ContextType = 'self' | 'child' | 'partner' | 'friend' | 'other'
 
-export default function InterpretModal({ isOpen, onClose, getData }: Props) {
+export default function InterpretModal({ isOpen, onClose, getData, preset, onComplete }: Props) {
   const { t, language } = useI18n()
   const [step, setStep] = useState<1 | 2 | 3>(1)
   const [context, setContext] = useState<ContextType>('self')
@@ -20,6 +92,7 @@ export default function InterpretModal({ isOpen, onClose, getData }: Props) {
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const prevIsOpenRef = useRef(false)
 
   const TYPE_OPTIONS: { value: InterpretType; label: string; emoji: string }[] = [
     { value: 'personality', label: t.interpret.personality, emoji: '🌟' },
@@ -56,6 +129,7 @@ export default function InterpretModal({ isOpen, onClose, getData }: Props) {
 
       const { interpretation } = await response.json()
       setResult(interpretation)
+      onComplete?.({ type, context, question: question.trim() })
     } catch (err) {
       setError(err instanceof Error ? err.message : t.common.error)
       setStep(2)
@@ -69,6 +143,8 @@ export default function InterpretModal({ isOpen, onClose, getData }: Props) {
     setResult(null)
     setError(null)
     setQuestion('')
+    setType('general')
+    setContext('self')
     onClose()
   }
 
@@ -79,6 +155,25 @@ export default function InterpretModal({ isOpen, onClose, getData }: Props) {
   function handleNext() {
     if (step < 3) setStep((step + 1) as 2 | 3)
   }
+
+  useEffect(() => {
+    if (isOpen && !prevIsOpenRef.current) {
+      const hasPreset = Boolean(preset?.question || preset?.type || preset?.context)
+      setError(null)
+      if (hasPreset) {
+        setQuestion(preset?.question ?? '')
+        setType(preset?.type ?? 'general')
+        setContext(preset?.context ?? 'self')
+        setStep(2)
+      } else {
+        setQuestion('')
+        setType('general')
+        setContext('self')
+        setStep(1)
+      }
+    }
+    prevIsOpenRef.current = isOpen
+  }, [isOpen, preset])
 
   if (!isOpen) return null
 
@@ -229,8 +324,8 @@ export default function InterpretModal({ isOpen, onClose, getData }: Props) {
               </div>
             </div>
 
-            <div className="prose prose-sm max-w-none prose-headings:text-primary prose-h1:text-xl prose-h2:text-lg prose-h3:text-base prose-strong:text-primary prose-strong:font-semibold prose-ul:list-disc prose-ol:list-decimal prose-li:ml-4 prose-p:leading-relaxed prose-p:mb-3">
-              <ReactMarkdown>{result}</ReactMarkdown>
+            <div className="max-w-none">
+              <ReactMarkdown components={markdownComponents}>{result}</ReactMarkdown>
             </div>
 
             <div className="modal-action mt-6 flex-wrap gap-2">

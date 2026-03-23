@@ -1,0 +1,21 @@
+{
+  "date": "2026-03-20",
+  "url": "https://saju-wheat.vercel.app",
+  "healthScore": 87,
+  "issues": [
+    {"id": "ISSUE-001", "title": "언어 전환 시 즉시 UI 업데이트 안 됨", "severity": "Medium", "category": "Functional"},
+    {"id": "ISSUE-002", "title": "콘솔에 400 에러 다수 발생", "severity": "Medium", "category": "Console"},
+    {"id": "ISSUE-003", "title": "AI 해석 버튼 중복 요소", "severity": "Low", "category": "Accessibility"},
+    {"id": "ISSUE-004", "title": "궁합 모달 닫기 버튼 중복", "severity": "Low", "category": "UX"}
+  ],
+  "categoryScores": {
+    "console": 70,
+    "links": 100,
+    "visual": 100,
+    "functional": 92,
+    "ux": 95,
+    "performance": 85,
+    "content": 100,
+    "accessibility": 95
+  }
+}

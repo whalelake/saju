@@ -9,9 +9,11 @@
   ],
   "scripts": {
     "dev": "vite",
+    "prebuild": "bun run generate-sitemap",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "generate-sitemap": "bun scripts/generate-sitemap.ts",
     "generate-icons": "bun scripts/generate-icons.ts",
     "generate-og-image": "bun scripts/generate-og-image.ts"
   },

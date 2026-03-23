@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { BirthInput } from '@orrery/core/types'
 import { calculateSaju } from '@orrery/core/saju'
+import { useI18n } from '../i18n'
 import BirthForm from './BirthForm.tsx'
 
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
 }
 
 export default function CompareView({ isOpen, onClose, initialInput }: Props) {
+  const { t } = useI18n()
   const [person1, setPerson1] = useState<BirthInput | null>(initialInput || null)
   const [person2, setPerson2] = useState<BirthInput | null>(null)
   const [activeForm, setActiveForm] = useState<1 | 2>(initialInput ? 2 : 1)
@@ -75,12 +77,19 @@ export default function CompareView({ isOpen, onClose, initialInput }: Props) {
     return Math.min(100, Math.max(0, score))
   }
 
+  function getScoreLabel(score: number): string {
+    if (score >= 80) return t.compare.perfectMatch
+    if (score >= 60) return t.compare.goodMatch
+    if (score >= 40) return t.compare.average
+    return t.compare.needsEffort
+  }
+
   function renderPillarComparison() {
     if (!saju1 || !saju2) return null
 
     // pillars 배열 인덱스: [시=0, 일=1, 월=2, 년=3]
     const pillarIndices = [3, 2, 1, 0] as const  // 년, 월, 일, 시 순서로 표시
-    const labels = ['년주', '월주', '일주', '시주']
+    const labels = [t.compare.yearPillar, t.compare.monthPillar, t.compare.dayPillar, t.compare.hourPillar]
 
     return (
       <div className="overflow-x-auto">
@@ -96,7 +105,7 @@ export default function CompareView({ isOpen, onClose, initialInput }: Props) {
           <tbody>
             <tr>
               <td className="font-medium">
-                {person1?.gender === 'M' ? '남' : '여'} 1
+                {person1?.gender === 'M' ? t.compare.male : t.compare.female} 1
               </td>
               {pillarIndices.map((idx, i) => (
                 <td key={i} className="text-center font-hanja text-lg">
@@ -106,7 +115,7 @@ export default function CompareView({ isOpen, onClose, initialInput }: Props) {
             </tr>
             <tr>
               <td className="font-medium">
-                {person2?.gender === 'M' ? '남' : '여'} 2
+                {person2?.gender === 'M' ? t.compare.male : t.compare.female} 2
               </td>
               {pillarIndices.map((idx, i) => (
                 <td key={i} className="text-center font-hanja text-lg">
@@ -134,7 +143,7 @@ export default function CompareView({ isOpen, onClose, initialInput }: Props) {
 
         <h3 className="font-bold text-lg flex items-center gap-2 mb-4">
           <span className="font-hanja gold-accent text-xl">合</span>
-          궁합 비교
+          {t.compare.title}
         </h3>
 
         {/* 입력 폼 탭 */}
@@ -146,14 +155,14 @@ export default function CompareView({ isOpen, onClose, initialInput }: Props) {
                 className={`tab ${activeForm === 1 ? 'tab-active' : ''}`}
                 onClick={() => setActiveForm(1)}
               >
-                첫 번째 사람 {person1 && '✓'}
+                {t.compare.person1} {person1 && '✓'}
               </button>
               <button
                 role="tab"
                 className={`tab ${activeForm === 2 ? 'tab-active' : ''}`}
                 onClick={() => setActiveForm(2)}
               >
-                두 번째 사람 {person2 && '✓'}
+                {t.compare.person2} {person2 && '✓'}
               </button>
             </div>
 
@@ -184,10 +193,7 @@ export default function CompareView({ isOpen, onClose, initialInput }: Props) {
                 <span className="text-2xl font-bold">{score}%</span>
               </div>
               <p className="mt-2 text-lg font-medium">
-                {score >= 80 && '천생연분'}
-                {score >= 60 && score < 80 && '좋은 궁합'}
-                {score >= 40 && score < 60 && '보통'}
-                {score < 40 && '노력 필요'}
+                {getScoreLabel(score)}
               </p>
             </div>
 
@@ -204,7 +210,7 @@ export default function CompareView({ isOpen, onClose, initialInput }: Props) {
                   setActiveForm(1)
                 }}
               >
-                새로 비교하기
+                {t.compare.newCompare}
               </button>
             </div>
           </div>
@@ -212,7 +218,7 @@ export default function CompareView({ isOpen, onClose, initialInput }: Props) {
 
         <div className="modal-action">
           <button className="btn btn-ghost" onClick={onClose}>
-            닫기
+            {t.common.close}
           </button>
         </div>
       </div>
