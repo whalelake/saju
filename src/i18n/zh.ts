@@ -475,12 +475,6 @@ export const zh: TranslationKeys = {
     responseTimeDesc: '根据咨询内容，我们将在1-3天内回复。由于是开源项目，回复可能会有所延迟。',
   },
 
-  // Coupang Partners (仅限韩国，但需要类型兼容性)
-  coupang: {
-    title: '推荐书籍',
-    disclaimer: '本帖是酷澎合作伙伴活动的一部分，我们因此收取一定金额的佣金。',
-  },
-
   // 信息文章
   articles: {
     title: '命理学故事',

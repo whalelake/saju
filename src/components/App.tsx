@@ -8,7 +8,6 @@ import Hero from './Hero.tsx'
 import History from './History.tsx'
 import Settings, { useSettings } from './Settings.tsx'
 import AdBanner from './AdBanner.tsx'
-import CoupangPartner from './CoupangPartner.tsx'
 import ResultEngagementPanel from './ResultEngagementPanel.tsx'
 import SeoHead from './SeoHead.tsx'
 import SajuView from './saju/SajuView.tsx'
@@ -150,17 +149,14 @@ const DAILY_FORTUNE_COPY: Record<Language, {
 
 declare global {
   interface Window {
-    gtag?: (
-      command: 'event',
-      eventName: string,
-      params?: Record<string, string | number | boolean | undefined>
-    ) => void
+    dataLayer: Record<string, unknown>[]
   }
 }
 
 function trackEvent(eventName: string, params: Record<string, string | number | boolean | undefined>) {
-  if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
-    window.gtag('event', eventName, params)
+  if (typeof window !== 'undefined') {
+    window.dataLayer = window.dataLayer || []
+    window.dataLayer.push({ event: eventName, ...params })
   }
 }
 
@@ -593,8 +589,6 @@ export default function App() {
             <AdBanner slot="SLOT_RESULT_TOP" format="horizontal" />
           </div>
 
-          {/* 쿠팡 파트너스 */}
-          <CoupangPartner />
           </>
         )}
 

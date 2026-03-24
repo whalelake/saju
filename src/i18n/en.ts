@@ -475,12 +475,6 @@ export const en: TranslationKeys = {
     responseTimeDesc: 'We aim to respond within 1-3 days depending on the nature of your inquiry. As an open-source project, responses may sometimes be delayed.',
   },
 
-  // Coupang Partners (Korea only, but needed for type compatibility)
-  coupang: {
-    title: 'Recommended Books',
-    disclaimer: 'This posting is part of Coupang Partners activities, and we receive a certain amount of commission accordingly.',
-  },
-
   // Informational Articles
   articles: {
     title: 'Destiny Insights',
