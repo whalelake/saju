@@ -74,6 +74,12 @@ function createStaticServer(dir: string): Promise<{ server: ReturnType<typeof cr
 }
 
 async function main() {
+  // Vercel/CI 환경에서는 puppeteer가 없으므로 스킵
+  if (process.env.CI || process.env.VERCEL) {
+    console.log('CI/Vercel environment detected — skipping prerender.')
+    return
+  }
+
   const puppeteer = await import('puppeteer')
   const browser = await puppeteer.launch({ headless: true })
 
