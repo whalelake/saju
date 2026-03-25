@@ -82,6 +82,57 @@ interface Props {
 
 type InterpretType = 'personality' | 'advice' | 'general'
 type ContextType = 'self' | 'child' | 'partner' | 'friend' | 'other'
+type SuggestionLanguage = 'ko' | 'en' | 'ja' | 'zh'
+
+const QUICK_SUGGESTIONS: Record<SuggestionLanguage, Array<{ question: string; type: InterpretType }>> = {
+  ko: [
+    { question: '내 성격의 가장 큰 강점은 뭐야?', type: 'personality' },
+    { question: '지금 시기에 가장 신경 써야 할 포인트는 뭐야?', type: 'advice' },
+    { question: '연애와 인간관계에서 내가 보이는 패턴은 뭐야?', type: 'general' },
+    { question: '직업과 돈 흐름에서 중요한 포인트는 뭐야?', type: 'advice' },
+    { question: '내가 더 잘 풀리려면 어떤 방식으로 움직여야 해?', type: 'general' },
+  ],
+  en: [
+    { question: 'What is my biggest strength?', type: 'personality' },
+    { question: 'What should I focus on right now?', type: 'advice' },
+    { question: 'What pattern do I show in relationships?', type: 'general' },
+    { question: 'What matters most in work and money?', type: 'advice' },
+    { question: 'How should I move to flow better?', type: 'general' },
+  ],
+  ja: [
+    { question: '私のいちばん大きな強みは何ですか？', type: 'personality' },
+    { question: '今の時期に最も気をつけるべき点は？', type: 'advice' },
+    { question: '恋愛と人間関係でどんな傾向が出ますか？', type: 'general' },
+    { question: '仕事とお金の流れで大事な点は？', type: 'advice' },
+    { question: 'もっと良く流れるにはどう動けばいいですか？', type: 'general' },
+  ],
+  zh: [
+    { question: '我最大的性格优势是什么？', type: 'personality' },
+    { question: '现在这个阶段最该注意什么？', type: 'advice' },
+    { question: '我在感情和人际里有什么模式？', type: 'general' },
+    { question: '事业和财运里最重要的重点是什么？', type: 'advice' },
+    { question: '如果想更顺一点，我该怎么行动？', type: 'general' },
+  ],
+}
+
+const MODAL_COPY: Record<SuggestionLanguage, { selectedQuestion: string; quickPicks: string }> = {
+  ko: {
+    selectedQuestion: '선택한 질문 흐름',
+    quickPicks: '바로 물어보기',
+  },
+  en: {
+    selectedQuestion: 'Selected question',
+    quickPicks: 'Quick picks',
+  },
+  ja: {
+    selectedQuestion: '選択した質問',
+    quickPicks: 'すぐに聞く',
+  },
+  zh: {
+    selectedQuestion: '已选择的问题',
+    quickPicks: '快速提问',
+  },
+}
 
 export default function InterpretModal({ isOpen, onClose, getData, preset, onComplete }: Props) {
   const { t, language } = useI18n()
@@ -93,6 +144,9 @@ export default function InterpretModal({ isOpen, onClose, getData, preset, onCom
   const [result, setResult] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
   const prevIsOpenRef = useRef(false)
+  const modalLanguage = (language in QUICK_SUGGESTIONS ? language : 'ko') as SuggestionLanguage
+  const quickSuggestions = QUICK_SUGGESTIONS[modalLanguage]
+  const modalCopy = MODAL_COPY[modalLanguage]
 
   const TYPE_OPTIONS: { value: InterpretType; label: string; emoji: string }[] = [
     { value: 'personality', label: t.interpret.personality, emoji: '🌟' },
@@ -240,6 +294,13 @@ export default function InterpretModal({ isOpen, onClose, getData, preset, onCom
         {/* Step 2: 질문 & 해석 유형 선택 */}
         {step === 2 && !loading && !result && (
           <div className="space-y-5">
+            {preset?.question && (
+              <div className="rounded-2xl border border-primary/20 bg-primary/5 px-4 py-3">
+                <p className="text-xs font-semibold text-primary">{modalCopy.selectedQuestion}</p>
+                <p className="mt-1 text-sm text-base-content/80">{preset.question}</p>
+              </div>
+            )}
+
             {/* 궁금한 점 입력 */}
             <div>
               <label className="label">
@@ -251,6 +312,27 @@ export default function InterpretModal({ isOpen, onClose, getData, preset, onCom
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
               />
+            </div>
+
+            <div>
+              <div className="mb-2 text-sm font-medium text-base-content">
+                {modalCopy.quickPicks}
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {quickSuggestions.map((item) => (
+                  <button
+                    key={item.question}
+                    type="button"
+                    className={`btn btn-sm rounded-full ${question === item.question ? 'btn-primary' : 'btn-outline'}`}
+                    onClick={() => {
+                      setQuestion(item.question)
+                      setType(item.type)
+                    }}
+                  >
+                    {item.question}
+                  </button>
+                ))}
+              </div>
             </div>
 
             {/* 해석 유형 선택 */}

@@ -16,6 +16,19 @@ type ArticleContent = {
   section4Text: string
 }
 
+declare global {
+  interface Window {
+    dataLayer: Record<string, unknown>[]
+  }
+}
+
+function trackEvent(eventName: string, params: Record<string, string | number | boolean | undefined>) {
+  if (typeof window !== 'undefined') {
+    window.dataLayer = window.dataLayer || []
+    window.dataLayer.push({ event: eventName, ...params })
+  }
+}
+
 export default function ArticlePage() {
   const { t, language } = useI18n()
   const { lang, articleId } = useParams()
@@ -101,6 +114,15 @@ export default function ArticlePage() {
     image: 'https://saju-wheat.vercel.app/og-image.png',
   }
 
+  function handleArticleCtaClick(entry: string, target: string) {
+    trackEvent('article_cta_click', {
+      lang: currentLang,
+      article_id: articleId,
+      entry,
+      target,
+    })
+  }
+
   return (
     <div className="min-h-screen bg-base-200">
       <SeoHead
@@ -169,13 +191,21 @@ export default function ArticlePage() {
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  <Link to={`/${currentLang}/`} className="btn btn-primary btn-sm">
+                  <Link
+                    to={`/${currentLang}/`}
+                    className="btn btn-primary btn-sm"
+                    onClick={() => handleArticleCtaClick('article_apply', 'home_calculator')}
+                  >
                     {language === 'ko' ? '내 명식 계산하기' :
                      language === 'ja' ? '自分の命式を計算する' :
                      language === 'zh' ? '计算我的命盘' :
                      'Calculate my chart'}
                   </Link>
-                  <Link to={`/${currentLang}/guide`} className="btn btn-outline btn-sm">
+                  <Link
+                    to={`/${currentLang}/guide`}
+                    className="btn btn-outline btn-sm"
+                    onClick={() => handleArticleCtaClick('article_apply', 'guide_index')}
+                  >
                     {language === 'ko' ? '가이드 더 보기' :
                      language === 'ja' ? 'ガイドを見る' :
                      language === 'zh' ? '查看更多指南' :
@@ -225,7 +255,11 @@ export default function ArticlePage() {
             </section>
 
             <footer className="mt-8 pt-6 border-t border-base-300">
-              <Link to={`/${currentLang}/`} className="btn btn-primary">
+              <Link
+                to={`/${currentLang}/`}
+                className="btn btn-primary"
+                onClick={() => handleArticleCtaClick('article_footer', 'home_calculator')}
+              >
                 {language === 'ko' ? '명식 계산하기' :
                  language === 'ja' ? '命式を計算する' :
                  language === 'zh' ? '计算命盘' :

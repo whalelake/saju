@@ -5,10 +5,7 @@ import { createChart } from '@orrery/core/ziwei'
 import { calculateNatal } from '@orrery/core/natal'
 import type { BirthInput, NatalChart, SajuResult, ZiweiChart, ZodiacSign } from '@orrery/core/types'
 import { natalToText, sajuToText, ziweiToText } from '../utils/text-export.ts'
-
-type TabKey = 'saju' | 'ziwei' | 'natal'
-type LanguageKey = 'ko' | 'en' | 'ja' | 'zh'
-type FollowupQuestionId = 'strength' | 'timing' | 'relationship' | 'career_money' | 'growth'
+import { FOLLOWUP_QUESTION_ORDER, getFollowupPrompt, type FollowupQuestionId, type LanguageKey, type TabKey } from '../utils/followup-prompts.ts'
 
 interface RelatedLink {
   slug: string
@@ -24,43 +21,6 @@ interface Props {
   onOpenInterpret: () => void
   onSelectFollowupQuestion: (questionId: FollowupQuestionId) => void
   onSelectRelatedLink: (targetPath: string) => void
-}
-
-const FOLLOWUP_QUESTIONS: Record<TabKey, FollowupQuestionId[]> = {
-  saju: ['strength', 'relationship', 'career_money', 'timing', 'growth'],
-  ziwei: ['timing', 'relationship', 'growth', 'strength', 'career_money'],
-  natal: ['strength', 'career_money', 'growth', 'timing', 'relationship'],
-}
-
-const QUESTION_LABELS: Record<LanguageKey, Record<FollowupQuestionId, string>> = {
-  ko: {
-    strength: '내 강점이 어디에서 드러나나요?',
-    timing: '지금 시기에 가장 중요한 포인트는 뭐예요?',
-    relationship: '연애와 인간관계 패턴을 알려줘요',
-    career_money: '일과 돈 흐름을 쉽게 설명해줘요',
-    growth: '더 잘 풀리려면 어떻게 움직여야 하나요?',
-  },
-  en: {
-    strength: 'Where do my strengths stand out?',
-    timing: 'What matters most in this period?',
-    relationship: 'Explain my relationship patterns',
-    career_money: 'Explain my work and money flow',
-    growth: 'How should I move forward from here?',
-  },
-  ja: {
-    strength: '私の強みはどこで出やすいですか？',
-    timing: '今の時期で大事なポイントは？',
-    relationship: '恋愛と人間関係の傾向を知りたいです',
-    career_money: '仕事とお金の流れをわかりやすく教えてください',
-    growth: 'もっと良くなるにはどう動けばいいですか？',
-  },
-  zh: {
-    strength: '我的优势最容易体现在哪些地方？',
-    timing: '这个阶段最重要的重点是什么？',
-    relationship: '请解释我的感情与人际模式',
-    career_money: '请用简单的话解释事业与财运',
-    growth: '如果想更顺一些，我该怎么行动？',
-  },
 }
 
 const SECTION_TEXT: Record<LanguageKey, {
@@ -591,9 +551,8 @@ export default function ResultEngagementPanel({
   onSelectFollowupQuestion,
   onSelectRelatedLink,
 }: Props) {
-  const questions = FOLLOWUP_QUESTIONS[tab]
+  const questions = FOLLOWUP_QUESTION_ORDER[tab]
   const links = useMemo(() => getRelatedLinks(tab, input), [tab, input])
-  const labels = QUESTION_LABELS[language]
   const text = SECTION_TEXT[language]
   const [fallbackTeaser, setFallbackTeaser] = useState(() => getDefaultNatalTeaser(language))
   const [aiTeaser, setAiTeaser] = useState<string | null>(null)
@@ -735,7 +694,7 @@ export default function ResultEngagementPanel({
                 onClick={() => onSelectFollowupQuestion(questionId)}
                 className="btn btn-outline btn-sm h-auto min-h-0 whitespace-normal justify-start rounded-2xl bg-base-200 px-4 py-3 text-left"
               >
-                {labels[questionId]}
+                {getFollowupPrompt(language, tab, questionId).label}
               </button>
             ))}
           </div>

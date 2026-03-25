@@ -28,11 +28,11 @@ import { createChart } from '@orrery/core/ziwei'
 import { calculateNatal } from '@orrery/core/natal'
 import { sajuToText, ziweiToText, natalToText } from '../utils/text-export.ts'
 import type { BirthInput } from '@orrery/core/types'
+import { getFollowupPrompt, type FollowupQuestionId, type LanguageKey, type TabKey } from '../utils/followup-prompts.ts'
 
-type Tab = 'saju' | 'ziwei' | 'natal'
+type Tab = TabKey
 type InterpretType = 'personality' | 'advice' | 'general'
 type ContextType = 'self' | 'child' | 'partner' | 'friend' | 'other'
-type FollowupQuestionId = 'strength' | 'timing' | 'relationship' | 'career_money' | 'growth'
 
 interface InterpretPreset {
   question?: string
@@ -72,34 +72,6 @@ const HOME_SEO: Record<Language, { title: string; description: string }> = {
   zh: {
     title: '命运盘 - 免费四柱八字、紫微斗数、出生图 AI 解读',
     description: '免费计算四柱八字、紫微斗数与西方出生图，并继续查看 AI 解读、今日运势、指南和文章。',
-  },
-}
-
-const FOLLOWUP_PRESETS: Record<FollowupQuestionId, InterpretPreset> = {
-  strength: {
-    question: '내 성격의 가장 큰 강점은 뭐야?',
-    type: 'personality',
-    context: 'self',
-  },
-  timing: {
-    question: '지금 시기에 가장 신경 써야 할 포인트는 뭐야?',
-    type: 'advice',
-    context: 'self',
-  },
-  relationship: {
-    question: '연애와 인간관계에서 내가 보이는 패턴은 뭐야?',
-    type: 'general',
-    context: 'self',
-  },
-  career_money: {
-    question: '직업과 돈 흐름에서 중요한 포인트는 뭐야?',
-    type: 'advice',
-    context: 'self',
-  },
-  growth: {
-    question: '내가 더 잘 풀리려면 어떤 방식으로 움직여야 해?',
-    type: 'general',
-    context: 'self',
   },
 }
 
@@ -144,6 +116,38 @@ const DAILY_FORTUNE_COPY: Record<Language, {
     helper: '如果有历史记录，就不用重新输入了。',
     currentReady: '当前命盘已就绪',
     historyReady: '最近记录已就绪',
+  },
+}
+
+const WEEKLY_READING_COPY: Record<Language, {
+  title: string
+  description: string
+  button: string
+  helper: string
+}> = {
+  ko: {
+    title: '이번 주 읽기',
+    description: '이번 주 흐름을 감정, 관계, 일과 돈 중심으로 한 번 더 정리해드려요.',
+    button: '이번 주 흐름 보기',
+    helper: '짧은 주간 해석으로 다시 들어올 이유를 만들어요.',
+  },
+  en: {
+    title: 'This week’s reading',
+    description: 'Get a weekly reading focused on emotions, relationships, work, and money.',
+    button: 'See this week',
+    helper: 'A short weekly reading gives people a reason to come back.',
+  },
+  ja: {
+    title: '今週の読みもの',
+    description: '今週の流れを感情、関係、仕事、お金を中心にまとめます。',
+    button: '今週の流れを見る',
+    helper: '短い週間解釈で再訪のきっかけを作ります。',
+  },
+  zh: {
+    title: '本周解读',
+    description: '围绕情绪、关系、工作和金钱，快速整理本周走势。',
+    button: '查看本周走势',
+    helper: '用简短的周度解读创造再次访问的理由。',
   },
 }
 
@@ -259,6 +263,7 @@ export default function App() {
   const formRef = useRef<HTMLDivElement>(null)
   const dailyFortuneInput = birthInput ?? historySeedInput
   const dailyFortuneCopy = DAILY_FORTUNE_COPY[currentLang as Language]
+  const weeklyReadingCopy = WEEKLY_READING_COPY[currentLang as Language]
   const dailyFortuneStatus = birthInput
     ? dailyFortuneCopy.currentReady
     : dailyFortuneCopy.historyReady
@@ -313,7 +318,12 @@ export default function App() {
   }
 
   function handleFollowupQuestion(questionId: FollowupQuestionId) {
-    const preset = FOLLOWUP_PRESETS[questionId]
+    const followup = getFollowupPrompt(currentLang as LanguageKey, tab, questionId)
+    const preset: InterpretPreset = {
+      question: followup.prompt,
+      type: followup.type,
+      context: 'self',
+    }
     trackEvent('ai_followup_click', {
       lang: currentLang,
       tab,
@@ -327,6 +337,32 @@ export default function App() {
       lang: currentLang,
       tab,
       target_slug: targetPath,
+    })
+  }
+
+  function handleOpenWeeklyReading() {
+    const preset: InterpretPreset = {
+      question: '이번 주 흐름을 짧고 실용적으로 알려줘. 감정, 관계, 일과 돈 중심으로 정리해줘.',
+      type: 'advice',
+      context: 'self',
+    }
+
+    if (birthInput) {
+      trackEvent('weekly_reading_open', {
+        lang: currentLang,
+        entry: 'home_weekly',
+      })
+      openInterpret('home_daily', preset)
+      return
+    }
+
+    if (!historySeedInput) return
+
+    setBirthInput(historySeedInput)
+    setShowHero(false)
+    setPendingPreset({ preset, entry: 'home_daily' })
+    requestAnimationFrame(() => {
+      resultsRef.current?.scrollIntoView({ behavior: 'smooth' })
     })
   }
 
@@ -475,23 +511,46 @@ export default function App() {
       {/* 메인 콘텐츠 */}
       <main className="max-w-2xl mx-auto px-4 py-6">
         {dailyFortuneInput && (
-          <section className="card border border-primary/25 bg-gradient-to-br from-primary/15 via-base-100 to-secondary/10 shadow-sm mb-6 overflow-hidden">
-            <div className="card-body gap-4">
-              <div className="flex flex-wrap items-center gap-2">
-                <div className="badge badge-primary badge-outline">AI</div>
-                <div className="badge badge-secondary badge-outline">{dailyFortuneStatus}</div>
-              </div>
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <p className="text-sm font-semibold text-primary">{dailyFortuneCopy.title}</p>
-                  <p className="text-sm text-base-content/80 mt-1">{dailyFortuneCopy.description}</p>
+          <section className="grid gap-4 mb-6 md:grid-cols-2">
+            <div className="card border border-primary/25 bg-gradient-to-br from-primary/15 via-base-100 to-secondary/10 shadow-sm overflow-hidden">
+              <div className="card-body gap-4">
+                <div className="flex flex-wrap items-center gap-2">
+                  <div className="badge badge-primary badge-outline">AI</div>
+                  <div className="badge badge-secondary badge-outline">{dailyFortuneStatus}</div>
                 </div>
-                <button className="btn btn-primary btn-sm shrink-0" onClick={handleOpenDailyFortune}>
-                  {dailyFortuneCopy.button}
-                </button>
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <p className="text-sm font-semibold text-primary">{dailyFortuneCopy.title}</p>
+                    <p className="text-sm text-base-content/80 mt-1">{dailyFortuneCopy.description}</p>
+                  </div>
+                  <button className="btn btn-primary btn-sm shrink-0" onClick={handleOpenDailyFortune}>
+                    {dailyFortuneCopy.button}
+                  </button>
+                </div>
+                <div className="rounded-2xl border border-base-200 bg-base-100/80 px-4 py-3">
+                  <p className="text-xs text-base-content/60">{dailyFortuneCopy.helper}</p>
+                </div>
               </div>
-              <div className="rounded-2xl border border-base-200 bg-base-100/80 px-4 py-3">
-                <p className="text-xs text-base-content/60">{dailyFortuneCopy.helper}</p>
+            </div>
+
+            <div className="card border border-secondary/25 bg-gradient-to-br from-secondary/12 via-base-100 to-primary/8 shadow-sm overflow-hidden">
+              <div className="card-body gap-4">
+                <div className="flex flex-wrap items-center gap-2">
+                  <div className="badge badge-secondary badge-outline">AI</div>
+                  <div className="badge badge-outline">WEEK</div>
+                </div>
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <p className="text-sm font-semibold text-secondary">{weeklyReadingCopy.title}</p>
+                    <p className="text-sm text-base-content/80 mt-1">{weeklyReadingCopy.description}</p>
+                  </div>
+                  <button className="btn btn-secondary btn-sm shrink-0" onClick={handleOpenWeeklyReading}>
+                    {weeklyReadingCopy.button}
+                  </button>
+                </div>
+                <div className="rounded-2xl border border-base-200 bg-base-100/80 px-4 py-3">
+                  <p className="text-xs text-base-content/60">{weeklyReadingCopy.helper}</p>
+                </div>
               </div>
             </div>
           </section>
