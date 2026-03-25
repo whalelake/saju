@@ -27,9 +27,9 @@ interface Props {
 }
 
 const FOLLOWUP_QUESTIONS: Record<TabKey, FollowupQuestionId[]> = {
-  saju: ['strength', 'relationship', 'career_money'],
-  ziwei: ['timing', 'relationship', 'growth'],
-  natal: ['strength', 'career_money', 'growth'],
+  saju: ['strength', 'relationship', 'career_money', 'timing', 'growth'],
+  ziwei: ['timing', 'relationship', 'growth', 'strength', 'career_money'],
+  natal: ['strength', 'career_money', 'growth', 'timing', 'relationship'],
 }
 
 const QUESTION_LABELS: Record<LanguageKey, Record<FollowupQuestionId, string>> = {
@@ -71,6 +71,10 @@ const SECTION_TEXT: Record<LanguageKey, {
   moreAi: string
   aiPreview: string
   aiLoading: string
+  nextTitle: string
+  nextDescription: string
+  nextPrimary: string
+  nextSecondary: string
 }> = {
   ko: {
     followup: '후속 질문',
@@ -80,6 +84,10 @@ const SECTION_TEXT: Record<LanguageKey, {
     moreAi: 'AI 해석 더 보기',
     aiPreview: 'AI 한 줄 요약',
     aiLoading: '실제 AI 요약을 불러오는 중이에요.',
+    nextTitle: '다음에 읽기 좋은 흐름',
+    nextDescription: 'AI 해석을 이해했으면 관련 가이드나 기사로 이동해요.',
+    nextPrimary: '관련 기사 전체 보기',
+    nextSecondary: '가이드 전체 보기',
   },
   en: {
     followup: 'Follow-up prompts',
@@ -89,6 +97,10 @@ const SECTION_TEXT: Record<LanguageKey, {
     moreAi: 'Open AI interpretation',
     aiPreview: 'AI preview',
     aiLoading: 'Loading a real AI summary.',
+    nextTitle: 'Next steps',
+    nextDescription: 'Keep the flow going with more articles or guides.',
+    nextPrimary: 'See all articles',
+    nextSecondary: 'Browse guides',
   },
   ja: {
     followup: 'フォローアップ',
@@ -98,6 +110,10 @@ const SECTION_TEXT: Record<LanguageKey, {
     moreAi: 'AI解釈をもっと見る',
     aiPreview: 'AIの一行要約',
     aiLoading: '実際のAI要約を読み込み中です。',
+    nextTitle: '次に読むべき内容',
+    nextDescription: 'AI解釈のあと、別のガイドや記事で理解を深めましょう。',
+    nextPrimary: '記事一覧を見る',
+    nextSecondary: 'ガイド一覧を見る',
   },
   zh: {
     followup: '后续问题',
@@ -107,6 +123,10 @@ const SECTION_TEXT: Record<LanguageKey, {
     moreAi: '查看更多 AI 解读',
     aiPreview: 'AI 一句话摘要',
     aiLoading: '正在加载真实 AI 摘要。',
+    nextTitle: '接下来阅读',
+    nextDescription: 'AI 解读后可以继续阅读相关文章或指南。',
+    nextPrimary: '查看所有文章',
+    nextSecondary: '浏览指南',
   },
 }
 
@@ -721,7 +741,7 @@ export default function ResultEngagementPanel({
           </div>
         </div>
 
-        <div className="border-t border-base-300 pt-4">
+        <div className="border-t border-base-300 pt-4 space-y-5">
           <div className="flex items-start justify-between gap-3">
             <div>
               <p className="text-sm font-semibold">{text.related}</p>
@@ -731,7 +751,7 @@ export default function ResultEngagementPanel({
               {text.guides}
             </Link>
           </div>
-          <div className="mt-3 grid gap-3">
+          <div className="grid gap-3">
             {links.map((link) => (
               <Link
                 key={link.slug}
@@ -745,6 +765,26 @@ export default function ResultEngagementPanel({
                 </span>
               </Link>
             ))}
+          </div>
+          <div className="flex flex-col gap-3 rounded-2xl border border-base-300 bg-base-100/80 p-4">
+            <div>
+              <p className="text-sm font-semibold">{text.nextTitle}</p>
+              <p className="text-xs text-base-content/60">{text.nextDescription}</p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <Link
+                to={`/${language}/articles`}
+                className="btn btn-sm btn-primary flex-1 min-w-max"
+              >
+                {text.nextPrimary}
+              </Link>
+              <Link
+                to={`/${language}/guide`}
+                className="btn btn-sm btn-outline flex-1 min-w-max"
+              >
+                {text.nextSecondary}
+              </Link>
+            </div>
           </div>
         </div>
       </div>

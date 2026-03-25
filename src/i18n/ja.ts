@@ -128,6 +128,7 @@ export const ja: TranslationKeys = {
     copyForAI: 'AI解釈用コピー',
     loading: '読み込み中...',
     error: '計算エラー',
+    nextReading: '次の読み物',
   },
 
   // 四柱推命結果

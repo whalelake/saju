@@ -126,6 +126,7 @@ export const ko = {
     copyForAI: 'AI 해석용 복사',
     loading: '로딩 중...',
     error: '계산 오류',
+    nextReading: '다음 읽기 흐름',
   },
 
   // 사주 결과

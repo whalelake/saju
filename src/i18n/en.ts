@@ -128,6 +128,7 @@ export const en: TranslationKeys = {
     copyForAI: 'Copy for AI',
     loading: 'Loading...',
     error: 'Calculation Error',
+    nextReading: 'Next things to read',
   },
 
   // Saju Results

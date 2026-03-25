@@ -539,19 +539,21 @@ export default function App() {
                     {t.display.natalTab}
                   </button>
                 </div>
-                <div className="ml-2 flex gap-1">
-                  <CopyButton
-                    label={<span className="text-xs">{t.common.copy}</span>}
-                    getText={getAllData}
-                  />
-                  <button
-                    className="btn btn-sm btn-ghost gap-1"
-                    onClick={() => setShareOpen(true)}
-                  >
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-                    </svg>
-                  </button>
+                <div className="ml-2 flex flex-col items-end gap-1">
+                  <div className="flex gap-1">
+                    <CopyButton
+                      label={<span className="text-xs">{t.common.copy}</span>}
+                      getText={getAllData}
+                    />
+                    <button
+                      className="btn btn-sm btn-ghost gap-1"
+                      onClick={() => setShareOpen(true)}
+                    >
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                      </svg>
+                    </button>
+                  </div>
                   <button
                     className="btn btn-sm btn-primary gap-1"
                     onClick={() => openInterpret('result_summary')}
@@ -580,6 +582,44 @@ export default function App() {
                   onSelectFollowupQuestion={handleFollowupQuestion}
                   onSelectRelatedLink={handleRelatedArticleClick}
                 />
+                <div className="border-t border-base-300 bg-base-100 px-4 py-4">
+                  <p className="text-xs text-base-content/70 mb-2">{t.results.nextReading}</p>
+                  <div className="flex flex-wrap gap-2">
+                    <button
+                      type="button"
+                      className={`btn btn-outline btn-sm rounded-full ${tab === 'saju' ? 'btn-primary text-white' : 'text-base-content'}`}
+                      onClick={() => setTab('saju')}
+                    >
+                      {t.display.sajuTab}
+                    </button>
+                    <button
+                      type="button"
+                      className={`btn btn-outline btn-sm rounded-full ${tab === 'ziwei' ? 'btn-primary text-white' : 'text-base-content'}`}
+                      onClick={() => setTab('ziwei')}
+                    >
+                      {t.display.ziweiTab}
+                    </button>
+                    <button
+                      type="button"
+                      className={`btn btn-outline btn-sm rounded-full ${tab === 'natal' ? 'btn-primary text-white' : 'text-base-content'}`}
+                      onClick={() => setTab('natal')}
+                    >
+                      {t.display.natalTab}
+                    </button>
+                    <Link
+                      to={`/${currentLang}/guide`}
+                      className="btn btn-outline btn-sm rounded-full text-base-content"
+                    >
+                      {t.guide.title}
+                    </Link>
+                    <Link
+                      to={`/${currentLang}/articles`}
+                      className="btn btn-outline btn-sm rounded-full text-base-content"
+                    >
+                      {t.articles.title}
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

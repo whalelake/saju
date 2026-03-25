@@ -128,6 +128,7 @@ export const zh: TranslationKeys = {
     copyForAI: 'AI解读用复制',
     loading: '加载中...',
     error: '计算错误',
+    nextReading: '接下来的阅读',
   },
 
   // 四柱八字结果
