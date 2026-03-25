@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router'
 import { useI18n, type Language } from '../i18n'
 import SeoHead from '../components/SeoHead'
+import { ARTICLE_CATALOG, type ArticleCluster } from '../content/article-catalog'
 
 export default function ArticlesIndex() {
   const { t, language } = useI18n()
@@ -24,73 +25,29 @@ export default function ArticlesIndex() {
         ? '汇总适合入门的四柱、紫微斗数与西方占星内容，方便继续进入计算与 AI 解读。'
         : 'Browse beginner-friendly articles on Saju, Zi Wei Dou Shu, and Western astrology, built to lead into calculation and AI interpretation.'
 
-  const articles = [
-    {
-      id: 'what-is-saju',
-      category: isKo ? '입문' : isJa ? '入門' : isZh ? '入门' : 'Starter',
-      title: t.articles.whatIsSaju.title,
-      subtitle: t.articles.whatIsSaju.subtitle,
-      intro: t.articles.whatIsSaju.intro,
-    },
-    {
-      id: 'five-elements',
-      category: isKo ? '기초 이론' : isJa ? '基礎理論' : isZh ? '基础理论' : 'Basics',
-      title: t.articles.fiveElements.title,
-      subtitle: t.articles.fiveElements.subtitle,
-      intro: t.articles.fiveElements.intro,
-    },
-    {
-      id: 'what-is-ziwei',
-      category: isKo ? '입문' : isJa ? '入門' : isZh ? '入门' : 'Starter',
-      title: t.articles.whatIsZiwei.title,
-      subtitle: t.articles.whatIsZiwei.subtitle,
-      intro: t.articles.whatIsZiwei.intro,
-    },
-    {
-      id: 'unknown-time-saju',
-      category: isKo ? '실전 팁' : isJa ? '実戦ヒント' : isZh ? '实战技巧' : 'Practical',
-      title: t.articles.unknownTimeSaju.title,
-      subtitle: t.articles.unknownTimeSaju.subtitle,
-      intro: t.articles.unknownTimeSaju.intro,
-    },
-    {
-      id: 'love-and-relationships',
-      category: isKo ? '관계 해석' : isJa ? '関係解釈' : isZh ? '关系解读' : 'Relationships',
-      title: t.articles.loveAndRelationships.title,
-      subtitle: t.articles.loveAndRelationships.subtitle,
-      intro: t.articles.loveAndRelationships.intro,
-    },
-    {
-      id: 'career-and-money',
-      category: isKo ? '커리어' : isJa ? '仕事とお金' : isZh ? '事业财运' : 'Career',
-      title: t.articles.careerAndMoney.title,
-      subtitle: t.articles.careerAndMoney.subtitle,
-      intro: t.articles.careerAndMoney.intro,
-    },
-    {
-      id: 'day-master-types',
-      category: isKo ? '사주 심화' : isJa ? '四柱深掘り' : isZh ? '四柱进阶' : 'Saju Deep Dive',
-      title: t.articles.dayMasterTypes.title,
-      subtitle: t.articles.dayMasterTypes.subtitle,
-      intro: t.articles.dayMasterTypes.intro,
-    },
-    {
-      id: 'ten-gods-for-beginners',
-      category: isKo ? '사주 심화' : isJa ? '四柱深掘り' : isZh ? '四柱进阶' : 'Saju Deep Dive',
-      title: t.articles.tenGodsForBeginners.title,
-      subtitle: t.articles.tenGodsForBeginners.subtitle,
-      intro: t.articles.tenGodsForBeginners.intro,
-    },
-    {
-      id: 'big-three-astrology',
-      category: isKo ? '점성술' : isJa ? '占星術' : isZh ? '占星' : 'Astrology',
-      title: t.articles.bigThreeAstrology.title,
-      subtitle: t.articles.bigThreeAstrology.subtitle,
-      intro: t.articles.bigThreeAstrology.intro,
-    },
-  ]
+  const clusterLabels: Record<ArticleCluster, string> = {
+    starter: isKo ? '입문' : isJa ? '入門' : isZh ? '入门' : 'Starter',
+    relationship: isKo ? '연애/관계' : isJa ? '恋愛・関係' : isZh ? '恋爱关系' : 'Relationships',
+    career: isKo ? '직업/재물' : isJa ? '仕事・お金' : isZh ? '事业财运' : 'Career & Money',
+    unknown_time: isKo ? '출생시간 모름' : isJa ? '出生時間不明' : isZh ? '出生时间未知' : 'Unknown Birth Time',
+    deep_dive: isKo ? '사주 심화' : isJa ? '四柱深掘り' : isZh ? '四柱进阶' : 'Saju Deep Dive',
+    astrology: isKo ? '점성술' : isJa ? '占星術' : isZh ? '占星' : 'Astrology',
+  }
 
-  const featuredArticles = [articles[0], articles[6], articles[8]]
+  const articles = ARTICLE_CATALOG.map((item) => ({
+    id: item.id,
+    key: item.key,
+    cluster: item.cluster,
+    category: clusterLabels[item.cluster],
+    title: t.articles[item.key].title,
+    subtitle: t.articles[item.key].subtitle,
+    intro: t.articles[item.key].intro,
+  }))
+
+  const featuredArticleIds = ['what-is-saju', 'relationship-patterns', 'career-strengths-saju']
+  const featuredArticles = featuredArticleIds
+    .map((id) => articles.find((article) => article.id === id))
+    .filter((article): article is typeof articles[number] => Boolean(article))
   const collections = [
     {
       title: isKo ? '처음 보는 사람에게' : isJa ? '最初に読む3本' : isZh ? '新手先看这三篇' : 'Start Here',
@@ -112,13 +69,80 @@ export default function ArticlesIndex() {
           : isZh
             ? '这些主题最适合看完结果后直接继续 AI 提问。'
             : 'Topics that bridge naturally into AI interpretation.',
-      ids: ['unknown-time-saju', 'career-and-money', 'love-and-relationships'],
+      ids: ['unknown-time-saju', 'career-strengths-saju', 'relationship-patterns'],
+    },
+  ]
+
+  const clusters = [
+    {
+      key: 'relationship',
+      title: isKo ? '연애/관계 클러스터' : isJa ? '恋愛・関係クラスター' : isZh ? '恋爱关系专题' : 'Relationship Cluster',
+      description: isKo
+        ? '관계 패턴, 연애 시기, 대화 포인트처럼 AI 해석으로 잘 이어지는 묶음입니다.'
+        : isJa
+          ? '関係パターン、恋愛のタイミング、会話の焦点などAI解釈につながりやすい束です。'
+          : isZh
+            ? '围绕关系模式、恋爱时机、沟通重点，最适合继续进入 AI 解读。'
+            : 'A cluster built around relationship patterns, timing, and practical follow-up questions for AI.',
+      ids: [
+        'love-and-relationships',
+        'relationship-patterns',
+        'relationship-timing',
+        'compatibility-before-love',
+        'emotional-communication-saju',
+        'relationship-red-flags-timing',
+      ],
+    },
+    {
+      key: 'career',
+      title: isKo ? '직업/재물 클러스터' : isJa ? '仕事・お金クラスター' : isZh ? '事业财运专题' : 'Career & Money Cluster',
+      description: isKo
+        ? '직업 강점, 돈 흐름, 움직일 시기를 중심으로 계산 전환을 노리는 묶음입니다.'
+        : isJa
+          ? '仕事の強み、お金の流れ、動くタイミングを中心に計算へつなぐ束です。'
+          : isZh
+            ? '围绕职业优势、财运流向与行动时机，专门为计算转化设计。'
+            : 'Focused on job strengths, money flow, and timing so readers naturally continue into calculation.',
+      ids: [
+        'career-and-money',
+        'career-strengths-saju',
+        'money-flow-timing',
+        'career-change-timing',
+        'side-hustle-vs-stability',
+        'wealth-risk-management',
+      ],
+    },
+    {
+      key: 'unknown_time',
+      title: isKo ? '출생시간 모름 클러스터' : isJa ? '出生時間不明クラスター' : isZh ? '出生时间未知专题' : 'Unknown Birth Time Cluster',
+      description: isKo
+        ? '출생시간이 없어도 어디까지 볼 수 있는지, 어떤 체계가 가능한지 정리한 묶음입니다.'
+        : isJa
+          ? '出生時間がなくてもどこまで読めるか、どの体系が使えるかを整理した束です。'
+          : isZh
+            ? '整理在没有出生时间时还能看到什么、哪些体系还能继续使用。'
+            : 'Explains what you can still read without a birth time and which systems remain useful.',
+      ids: [
+        'unknown-time-saju',
+        'unknown-time-limits',
+        'ziwei-birth-time-importance',
+        'noon-chart-guide',
+        'birth-time-clues',
+        'natal-without-time',
+      ],
     },
   ]
 
   const collectionItems = collections.map((collection) => ({
     ...collection,
     articles: collection.ids
+      .map((id) => articles.find((article) => article.id === id))
+      .filter((article): article is typeof articles[number] => Boolean(article)),
+  }))
+
+  const clusterItems = clusters.map((cluster) => ({
+    ...cluster,
+    articles: cluster.ids
       .map((id) => articles.find((article) => article.id === id))
       .filter((article): article is typeof articles[number] => Boolean(article)),
   }))
@@ -211,6 +235,27 @@ export default function ArticlesIndex() {
                       <div className="text-xs text-base-content/60 mt-1">{article.subtitle}</div>
                     </div>
                     <span className="text-xs text-primary shrink-0 mt-0.5">{t.articles.readMore}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+        </section>
+
+        <section className="grid gap-4 mb-8 lg:grid-cols-3">
+          {clusterItems.map((cluster) => (
+            <div key={cluster.key} className="rounded-2xl border border-base-300 bg-base-100 p-5">
+              <h2 className="text-lg font-bold">{cluster.title}</h2>
+              <p className="text-sm text-base-content/65 mt-1">{cluster.description}</p>
+              <div className="mt-4 space-y-3">
+                {cluster.articles.map((article) => (
+                  <Link
+                    key={article.id}
+                    to={`/${currentLang}/articles/${article.id}`}
+                    className="block rounded-xl bg-base-200 px-4 py-3 transition-colors hover:bg-base-300"
+                  >
+                    <div className="text-sm font-medium text-base-content">{article.title}</div>
+                    <div className="text-xs text-base-content/60 mt-1 line-clamp-2">{article.intro}</div>
                   </Link>
                 ))}
               </div>

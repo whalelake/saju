@@ -2,6 +2,7 @@ import { Link, useParams, Navigate } from 'react-router'
 import { useI18n } from '../i18n'
 import SeoHead from '../components/SeoHead'
 import AdBanner from '../components/AdBanner'
+import { ARTICLE_CATALOG, ARTICLE_RELATED_MAP, type ArticleKey } from '../content/article-catalog'
 
 type ArticleContent = {
   title: string
@@ -131,6 +132,12 @@ const ARTICLE_COPY: Record<LanguageKey, {
   },
 }
 
+interface ArticleCard {
+  id: string
+  key: ArticleKey
+  content: ArticleContent
+}
+
 declare global {
   interface Window {
     dataLayer: Record<string, unknown>[]
@@ -150,48 +157,18 @@ export default function ArticlePage() {
   const currentLang = (lang || language) as LanguageKey
   const copy = ARTICLE_COPY[currentLang]
 
-  const articleCards = [
-    { id: 'what-is-saju', content: t.articles.whatIsSaju },
-    { id: 'five-elements', content: t.articles.fiveElements },
-    { id: 'what-is-ziwei', content: t.articles.whatIsZiwei },
-    { id: 'unknown-time-saju', content: t.articles.unknownTimeSaju },
-    { id: 'love-and-relationships', content: t.articles.loveAndRelationships },
-    { id: 'career-and-money', content: t.articles.careerAndMoney },
-    { id: 'day-master-types', content: t.articles.dayMasterTypes },
-    { id: 'ten-gods-for-beginners', content: t.articles.tenGodsForBeginners },
-    { id: 'big-three-astrology', content: t.articles.bigThreeAstrology },
-  ]
+  const articleCards: ArticleCard[] = ARTICLE_CATALOG.map((item) => ({
+    id: item.id,
+    key: item.key,
+    content: t.articles[item.key],
+  }))
 
-  const articlesMap: Record<string, ArticleContent> = {
-    'what-is-saju': t.articles.whatIsSaju,
-    'five-elements': t.articles.fiveElements,
-    'what-is-ziwei': t.articles.whatIsZiwei,
-    'unknown-time-saju': t.articles.unknownTimeSaju,
-    'love-and-relationships': t.articles.loveAndRelationships,
-    'career-and-money': t.articles.careerAndMoney,
-    'day-master-types': t.articles.dayMasterTypes,
-    'ten-gods-for-beginners': t.articles.tenGodsForBeginners,
-    'big-three-astrology': t.articles.bigThreeAstrology,
-  }
-
-  const relatedArticleMap: Record<string, string[]> = {
-    'what-is-saju': ['day-master-types', 'ten-gods-for-beginners', 'career-and-money'],
-    'five-elements': ['what-is-saju', 'career-and-money', 'big-three-astrology'],
-    'what-is-ziwei': ['love-and-relationships', 'career-and-money', 'big-three-astrology'],
-    'unknown-time-saju': ['day-master-types', 'ten-gods-for-beginners', 'what-is-saju'],
-    'love-and-relationships': ['career-and-money', 'big-three-astrology', 'what-is-saju'],
-    'career-and-money': ['ten-gods-for-beginners', 'day-master-types', 'big-three-astrology'],
-    'day-master-types': ['ten-gods-for-beginners', 'career-and-money', 'what-is-saju'],
-    'ten-gods-for-beginners': ['day-master-types', 'unknown-time-saju', 'career-and-money'],
-    'big-three-astrology': ['love-and-relationships', 'career-and-money', 'what-is-ziwei'],
-  }
-
-  const article = articleId ? articlesMap[articleId] : null
-  const relatedIds = articleId ? relatedArticleMap[articleId] ?? [] : []
+  const article = articleId ? articleCards.find((item) => item.id === articleId)?.content ?? null : null
+  const relatedIds = articleId ? ARTICLE_RELATED_MAP[articleId] ?? [] : []
   const relatedArticles = [
     ...relatedIds
       .map((id) => articleCards.find((item) => item.id === id))
-      .filter((item): item is { id: string; content: ArticleContent } => Boolean(item)),
+      .filter((item): item is ArticleCard => Boolean(item)),
     ...articleCards.filter((item) => item.id !== articleId && !relatedIds.includes(item.id)),
   ].slice(0, 3)
 
