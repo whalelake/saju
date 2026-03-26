@@ -419,7 +419,7 @@ export default function LandingPage() {
               {content.description}
             </p>
 
-            <AdBanner slot="SLOT_ARTICLE_TOP" format="horizontal" />
+            <AdBanner slot="landing_article_top" format="horizontal" />
 
             {content.sections.map((section, index) => (
               <section key={index} className="mt-6">
@@ -457,7 +457,7 @@ export default function LandingPage() {
         </article>
 
         <div className="mt-6">
-          <AdBanner slot="SLOT_ARTICLE_BOTTOM" format="horizontal" />
+          <AdBanner slot="landing_article_bottom" format="horizontal" />
         </div>
 
         <div className="mt-8 text-center">

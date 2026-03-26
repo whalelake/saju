@@ -191,7 +191,7 @@ export default function GuideIndex() {
           </p>
         </div>
 
-        <AdBanner slot="SLOT_GUIDE_TOP" format="horizontal" />
+        <AdBanner slot="guide_top" format="horizontal" />
 
         <div className="space-y-6 mt-6">
           {categories.map((category, catIndex) => (

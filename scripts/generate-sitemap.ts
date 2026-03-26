@@ -1,5 +1,6 @@
 import { mkdir, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
+import { ARTICLE_IDS } from '../src/content/article-catalog'
 
 const SITE_URL = 'https://saju-wheat.vercel.app'
 const LANGUAGES = ['ko', 'en', 'ja', 'zh'] as const
@@ -12,18 +13,6 @@ type RouteGroup = {
   changefreq: 'daily' | 'weekly' | 'monthly' | 'yearly'
   priority: string
 }
-
-const ARTICLE_IDS = [
-  'what-is-saju',
-  'five-elements',
-  'what-is-ziwei',
-  'unknown-time-saju',
-  'love-and-relationships',
-  'career-and-money',
-  'day-master-types',
-  'ten-gods-for-beginners',
-  'big-three-astrology',
-] as const
 
 const sharedPathGroup = (
   suffix: string,

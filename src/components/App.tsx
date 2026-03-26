@@ -503,7 +503,7 @@ export default function App() {
           <Hero onStart={handleStart} />
           {/* 광고: Hero 하단 */}
           <div className="max-w-2xl mx-auto px-4 mt-4">
-            <AdBanner slot="SLOT_HERO_BOTTOM" format="horizontal" />
+            <AdBanner slot="hero_bottom" format="horizontal" />
           </div>
         </>
       )}
@@ -565,7 +565,7 @@ export default function App() {
 
         {/* 광고: 폼 하단 */}
         <div className="mb-6">
-          <AdBanner slot="SLOT_FORM_BOTTOM" format="horizontal" />
+          <AdBanner slot="form_bottom" format="horizontal" />
         </div>
 
         {/* 결과 영역 */}
@@ -685,7 +685,7 @@ export default function App() {
 
           {/* 광고: 결과 하단 */}
           <div className="mt-6">
-            <AdBanner slot="SLOT_RESULT_TOP" format="horizontal" />
+            <AdBanner slot="result_top" format="horizontal" />
           </div>
 
           </>
@@ -693,7 +693,7 @@ export default function App() {
 
         {/* 광고 */}
         <div className="mt-6">
-          <AdBanner slot="1234567890" format="horizontal" />
+          <AdBanner slot="result_bottom" format="horizontal" />
         </div>
 
         {/* 가이드 */}

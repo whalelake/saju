@@ -723,7 +723,7 @@ export default function ArticlePage() {
                 <div className="badge badge-outline">{copy.sponsored}</div>
                 <p className="text-xs text-base-content/50">{copy.topAdLabel}</p>
               </div>
-              <AdBanner slot="SLOT_ARTICLE_TOP" format="horizontal" />
+              <AdBanner slot="article_top" format="horizontal" />
             </section>
 
             <div className="prose prose-sm sm:prose max-w-none">
@@ -791,7 +791,7 @@ export default function ArticlePage() {
                   <div className="badge badge-outline">{copy.sponsored}</div>
                   <p className="text-xs text-base-content/50">{copy.midAdLabel}</p>
                 </div>
-                <AdBanner slot="SLOT_ARTICLE_MID" format="horizontal" />
+                <AdBanner slot="article_mid" format="horizontal" />
               </section>
 
               <section className="mb-8">
@@ -882,7 +882,7 @@ export default function ArticlePage() {
                 <div className="badge badge-outline">{copy.sponsored}</div>
                 <p className="text-xs text-base-content/50">{copy.bottomAdLabel}</p>
               </div>
-              <AdBanner slot="SLOT_ARTICLE_BOTTOM" format="horizontal" />
+              <AdBanner slot="article_bottom" format="horizontal" />
             </section>
 
             <section className="mt-8 rounded-2xl border border-accent/20 bg-accent/10 p-5">

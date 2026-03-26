@@ -3,20 +3,10 @@ import { join, dirname } from 'node:path'
 import { createServer } from 'node:http'
 import { readFileSync, existsSync } from 'node:fs'
 import { lookup } from 'node:dns/promises'
+import { ARTICLE_IDS } from '../src/content/article-catalog'
 
 const DIST_DIR = join(process.cwd(), 'dist')
 const LANGUAGES = ['ko', 'en', 'ja', 'zh'] as const
-const ARTICLE_IDS = [
-  'what-is-saju',
-  'five-elements',
-  'what-is-ziwei',
-  'unknown-time-saju',
-  'love-and-relationships',
-  'career-and-money',
-  'day-master-types',
-  'ten-gods-for-beginners',
-  'big-three-astrology',
-] as const
 
 const ROUTE_SUFFIXES = [
   '/',

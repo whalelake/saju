@@ -65,6 +65,8 @@ export const ARTICLE_CATALOG: ArticleMeta[] = [
   { id: 'natal-without-time', key: 'natalWithoutTime', cluster: 'unknown_time' },
 ]
 
+export const ARTICLE_IDS = ARTICLE_CATALOG.map((item) => item.id)
+
 export const ARTICLE_RELATED_MAP: Record<string, string[]> = {
   'what-is-saju': ['day-master-types', 'ten-gods-for-beginners', 'career-and-money'],
   'five-elements': ['what-is-saju', 'career-and-money', 'big-three-astrology'],
