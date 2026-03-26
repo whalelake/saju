@@ -11,7 +11,7 @@
     "dev": "vite",
     "prebuild": "bun run generate-sitemap",
     "build": "tsc -b && vite build",
-    "postbuild": "bun scripts/prerender.ts",
+    "postbuild": "bun scripts/inject-seo.ts && bun scripts/prerender.ts",
     "lint": "eslint .",
     "preview": "vite preview",
     "generate-sitemap": "bun scripts/generate-sitemap.ts",
