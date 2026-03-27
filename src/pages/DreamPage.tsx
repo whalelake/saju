@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import { Link } from 'react-router'
-import { useI18n } from '../i18n'
+import { useI18n, type Language } from '../i18n'
+import SeoHead from '../components/SeoHead'
 import AdBanner from '../components/AdBanner'
 import { DREAM_CATEGORIES, matchDreamCategories, type DreamCategoryKey } from '../content/dream-categories'
 import { ARTICLE_CATALOG } from '../content/article-catalog'
@@ -98,8 +99,32 @@ export default function DreamPage() {
 
   const dreamArticles = ARTICLE_CATALOG.filter(a => a.cluster === 'dream')
 
+  const seoTitle: Record<Language, string> = {
+    ko: '꿈 해몽 - AI 꿈 해석 | 명운판',
+    en: 'Dream Interpretation - AI Dream Analysis | Myungunpan',
+    ja: '夢占い - AI 夢解釈 | 命運盤',
+    zh: '解梦 - AI 梦境解读 | 命运盘',
+  }
+  const seoDescription: Record<Language, string> = {
+    ko: '꿈의 내용을 자세히 적으면 AI가 전통 해몽과 심리학적 해석을 결합하여 따뜻한 풀이를 드립니다.',
+    en: 'Describe your dream in detail and get a warm AI interpretation combining traditional dream analysis with psychological insights.',
+    ja: '夢の内容を詳しく書くと、AIが伝統的な夢占いと心理学的解釈を組み合わせて温かい解釈をお届けします。',
+    zh: '详细描述您的梦境，AI将结合传统解梦与心理学分析，为您提供温暖的解读。',
+  }
+
   return (
     <div className="min-h-screen bg-base-100">
+      <SeoHead
+        language={language as Language}
+        title={seoTitle[language as Language]}
+        description={seoDescription[language as Language]}
+        pathByLanguage={{
+          ko: '/ko/dream',
+          en: '/en/dream',
+          ja: '/ja/dream',
+          zh: '/zh/dream',
+        }}
+      />
       {/* Header */}
       <div className="navbar bg-base-200/50 backdrop-blur-sm sticky top-0 z-50 border-b border-base-300">
         <div className="flex-1">
