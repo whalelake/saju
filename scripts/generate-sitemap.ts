@@ -38,6 +38,7 @@ const routeGroups: RouteGroup[] = [
   sharedPathGroup('/articles', 'weekly', '0.9'),
   sharedPathGroup('/privacy', 'yearly', '0.3'),
   sharedPathGroup('/terms', 'yearly', '0.3'),
+  sharedPathGroup('/dream', 'weekly', '0.85'),
   ...ARTICLE_IDS.map((articleId) =>
     sharedPathGroup(`/articles/${articleId}`, 'monthly', '0.8'),
   ),

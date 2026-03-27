@@ -7,6 +7,7 @@ import PrivacyPage from './pages/PrivacyPage'
 import TermsPage from './pages/TermsPage'
 import ArticlesIndex from './pages/ArticlesIndex'
 import ArticlePage from './pages/ArticlePage'
+import DreamPage from './pages/DreamPage'
 
 const SUPPORTED_LANGUAGES: Language[] = ['ko', 'en', 'ja', 'zh']
 
@@ -95,6 +96,10 @@ export const router = createBrowserRouter([
       {
         path: 'articles/:articleId',
         element: <ArticlePage />,
+      },
+      {
+        path: 'dream',
+        element: <DreamPage />,
       },
     ],
   },
