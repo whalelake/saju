@@ -1,7 +1,7 @@
 import { mkdir, writeFile, readFile } from 'node:fs/promises'
 import { join, dirname } from 'node:path'
 import { createServer } from 'node:http'
-import { readFileSync, existsSync } from 'node:fs'
+import { readFileSync, existsSync, statSync } from 'node:fs'
 import { lookup } from 'node:dns/promises'
 import { ARTICLE_IDS } from '../src/content/article-catalog'
 
@@ -31,8 +31,14 @@ function createStaticServer(dir: string): Promise<{ server: ReturnType<typeof cr
       const url = new URL(req.url || '/', `http://localhost`)
       let filePath = join(dir, url.pathname)
 
-      if (!existsSync(filePath) || !readFileSync(filePath, { flag: 'r' }).length) {
-        filePath = join(dir, 'index.html')
+      if (!existsSync(filePath) || statSync(filePath).isDirectory()) {
+        // Try index.html inside the directory first
+        const indexInDir = join(filePath, 'index.html')
+        if (existsSync(indexInDir)) {
+          filePath = indexInDir
+        } else {
+          filePath = join(dir, 'index.html')
+        }
       }
 
       try {

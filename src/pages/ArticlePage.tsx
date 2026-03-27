@@ -153,6 +153,7 @@ const GUIDE_PATH_BY_CLUSTER: Record<ArticleCluster, string> = {
   unknown_time: '/guide/saju',
   deep_dive: '/guide/saju/ten-gods',
   astrology: '/guide/natal',
+  dream: '/dream',
 }
 
 const GUIDE_COPY: Record<LanguageKey, Record<ArticleCluster, { title: string; description: string; button: string }>> = {
@@ -187,6 +188,11 @@ const GUIDE_COPY: Record<LanguageKey, Record<ArticleCluster, { title: string; de
       description: '행성과 하우스 기초를 먼저 잡으면 점성술 기사와 AI 해석 연결이 쉬워집니다.',
       button: '출생차트 가이드 보기',
     },
+    dream: {
+      title: '꿈 해몽으로 이어가기',
+      description: '꿈에 담긴 메시지를 AI가 전통 해몽과 심리학으로 풀어드립니다.',
+      button: '꿈 해몽 해보기',
+    },
   },
   en: {
     starter: {
@@ -218,6 +224,11 @@ const GUIDE_COPY: Record<LanguageKey, Record<ArticleCluster, { title: string; de
       title: 'Continue with the natal chart guide',
       description: 'Basic planets and houses make astrology articles and AI follow-up much easier to navigate.',
       button: 'Open natal guide',
+    },
+    dream: {
+      title: 'Continue with dream interpretation',
+      description: 'Discover hidden messages in your dreams with AI-powered traditional and psychological analysis.',
+      button: 'Try dream interpretation',
     },
   },
   ja: {
@@ -251,6 +262,11 @@ const GUIDE_COPY: Record<LanguageKey, Record<ArticleCluster, { title: string; de
       description: '惑星とハウスの基礎を押さえると、占星術記事とAI解釈につながりやすくなります。',
       button: '出生図ガイドを見る',
     },
+    dream: {
+      title: '夢占いへ進む',
+      description: '夢に隠されたメッセージをAIが伝統的な夢占いと心理学で解き明かします。',
+      button: '夢占いを試す',
+    },
   },
   zh: {
     starter: {
@@ -282,6 +298,11 @@ const GUIDE_COPY: Record<LanguageKey, Record<ArticleCluster, { title: string; de
       title: '继续阅读出生图指南',
       description: '先掌握行星和宫位基础，再看占星文章和 AI 解读会轻松很多。',
       button: '查看出生图指南',
+    },
+    dream: {
+      title: '继续解梦',
+      description: 'AI结合传统解梦法和心理学，为您解读梦境中的隐藏信息。',
+      button: '试试解梦',
     },
   },
 }
@@ -364,6 +385,17 @@ const CLUSTER_CTA_COPY: Record<LanguageKey, Record<ArticleCluster, {
       aiDescription: '계산 후 감정, 관계, 일과 돈 흐름을 출생차트 기준으로 AI에게 바로 물어볼 수 있어요.',
       aiPrimary: '차트 AI 질문 시작',
     },
+    dream: {
+      inlineTitle: '이 꿈 주제를 AI 해몽으로 바로 확인해보기',
+      inlineDescription: '꿈의 상징과 의미를 AI가 전통 해몽과 심리학을 결합하여 풀어드립니다.',
+      inlinePrimary: '꿈 해몽 해보기',
+      applyTitle: '꿈에 대해 더 알고 싶다면',
+      applyDescription: '어젯밤 꿈을 AI에게 들려주면 전통 해몽과 심리학을 결합한 따뜻한 해석을 받을 수 있어요.',
+      applyPrimary: '꿈 해몽 시작하기',
+      aiTitle: '이 꿈 주제로 AI 해석 이어가기',
+      aiDescription: '꿈의 상징, 무의식의 메시지, 실천 조언까지 AI가 따뜻하게 풀어드립니다.',
+      aiPrimary: '꿈 AI 해석 시작',
+    },
   },
   en: {
     starter: {
@@ -431,6 +463,17 @@ const CLUSTER_CTA_COPY: Record<LanguageKey, Record<ArticleCluster, {
       aiTitle: 'Continue this astrology topic into AI',
       aiDescription: 'After calculation, ask AI about emotional style, relationships, work, and money through your natal chart.',
       aiPrimary: 'Start natal AI',
+    },
+    dream: {
+      inlineTitle: 'Get AI dream interpretation on this topic',
+      inlineDescription: 'Our AI combines traditional symbolism with psychology for a warm, personal dream reading.',
+      inlinePrimary: 'Try dream interpretation',
+      applyTitle: 'Want to know more about your dreams?',
+      applyDescription: 'Tell AI about last night\'s dream and get a reading combining Eastern tradition with modern psychology.',
+      applyPrimary: 'Start dream interpretation',
+      aiTitle: 'Continue this dream topic into AI',
+      aiDescription: 'AI will warmly decode dream symbols, subconscious messages, and practical advice.',
+      aiPrimary: 'Start dream AI',
     },
   },
   ja: {
@@ -500,6 +543,17 @@ const CLUSTER_CTA_COPY: Record<LanguageKey, Record<ArticleCluster, {
       aiDescription: '計算後に感情、関係、仕事、お金の流れを出生図ベースでAIに聞けます。',
       aiPrimary: '出生図AIを始める',
     },
+    dream: {
+      inlineTitle: 'この夢テーマをAI夢占いで確かめる',
+      inlineDescription: '伝統的な夢占いと心理学を組み合わせたAI解釈を受けられます。',
+      inlinePrimary: '夢占いを試す',
+      applyTitle: '夢についてもっと知りたいなら',
+      applyDescription: '昨夜の夢をAIに話すと、伝統的な夢占いと心理学を組み合わせた温かい解釈を受けられます。',
+      applyPrimary: '夢占いを始める',
+      aiTitle: 'この夢テーマをAI解釈へ進める',
+      aiDescription: '夢のシンボル、無意識のメッセージ、実践アドバイスまでAIが温かく解き明かします。',
+      aiPrimary: '夢AI解釈を始める',
+    },
   },
   zh: {
     starter: {
@@ -567,6 +621,17 @@ const CLUSTER_CTA_COPY: Record<LanguageKey, Record<ArticleCluster, {
       aiTitle: '把这个占星主题继续带进 AI',
       aiDescription: '计算后可以继续问 AI 感情、关系、工作和金钱在出生图里是怎么展开的。',
       aiPrimary: '开始星盘 AI',
+    },
+    dream: {
+      inlineTitle: '用AI解梦来解读这个主题',
+      inlineDescription: 'AI结合传统解梦法和心理学，为您提供温暖的个人梦境解读。',
+      inlinePrimary: '试试解梦',
+      applyTitle: '想了解更多关于梦的含义？',
+      applyDescription: '把昨晚的梦告诉AI，获得结合东方传统与现代心理学的温暖解读。',
+      applyPrimary: '开始解梦',
+      aiTitle: '把这个梦境主题继续带进AI',
+      aiDescription: 'AI会温暖地解读梦境象征、潜意识信息和实用建议。',
+      aiPrimary: '开始梦境AI',
     },
   },
 }

@@ -226,7 +226,7 @@ export default function DreamPage() {
                 <h3 className="text-lg font-bold mb-3">{dreamT.relatedArticles}</h3>
                 <div className="grid gap-3">
                   {dreamArticles.map(article => {
-                    const content = (t.articles as Record<string, { title: string; subtitle: string }>)[article.key]
+                    const content = (t.articles as unknown as Record<string, { title: string; subtitle: string }>)[article.key]
                     if (!content) return null
                     return (
                       <Link

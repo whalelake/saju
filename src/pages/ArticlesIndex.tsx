@@ -32,6 +32,7 @@ export default function ArticlesIndex() {
     unknown_time: isKo ? '출생시간 모름' : isJa ? '出生時間不明' : isZh ? '出生时间未知' : 'Unknown Birth Time',
     deep_dive: isKo ? '사주 심화' : isJa ? '四柱深掘り' : isZh ? '四柱进阶' : 'Saju Deep Dive',
     astrology: isKo ? '점성술' : isJa ? '占星術' : isZh ? '占星' : 'Astrology',
+    dream: isKo ? '꿈 해몽' : isJa ? '夢占い' : isZh ? '解梦' : 'Dream Interpretation',
   }
 
   const articles = ARTICLE_CATALOG.map((item) => ({
