@@ -749,6 +749,16 @@ export default function ArticlePage() {
     image: 'https://saju-wheat.vercel.app/og-image.png',
   }
 
+  const articleBreadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      { '@type': 'ListItem', position: 1, name: currentLang === 'ko' ? '홈' : currentLang === 'ja' ? 'ホーム' : currentLang === 'zh' ? '首页' : 'Home', item: `https://saju-wheat.vercel.app/${currentLang}/` },
+      { '@type': 'ListItem', position: 2, name: currentLang === 'ko' ? '기사' : currentLang === 'ja' ? '記事' : currentLang === 'zh' ? '文章' : 'Articles', item: `https://saju-wheat.vercel.app/${currentLang}/articles` },
+      { '@type': 'ListItem', position: 3, name: article.title },
+    ],
+  }
+
   function handleArticleCtaClick(entry: string, target: string) {
     trackEvent('article_cta_click', {
       lang: currentLang,
@@ -766,7 +776,7 @@ export default function ArticlePage() {
         description={article.intro}
         pathByLanguage={articlePathByLanguage}
         type="article"
-        structuredData={articleStructuredData}
+        structuredData={[articleStructuredData, articleBreadcrumb]}
       />
       <div className="max-w-3xl mx-auto px-4 py-8">
         <Link to={`/${currentLang}/articles`} className="btn btn-ghost btn-sm mb-6">

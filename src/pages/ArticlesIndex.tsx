@@ -148,6 +148,15 @@ export default function ArticlesIndex() {
       .filter((article): article is typeof articles[number] => Boolean(article)),
   }))
 
+  const breadcrumbData = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      { '@type': 'ListItem', position: 1, name: isKo ? '홈' : isJa ? 'ホーム' : isZh ? '首页' : 'Home', item: `https://saju-wheat.vercel.app/${currentLang}/` },
+      { '@type': 'ListItem', position: 2, name: isKo ? '기사' : isJa ? '記事' : isZh ? '文章' : 'Articles' },
+    ],
+  }
+
   return (
     <div className="min-h-screen bg-base-200">
       <SeoHead
@@ -160,6 +169,7 @@ export default function ArticlesIndex() {
           ja: '/ja/articles',
           zh: '/zh/articles',
         }}
+        structuredData={breadcrumbData}
       />
       <div className="max-w-4xl mx-auto px-4 py-8">
         <Link to={`/${currentLang}/`} className="btn btn-ghost btn-sm mb-6">

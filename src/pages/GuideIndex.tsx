@@ -150,6 +150,15 @@ export default function GuideIndex() {
     { label: t.guide.title },
   ]
 
+  const breadcrumbData = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      { '@type': 'ListItem', position: 1, name: language === 'ko' ? '홈' : language === 'ja' ? 'ホーム' : language === 'zh' ? '首页' : 'Home', item: `https://saju-wheat.vercel.app/${language}/` },
+      { '@type': 'ListItem', position: 2, name: t.guide.title },
+    ],
+  }
+
   return (
     <div className="min-h-screen bg-base-200">
       <SeoHead
@@ -162,6 +171,7 @@ export default function GuideIndex() {
           ja: '/ja/guide',
           zh: '/zh/guide',
         }}
+        structuredData={breadcrumbData}
       />
       <header className="navbar bg-base-100 border-b border-base-300 sticky top-0 z-40">
         <div className="navbar-start">
