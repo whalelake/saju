@@ -154,6 +154,7 @@ const GUIDE_PATH_BY_CLUSTER: Record<ArticleCluster, string> = {
   deep_dive: '/guide/saju/ten-gods',
   astrology: '/guide/natal',
   dream: '/dream',
+  ziwei: '/guide/ziwei',
 }
 
 const GUIDE_COPY: Record<LanguageKey, Record<ArticleCluster, { title: string; description: string; button: string }>> = {
@@ -193,6 +194,11 @@ const GUIDE_COPY: Record<LanguageKey, Record<ArticleCluster, { title: string; de
       description: '꿈에 담긴 메시지를 AI가 전통 해몽과 심리학으로 풀어드립니다.',
       button: '꿈 해몽 해보기',
     },
+    ziwei: {
+      title: '자미두수 명반 계산하기',
+      description: '내 명반에서 주성 배치를 직접 확인해보세요.',
+      button: '명반 계산',
+    },
   },
   en: {
     starter: {
@@ -229,6 +235,11 @@ const GUIDE_COPY: Record<LanguageKey, Record<ArticleCluster, { title: string; de
       title: 'Continue with dream interpretation',
       description: 'Discover hidden messages in your dreams with AI-powered traditional and psychological analysis.',
       button: 'Try dream interpretation',
+    },
+    ziwei: {
+      title: 'Calculate Your Zi Wei Chart',
+      description: 'See how the main stars are placed in your birth chart.',
+      button: 'Calculate chart',
     },
   },
   ja: {
@@ -267,6 +278,11 @@ const GUIDE_COPY: Record<LanguageKey, Record<ArticleCluster, { title: string; de
       description: '夢に隠されたメッセージをAIが伝統的な夢占いと心理学で解き明かします。',
       button: '夢占いを試す',
     },
+    ziwei: {
+      title: '紫微斗数の命盤を計算する',
+      description: '自分の命盤で主星の配置を確認してみましょう。',
+      button: '命盤計算',
+    },
   },
   zh: {
     starter: {
@@ -303,6 +319,11 @@ const GUIDE_COPY: Record<LanguageKey, Record<ArticleCluster, { title: string; de
       title: '继续解梦',
       description: 'AI结合传统解梦法和心理学，为您解读梦境中的隐藏信息。',
       button: '试试解梦',
+    },
+    ziwei: {
+      title: '计算你的紫微斗数命盘',
+      description: '亲自查看命盘中主星的排列位置。',
+      button: '计算命盘',
     },
   },
 }
@@ -396,6 +417,17 @@ const CLUSTER_CTA_COPY: Record<LanguageKey, Record<ArticleCluster, {
       aiDescription: '꿈의 상징, 무의식의 메시지, 실천 조언까지 AI가 따뜻하게 풀어드립니다.',
       aiPrimary: '꿈 AI 해석 시작',
     },
+    ziwei: {
+      inlineTitle: '내 명반에서 바로 확인해보기',
+      inlineDescription: '주성의 배치를 직접 보면 이해가 더 빨라져요.',
+      inlinePrimary: '명반 계산하기',
+      applyTitle: '읽은 내용 바로 적용해보기',
+      applyDescription: '자미두수 명반을 계산하고 AI 해석까지 이어보세요.',
+      applyPrimary: '내 명반 계산하기',
+      aiTitle: 'AI로 명반 해석 받기',
+      aiDescription: '주성 배치의 의미를 AI가 쉽게 풀어드려요.',
+      aiPrimary: 'AI 해석 시작',
+    },
   },
   en: {
     starter: {
@@ -474,6 +506,17 @@ const CLUSTER_CTA_COPY: Record<LanguageKey, Record<ArticleCluster, {
       aiTitle: 'Continue this dream topic into AI',
       aiDescription: 'AI will warmly decode dream symbols, subconscious messages, and practical advice.',
       aiPrimary: 'Start dream AI',
+    },
+    ziwei: {
+      inlineTitle: 'Check your chart right now',
+      inlineDescription: 'Seeing how stars are placed makes everything click.',
+      inlinePrimary: 'Calculate chart',
+      applyTitle: 'Apply what you read',
+      applyDescription: 'Calculate your Zi Wei chart and continue into AI interpretation.',
+      applyPrimary: 'Calculate my chart',
+      aiTitle: 'Get AI chart reading',
+      aiDescription: 'Let AI explain what your star placements mean.',
+      aiPrimary: 'Start AI reading',
     },
   },
   ja: {
@@ -554,6 +597,17 @@ const CLUSTER_CTA_COPY: Record<LanguageKey, Record<ArticleCluster, {
       aiDescription: '夢のシンボル、無意識のメッセージ、実践アドバイスまでAIが温かく解き明かします。',
       aiPrimary: '夢AI解釈を始める',
     },
+    ziwei: {
+      inlineTitle: '自分の命盤で確認する',
+      inlineDescription: '主星の配置を直接見ると理解が早くなります。',
+      inlinePrimary: '命盤計算',
+      applyTitle: '読んだ内容を実践する',
+      applyDescription: '紫微斗数の命盤を計算し、AI解釈へ進みましょう。',
+      applyPrimary: '命盤を計算する',
+      aiTitle: 'AIで命盤を解読',
+      aiDescription: '主星配置の意味をAIがわかりやすく解説します。',
+      aiPrimary: 'AI解釈を開始',
+    },
   },
   zh: {
     starter: {
@@ -632,6 +686,17 @@ const CLUSTER_CTA_COPY: Record<LanguageKey, Record<ArticleCluster, {
       aiTitle: '把这个梦境主题继续带进AI',
       aiDescription: 'AI会温暖地解读梦境象征、潜意识信息和实用建议。',
       aiPrimary: '开始梦境AI',
+    },
+    ziwei: {
+      inlineTitle: '立即查看你的命盘',
+      inlineDescription: '直接看到主星排列，理解更快。',
+      inlinePrimary: '计算命盘',
+      applyTitle: '实践刚读到的内容',
+      applyDescription: '计算紫微斗数命盘，继续进入 AI 解读。',
+      applyPrimary: '计算我的命盘',
+      aiTitle: 'AI 解读命盘',
+      aiDescription: '让 AI 为您解释主星排列的含义。',
+      aiPrimary: '开始 AI 解读',
     },
   },
 }

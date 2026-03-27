@@ -26,6 +26,11 @@ export type ArticleKey =
   | 'dreamInterpretationGuide'
   | 'dreamSymbolsMeaning'
   | 'luckyDreams'
+  | 'ziweiChartReading'
+  | 'ziwei14MainStars'
+  | 'ziweiFourTransformations'
+  | 'ziweiVsSaju'
+  | 'ziweiCompatibility'
 
 export type ArticleCluster =
   | 'starter'
@@ -35,6 +40,7 @@ export type ArticleCluster =
   | 'deep_dive'
   | 'astrology'
   | 'dream'
+  | 'ziwei'
 
 export interface ArticleMeta {
   id: string
@@ -70,6 +76,11 @@ export const ARTICLE_CATALOG: ArticleMeta[] = [
   { id: 'dream-interpretation-guide', key: 'dreamInterpretationGuide', cluster: 'dream' },
   { id: 'dream-symbols-meaning', key: 'dreamSymbolsMeaning', cluster: 'dream' },
   { id: 'lucky-dreams', key: 'luckyDreams', cluster: 'dream' },
+  { id: 'ziwei-chart-reading', key: 'ziweiChartReading', cluster: 'ziwei' },
+  { id: 'ziwei-14-main-stars', key: 'ziwei14MainStars', cluster: 'ziwei' },
+  { id: 'ziwei-four-transformations', key: 'ziweiFourTransformations', cluster: 'ziwei' },
+  { id: 'ziwei-vs-saju', key: 'ziweiVsSaju', cluster: 'ziwei' },
+  { id: 'ziwei-compatibility', key: 'ziweiCompatibility', cluster: 'ziwei' },
 ]
 
 export const ARTICLE_IDS = ARTICLE_CATALOG.map((item) => item.id)
@@ -77,7 +88,7 @@ export const ARTICLE_IDS = ARTICLE_CATALOG.map((item) => item.id)
 export const ARTICLE_RELATED_MAP: Record<string, string[]> = {
   'what-is-saju': ['day-master-types', 'ten-gods-for-beginners', 'career-and-money'],
   'five-elements': ['what-is-saju', 'career-and-money', 'big-three-astrology'],
-  'what-is-ziwei': ['ziwei-birth-time-importance', 'career-and-money', 'big-three-astrology'],
+  'what-is-ziwei': ['ziwei-chart-reading', 'ziwei-14-main-stars', 'ziwei-birth-time-importance'],
   'unknown-time-saju': ['unknown-time-limits', 'ziwei-birth-time-importance', 'what-is-saju'],
   'love-and-relationships': ['relationship-patterns', 'relationship-timing', 'career-and-money'],
   'career-and-money': ['career-strengths-saju', 'money-flow-timing', 'ten-gods-for-beginners'],
@@ -102,4 +113,9 @@ export const ARTICLE_RELATED_MAP: Record<string, string[]> = {
   'dream-interpretation-guide': ['dream-symbols-meaning', 'lucky-dreams', 'what-is-saju'],
   'dream-symbols-meaning': ['dream-interpretation-guide', 'lucky-dreams', 'five-elements'],
   'lucky-dreams': ['dream-interpretation-guide', 'dream-symbols-meaning', 'career-and-money'],
+  'ziwei-chart-reading': ['ziwei-14-main-stars', 'ziwei-four-transformations', 'what-is-ziwei'],
+  'ziwei-14-main-stars': ['ziwei-chart-reading', 'ziwei-four-transformations', 'ziwei-compatibility'],
+  'ziwei-four-transformations': ['ziwei-14-main-stars', 'ziwei-chart-reading', 'ziwei-vs-saju'],
+  'ziwei-vs-saju': ['what-is-saju', 'what-is-ziwei', 'ziwei-chart-reading'],
+  'ziwei-compatibility': ['ziwei-chart-reading', 'ziwei-14-main-stars', 'compatibility-before-love'],
 }
