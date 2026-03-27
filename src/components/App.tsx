@@ -556,6 +556,21 @@ export default function App() {
           </section>
         )}
 
+        {/* 꿈 해몽 CTA */}
+        <Link
+          to={`/${currentLang}/dream`}
+          className="flex items-center justify-between gap-3 rounded-2xl border border-accent/20 bg-gradient-to-r from-accent/10 via-base-100 to-base-100 px-4 py-3 mb-6 transition-colors hover:border-accent/40"
+        >
+          <div className="flex items-center gap-2">
+            <span className="text-lg">🌙</span>
+            <span className="text-sm font-medium">{(t.dream as { title: string }).title}</span>
+            <span className="text-xs text-base-content/60">{(t.dream as { subtitle: string }).subtitle}</span>
+          </div>
+          <svg className="w-4 h-4 text-base-content/40 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </Link>
+
         {/* 입력 폼 */}
         <div ref={formRef} className="card bg-base-100 border-oriental mb-6">
           <div className="card-body p-4 sm:p-6">
@@ -676,6 +691,12 @@ export default function App() {
                       className="btn btn-outline btn-sm rounded-full text-base-content"
                     >
                       {t.articles.title}
+                    </Link>
+                    <Link
+                      to={`/${currentLang}/dream`}
+                      className="btn btn-outline btn-sm rounded-full text-base-content"
+                    >
+                      {(t.dream as { title: string }).title}
                     </Link>
                   </div>
                 </div>
