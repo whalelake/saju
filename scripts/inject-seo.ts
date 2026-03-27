@@ -98,6 +98,12 @@ function staticPageSeo(suffix: string, titleKey: string): RouteSeo {
       ja: '利用規約 | 命運盤',
       zh: '服务条款 | 命运盘',
     },
+    '/dream': {
+      ko: '꿈 해몽 - AI 꿈 해석 | 명운판',
+      en: 'Dream Interpretation - AI Dream Analysis | Myungunpan',
+      ja: '夢占い - AI 夢解釈 | 命運盤',
+      zh: '解梦 - AI 梦境解读 | 命运盘',
+    },
   }
 
   const descriptions: Record<Lang, string> = homeSeo().description
@@ -202,7 +208,7 @@ async function main() {
 
   const routes: RouteSeo[] = [
     homeSeo(),
-    ...['/guide', '/guide/saju', '/guide/ziwei', '/guide/natal', '/articles', '/privacy', '/terms'].map(
+    ...['/guide', '/guide/saju', '/guide/ziwei', '/guide/natal', '/articles', '/privacy', '/terms', '/dream'].map(
       (s) => staticPageSeo(s, s),
     ),
     ...ARTICLE_IDS.map((id) => articleSeo(id)),

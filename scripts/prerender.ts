@@ -17,6 +17,7 @@ const ROUTE_SUFFIXES = [
   '/articles',
   '/privacy',
   '/terms',
+  '/dream',
   ...ARTICLE_IDS.map((id) => `/articles/${id}`),
 ]
 
