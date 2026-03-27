@@ -11,6 +11,8 @@ interface ImportMetaEnv {
   readonly VITE_AD_SLOT_ARTICLE_TOP?: string
   readonly VITE_AD_SLOT_ARTICLE_MID?: string
   readonly VITE_AD_SLOT_ARTICLE_BOTTOM?: string
+  readonly VITE_AD_SLOT_DREAM_TOP?: string
+  readonly VITE_AD_SLOT_DREAM_BOTTOM?: string
 }
 
 interface ImportMeta {

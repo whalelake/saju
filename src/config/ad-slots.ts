@@ -9,6 +9,8 @@ export type AdSlotKey =
   | 'article_top'
   | 'article_mid'
   | 'article_bottom'
+  | 'dream_top'
+  | 'dream_bottom'
 
 type AdSlotConfig = {
   label: string
@@ -55,6 +57,14 @@ const AD_SLOT_CONFIG: Record<AdSlotKey, AdSlotConfig> = {
   article_bottom: {
     label: 'Article bottom',
     envName: 'VITE_AD_SLOT_ARTICLE_BOTTOM',
+  },
+  dream_top: {
+    label: 'Dream top',
+    envName: 'VITE_AD_SLOT_DREAM_TOP',
+  },
+  dream_bottom: {
+    label: 'Dream bottom',
+    envName: 'VITE_AD_SLOT_DREAM_BOTTOM',
   },
 }
 
