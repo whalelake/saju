@@ -23,6 +23,9 @@ export type ArticleKey =
   | 'noonChartGuide'
   | 'birthTimeClues'
   | 'natalWithoutTime'
+  | 'dreamInterpretationGuide'
+  | 'dreamSymbolsMeaning'
+  | 'luckyDreams'
 
 export type ArticleCluster =
   | 'starter'
@@ -31,6 +34,7 @@ export type ArticleCluster =
   | 'unknown_time'
   | 'deep_dive'
   | 'astrology'
+  | 'dream'
 
 export interface ArticleMeta {
   id: string
@@ -63,6 +67,9 @@ export const ARTICLE_CATALOG: ArticleMeta[] = [
   { id: 'noon-chart-guide', key: 'noonChartGuide', cluster: 'unknown_time' },
   { id: 'birth-time-clues', key: 'birthTimeClues', cluster: 'unknown_time' },
   { id: 'natal-without-time', key: 'natalWithoutTime', cluster: 'unknown_time' },
+  { id: 'dream-interpretation-guide', key: 'dreamInterpretationGuide', cluster: 'dream' },
+  { id: 'dream-symbols-meaning', key: 'dreamSymbolsMeaning', cluster: 'dream' },
+  { id: 'lucky-dreams', key: 'luckyDreams', cluster: 'dream' },
 ]
 
 export const ARTICLE_IDS = ARTICLE_CATALOG.map((item) => item.id)
@@ -92,4 +99,7 @@ export const ARTICLE_RELATED_MAP: Record<string, string[]> = {
   'noon-chart-guide': ['unknown-time-saju', 'unknown-time-limits', 'natal-without-time'],
   'birth-time-clues': ['unknown-time-saju', 'ziwei-birth-time-importance', 'noon-chart-guide'],
   'natal-without-time': ['unknown-time-saju', 'unknown-time-limits', 'big-three-astrology'],
+  'dream-interpretation-guide': ['dream-symbols-meaning', 'lucky-dreams', 'what-is-saju'],
+  'dream-symbols-meaning': ['dream-interpretation-guide', 'lucky-dreams', 'five-elements'],
+  'lucky-dreams': ['dream-interpretation-guide', 'dream-symbols-meaning', 'career-and-money'],
 }
