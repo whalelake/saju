@@ -69,6 +69,13 @@ export const zh: TranslationKeys = {
     feature4Desc: '比较两个人的命盘，分析关系的和谐与互补之处。',
   },
 
+  // 六十甲子 日柱
+  pillars: {
+    title: '六十甲子 日柱指南',
+    subtitle: '通过日柱了解你的性格与命运',
+    description: '详细了解六十甲子每个日柱的性格、恋爱、职业和合盘',
+  },
+
   // 解梦
   dream: {
     title: '解梦',

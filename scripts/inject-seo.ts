@@ -14,6 +14,70 @@ import { en } from '../src/i18n/en'
 import { ja } from '../src/i18n/ja'
 import { zh } from '../src/i18n/zh'
 
+// 60 Ganji pillar data: [slug, korean, hanja, romanized]
+const SIXTY_PILLARS: Array<[string, string, string, string]> = [
+  ['gap-ja', '갑자', '甲子', 'Gap-ja'],
+  ['eul-chuk', '을축', '乙丑', 'Eul-chuk'],
+  ['byeong-in', '병인', '丙寅', 'Byeong-in'],
+  ['jeong-myo', '정묘', '丁卯', 'Jeong-myo'],
+  ['mu-jin', '무진', '戊辰', 'Mu-jin'],
+  ['gi-sa', '기사', '己巳', 'Gi-sa'],
+  ['gyeong-o', '경오', '庚午', 'Gyeong-o'],
+  ['sin-mi', '신미', '辛未', 'Sin-mi'],
+  ['im-sin', '임신', '壬申', 'Im-sin'],
+  ['gye-yu', '계유', '癸酉', 'Gye-yu'],
+  ['gap-sul', '갑술', '甲戌', 'Gap-sul'],
+  ['eul-hae', '을해', '乙亥', 'Eul-hae'],
+  ['byeong-ja', '병자', '丙子', 'Byeong-ja'],
+  ['jeong-chuk', '정축', '丁丑', 'Jeong-chuk'],
+  ['mu-in', '무인', '戊寅', 'Mu-in'],
+  ['gi-myo', '기묘', '己卯', 'Gi-myo'],
+  ['gyeong-jin', '경진', '庚辰', 'Gyeong-jin'],
+  ['sin-sa', '신사', '辛巳', 'Sin-sa'],
+  ['im-o', '임오', '壬午', 'Im-o'],
+  ['gye-mi', '계미', '癸未', 'Gye-mi'],
+  ['gap-sin', '갑신', '甲申', 'Gap-sin'],
+  ['eul-yu', '을유', '乙酉', 'Eul-yu'],
+  ['byeong-sul', '병술', '丙戌', 'Byeong-sul'],
+  ['jeong-hae', '정해', '丁亥', 'Jeong-hae'],
+  ['mu-ja', '무자', '戊子', 'Mu-ja'],
+  ['gi-chuk', '기축', '己丑', 'Gi-chuk'],
+  ['gyeong-in', '경인', '庚寅', 'Gyeong-in'],
+  ['sin-myo', '신묘', '辛卯', 'Sin-myo'],
+  ['im-jin', '임진', '壬辰', 'Im-jin'],
+  ['gye-sa', '계사', '癸巳', 'Gye-sa'],
+  ['gap-o', '갑오', '甲午', 'Gap-o'],
+  ['eul-mi', '을미', '乙未', 'Eul-mi'],
+  ['byeong-sin', '병신', '丙申', 'Byeong-sin'],
+  ['jeong-yu', '정유', '丁酉', 'Jeong-yu'],
+  ['mu-sul', '무술', '戊戌', 'Mu-sul'],
+  ['gi-hae', '기해', '己亥', 'Gi-hae'],
+  ['gyeong-ja', '경자', '庚子', 'Gyeong-ja'],
+  ['sin-chuk', '신축', '辛丑', 'Sin-chuk'],
+  ['im-in', '임인', '壬寅', 'Im-in'],
+  ['gye-myo', '계묘', '癸卯', 'Gye-myo'],
+  ['gap-jin', '갑진', '甲辰', 'Gap-jin'],
+  ['eul-sa', '을사', '乙巳', 'Eul-sa'],
+  ['byeong-o', '병오', '丙午', 'Byeong-o'],
+  ['jeong-mi', '정미', '丁未', 'Jeong-mi'],
+  ['mu-sin', '무신', '戊申', 'Mu-sin'],
+  ['gi-yu', '기유', '己酉', 'Gi-yu'],
+  ['gyeong-sul', '경술', '庚戌', 'Gyeong-sul'],
+  ['sin-hae', '신해', '辛亥', 'Sin-hae'],
+  ['im-ja', '임자', '壬子', 'Im-ja'],
+  ['gye-chuk', '계축', '癸丑', 'Gye-chuk'],
+  ['gap-in', '갑인', '甲寅', 'Gap-in'],
+  ['eul-myo', '을묘', '乙卯', 'Eul-myo'],
+  ['byeong-jin', '병진', '丙辰', 'Byeong-jin'],
+  ['jeong-sa', '정사', '丁巳', 'Jeong-sa'],
+  ['mu-o', '무오', '戊午', 'Mu-o'],
+  ['gi-mi', '기미', '己未', 'Gi-mi'],
+  ['gyeong-sin', '경신', '庚申', 'Gyeong-sin'],
+  ['sin-yu', '신유', '辛酉', 'Sin-yu'],
+  ['im-sul', '임술', '壬戌', 'Im-sul'],
+  ['gye-hae', '계해', '癸亥', 'Gye-hae'],
+]
+
 const DIST_DIR = join(process.cwd(), 'dist')
 const SITE_URL = 'https://saju-wheat.vercel.app'
 const LANGUAGES = ['ko', 'en', 'ja', 'zh'] as const
@@ -104,6 +168,12 @@ function staticPageSeo(suffix: string, titleKey: string): RouteSeo {
       ja: '夢占い - AI 夢解釈 | 命運盤',
       zh: '解梦 - AI 梦境解读 | 命运盘',
     },
+    '/pillars': {
+      ko: '60갑자 일주 가이드 — 성격, 연애, 직업, 궁합 | 명운판',
+      en: '60 Ganji Day Pillar Guide — Personality, Love, Career | Myungunpan',
+      ja: '六十甲子 日柱ガイド — 性格・恋愛・仕事・相性 | 命運盤',
+      zh: '六十甲子 日柱指南 — 性格、恋爱、事业、合盘 | 命运盘',
+    },
   }
 
   const descriptions: Record<Lang, string> = homeSeo().description
@@ -138,6 +208,25 @@ function articleSeo(articleId: string): RouteSeo {
   }
 
   return { suffix: `/articles/${articleId}`, title, description, type: 'article' }
+}
+
+function pillarSeo(slug: string, korean: string, hanja: string, romanized: string): RouteSeo {
+  return {
+    suffix: `/pillars/${slug}`,
+    title: {
+      ko: `${korean}(${hanja}) 일주 — 성격, 연애, 직업, 궁합 | 명운판`,
+      en: `${romanized} (${hanja}) Day Pillar — Personality, Love, Career | Myungunpan`,
+      ja: `${hanja}日柱 — 性格・恋愛・仕事・相性 | 命運盤`,
+      zh: `${hanja}日柱 — 性格、恋爱、事业、合盘 | 命运盘`,
+    },
+    description: {
+      ko: `${korean}(${hanja}) 일주의 성격, 연애 스타일, 직업 적성, 궁합을 자세히 알아보세요.`,
+      en: `Discover the personality, love style, career aptitude, and compatibility of the ${romanized} (${hanja}) Day Pillar.`,
+      ja: `${hanja}日柱の性格、恋愛スタイル、職業適性、相性を詳しくご紹介します。`,
+      zh: `详细了解${hanja}日柱的性格、恋爱风格、职业适性和合盘。`,
+    },
+    type: 'article',
+  }
 }
 
 function escapeHtml(s: string) {
@@ -236,6 +325,10 @@ function breadcrumbJsonLd(lang: Lang, route: RouteSeo): string {
     const articlesName = lang === 'ko' ? '기사' : lang === 'ja' ? '記事' : lang === 'zh' ? '文章' : 'Articles'
     items.push({ name: articlesName, item: `${SITE_URL}/${lang}/articles` })
     items.push({ name: route.title[lang].replace(/ \| .*$/, '') })
+  } else if (route.suffix.startsWith('/pillars/')) {
+    const pillarsName = lang === 'ko' ? '60갑자 일주' : lang === 'ja' ? '六十甲子 日柱' : lang === 'zh' ? '六十甲子 日柱' : '60 Ganji Pillars'
+    items.push({ name: pillarsName, item: `${SITE_URL}/${lang}/pillars` })
+    items.push({ name: route.title[lang].replace(/ \| .*$/, '') })
   } else if (route.suffix.startsWith('/guide')) {
     const guideName = lang === 'ko' ? '가이드' : lang === 'ja' ? 'ガイド' : lang === 'zh' ? '指南' : 'Guide'
     if (route.suffix === '/guide') {
@@ -329,10 +422,11 @@ async function main() {
 
   const routes: RouteSeo[] = [
     homeSeo(),
-    ...['/guide', '/guide/saju', '/guide/ziwei', '/guide/natal', '/articles', '/privacy', '/terms', '/dream'].map(
+    ...['/guide', '/guide/saju', '/guide/ziwei', '/guide/natal', '/articles', '/privacy', '/terms', '/dream', '/pillars'].map(
       (s) => staticPageSeo(s, s),
     ),
     ...ARTICLE_IDS.map((id) => articleSeo(id)),
+    ...SIXTY_PILLARS.map(([slug, korean, hanja, romanized]) => pillarSeo(slug, korean, hanja, romanized)),
   ]
 
   let count = 0

@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://saju-wheat.vercel.app/ko/</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/" />
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/" />
@@ -25,7 +25,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/" />
@@ -36,7 +36,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/" />
@@ -47,7 +47,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/guide</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/guide" />
@@ -58,7 +58,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/guide</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/guide" />
@@ -69,7 +69,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/guide</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/guide" />
@@ -80,7 +80,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/guide</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/guide" />
@@ -91,7 +91,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/guide/saju</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/guide/saju" />
@@ -102,7 +102,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/guide/saju</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/guide/saju" />
@@ -113,7 +113,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/guide/saju</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/guide/saju" />
@@ -124,7 +124,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/guide/saju</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/guide/saju" />
@@ -135,7 +135,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/guide/ziwei</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/guide/ziwei" />
@@ -146,7 +146,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/guide/ziwei</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/guide/ziwei" />
@@ -157,7 +157,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/guide/ziwei</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/guide/ziwei" />
@@ -168,7 +168,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/guide/ziwei</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/guide/ziwei" />
@@ -179,7 +179,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/guide/natal</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/guide/natal" />
@@ -190,7 +190,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/guide/natal</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/guide/natal" />
@@ -201,7 +201,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/guide/natal</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/guide/natal" />
@@ -212,7 +212,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/guide/natal</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/guide/natal" />
@@ -223,7 +223,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/articles</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles" />
@@ -234,7 +234,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/articles</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles" />
@@ -245,7 +245,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/articles</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles" />
@@ -256,7 +256,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/articles</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles" />
@@ -267,7 +267,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/privacy</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/privacy" />
@@ -278,7 +278,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/privacy</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/privacy" />
@@ -289,7 +289,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/privacy</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/privacy" />
@@ -300,7 +300,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/privacy</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/privacy" />
@@ -311,7 +311,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/terms</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/terms" />
@@ -322,7 +322,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/terms</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/terms" />
@@ -333,7 +333,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/terms</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/terms" />
@@ -344,7 +344,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/terms</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/terms" />
@@ -354,8 +354,52 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/terms" />
   </url>
   <url>
+    <loc>https://saju-wheat.vercel.app/ko/dream</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/dream" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/dream" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/dream" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/dream" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/dream" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/en/dream</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/dream" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/dream" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/dream" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/dream" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/dream" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/ja/dream</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/dream" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/dream" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/dream" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/dream" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/dream" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/zh/dream</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/dream" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/dream" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/dream" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/dream" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/dream" />
+  </url>
+  <url>
     <loc>https://saju-wheat.vercel.app/ko/articles/what-is-saju</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/what-is-saju" />
@@ -366,7 +410,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/articles/what-is-saju</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/what-is-saju" />
@@ -377,7 +421,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/articles/what-is-saju</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/what-is-saju" />
@@ -388,7 +432,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/articles/what-is-saju</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/what-is-saju" />
@@ -399,7 +443,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/articles/five-elements</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/five-elements" />
@@ -410,7 +454,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/articles/five-elements</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/five-elements" />
@@ -421,7 +465,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/articles/five-elements</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/five-elements" />
@@ -432,7 +476,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/articles/five-elements</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/five-elements" />
@@ -443,7 +487,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/articles/what-is-ziwei</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/what-is-ziwei" />
@@ -454,7 +498,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/articles/what-is-ziwei</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/what-is-ziwei" />
@@ -465,7 +509,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/articles/what-is-ziwei</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/what-is-ziwei" />
@@ -476,7 +520,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/articles/what-is-ziwei</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/what-is-ziwei" />
@@ -487,7 +531,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/articles/unknown-time-saju</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/unknown-time-saju" />
@@ -498,7 +542,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/articles/unknown-time-saju</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/unknown-time-saju" />
@@ -509,7 +553,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/articles/unknown-time-saju</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/unknown-time-saju" />
@@ -520,7 +564,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/articles/unknown-time-saju</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/unknown-time-saju" />
@@ -531,7 +575,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/articles/love-and-relationships</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/love-and-relationships" />
@@ -542,7 +586,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/articles/love-and-relationships</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/love-and-relationships" />
@@ -553,7 +597,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/articles/love-and-relationships</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/love-and-relationships" />
@@ -564,7 +608,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/articles/love-and-relationships</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/love-and-relationships" />
@@ -575,7 +619,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/articles/career-and-money</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/career-and-money" />
@@ -586,7 +630,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/articles/career-and-money</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/career-and-money" />
@@ -597,7 +641,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/articles/career-and-money</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/career-and-money" />
@@ -608,7 +652,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/articles/career-and-money</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/career-and-money" />
@@ -619,7 +663,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/articles/day-master-types</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/day-master-types" />
@@ -630,7 +674,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/articles/day-master-types</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/day-master-types" />
@@ -641,7 +685,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/articles/day-master-types</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/day-master-types" />
@@ -652,7 +696,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/articles/day-master-types</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/day-master-types" />
@@ -663,7 +707,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/articles/ten-gods-for-beginners</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ten-gods-for-beginners" />
@@ -674,7 +718,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/articles/ten-gods-for-beginners</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ten-gods-for-beginners" />
@@ -685,7 +729,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/articles/ten-gods-for-beginners</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ten-gods-for-beginners" />
@@ -696,7 +740,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/articles/ten-gods-for-beginners</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ten-gods-for-beginners" />
@@ -707,7 +751,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/articles/big-three-astrology</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/big-three-astrology" />
@@ -718,7 +762,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/articles/big-three-astrology</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/big-three-astrology" />
@@ -729,7 +773,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/articles/big-three-astrology</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/big-three-astrology" />
@@ -740,7 +784,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/articles/big-three-astrology</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/big-three-astrology" />
@@ -751,7 +795,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/articles/relationship-patterns</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/relationship-patterns" />
@@ -762,7 +806,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/articles/relationship-patterns</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/relationship-patterns" />
@@ -773,7 +817,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/articles/relationship-patterns</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/relationship-patterns" />
@@ -784,7 +828,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/articles/relationship-patterns</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/relationship-patterns" />
@@ -795,7 +839,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/articles/relationship-timing</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/relationship-timing" />
@@ -806,7 +850,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/articles/relationship-timing</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/relationship-timing" />
@@ -817,7 +861,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/articles/relationship-timing</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/relationship-timing" />
@@ -828,7 +872,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/articles/relationship-timing</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/relationship-timing" />
@@ -839,7 +883,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/articles/career-strengths-saju</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/career-strengths-saju" />
@@ -850,7 +894,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/articles/career-strengths-saju</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/career-strengths-saju" />
@@ -861,7 +905,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/articles/career-strengths-saju</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/career-strengths-saju" />
@@ -872,7 +916,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/articles/career-strengths-saju</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/career-strengths-saju" />
@@ -883,7 +927,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/articles/money-flow-timing</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/money-flow-timing" />
@@ -894,7 +938,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/articles/money-flow-timing</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/money-flow-timing" />
@@ -905,7 +949,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/articles/money-flow-timing</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/money-flow-timing" />
@@ -916,7 +960,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/articles/money-flow-timing</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/money-flow-timing" />
@@ -927,7 +971,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/articles/unknown-time-limits</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/unknown-time-limits" />
@@ -938,7 +982,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/articles/unknown-time-limits</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/unknown-time-limits" />
@@ -949,7 +993,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/articles/unknown-time-limits</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/unknown-time-limits" />
@@ -960,7 +1004,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/articles/unknown-time-limits</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/unknown-time-limits" />
@@ -971,7 +1015,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/articles/ziwei-birth-time-importance</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ziwei-birth-time-importance" />
@@ -982,7 +1026,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/articles/ziwei-birth-time-importance</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ziwei-birth-time-importance" />
@@ -993,7 +1037,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/articles/ziwei-birth-time-importance</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ziwei-birth-time-importance" />
@@ -1004,7 +1048,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/articles/ziwei-birth-time-importance</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ziwei-birth-time-importance" />
@@ -1015,7 +1059,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/articles/compatibility-before-love</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/compatibility-before-love" />
@@ -1026,7 +1070,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/articles/compatibility-before-love</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/compatibility-before-love" />
@@ -1037,7 +1081,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/articles/compatibility-before-love</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/compatibility-before-love" />
@@ -1048,7 +1092,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/articles/compatibility-before-love</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/compatibility-before-love" />
@@ -1059,7 +1103,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/articles/emotional-communication-saju</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/emotional-communication-saju" />
@@ -1070,7 +1114,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/articles/emotional-communication-saju</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/emotional-communication-saju" />
@@ -1081,7 +1125,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/articles/emotional-communication-saju</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/emotional-communication-saju" />
@@ -1092,7 +1136,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/articles/emotional-communication-saju</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/emotional-communication-saju" />
@@ -1103,7 +1147,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/articles/relationship-red-flags-timing</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/relationship-red-flags-timing" />
@@ -1114,7 +1158,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/articles/relationship-red-flags-timing</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/relationship-red-flags-timing" />
@@ -1125,7 +1169,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/articles/relationship-red-flags-timing</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/relationship-red-flags-timing" />
@@ -1136,7 +1180,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/articles/relationship-red-flags-timing</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/relationship-red-flags-timing" />
@@ -1147,7 +1191,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/articles/career-change-timing</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/career-change-timing" />
@@ -1158,7 +1202,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/articles/career-change-timing</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/career-change-timing" />
@@ -1169,7 +1213,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/articles/career-change-timing</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/career-change-timing" />
@@ -1180,7 +1224,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/articles/career-change-timing</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/career-change-timing" />
@@ -1191,7 +1235,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/articles/side-hustle-vs-stability</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/side-hustle-vs-stability" />
@@ -1202,7 +1246,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/articles/side-hustle-vs-stability</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/side-hustle-vs-stability" />
@@ -1213,7 +1257,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/articles/side-hustle-vs-stability</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/side-hustle-vs-stability" />
@@ -1224,7 +1268,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/articles/side-hustle-vs-stability</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/side-hustle-vs-stability" />
@@ -1235,7 +1279,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/articles/wealth-risk-management</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/wealth-risk-management" />
@@ -1246,7 +1290,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/articles/wealth-risk-management</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/wealth-risk-management" />
@@ -1257,7 +1301,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/articles/wealth-risk-management</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/wealth-risk-management" />
@@ -1268,7 +1312,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/articles/wealth-risk-management</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/wealth-risk-management" />
@@ -1279,7 +1323,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/articles/noon-chart-guide</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/noon-chart-guide" />
@@ -1290,7 +1334,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/articles/noon-chart-guide</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/noon-chart-guide" />
@@ -1301,7 +1345,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/articles/noon-chart-guide</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/noon-chart-guide" />
@@ -1312,7 +1356,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/articles/noon-chart-guide</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/noon-chart-guide" />
@@ -1323,7 +1367,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/articles/birth-time-clues</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/birth-time-clues" />
@@ -1334,7 +1378,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/articles/birth-time-clues</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/birth-time-clues" />
@@ -1345,7 +1389,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/articles/birth-time-clues</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/birth-time-clues" />
@@ -1356,7 +1400,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/articles/birth-time-clues</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/birth-time-clues" />
@@ -1367,7 +1411,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ko/articles/natal-without-time</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/natal-without-time" />
@@ -1378,7 +1422,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/en/articles/natal-without-time</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/natal-without-time" />
@@ -1389,7 +1433,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/ja/articles/natal-without-time</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/natal-without-time" />
@@ -1400,7 +1444,7 @@
   </url>
   <url>
     <loc>https://saju-wheat.vercel.app/zh/articles/natal-without-time</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/natal-without-time" />
@@ -1408,5 +1452,357 @@
     <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/natal-without-time" />
     <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/natal-without-time" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/natal-without-time" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/ko/articles/dream-interpretation-guide</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/dream-interpretation-guide" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/dream-interpretation-guide" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/dream-interpretation-guide" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/dream-interpretation-guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/dream-interpretation-guide" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/en/articles/dream-interpretation-guide</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/dream-interpretation-guide" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/dream-interpretation-guide" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/dream-interpretation-guide" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/dream-interpretation-guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/dream-interpretation-guide" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/ja/articles/dream-interpretation-guide</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/dream-interpretation-guide" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/dream-interpretation-guide" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/dream-interpretation-guide" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/dream-interpretation-guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/dream-interpretation-guide" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/zh/articles/dream-interpretation-guide</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/dream-interpretation-guide" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/dream-interpretation-guide" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/dream-interpretation-guide" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/dream-interpretation-guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/dream-interpretation-guide" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/ko/articles/dream-symbols-meaning</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/dream-symbols-meaning" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/dream-symbols-meaning" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/dream-symbols-meaning" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/dream-symbols-meaning" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/dream-symbols-meaning" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/en/articles/dream-symbols-meaning</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/dream-symbols-meaning" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/dream-symbols-meaning" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/dream-symbols-meaning" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/dream-symbols-meaning" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/dream-symbols-meaning" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/ja/articles/dream-symbols-meaning</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/dream-symbols-meaning" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/dream-symbols-meaning" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/dream-symbols-meaning" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/dream-symbols-meaning" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/dream-symbols-meaning" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/zh/articles/dream-symbols-meaning</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/dream-symbols-meaning" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/dream-symbols-meaning" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/dream-symbols-meaning" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/dream-symbols-meaning" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/dream-symbols-meaning" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/ko/articles/lucky-dreams</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/lucky-dreams" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/lucky-dreams" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/lucky-dreams" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/lucky-dreams" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/lucky-dreams" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/en/articles/lucky-dreams</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/lucky-dreams" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/lucky-dreams" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/lucky-dreams" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/lucky-dreams" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/lucky-dreams" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/ja/articles/lucky-dreams</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/lucky-dreams" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/lucky-dreams" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/lucky-dreams" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/lucky-dreams" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/lucky-dreams" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/zh/articles/lucky-dreams</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/lucky-dreams" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/lucky-dreams" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/lucky-dreams" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/lucky-dreams" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/lucky-dreams" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/ko/articles/ziwei-chart-reading</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ziwei-chart-reading" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/ziwei-chart-reading" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/ziwei-chart-reading" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/ziwei-chart-reading" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/ziwei-chart-reading" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/en/articles/ziwei-chart-reading</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ziwei-chart-reading" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/ziwei-chart-reading" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/ziwei-chart-reading" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/ziwei-chart-reading" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/ziwei-chart-reading" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/ja/articles/ziwei-chart-reading</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ziwei-chart-reading" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/ziwei-chart-reading" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/ziwei-chart-reading" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/ziwei-chart-reading" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/ziwei-chart-reading" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/zh/articles/ziwei-chart-reading</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ziwei-chart-reading" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/ziwei-chart-reading" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/ziwei-chart-reading" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/ziwei-chart-reading" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/ziwei-chart-reading" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/ko/articles/ziwei-14-main-stars</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ziwei-14-main-stars" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/ziwei-14-main-stars" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/ziwei-14-main-stars" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/ziwei-14-main-stars" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/ziwei-14-main-stars" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/en/articles/ziwei-14-main-stars</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ziwei-14-main-stars" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/ziwei-14-main-stars" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/ziwei-14-main-stars" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/ziwei-14-main-stars" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/ziwei-14-main-stars" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/ja/articles/ziwei-14-main-stars</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ziwei-14-main-stars" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/ziwei-14-main-stars" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/ziwei-14-main-stars" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/ziwei-14-main-stars" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/ziwei-14-main-stars" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/zh/articles/ziwei-14-main-stars</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ziwei-14-main-stars" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/ziwei-14-main-stars" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/ziwei-14-main-stars" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/ziwei-14-main-stars" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/ziwei-14-main-stars" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/ko/articles/ziwei-four-transformations</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ziwei-four-transformations" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/ziwei-four-transformations" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/ziwei-four-transformations" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/ziwei-four-transformations" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/ziwei-four-transformations" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/en/articles/ziwei-four-transformations</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ziwei-four-transformations" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/ziwei-four-transformations" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/ziwei-four-transformations" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/ziwei-four-transformations" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/ziwei-four-transformations" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/ja/articles/ziwei-four-transformations</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ziwei-four-transformations" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/ziwei-four-transformations" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/ziwei-four-transformations" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/ziwei-four-transformations" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/ziwei-four-transformations" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/zh/articles/ziwei-four-transformations</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ziwei-four-transformations" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/ziwei-four-transformations" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/ziwei-four-transformations" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/ziwei-four-transformations" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/ziwei-four-transformations" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/ko/articles/ziwei-vs-saju</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ziwei-vs-saju" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/ziwei-vs-saju" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/ziwei-vs-saju" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/ziwei-vs-saju" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/ziwei-vs-saju" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/en/articles/ziwei-vs-saju</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ziwei-vs-saju" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/ziwei-vs-saju" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/ziwei-vs-saju" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/ziwei-vs-saju" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/ziwei-vs-saju" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/ja/articles/ziwei-vs-saju</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ziwei-vs-saju" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/ziwei-vs-saju" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/ziwei-vs-saju" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/ziwei-vs-saju" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/ziwei-vs-saju" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/zh/articles/ziwei-vs-saju</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ziwei-vs-saju" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/ziwei-vs-saju" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/ziwei-vs-saju" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/ziwei-vs-saju" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/ziwei-vs-saju" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/ko/articles/ziwei-compatibility</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ziwei-compatibility" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/ziwei-compatibility" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/ziwei-compatibility" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/ziwei-compatibility" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/ziwei-compatibility" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/en/articles/ziwei-compatibility</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ziwei-compatibility" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/ziwei-compatibility" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/ziwei-compatibility" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/ziwei-compatibility" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/ziwei-compatibility" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/ja/articles/ziwei-compatibility</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ziwei-compatibility" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/ziwei-compatibility" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/ziwei-compatibility" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/ziwei-compatibility" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/ziwei-compatibility" />
+  </url>
+  <url>
+    <loc>https://saju-wheat.vercel.app/zh/articles/ziwei-compatibility</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://saju-wheat.vercel.app/ko/articles/ziwei-compatibility" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://saju-wheat.vercel.app/en/articles/ziwei-compatibility" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://saju-wheat.vercel.app/ja/articles/ziwei-compatibility" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://saju-wheat.vercel.app/zh/articles/ziwei-compatibility" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://saju-wheat.vercel.app/ko/articles/ziwei-compatibility" />
   </url>
 </urlset>

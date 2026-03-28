@@ -67,6 +67,13 @@ export const ko = {
     feature4Desc: '두 사람의 명식을 비교하여 관계의 조화와 보완점을 분석합니다.',
   },
 
+  // 60갑자 일주
+  pillars: {
+    title: '60갑자 일주 가이드',
+    subtitle: '나의 일주로 알아보는 성격과 운명',
+    description: '60갑자 일주별 성격, 연애, 직업, 궁합을 자세히 알아보세요',
+  },
+
   // 꿈 해몽
   dream: {
     title: '꿈 해몽',

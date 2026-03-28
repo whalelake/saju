@@ -11,6 +11,8 @@ const TermsPage = lazy(() => import('./pages/TermsPage'))
 const ArticlesIndex = lazy(() => import('./pages/ArticlesIndex'))
 const ArticlePage = lazy(() => import('./pages/ArticlePage'))
 const DreamPage = lazy(() => import('./pages/DreamPage'))
+const PillarsIndex = lazy(() => import('./pages/PillarsIndex'))
+const PillarPage = lazy(() => import('./pages/PillarPage'))
 
 const SUPPORTED_LANGUAGES: Language[] = ['ko', 'en', 'ja', 'zh']
 
@@ -105,6 +107,14 @@ export const router = createBrowserRouter([
       {
         path: 'dream',
         element: <DreamPage />,
+      },
+      {
+        path: 'pillars',
+        element: <PillarsIndex />,
+      },
+      {
+        path: 'pillars/:pillarId',
+        element: <PillarPage />,
       },
     ],
   },

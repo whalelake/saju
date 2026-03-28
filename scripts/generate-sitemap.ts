@@ -2,6 +2,21 @@ import { mkdir, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { ARTICLE_IDS } from '../src/content/article-catalog'
 
+const PILLAR_SLUGS = [
+  'gap-ja', 'eul-chuk', 'byeong-in', 'jeong-myo', 'mu-jin',
+  'gi-sa', 'gyeong-o', 'sin-mi', 'im-sin', 'gye-yu',
+  'gap-sul', 'eul-hae', 'byeong-ja', 'jeong-chuk', 'mu-in',
+  'gi-myo', 'gyeong-jin', 'sin-sa', 'im-o', 'gye-mi',
+  'gap-sin', 'eul-yu', 'byeong-sul', 'jeong-hae', 'mu-ja',
+  'gi-chuk', 'gyeong-in', 'sin-myo', 'im-jin', 'gye-sa',
+  'gap-o', 'eul-mi', 'byeong-sin', 'jeong-yu', 'mu-sul',
+  'gi-hae', 'gyeong-ja', 'sin-chuk', 'im-in', 'gye-myo',
+  'gap-jin', 'eul-sa', 'byeong-o', 'jeong-mi', 'mu-sin',
+  'gi-yu', 'gyeong-sul', 'sin-hae', 'im-ja', 'gye-chuk',
+  'gap-in', 'eul-myo', 'byeong-jin', 'jeong-sa', 'mu-o',
+  'gi-mi', 'gyeong-sin', 'sin-yu', 'im-sul', 'gye-hae',
+]
+
 const SITE_URL = 'https://saju-wheat.vercel.app'
 const LANGUAGES = ['ko', 'en', 'ja', 'zh'] as const
 const LASTMOD = new Date().toISOString().slice(0, 10)
@@ -41,6 +56,10 @@ const routeGroups: RouteGroup[] = [
   sharedPathGroup('/dream', 'weekly', '0.85'),
   ...ARTICLE_IDS.map((articleId) =>
     sharedPathGroup(`/articles/${articleId}`, 'monthly', '0.8'),
+  ),
+  sharedPathGroup('/pillars', 'weekly', '0.9'),
+  ...PILLAR_SLUGS.map((slug) =>
+    sharedPathGroup(`/pillars/${slug}`, 'monthly', '0.8'),
   ),
 ]
 

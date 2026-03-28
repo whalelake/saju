@@ -69,6 +69,13 @@ export const ja: TranslationKeys = {
     feature4Desc: '二人の命式を比較して関係の調和と補完点を分析します。',
   },
 
+  // 六十甲子 日柱
+  pillars: {
+    title: '六十甲子 日柱ガイド',
+    subtitle: '日柱で読み解く性格と運命',
+    description: '六十甲子の日柱ごとに性格・恋愛・仕事・相性を詳しくご紹介します',
+  },
+
   // 夢占い
   dream: {
     title: '夢占い',

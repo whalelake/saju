@@ -69,6 +69,13 @@ export const en: TranslationKeys = {
     feature4Desc: 'Compare two birth charts to analyze relationship harmony and complementary traits.',
   },
 
+  // 60 Ganji Day Pillars
+  pillars: {
+    title: '60 Ganji Day Pillar Guide',
+    subtitle: 'Discover your personality and destiny through your Day Pillar',
+    description: 'Explore personality, love, career, and compatibility for each of the 60 Ganji Day Pillars',
+  },
+
   // Dream Interpretation
   dream: {
     title: 'Dream Interpretation',
