@@ -74,6 +74,20 @@ export const ko = {
     description: '60갑자 일주별 성격, 연애, 직업, 궁합을 자세히 알아보세요',
   },
 
+  // 자미두수 14주성
+  ziweiStars: {
+    title: '자미두수 14주성 가이드',
+    subtitle: '14개 주성의 성격과 의미를 알아보세요',
+    description: '자미두수 14주성별 성격, 직업, 연애, 사화 해석 가이드',
+  },
+
+  // 십신
+  sipsin: {
+    title: '십신(十神) 완전 가이드',
+    subtitle: '사주의 열 가지 관계를 이해해보세요',
+    description: '십신별 성격, 직업 적성, 연애 스타일 완전 해석',
+  },
+
   // 꿈 해몽
   dream: {
     title: '꿈 해몽',

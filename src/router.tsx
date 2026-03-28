@@ -13,6 +13,10 @@ const ArticlePage = lazy(() => import('./pages/ArticlePage'))
 const DreamPage = lazy(() => import('./pages/DreamPage'))
 const PillarsIndex = lazy(() => import('./pages/PillarsIndex'))
 const PillarPage = lazy(() => import('./pages/PillarPage'))
+const ZiweiStarsIndex = lazy(() => import('./pages/ZiweiStarsIndex'))
+const ZiweiStarPage = lazy(() => import('./pages/ZiweiStarPage'))
+const SipsinIndex = lazy(() => import('./pages/SipsinIndex'))
+const SipsinPage = lazy(() => import('./pages/SipsinPage'))
 
 const SUPPORTED_LANGUAGES: Language[] = ['ko', 'en', 'ja', 'zh']
 
@@ -115,6 +119,22 @@ export const router = createBrowserRouter([
       {
         path: 'pillars/:pillarId',
         element: <PillarPage />,
+      },
+      {
+        path: 'ziwei/stars',
+        element: <ZiweiStarsIndex />,
+      },
+      {
+        path: 'ziwei/stars/:starId',
+        element: <ZiweiStarPage />,
+      },
+      {
+        path: 'sipsin',
+        element: <SipsinIndex />,
+      },
+      {
+        path: 'sipsin/:sipsinId',
+        element: <SipsinPage />,
       },
     ],
   },

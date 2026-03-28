@@ -76,6 +76,20 @@ export const zh: TranslationKeys = {
     description: '详细了解六十甲子每个日柱的性格、恋爱、职业和合盘',
   },
 
+  // 紫微斗数十四主星
+  ziweiStars: {
+    title: '紫微斗数十四主星指南',
+    subtitle: '了解14颗主星的性格与含义',
+    description: '紫微斗数十四主星的性格、事业、恋爱、四化解读指南',
+  },
+
+  // 十神
+  sipsin: {
+    title: '十神完全指南',
+    subtitle: '理解四柱八字中的十种关系',
+    description: '十神的性格、职业适性、恋爱风格完全解析',
+  },
+
   // 解梦
   dream: {
     title: '解梦',

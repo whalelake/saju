@@ -76,6 +76,20 @@ export const en: TranslationKeys = {
     description: 'Explore personality, love, career, and compatibility for each of the 60 Ganji Day Pillars',
   },
 
+  // Ziwei 14 Main Stars
+  ziweiStars: {
+    title: 'Zi Wei Dou Shu 14 Main Stars Guide',
+    subtitle: 'Explore the personality and meaning of each main star',
+    description: 'A complete guide to personality, career, love, and Four Transformations for each of the 14 Zi Wei Dou Shu main stars',
+  },
+
+  // Ten Gods (Sipsin)
+  sipsin: {
+    title: 'Ten Gods (Sipsin) Complete Guide',
+    subtitle: 'Understand the ten relationships in your Four Pillars chart',
+    description: 'Complete guide to personality, career aptitude, and love style for each of the Ten Gods',
+  },
+
   // Dream Interpretation
   dream: {
     title: 'Dream Interpretation',

@@ -2,6 +2,17 @@ import { mkdir, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { ARTICLE_IDS } from '../src/content/article-catalog'
 
+const ZIWEI_STAR_SLUGS = [
+  'zi-wei', 'tian-ji', 'tai-yang', 'wu-qu', 'tian-tong', 'lian-zhen',
+  'tian-fu', 'tai-yin', 'tan-lang', 'ju-men', 'tian-xiang', 'tian-liang',
+  'qi-sha', 'po-jun',
+]
+
+const SIPSIN_SLUGS = [
+  'bi-gyeon', 'geop-jae', 'sik-sin', 'sang-gwan', 'pyeon-jae',
+  'jeong-jae', 'pyeon-gwan', 'jeong-gwan', 'pyeon-in', 'jeong-in',
+]
+
 const PILLAR_SLUGS = [
   'gap-ja', 'eul-chuk', 'byeong-in', 'jeong-myo', 'mu-jin',
   'gi-sa', 'gyeong-o', 'sin-mi', 'im-sin', 'gye-yu',
@@ -60,6 +71,14 @@ const routeGroups: RouteGroup[] = [
   sharedPathGroup('/pillars', 'weekly', '0.9'),
   ...PILLAR_SLUGS.map((slug) =>
     sharedPathGroup(`/pillars/${slug}`, 'monthly', '0.8'),
+  ),
+  sharedPathGroup('/ziwei/stars', 'weekly', '0.9'),
+  ...ZIWEI_STAR_SLUGS.map((slug) =>
+    sharedPathGroup(`/ziwei/stars/${slug}`, 'monthly', '0.8'),
+  ),
+  sharedPathGroup('/sipsin', 'weekly', '0.9'),
+  ...SIPSIN_SLUGS.map((slug) =>
+    sharedPathGroup(`/sipsin/${slug}`, 'monthly', '0.8'),
   ),
 ]
 

@@ -78,6 +78,38 @@ const SIXTY_PILLARS: Array<[string, string, string, string]> = [
   ['gye-hae', '계해', '癸亥', 'Gye-hae'],
 ]
 
+// 14 Ziwei main stars: [slug, korean, hanja, english]
+const ZIWEI_STARS: Array<[string, string, string, string]> = [
+  ['zi-wei', '자미성', '紫微', 'Zi Wei'],
+  ['tian-ji', '천기성', '天機', 'Tian Ji'],
+  ['tai-yang', '태양성', '太陽', 'Tai Yang'],
+  ['wu-qu', '무곡성', '武曲', 'Wu Qu'],
+  ['tian-tong', '천동성', '天同', 'Tian Tong'],
+  ['lian-zhen', '염정성', '廉貞', 'Lian Zhen'],
+  ['tian-fu', '천부성', '天府', 'Tian Fu'],
+  ['tai-yin', '태음성', '太陰', 'Tai Yin'],
+  ['tan-lang', '탐랑성', '貪狼', 'Tan Lang'],
+  ['ju-men', '거문성', '巨門', 'Ju Men'],
+  ['tian-xiang', '천상성', '天相', 'Tian Xiang'],
+  ['tian-liang', '천량성', '天梁', 'Tian Liang'],
+  ['qi-sha', '칠살성', '七殺', 'Qi Sha'],
+  ['po-jun', '파군성', '破軍', 'Po Jun'],
+]
+
+// 10 Sipsin (Ten Gods): [slug, korean, hanja, english]
+const SIPSIN_LIST: Array<[string, string, string, string]> = [
+  ['bi-gyeon', '비견', '比肩', 'Bi-gyeon'],
+  ['geop-jae', '겁재', '劫財', 'Geop-jae'],
+  ['sik-sin', '식신', '食神', 'Sik-sin'],
+  ['sang-gwan', '상관', '傷官', 'Sang-gwan'],
+  ['pyeon-jae', '편재', '偏財', 'Pyeon-jae'],
+  ['jeong-jae', '정재', '正財', 'Jeong-jae'],
+  ['pyeon-gwan', '편관', '偏官', 'Pyeon-gwan'],
+  ['jeong-gwan', '정관', '正官', 'Jeong-gwan'],
+  ['pyeon-in', '편인', '偏印', 'Pyeon-in'],
+  ['jeong-in', '정인', '正印', 'Jeong-in'],
+]
+
 const DIST_DIR = join(process.cwd(), 'dist')
 const SITE_URL = 'https://saju-wheat.vercel.app'
 const LANGUAGES = ['ko', 'en', 'ja', 'zh'] as const
@@ -174,6 +206,18 @@ function staticPageSeo(suffix: string, titleKey: string): RouteSeo {
       ja: '六十甲子 日柱ガイド — 性格・恋愛・仕事・相性 | 命運盤',
       zh: '六十甲子 日柱指南 — 性格、恋爱、事业、合盘 | 命运盘',
     },
+    '/ziwei/stars': {
+      ko: '자미두수 14주성 가이드 | 명운판',
+      en: 'Zi Wei Dou Shu 14 Main Stars Guide | Myungunpan',
+      ja: '紫微斗数14主星ガイド | 命運盤',
+      zh: '紫微斗数十四主星指南 | 命运盘',
+    },
+    '/sipsin': {
+      ko: '십신(十神) 완전 가이드 | 명운판',
+      en: 'Ten Gods (Sipsin) Complete Guide | Myungunpan',
+      ja: '十神完全ガイド | 命運盤',
+      zh: '十神完全指南 | 命运盘',
+    },
   }
 
   const descriptions: Record<Lang, string> = homeSeo().description
@@ -224,6 +268,44 @@ function pillarSeo(slug: string, korean: string, hanja: string, romanized: strin
       en: `Discover the personality, love style, career aptitude, and compatibility of the ${romanized} (${hanja}) Day Pillar.`,
       ja: `${hanja}日柱の性格、恋愛スタイル、職業適性、相性を詳しくご紹介します。`,
       zh: `详细了解${hanja}日柱的性格、恋爱风格、职业适性和合盘。`,
+    },
+    type: 'article',
+  }
+}
+
+function ziweiStarSeo(slug: string, korean: string, hanja: string, english: string): RouteSeo {
+  return {
+    suffix: `/ziwei/stars/${slug}`,
+    title: {
+      ko: `${korean}(${hanja}) — 성격, 직업, 연애, 사화 해석 | 명운판`,
+      en: `${english} Star — Personality, Career, Love | Myungunpan`,
+      ja: `${hanja}星 — 性格・仕事・恋愛・四化 | 命運盤`,
+      zh: `${hanja}星 — 性格、事业、恋爱、四化 | 命运盘`,
+    },
+    description: {
+      ko: `${korean}(${hanja})의 성격, 직업 적성, 연애 스타일, 사화 해석을 자세히 알아보세요.`,
+      en: `Discover the personality, career aptitude, love style, and Four Transformations of the ${english} Star (${hanja}).`,
+      ja: `${hanja}星の性格、職業適性、恋愛スタイル、四化の解釈を詳しくご紹介します。`,
+      zh: `详细了解${hanja}星的性格、职业适性、恋爱风格和四化解读。`,
+    },
+    type: 'article',
+  }
+}
+
+function sipsinSeo(slug: string, korean: string, hanja: string, english: string): RouteSeo {
+  return {
+    suffix: `/sipsin/${slug}`,
+    title: {
+      ko: `${korean}(${hanja}) — 성격, 직업, 연애 해석 | 명운판`,
+      en: `${english} — Personality, Career, Love | Myungunpan`,
+      ja: `${hanja} — 性格・仕事・恋愛 | 命運盤`,
+      zh: `${hanja} — 性格、事业、恋爱 | 命运盘`,
+    },
+    description: {
+      ko: `${korean}(${hanja})의 성격, 직업 적성, 연애 스타일을 자세히 알아보세요.`,
+      en: `Discover the personality, career aptitude, and love style of ${english} (${hanja}).`,
+      ja: `${hanja}の性格、職業適性、恋愛スタイルを詳しくご紹介します。`,
+      zh: `详细了解${hanja}的性格、职业适性和恋爱风格。`,
     },
     type: 'article',
   }
@@ -329,6 +411,14 @@ function breadcrumbJsonLd(lang: Lang, route: RouteSeo): string {
     const pillarsName = lang === 'ko' ? '60갑자 일주' : lang === 'ja' ? '六十甲子 日柱' : lang === 'zh' ? '六十甲子 日柱' : '60 Ganji Pillars'
     items.push({ name: pillarsName, item: `${SITE_URL}/${lang}/pillars` })
     items.push({ name: route.title[lang].replace(/ \| .*$/, '') })
+  } else if (route.suffix.startsWith('/ziwei/stars/')) {
+    const ziweiStarsName = lang === 'ko' ? '자미두수 14주성' : lang === 'ja' ? '紫微斗数14主星' : lang === 'zh' ? '紫微斗数十四主星' : 'Ziwei 14 Stars'
+    items.push({ name: ziweiStarsName, item: `${SITE_URL}/${lang}/ziwei/stars` })
+    items.push({ name: route.title[lang].replace(/ \| .*$/, '') })
+  } else if (route.suffix.startsWith('/sipsin/')) {
+    const sipsinName = lang === 'ko' ? '십신(十神)' : lang === 'ja' ? '十神' : lang === 'zh' ? '十神' : 'Ten Gods (Sipsin)'
+    items.push({ name: sipsinName, item: `${SITE_URL}/${lang}/sipsin` })
+    items.push({ name: route.title[lang].replace(/ \| .*$/, '') })
   } else if (route.suffix.startsWith('/guide')) {
     const guideName = lang === 'ko' ? '가이드' : lang === 'ja' ? 'ガイド' : lang === 'zh' ? '指南' : 'Guide'
     if (route.suffix === '/guide') {
@@ -422,11 +512,13 @@ async function main() {
 
   const routes: RouteSeo[] = [
     homeSeo(),
-    ...['/guide', '/guide/saju', '/guide/ziwei', '/guide/natal', '/articles', '/privacy', '/terms', '/dream', '/pillars'].map(
+    ...['/guide', '/guide/saju', '/guide/ziwei', '/guide/natal', '/articles', '/privacy', '/terms', '/dream', '/pillars', '/ziwei/stars', '/sipsin'].map(
       (s) => staticPageSeo(s, s),
     ),
     ...ARTICLE_IDS.map((id) => articleSeo(id)),
     ...SIXTY_PILLARS.map(([slug, korean, hanja, romanized]) => pillarSeo(slug, korean, hanja, romanized)),
+    ...ZIWEI_STARS.map(([slug, korean, hanja, english]) => ziweiStarSeo(slug, korean, hanja, english)),
+    ...SIPSIN_LIST.map(([slug, korean, hanja, english]) => sipsinSeo(slug, korean, hanja, english)),
   ]
 
   let count = 0

@@ -76,6 +76,20 @@ export const ja: TranslationKeys = {
     description: '六十甲子の日柱ごとに性格・恋愛・仕事・相性を詳しくご紹介します',
   },
 
+  // 紫微斗数14主星
+  ziweiStars: {
+    title: '紫微斗数14主星ガイド',
+    subtitle: '14個の主星の性格と意味を学びましょう',
+    description: '紫微斗数14主星ごとの性格・仕事・恋愛・四化の解釈ガイド',
+  },
+
+  // 十神
+  sipsin: {
+    title: '十神完全ガイド',
+    subtitle: '四柱推命の10の関係を理解しましょう',
+    description: '十神ごとの性格・職業適性・恋愛スタイル完全解説',
+  },
+
   // 夢占い
   dream: {
     title: '夢占い',
