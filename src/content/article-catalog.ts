@@ -31,6 +31,9 @@ export type ArticleKey =
   | 'ziweiFourTransformations'
   | 'ziweiVsSaju'
   | 'ziweiCompatibility'
+  | 'retrogradeGuide'
+  | 'twelveHouses'
+  | 'planetaryAspects'
 
 export type ArticleCluster =
   | 'starter'
@@ -81,6 +84,9 @@ export const ARTICLE_CATALOG: ArticleMeta[] = [
   { id: 'ziwei-four-transformations', key: 'ziweiFourTransformations', cluster: 'ziwei' },
   { id: 'ziwei-vs-saju', key: 'ziweiVsSaju', cluster: 'ziwei' },
   { id: 'ziwei-compatibility', key: 'ziweiCompatibility', cluster: 'ziwei' },
+  { id: 'retrograde-guide', key: 'retrogradeGuide', cluster: 'astrology' },
+  { id: 'twelve-houses', key: 'twelveHouses', cluster: 'astrology' },
+  { id: 'planetary-aspects', key: 'planetaryAspects', cluster: 'astrology' },
 ]
 
 export const ARTICLE_IDS = ARTICLE_CATALOG.map((item) => item.id)
@@ -94,7 +100,7 @@ export const ARTICLE_RELATED_MAP: Record<string, string[]> = {
   'career-and-money': ['career-strengths-saju', 'money-flow-timing', 'ten-gods-for-beginners'],
   'day-master-types': ['ten-gods-for-beginners', 'career-strengths-saju', 'what-is-saju'],
   'ten-gods-for-beginners': ['day-master-types', 'career-and-money', 'relationship-patterns'],
-  'big-three-astrology': ['love-and-relationships', 'career-and-money', 'what-is-ziwei'],
+  'big-three-astrology': ['retrograde-guide', 'twelve-houses', 'planetary-aspects'],
   'relationship-patterns': ['love-and-relationships', 'relationship-timing', 'what-is-saju'],
   'relationship-timing': ['relationship-patterns', 'love-and-relationships', 'unknown-time-saju'],
   'compatibility-before-love': ['love-and-relationships', 'relationship-patterns', 'relationship-timing'],
@@ -118,4 +124,7 @@ export const ARTICLE_RELATED_MAP: Record<string, string[]> = {
   'ziwei-four-transformations': ['ziwei-14-main-stars', 'ziwei-chart-reading', 'ziwei-vs-saju'],
   'ziwei-vs-saju': ['what-is-saju', 'what-is-ziwei', 'ziwei-chart-reading'],
   'ziwei-compatibility': ['ziwei-chart-reading', 'ziwei-14-main-stars', 'compatibility-before-love'],
+  'retrograde-guide': ['big-three-astrology', 'twelve-houses', 'planetary-aspects'],
+  'twelve-houses': ['big-three-astrology', 'retrograde-guide', 'planetary-aspects'],
+  'planetary-aspects': ['twelve-houses', 'big-three-astrology', 'retrograde-guide'],
 }
