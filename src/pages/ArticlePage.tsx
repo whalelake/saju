@@ -155,6 +155,7 @@ const GUIDE_PATH_BY_CLUSTER: Record<ArticleCluster, string> = {
   astrology: '/guide/natal',
   dream: '/dream',
   ziwei: '/guide/ziwei',
+  comparison: '/guide',
 }
 
 const GUIDE_COPY: Record<LanguageKey, Record<ArticleCluster, { title: string; description: string; button: string }>> = {
@@ -199,6 +200,11 @@ const GUIDE_COPY: Record<LanguageKey, Record<ArticleCluster, { title: string; de
       description: '내 명반에서 주성 배치를 직접 확인해보세요.',
       button: '명반 계산',
     },
+    comparison: {
+      title: '다른 체계와 비교해보기',
+      description: '사주, 점성술, 타로, MBTI의 차이를 이해하면 각 체계를 더 잘 활용할 수 있어요.',
+      button: '비교 가이드 보기',
+    },
   },
   en: {
     starter: {
@@ -240,6 +246,11 @@ const GUIDE_COPY: Record<LanguageKey, Record<ArticleCluster, { title: string; de
       title: 'Calculate Your Zi Wei Chart',
       description: 'See how the main stars are placed in your birth chart.',
       button: 'Calculate chart',
+    },
+    comparison: {
+      title: 'Understand different systems',
+      description: 'Knowing how Saju, astrology, tarot, and MBTI differ helps you get more from each one.',
+      button: 'Read comparison guide',
     },
   },
   ja: {
@@ -283,6 +294,11 @@ const GUIDE_COPY: Record<LanguageKey, Record<ArticleCluster, { title: string; de
       description: '自分の命盤で主星の配置を確認してみましょう。',
       button: '命盤計算',
     },
+    comparison: {
+      title: '他の体系と比較してみる',
+      description: '四柱推命、占星術、タロット、MBTIの違いを理解すると、各体系をより活用できます。',
+      button: '比較ガイドを見る',
+    },
   },
   zh: {
     starter: {
@@ -324,6 +340,11 @@ const GUIDE_COPY: Record<LanguageKey, Record<ArticleCluster, { title: string; de
       title: '计算你的紫微斗数命盘',
       description: '亲自查看命盘中主星的排列位置。',
       button: '计算命盘',
+    },
+    comparison: {
+      title: '了解不同体系的差异',
+      description: '弄清四柱、占星、塔罗和 MBTI 的区别，能让你更好地利用每种体系。',
+      button: '查看对比指南',
     },
   },
 }
@@ -428,6 +449,17 @@ const CLUSTER_CTA_COPY: Record<LanguageKey, Record<ArticleCluster, {
       aiDescription: '주성 배치의 의미를 AI가 쉽게 풀어드려요.',
       aiPrimary: 'AI 해석 시작',
     },
+    comparison: {
+      inlineTitle: '사주와 다른 체계를 직접 비교해보기',
+      inlineDescription: '사주와 점성술을 둘 다 계산해보면 각 체계의 강점이 더 뚜렷하게 보입니다.',
+      inlinePrimary: '사주 계산하기',
+      applyTitle: '비교 글을 읽었다면 직접 계산해볼 차례예요',
+      applyDescription: '사주와 점성술을 모두 계산해보면 차이점이 훨씬 체감됩니다.',
+      applyPrimary: '사주·점성술 둘 다 계산하기',
+      aiTitle: '비교 주제를 AI 해석으로 이어가기',
+      aiDescription: '계산 후 AI에게 사주와 점성술 결과를 함께 물어보면 각 체계의 해석 차이를 실감할 수 있어요.',
+      aiPrimary: '비교 AI 질문 시작',
+    },
   },
   en: {
     starter: {
@@ -517,6 +549,17 @@ const CLUSTER_CTA_COPY: Record<LanguageKey, Record<ArticleCluster, {
       aiTitle: 'Get AI chart reading',
       aiDescription: 'Let AI explain what your star placements mean.',
       aiPrimary: 'Start AI reading',
+    },
+    comparison: {
+      inlineTitle: 'Compare systems by trying both calculators',
+      inlineDescription: 'Running both Saju and astrology calculations makes the differences between systems much clearer.',
+      inlinePrimary: 'Calculate Saju',
+      applyTitle: 'Try both calculators to feel the difference',
+      applyDescription: 'Calculate both Saju and astrology charts to see how each system reads your life differently.',
+      applyPrimary: 'Try both Saju and astrology',
+      aiTitle: 'Continue this comparison into AI',
+      aiDescription: 'After calculation, ask AI to compare what Saju and astrology each reveal about your personality, relationships, and career.',
+      aiPrimary: 'Start comparison AI',
     },
   },
   ja: {
@@ -608,6 +651,17 @@ const CLUSTER_CTA_COPY: Record<LanguageKey, Record<ArticleCluster, {
       aiDescription: '主星配置の意味をAIがわかりやすく解説します。',
       aiPrimary: 'AI解釈を開始',
     },
+    comparison: {
+      inlineTitle: '四柱推命と他の体系を両方計算して比べる',
+      inlineDescription: '四柱推命と占星術を両方計算すると、各体系の違いがはっきり見えます。',
+      inlinePrimary: '四柱推命を計算する',
+      applyTitle: '比較記事を読んだら両方計算してみましょう',
+      applyDescription: '四柱推命と占星術の両方を計算すると、それぞれの読み方の違いを実感できます。',
+      applyPrimary: '四柱・占星術を両方計算する',
+      aiTitle: 'この比較テーマをAI解釈へ進める',
+      aiDescription: '計算後、四柱推命と占星術のそれぞれが性格・関係・仕事をどう読むかAIに比較してもらえます。',
+      aiPrimary: '比較AIを始める',
+    },
   },
   zh: {
     starter: {
@@ -697,6 +751,17 @@ const CLUSTER_CTA_COPY: Record<LanguageKey, Record<ArticleCluster, {
       aiTitle: 'AI 解读命盘',
       aiDescription: '让 AI 为您解释主星排列的含义。',
       aiPrimary: '开始 AI 解读',
+    },
+    comparison: {
+      inlineTitle: '同时计算四柱和占星来对比',
+      inlineDescription: '把四柱和占星都算一遍，各体系的差异会变得非常清楚。',
+      inlinePrimary: '计算四柱',
+      applyTitle: '读完对比文章，试试两边都算一下',
+      applyDescription: '同时计算四柱和占星的星盘，亲自感受每种体系解读人生的不同方式。',
+      applyPrimary: '四柱和占星都试试',
+      aiTitle: '把这个对比主题继续带进 AI',
+      aiDescription: '计算后可以让 AI 对比四柱和占星各自对性格、关系、事业的不同解读。',
+      aiPrimary: '开始对比 AI',
     },
   },
 }

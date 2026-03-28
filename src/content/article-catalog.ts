@@ -34,6 +34,9 @@ export type ArticleKey =
   | 'retrogradeGuide'
   | 'twelveHouses'
   | 'planetaryAspects'
+  | 'sajuVsTarot'
+  | 'sajuVsMbti'
+  | 'sajuVsAstrology'
 
 export type ArticleCluster =
   | 'starter'
@@ -44,6 +47,7 @@ export type ArticleCluster =
   | 'astrology'
   | 'dream'
   | 'ziwei'
+  | 'comparison'
 
 export interface ArticleMeta {
   id: string
@@ -87,6 +91,9 @@ export const ARTICLE_CATALOG: ArticleMeta[] = [
   { id: 'retrograde-guide', key: 'retrogradeGuide', cluster: 'astrology' },
   { id: 'twelve-houses', key: 'twelveHouses', cluster: 'astrology' },
   { id: 'planetary-aspects', key: 'planetaryAspects', cluster: 'astrology' },
+  { id: 'saju-vs-tarot', key: 'sajuVsTarot', cluster: 'comparison' },
+  { id: 'saju-vs-mbti', key: 'sajuVsMbti', cluster: 'comparison' },
+  { id: 'saju-vs-astrology', key: 'sajuVsAstrology', cluster: 'comparison' },
 ]
 
 export const ARTICLE_IDS = ARTICLE_CATALOG.map((item) => item.id)
@@ -127,4 +134,7 @@ export const ARTICLE_RELATED_MAP: Record<string, string[]> = {
   'retrograde-guide': ['big-three-astrology', 'twelve-houses', 'planetary-aspects'],
   'twelve-houses': ['big-three-astrology', 'retrograde-guide', 'planetary-aspects'],
   'planetary-aspects': ['twelve-houses', 'big-three-astrology', 'retrograde-guide'],
+  'saju-vs-tarot': ['saju-vs-mbti', 'saju-vs-astrology', 'what-is-saju'],
+  'saju-vs-mbti': ['saju-vs-tarot', 'saju-vs-astrology', 'day-master-types'],
+  'saju-vs-astrology': ['saju-vs-tarot', 'big-three-astrology', 'ziwei-vs-saju'],
 }

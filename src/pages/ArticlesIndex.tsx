@@ -34,6 +34,7 @@ export default function ArticlesIndex() {
     astrology: isKo ? '점성술' : isJa ? '占星術' : isZh ? '占星' : 'Astrology',
     dream: isKo ? '꿈 해몽' : isJa ? '夢占い' : isZh ? '解梦' : 'Dream Interpretation',
     ziwei: isKo ? '자미두수 입문' : isJa ? '紫微斗数入門' : isZh ? '紫微斗数入门' : 'Zi Wei Dou Shu',
+    comparison: isKo ? '비교 분석' : isJa ? '比較分析' : isZh ? '对比分析' : 'Comparisons',
   }
 
   const articles = ARTICLE_CATALOG.map((item) => ({
