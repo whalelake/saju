@@ -13,12 +13,12 @@
     <meta name="naver-site-verification" content="027fa2c42a0815a5330d1e23c5e861b56c8f4560" />
     <!-- canonical and hreflang are set dynamically by SeoHead (and baked in by prerender) -->
 
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-KT9JKVVK');</script>
+    <!-- Google Tag Manager (deferred for better FCP) -->
+    <script>window.dataLayer=window.dataLayer||[];
+    window.addEventListener('load',function(){var f=document.getElementsByTagName('script')[0],
+    j=document.createElement('script');j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id=GTM-KT9JKVVK';f.parentNode.insertBefore(j,f);
+    window.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});});</script>
     <!-- End Google Tag Manager -->
 
     <!-- Google AdSense -->
@@ -152,10 +152,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" media="print" onload="this.media='all'" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" media="print" onload="this.media='all'" />
     <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" />
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
     </noscript>
   </head>

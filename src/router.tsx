@@ -1,13 +1,16 @@
+import { lazy, Suspense } from 'react'
 import { createBrowserRouter, Navigate, Outlet, useParams } from 'react-router'
 import { I18nProvider, type Language } from './i18n'
 import App from './components/App'
-import GuideIndex from './pages/GuideIndex'
-import LandingPage from './pages/LandingPage'
-import PrivacyPage from './pages/PrivacyPage'
-import TermsPage from './pages/TermsPage'
-import ArticlesIndex from './pages/ArticlesIndex'
-import ArticlePage from './pages/ArticlePage'
-import DreamPage from './pages/DreamPage'
+
+// Lazy-load secondary pages for code splitting
+const GuideIndex = lazy(() => import('./pages/GuideIndex'))
+const LandingPage = lazy(() => import('./pages/LandingPage'))
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage'))
+const TermsPage = lazy(() => import('./pages/TermsPage'))
+const ArticlesIndex = lazy(() => import('./pages/ArticlesIndex'))
+const ArticlePage = lazy(() => import('./pages/ArticlePage'))
+const DreamPage = lazy(() => import('./pages/DreamPage'))
 
 const SUPPORTED_LANGUAGES: Language[] = ['ko', 'en', 'ja', 'zh']
 
@@ -35,7 +38,9 @@ function LanguageLayout() {
 
   return (
     <I18nProvider initialLanguage={language}>
-      <Outlet />
+      <Suspense fallback={<div className="min-h-screen" />}>
+        <Outlet />
+      </Suspense>
     </I18nProvider>
   )
 }
