@@ -80,6 +80,9 @@ const routeGroups: RouteGroup[] = [
   ...SIPSIN_SLUGS.map((slug) =>
     sharedPathGroup(`/sipsin/${slug}`, 'monthly', '0.8'),
   ),
+  sharedPathGroup('/fortune', 'weekly', '0.9'),
+  sharedPathGroup('/fortune/2025', 'monthly', '0.7'),
+  sharedPathGroup('/fortune/2026', 'weekly', '0.9'),
 ]
 
 function escapeXml(value: string) {

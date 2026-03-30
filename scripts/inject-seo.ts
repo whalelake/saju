@@ -110,6 +110,12 @@ const SIPSIN_LIST: Array<[string, string, string, string]> = [
   ['jeong-in', '정인', '正印', 'Jeong-in'],
 ]
 
+// Fortune year data: [year, hanja, korean]
+const FORTUNE_YEARS: Array<[number, string, string]> = [
+  [2025, '乙巳', '을사'],
+  [2026, '丙午', '병오'],
+]
+
 const DIST_DIR = join(process.cwd(), 'dist')
 const SITE_URL = 'https://saju-wheat.vercel.app'
 const LANGUAGES = ['ko', 'en', 'ja', 'zh'] as const
@@ -311,6 +317,44 @@ function sipsinSeo(slug: string, korean: string, hanja: string, english: string)
   }
 }
 
+function fortuneIndexSeo(): RouteSeo {
+  return {
+    suffix: '/fortune',
+    title: {
+      ko: '연간 운세 — 띠별 운세와 올해의 기운 | 명운판',
+      en: 'Annual Fortune — Zodiac Forecast & Year Energy | Myungunpan',
+      ja: '年間運勢 — 干支別運勢と今年の気運 | 命運盤',
+      zh: '年度运势 — 生肖运势与年度能量 | 命运盘',
+    },
+    description: {
+      ko: '띠별 연간 운세와 올해의 기운을 확인하세요. 각 해의 운세를 자세히 분석합니다.',
+      en: 'Check your annual zodiac fortune and year energy. Detailed fortune analysis for each year.',
+      ja: '干支別の年間運勢と今年の気運をチェック。各年の運勢を詳しく分析します。',
+      zh: '查看生肖年度运势与年度能量。详细分析每年的运势。',
+    },
+    type: 'website',
+  }
+}
+
+function fortuneYearSeo(year: number, hanja: string, korean: string): RouteSeo {
+  return {
+    suffix: `/fortune/${year}`,
+    title: {
+      ko: `${year}년 ${korean}년 운세 — 띠별 운세 총정리 | 명운판`,
+      en: `${year} Fortune (${hanja} Year) — Complete Zodiac Forecast | Myungunpan`,
+      ja: `${year}年${hanja}年の運勢 — 干支別運勢 | 命運盤`,
+      zh: `${year}年${hanja}年运势 — 生肖运势总汇 | 命运盘`,
+    },
+    description: {
+      ko: `${year}년 ${korean}(${hanja})년 띠별 운세를 총정리합니다. 올해의 기운과 각 띠별 운세를 확인하세요.`,
+      en: `Complete zodiac forecast for ${year} (${hanja} Year). Check your fortune and year energy by zodiac sign.`,
+      ja: `${year}年${hanja}年の干支別運勢を総まとめ。今年の気運と各干支の運勢をチェック。`,
+      zh: `${year}年${hanja}年生肖运势总汇。查看年度能量与各生肖运势。`,
+    },
+    type: 'article',
+  }
+}
+
 function escapeHtml(s: string) {
   return s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 }
@@ -419,6 +463,13 @@ function breadcrumbJsonLd(lang: Lang, route: RouteSeo): string {
     const sipsinName = lang === 'ko' ? '십신(十神)' : lang === 'ja' ? '十神' : lang === 'zh' ? '十神' : 'Ten Gods (Sipsin)'
     items.push({ name: sipsinName, item: `${SITE_URL}/${lang}/sipsin` })
     items.push({ name: route.title[lang].replace(/ \| .*$/, '') })
+  } else if (route.suffix.startsWith('/fortune/')) {
+    const fortuneName = lang === 'ko' ? '연간 운세' : lang === 'ja' ? '年間運勢' : lang === 'zh' ? '年度运势' : 'Annual Fortune'
+    items.push({ name: fortuneName, item: `${SITE_URL}/${lang}/fortune` })
+    items.push({ name: route.title[lang].replace(/ \| .*$/, '') })
+  } else if (route.suffix === '/fortune') {
+    const fortuneName = lang === 'ko' ? '연간 운세' : lang === 'ja' ? '年間運勢' : lang === 'zh' ? '年度运势' : 'Annual Fortune'
+    items.push({ name: fortuneName })
   } else if (route.suffix.startsWith('/guide')) {
     const guideName = lang === 'ko' ? '가이드' : lang === 'ja' ? 'ガイド' : lang === 'zh' ? '指南' : 'Guide'
     if (route.suffix === '/guide') {
@@ -519,6 +570,8 @@ async function main() {
     ...SIXTY_PILLARS.map(([slug, korean, hanja, romanized]) => pillarSeo(slug, korean, hanja, romanized)),
     ...ZIWEI_STARS.map(([slug, korean, hanja, english]) => ziweiStarSeo(slug, korean, hanja, english)),
     ...SIPSIN_LIST.map(([slug, korean, hanja, english]) => sipsinSeo(slug, korean, hanja, english)),
+    fortuneIndexSeo(),
+    ...FORTUNE_YEARS.map(([year, hanja, korean]) => fortuneYearSeo(year, hanja, korean)),
   ]
 
   let count = 0

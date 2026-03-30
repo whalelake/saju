@@ -17,6 +17,8 @@ const ZiweiStarsIndex = lazy(() => import('./pages/ZiweiStarsIndex'))
 const ZiweiStarPage = lazy(() => import('./pages/ZiweiStarPage'))
 const SipsinIndex = lazy(() => import('./pages/SipsinIndex'))
 const SipsinPage = lazy(() => import('./pages/SipsinPage'))
+const FortuneIndex = lazy(() => import('./pages/FortuneIndex'))
+const FortunePage = lazy(() => import('./pages/FortunePage'))
 
 const SUPPORTED_LANGUAGES: Language[] = ['ko', 'en', 'ja', 'zh']
 
@@ -135,6 +137,14 @@ export const router = createBrowserRouter([
       {
         path: 'sipsin/:sipsinId',
         element: <SipsinPage />,
+      },
+      {
+        path: 'fortune',
+        element: <FortuneIndex />,
+      },
+      {
+        path: 'fortune/:year',
+        element: <FortunePage />,
       },
     ],
   },

@@ -90,6 +90,12 @@ export const en: TranslationKeys = {
     description: 'Complete guide to personality, career aptitude, and love style for each of the Ten Gods',
   },
 
+  fortune: {
+    title: 'Annual Fortune',
+    subtitle: 'Check your zodiac fortune and the year\'s energy',
+    description: '2025 & 2026 Zodiac Fortune — Career, Love, and Health Overview',
+  },
+
   // Dream Interpretation
   dream: {
     title: 'Dream Interpretation',

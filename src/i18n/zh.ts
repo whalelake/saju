@@ -90,6 +90,12 @@ export const zh: TranslationKeys = {
     description: '十神的性格、职业适性、恋爱风格完全解析',
   },
 
+  fortune: {
+    title: '年度运势',
+    subtitle: '查看生肖运势与今年的能量',
+    description: '2025年、2026年生肖运势 — 事业、爱情、健康全面分析',
+  },
+
   // 解梦
   dream: {
     title: '解梦',

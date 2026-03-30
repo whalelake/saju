@@ -88,6 +88,12 @@ export const ko = {
     description: '십신별 성격, 직업 적성, 연애 스타일 완전 해석',
   },
 
+  fortune: {
+    title: '연간 운세',
+    subtitle: '띠별 운세와 올해의 기운을 확인해보세요',
+    description: '2025년, 2026년 띠별 운세 — 직업, 연애, 건강 총정리',
+  },
+
   // 꿈 해몽
   dream: {
     title: '꿈 해몽',

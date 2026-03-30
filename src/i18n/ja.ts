@@ -90,6 +90,12 @@ export const ja: TranslationKeys = {
     description: '十神ごとの性格・職業適性・恋愛スタイル完全解説',
   },
 
+  fortune: {
+    title: '年間運勢',
+    subtitle: '干支別の運勢と今年のエネルギーを確認しましょう',
+    description: '2025年・2026年の干支別運勢 — 仕事・恋愛・健康を総まとめ',
+  },
+
   // 夢占い
   dream: {
     title: '夢占い',
