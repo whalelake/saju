@@ -1118,6 +1118,27 @@ export const PILLAR_LABELS: Record<Language, {
   twelveStage: string
   ctaText: string
   ctaButton: string
+  backToIndex: string
+  dayPillar: string
+  quickInfo: string
+  elementRelation: string
+  twelveMeteor: string
+  section1Title: string
+  section2Title: string
+  section3Title: string
+  section4Title: string
+  section5Title: string
+  heavenlyStem: string
+  earthlyBranch: string
+  nature: string
+  strengths: string
+  branchNature: string
+  socialStyle: string
+  branchEnergy: string
+  caution: string
+  ctaTitle: string
+  ctaDescription: string
+  relatedPillars: string
 }> = {
   ko: {
     pageTitle: '{name} 일주 — 성격, 연애, 직업, 궁합 완전 해석',
@@ -1137,6 +1158,27 @@ export const PILLAR_LABELS: Record<Language, {
     twelveStage: '12운성',
     ctaText: '내 일주가 궁금하다면...',
     ctaButton: '지금 바로 계산하기',
+    backToIndex: '← 60갑자 목록',
+    dayPillar: '일주',
+    quickInfo: '기본 정보',
+    elementRelation: '오행 관계',
+    twelveMeteor: '12운성',
+    section1Title: '일주 해석',
+    section2Title: '성격과 기질',
+    section3Title: '직업과 재물',
+    section4Title: '연애와 관계',
+    section5Title: '궁합',
+    heavenlyStem: '천간',
+    earthlyBranch: '지지',
+    nature: '기본 성향',
+    strengths: '강점',
+    branchNature: '지지의 성질',
+    socialStyle: '관계 스타일',
+    branchEnergy: '지지의 에너지',
+    caution: '조심할 조합',
+    ctaTitle: '내 일주가 궁금하다면',
+    ctaDescription: '생년월일시를 입력하면 내 일주를 바로 확인할 수 있어요.',
+    relatedPillars: '관련 일주',
   },
   en: {
     pageTitle: '{name} Day Pillar — Personality, Love, Career & Compatibility Guide',
@@ -1156,6 +1198,27 @@ export const PILLAR_LABELS: Record<Language, {
     twelveStage: 'Twelve Life Stages',
     ctaText: 'Curious about your day pillar?',
     ctaButton: 'Calculate Now',
+    backToIndex: '← 60 Ganji List',
+    dayPillar: 'Day Pillar',
+    quickInfo: 'Quick Info',
+    elementRelation: 'Element Relation',
+    twelveMeteor: 'Twelve Stages',
+    section1Title: 'Pillar Interpretation',
+    section2Title: 'Personality & Temperament',
+    section3Title: 'Career & Wealth',
+    section4Title: 'Love & Relationships',
+    section5Title: 'Compatibility',
+    heavenlyStem: 'Heavenly Stem',
+    earthlyBranch: 'Earthly Branch',
+    nature: 'Core Nature',
+    strengths: 'Strengths',
+    branchNature: 'Branch Nature',
+    socialStyle: 'Social Style',
+    branchEnergy: 'Branch Energy',
+    caution: 'Challenging Matches',
+    ctaTitle: 'Curious about your day pillar?',
+    ctaDescription: 'Enter your birth date and time to discover your day pillar instantly.',
+    relatedPillars: 'Related Pillars',
   },
   ja: {
     pageTitle: '{name} 日柱 — 性格・恋愛・仕事・相性を徹底解説',
@@ -1175,6 +1238,27 @@ export const PILLAR_LABELS: Record<Language, {
     twelveStage: '十二運星',
     ctaText: '自分の日柱が気になったら...',
     ctaButton: '今すぐ計算する',
+    backToIndex: '← 六十甲子一覧',
+    dayPillar: '日柱',
+    quickInfo: '基本情報',
+    elementRelation: '五行関係',
+    twelveMeteor: '十二運星',
+    section1Title: '日柱の解釈',
+    section2Title: '性格と気質',
+    section3Title: '仕事と財運',
+    section4Title: '恋愛と人間関係',
+    section5Title: '相性',
+    heavenlyStem: '天干',
+    earthlyBranch: '地支',
+    nature: '基本性向',
+    strengths: '強み',
+    branchNature: '地支の性質',
+    socialStyle: '対人スタイル',
+    branchEnergy: '地支のエネルギー',
+    caution: '注意すべき組み合わせ',
+    ctaTitle: '自分の日柱が気になったら',
+    ctaDescription: '生年月日時を入力すると、あなたの日柱がすぐわかります。',
+    relatedPillars: '関連する日柱',
   },
   zh: {
     pageTitle: '{name} 日柱 — 性格、感情、事业、配对全面解析',
@@ -1194,5 +1278,26 @@ export const PILLAR_LABELS: Record<Language, {
     twelveStage: '十二运星',
     ctaText: '想知道你的日柱吗？',
     ctaButton: '立即计算',
+    backToIndex: '← 六十甲子列表',
+    dayPillar: '日柱',
+    quickInfo: '基本信息',
+    elementRelation: '五行关系',
+    twelveMeteor: '十二运星',
+    section1Title: '日柱解读',
+    section2Title: '性格与气质',
+    section3Title: '事业与财运',
+    section4Title: '感情与关系',
+    section5Title: '配对',
+    heavenlyStem: '天干',
+    earthlyBranch: '地支',
+    nature: '基本性向',
+    strengths: '优势',
+    branchNature: '地支性质',
+    socialStyle: '社交风格',
+    branchEnergy: '地支能量',
+    caution: '需注意的组合',
+    ctaTitle: '想知道你的日柱吗？',
+    ctaDescription: '输入出生日期时间，立即查看你的日柱。',
+    relatedPillars: '相关日柱',
   },
 }
