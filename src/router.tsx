@@ -19,6 +19,8 @@ const SipsinIndex = lazy(() => import('./pages/SipsinIndex'))
 const SipsinPage = lazy(() => import('./pages/SipsinPage'))
 const FortuneIndex = lazy(() => import('./pages/FortuneIndex'))
 const FortunePage = lazy(() => import('./pages/FortunePage'))
+const CompatibilityIndex = lazy(() => import('./pages/CompatibilityIndex'))
+const CompatibilityPage = lazy(() => import('./pages/CompatibilityPage'))
 
 const SUPPORTED_LANGUAGES: Language[] = ['ko', 'en', 'ja', 'zh']
 
@@ -145,6 +147,14 @@ export const router = createBrowserRouter([
       {
         path: 'fortune/:year',
         element: <FortunePage />,
+      },
+      {
+        path: 'compatibility',
+        element: <CompatibilityIndex />,
+      },
+      {
+        path: 'compatibility/:stemId',
+        element: <CompatibilityPage />,
       },
     ],
   },
