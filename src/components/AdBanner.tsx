@@ -5,6 +5,7 @@ interface AdBannerProps {
   slot: AdSlotKey
   format?: 'auto' | 'horizontal' | 'vertical' | 'rectangle'
   className?: string
+  onFilledChange?: (isFilled: boolean) => void
 }
 
 declare global {
@@ -13,11 +14,44 @@ declare global {
   }
 }
 
-export default function AdBanner({ slot, format = 'auto', className = '' }: AdBannerProps) {
+export default function AdBanner({ slot, format = 'auto', className = '', onFilledChange }: AdBannerProps) {
   const adRef = useRef<HTMLModElement>(null)
   const isLoaded = useRef(false)
   const slotValue = getAdSlotValue(slot)
   const isDev = import.meta.env.DEV
+
+  useEffect(() => {
+    if (isDev) {
+      onFilledChange?.(true)
+      return
+    }
+
+    if (!slotValue) {
+      onFilledChange?.(false)
+      return
+    }
+
+    const adNode = adRef.current
+    if (!adNode) {
+      onFilledChange?.(false)
+      return
+    }
+
+    const updateFillState = () => {
+      const status = adNode.getAttribute('data-ad-status')
+      onFilledChange?.(status === 'filled')
+    }
+
+    updateFillState()
+
+    const observer = new MutationObserver(updateFillState)
+    observer.observe(adNode, {
+      attributes: true,
+      attributeFilter: ['data-ad-status'],
+    })
+
+    return () => observer.disconnect()
+  }, [isDev, slotValue, onFilledChange])
 
   useEffect(() => {
     if (!slotValue || isLoaded.current) return
@@ -30,7 +64,7 @@ export default function AdBanner({ slot, format = 'auto', className = '' }: AdBa
     } catch (e) {
       console.error('AdSense error:', e)
     }
-  }, [])
+  }, [slotValue])
 
   if (isDev) {
     return (

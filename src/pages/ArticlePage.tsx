@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link, useParams, Navigate } from 'react-router'
 import { useI18n } from '../i18n'
 import SeoHead from '../components/SeoHead'
@@ -823,6 +824,11 @@ export default function ArticlePage() {
   const articleMetaCopy = ARTICLE_META_COPY[currentLang]
   const editorialNavLabel = SITE_PAGE_CONTENT.editorialPolicy[currentLang].navLabel
   const internalLinkCopy = INTERNAL_LINK_COPY[currentLang]
+  const [adFillState, setAdFillState] = useState({
+    top: false,
+    mid: false,
+    bottom: false,
+  })
 
   const articleCards: ArticleCard[] = ARTICLE_CATALOG.map((item) => ({
     id: item.id,
@@ -970,12 +976,18 @@ export default function ArticlePage() {
               </div>
             </header>
 
-            <section className="mb-8 rounded-2xl border border-base-300 bg-base-200/70 p-4">
-              <div className="flex items-center justify-between gap-3 mb-3">
-                <div className="badge badge-outline">{copy.sponsored}</div>
-                <p className="text-xs text-base-content/50">{copy.topAdLabel}</p>
-              </div>
-              <AdBanner slot="article_top" format="horizontal" />
+            <section className={adFillState.top ? 'mb-8 rounded-2xl border border-base-300 bg-base-200/70 p-4' : 'mb-2'}>
+              {adFillState.top && (
+                <div className="flex items-center justify-between gap-3 mb-3">
+                  <div className="badge badge-outline">{copy.sponsored}</div>
+                  <p className="text-xs text-base-content/50">{copy.topAdLabel}</p>
+                </div>
+              )}
+              <AdBanner
+                slot="article_top"
+                format="horizontal"
+                onFilledChange={(isFilled) => setAdFillState((prev) => ({ ...prev, top: isFilled }))}
+              />
             </section>
 
             <div className="prose prose-sm sm:prose max-w-none">
@@ -1038,12 +1050,18 @@ export default function ArticlePage() {
                 </div>
               </section>
 
-              <section className="not-prose mb-8 rounded-2xl border border-base-300 bg-base-200/70 p-4">
-                <div className="flex items-center justify-between gap-3 mb-3">
-                  <div className="badge badge-outline">{copy.sponsored}</div>
-                  <p className="text-xs text-base-content/50">{copy.midAdLabel}</p>
-                </div>
-                <AdBanner slot="article_mid" format="horizontal" />
+              <section className={adFillState.mid ? 'not-prose mb-8 rounded-2xl border border-base-300 bg-base-200/70 p-4' : 'not-prose mb-2'}>
+                {adFillState.mid && (
+                  <div className="flex items-center justify-between gap-3 mb-3">
+                    <div className="badge badge-outline">{copy.sponsored}</div>
+                    <p className="text-xs text-base-content/50">{copy.midAdLabel}</p>
+                  </div>
+                )}
+                <AdBanner
+                  slot="article_mid"
+                  format="horizontal"
+                  onFilledChange={(isFilled) => setAdFillState((prev) => ({ ...prev, mid: isFilled }))}
+                />
               </section>
 
               <section className="mb-8">
@@ -1129,12 +1147,18 @@ export default function ArticlePage() {
               </div>
             </section>
 
-            <section className="mt-8 rounded-2xl border border-base-300 bg-base-200/70 p-4">
-              <div className="flex items-center justify-between gap-3 mb-3">
-                <div className="badge badge-outline">{copy.sponsored}</div>
-                <p className="text-xs text-base-content/50">{copy.bottomAdLabel}</p>
-              </div>
-              <AdBanner slot="article_bottom" format="horizontal" />
+            <section className={adFillState.bottom ? 'mt-8 rounded-2xl border border-base-300 bg-base-200/70 p-4' : 'mt-2'}>
+              {adFillState.bottom && (
+                <div className="flex items-center justify-between gap-3 mb-3">
+                  <div className="badge badge-outline">{copy.sponsored}</div>
+                  <p className="text-xs text-base-content/50">{copy.bottomAdLabel}</p>
+                </div>
+              )}
+              <AdBanner
+                slot="article_bottom"
+                format="horizontal"
+                onFilledChange={(isFilled) => setAdFillState((prev) => ({ ...prev, bottom: isFilled }))}
+              />
             </section>
 
             <section className="mt-8 rounded-2xl border border-accent/20 bg-accent/10 p-5">

@@ -173,10 +173,10 @@ function LanguageToggle() {
     <div className="dropdown dropdown-end">
       <button
         tabIndex={0}
-        className="btn btn-ghost btn-sm gap-1"
+        className="btn btn-ghost btn-xs sm:btn-sm gap-1 px-2 sm:px-3 h-8 min-h-8 sm:h-9 sm:min-h-9"
         aria-label={t.header.languageSwitch}
       >
-        <span className="text-sm font-bold uppercase">{language}</span>
+        <span className="text-xs sm:text-sm font-bold uppercase">{language}</span>
         <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
         </svg>
@@ -218,7 +218,7 @@ function ThemeToggle() {
 
   return (
     <button
-      className="btn btn-ghost btn-sm btn-circle"
+      className="btn btn-ghost btn-xs sm:btn-sm btn-circle h-8 min-h-8 w-8 sm:h-9 sm:min-h-9 sm:w-9"
       onClick={() => setTheme(th => th === 'oriental' ? 'oriental-dark' : 'oriental')}
       aria-label={t.header.themeSwitch}
     >
@@ -440,7 +440,7 @@ export default function App() {
         }}
       />
       {/* 헤더 */}
-      <header className="navbar bg-base-100 border-b border-base-300 sticky top-0 z-40">
+      <header className="navbar bg-base-100 border-b border-base-300 sticky top-0 z-40 px-2 sm:px-4 min-h-12 sm:min-h-14">
         <div className="navbar-start">
           <History onSelect={handleHistorySelect} currentInput={birthInput} />
         </div>
@@ -455,9 +455,9 @@ export default function App() {
             </button>
           )}
         </div>
-        <div className="navbar-end gap-1">
+        <div className="navbar-end gap-0.5 sm:gap-1">
           <button
-            className="btn btn-ghost btn-sm btn-circle"
+            className="btn btn-ghost btn-xs sm:btn-sm btn-circle h-8 min-h-8 w-8 sm:h-9 sm:min-h-9 sm:w-9"
             onClick={() => setInfoOpen(true)}
             aria-label={t.header.guide}
           >
@@ -466,7 +466,7 @@ export default function App() {
             </svg>
           </button>
           <button
-            className="btn btn-ghost btn-sm btn-circle"
+            className="btn btn-ghost btn-xs sm:btn-sm btn-circle h-8 min-h-8 w-8 sm:h-9 sm:min-h-9 sm:w-9"
             onClick={() => setSettingsOpen(true)}
             aria-label={t.header.settings}
           >
@@ -481,7 +481,7 @@ export default function App() {
             href="https://github.com/whalelake/saju"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-ghost btn-sm btn-circle"
+            className="btn btn-ghost btn-sm btn-circle hidden sm:inline-flex"
             aria-label="GitHub"
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

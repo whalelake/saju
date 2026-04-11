@@ -291,6 +291,10 @@ function joinParagraphs(...parts: string[]) {
     .join('\n\n')
 }
 
+function sanitizeInlineTitle(text: string) {
+  return text.trim().replace(/[.!?]+$/, '')
+}
+
 function buildDynamicParagraph(
   language: ArticleLanguage,
   block: BlockKey,
@@ -299,22 +303,22 @@ function buildDynamicParagraph(
   if (language === 'ko') {
     switch (block) {
       case 'intro':
-        return `${article.title.replace(/\?$/, '')} 주제는 단순한 소개문으로 끝나지 않습니다. ${article.subtitle}라는 부제를 실제 계산 경험과 연결해서 읽으면, 이 글이 어떤 독자를 위해 어떤 질문에 답하려는지 더 선명하게 보입니다.`
+        return `${article.title.replace(/\?$/, '')} 주제는 단순한 소개문으로 끝나지 않습니다. 부제 "${article.subtitle}"를 실제 계산 경험과 연결해서 읽으면, 이 글이 어떤 독자를 위해 어떤 질문에 답하려는지 더 선명하게 보입니다.`
       case 'section1':
         return `${article.section1Title} 단계에서는 정의를 외우기보다 판단 기준을 잡는 일이 중요합니다. 같은 개념도 명식 구조와 시기 흐름에 따라 체감이 달라지기 때문에, 첫 단락에서 중심축을 분명히 잡아두면 뒤의 내용이 훨씬 쉽게 이어집니다.`
       case 'section2':
-        return `${article.section2Title} 는 실전 해석에서 자주 놓치는 연결 고리를 보완해줍니다. 앞 문단의 개념을 주변 요소와 함께 읽기 시작하면, 추상적인 설명이 실제 선택 기준으로 바뀌는 경험을 하게 됩니다.`
+        return `${article.section2Title} 항목은 실전 해석에서 자주 놓치는 연결 고리를 보완해줍니다. 앞 문단의 개념을 주변 요소와 함께 읽기 시작하면, 추상적인 설명이 실제 선택 기준으로 바뀌는 경험을 하게 됩니다.`
       case 'section3':
         return `${article.section3Title} 구간에서는 "이 내용을 내 사례에 어떻게 붙일까"를 생각해보면 좋습니다. 명운판 계산기와 AI 후속 질문을 함께 쓰면, 배운 개념이 지식이 아니라 현재 상황을 점검하는 도구로 바뀝니다.`
       case 'section4':
-        return `${article.section4Title} 의 핵심은 지나친 단정보다 적용 범위를 나누는 태도에 있습니다. 읽은 내용을 바로 실전에 옮기기 전에 내 명식, 현재 시기, 관련된 사람의 흐름을 같이 대조하면 훨씬 안정적인 해석이 가능합니다.`
+        return `${article.section4Title}의 핵심은 지나친 단정보다 적용 범위를 나누는 태도에 있습니다. 읽은 내용을 바로 실전에 옮기기 전에 내 명식, 현재 시기, 관련된 사람의 흐름을 같이 대조하면 훨씬 안정적인 해석이 가능합니다.`
     }
   }
 
   if (language === 'en') {
     switch (block) {
       case 'intro':
-        return `This topic matters most when it moves beyond a quick definition. Reading ${article.title.replace(/\?$/, '')} through the promise in "${article.subtitle}" helps the reader understand not only what the concept means, but why it matters in a real chart-reading workflow.`
+        return `This topic matters most when it moves beyond a quick definition. Framing "${sanitizeInlineTitle(article.title)}" through the promise in "${sanitizeInlineTitle(article.subtitle)}" helps the reader understand not only what the concept means, but why it matters in a real chart-reading workflow.`
       case 'section1':
         return `The first section is where the reader needs a stable frame. Instead of treating ${article.section1Title} as a label to memorize, it is more useful to treat it as the anchor that makes everything else in the article easier to interpret.`
       case 'section2':
@@ -363,7 +367,7 @@ function buildPracticalParagraph(
   if (language === 'ko') {
     switch (block) {
       case 'intro':
-        return `${article.title.replace(/\?$/, '')}를 읽을 때는 "좋은 설명인가"보다 "내 계산 결과에 바로 적용할 수 있는가"를 기준으로 보는 편이 좋습니다. 독자가 실제 명식이나 차트 화면을 곁에 두고 읽을 수 있도록 기준점과 예외 범위를 함께 제시해야, 정보가 길기만 한 글이 아니라 실제로 도움이 되는 편집 콘텐츠가 됩니다.`
+        return `이 글을 읽을 때는 "좋은 설명인가"보다 "내 계산 결과에 바로 적용할 수 있는가"를 기준으로 보는 편이 좋습니다. 독자가 실제 명식이나 차트 화면을 곁에 두고 읽을 수 있도록 기준점과 예외 범위를 함께 제시해야, 정보가 길기만 한 글이 아니라 실제로 도움이 되는 편집 콘텐츠가 됩니다.`
       case 'section1':
         return `첫 번째 설명 구간에서는 해석의 중심축을 잃지 않는 것이 중요합니다. 여기서 정리한 기준은 뒤에 나오는 사례와 변형 읽기를 붙잡아 주는 역할을 하므로, 낱말 뜻을 넘어 "무엇을 먼저 확인해야 하는가"를 분명하게 기억해두면 이후 판단의 흔들림이 크게 줄어듭니다.`
       case 'section2':

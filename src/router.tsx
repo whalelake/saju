@@ -3,7 +3,6 @@ import { createBrowserRouter, Navigate, Outlet, useParams } from 'react-router'
 import { I18nProvider, type Language } from './i18n'
 import App from './components/App'
 
-// Lazy-load secondary pages for code splitting
 const GuideIndex = lazy(() => import('./pages/GuideIndex'))
 const LandingPage = lazy(() => import('./pages/LandingPage'))
 const AboutPage = lazy(() => import('./pages/AboutPage'))
@@ -27,6 +26,37 @@ const CompatibilityPage = lazy(() => import('./pages/CompatibilityPage'))
 
 const SUPPORTED_LANGUAGES: Language[] = ['ko', 'en', 'ja', 'zh']
 
+const ROUTE_LOADING_COPY: Record<Language, { badge: string; title: string; description: string; guide: string; articles: string }> = {
+  ko: {
+    badge: '명운판',
+    title: '콘텐츠를 불러오는 중입니다',
+    description: '직접 진입한 페이지가 바로 보이도록 라우트 콘텐츠를 준비하고 있습니다.',
+    guide: '가이드',
+    articles: '기사',
+  },
+  en: {
+    badge: 'Myungunpan',
+    title: 'Loading this page',
+    description: 'Preparing the content so direct-entry routes stay readable right away.',
+    guide: 'Guide',
+    articles: 'Articles',
+  },
+  ja: {
+    badge: '命運判',
+    title: 'ページを読み込んでいます',
+    description: '直接アクセスしたページでも、すぐに内容を追えるよう準備しています。',
+    guide: 'ガイド',
+    articles: '記事',
+  },
+  zh: {
+    badge: '命运判',
+    title: '页面加载中',
+    description: '正在准备当前内容，让直接进入页面时也能尽快看到可读信息。',
+    guide: '指南',
+    articles: '文章',
+  },
+}
+
 function getDefaultLanguage(): Language {
   // 1. localStorage 확인
   const saved = localStorage.getItem('language')
@@ -42,6 +72,38 @@ function getDefaultLanguage(): Language {
   return 'en'
 }
 
+function RouteLoadingShell({ language }: { language: Language }) {
+  const copy = ROUTE_LOADING_COPY[language]
+
+  return (
+    <div className="min-h-screen bg-base-200">
+      <main className="max-w-3xl mx-auto px-4 py-10">
+        <div className="card bg-base-100 shadow-lg">
+          <div className="card-body gap-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary">{copy.badge}</p>
+            <div className="space-y-2">
+              <h1 className="text-2xl font-bold text-base-content">{copy.title}</h1>
+              <p className="text-base-content/70">{copy.description}</p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <a href={`/${language}/guide`} className="btn btn-outline btn-sm">
+                {copy.guide}
+              </a>
+              <a href={`/${language}/articles`} className="btn btn-outline btn-sm">
+                {copy.articles}
+              </a>
+            </div>
+            <div className="flex items-center gap-3 pt-2 text-sm text-base-content/50">
+              <span className="loading loading-spinner loading-sm" />
+              <span>{copy.description}</span>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  )
+}
+
 // Layout component that provides i18n context based on URL
 function LanguageLayout() {
   const { lang } = useParams<{ lang: string }>()
@@ -51,7 +113,7 @@ function LanguageLayout() {
 
   return (
     <I18nProvider initialLanguage={language}>
-      <Suspense fallback={<div className="min-h-screen" />}>
+      <Suspense fallback={<RouteLoadingShell language={language} />}>
         <Outlet />
       </Suspense>
     </I18nProvider>
