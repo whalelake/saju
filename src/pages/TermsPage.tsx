@@ -1,12 +1,39 @@
 import { Link, useParams } from 'react-router'
 import { useI18n } from '../i18n'
+import SeoHead from '../components/SeoHead'
 
 export default function TermsPage() {
   const { t, language } = useI18n()
   const { lang } = useParams()
+  const currentLang = (lang || language) as 'ko' | 'en' | 'ja' | 'zh'
+  const seoTitle = currentLang === 'ko'
+    ? '이용약관 | 명운판'
+    : currentLang === 'ja'
+      ? '利用規約 | 命運盤'
+      : currentLang === 'zh'
+        ? '服务条款 | 命运盘'
+        : 'Terms of Service | Myungunpan'
+  const seoDescription = currentLang === 'ko'
+    ? '명운판 서비스 이용 조건과 책임 범위를 정리한 이용약관입니다.'
+    : currentLang === 'ja'
+      ? '命運盤の利用条件と責任範囲をまとめた利用規約です。'
+      : currentLang === 'zh'
+        ? '整理命运盘服务使用条件与责任范围的条款页面。'
+        : 'The terms of service for using Myungunpan and its chart tools.'
 
   return (
     <div className="min-h-screen bg-base-200">
+      <SeoHead
+        language={currentLang}
+        title={seoTitle}
+        description={seoDescription}
+        pathByLanguage={{
+          ko: '/ko/terms',
+          en: '/en/terms',
+          ja: '/ja/terms',
+          zh: '/zh/terms',
+        }}
+      />
       <div className="max-w-3xl mx-auto px-4 py-8">
         <Link to={`/${lang || language}/`} className="btn btn-ghost btn-sm mb-6">
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

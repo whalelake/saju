@@ -8,12 +8,28 @@ import { ARTICLE_IDS } from '../src/content/article-catalog'
 const DIST_DIR = join(process.cwd(), 'dist')
 const LANGUAGES = ['ko', 'en', 'ja', 'zh'] as const
 
+const GUIDE_ROUTE_SUFFIXES = [
+  '/guide/saju',
+  '/guide/saju/ten-gods',
+  '/guide/saju/day-master',
+  '/guide/ziwei',
+  '/guide/ziwei/12-palaces',
+  '/guide/natal',
+  '/guide/natal/planets',
+  '/guide/natal/houses',
+]
+
+const TRUST_ROUTE_SUFFIXES = [
+  '/about',
+  '/contact',
+  '/editorial-policy',
+]
+
 const ROUTE_SUFFIXES = [
   '/',
   '/guide',
-  '/guide/saju',
-  '/guide/ziwei',
-  '/guide/natal',
+  ...GUIDE_ROUTE_SUFFIXES,
+  ...TRUST_ROUTE_SUFFIXES,
   '/articles',
   '/privacy',
   '/terms',
@@ -77,8 +93,17 @@ async function main() {
     return
   }
 
-  const puppeteer = await import('puppeteer')
-  const browser = await puppeteer.launch({ headless: true })
+  let browser: Awaited<ReturnType<(typeof import('puppeteer'))['launch']>>
+  try {
+    const puppeteer = await import('puppeteer')
+    browser = await puppeteer.launch({ headless: true })
+  } catch (error) {
+    console.warn('Puppeteer launch failed — skipping prerender and keeping static SEO output only.')
+    if (error instanceof Error) {
+      console.warn(error.message)
+    }
+    return
+  }
 
   const { server, port } = await createStaticServer(DIST_DIR)
   const baseUrl = `http://127.0.0.1:${port}`

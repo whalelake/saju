@@ -129,6 +129,7 @@ export default function SipsinPage() {
         language={currentLang}
         title={seoTitle}
         description={seoDescription}
+        robots="noindex, follow"
         pathByLanguage={{
           ko: `/ko/sipsin/${slug}`,
           en: `/en/sipsin/${slug}`,

@@ -3,22 +3,33 @@ import { useI18n } from '../i18n'
 import SeoHead from '../components/SeoHead'
 import AdBanner from '../components/AdBanner'
 import { ARTICLE_CATALOG, ARTICLE_RELATED_MAP, type ArticleCluster, type ArticleKey } from '../content/article-catalog'
-
-type ArticleContent = {
-  title: string
-  subtitle: string
-  intro: string
-  section1Title: string
-  section1Text: string
-  section2Title: string
-  section2Text: string
-  section3Title: string
-  section3Text: string
-  section4Title: string
-  section4Text: string
-}
+import {
+  expandArticleContent,
+  splitLongformText,
+  type ArticleContentShape,
+} from '../content/article-longform'
+import { SITE_PAGE_CONTENT, SITE_PAGE_ROUTE_SUFFIX } from '../content/site-pages'
 
 type LanguageKey = 'ko' | 'en' | 'ja' | 'zh'
+
+const ARTICLE_META_COPY: Record<LanguageKey, { badge: string; updated: string }> = {
+  ko: {
+    badge: '설명형 편집 콘텐츠',
+    updated: '업데이트: 2026-04-10',
+  },
+  en: {
+    badge: 'Editorial explainer',
+    updated: 'Updated: 2026-04-10',
+  },
+  ja: {
+    badge: '解説コンテンツ',
+    updated: '更新日: 2026-04-10',
+  },
+  zh: {
+    badge: '说明型内容',
+    updated: '更新日期：2026-04-10',
+  },
+}
 
 const ARTICLE_COPY: Record<LanguageKey, {
   sponsored: string
@@ -136,7 +147,8 @@ interface ArticleCard {
   id: string
   key: ArticleKey
   cluster: ArticleCluster
-  content: ArticleContent
+  content: ArticleContentShape
+  summary: string
 }
 
 interface ArticleLinkTarget {
@@ -786,22 +798,47 @@ function trackEvent(eventName: string, params: Record<string, string | number | 
   }
 }
 
+function renderBodyParagraphs(text: string, keyPrefix: string) {
+  return splitLongformText(text).map((paragraph, index) => (
+    <p key={`${keyPrefix}-${index}`}>{paragraph}</p>
+  ))
+}
+
+function renderIntroParagraphs(text: string) {
+  return splitLongformText(text).map((paragraph, index) => (
+    <p
+      key={`article-intro-${index}`}
+      className={index === 0 ? 'lead text-lg text-base-content/80' : 'text-base-content/80 leading-relaxed'}
+    >
+      {paragraph}
+    </p>
+  ))
+}
+
 export default function ArticlePage() {
   const { t, language } = useI18n()
   const { lang, articleId } = useParams()
   const currentLang = (lang || language) as LanguageKey
   const copy = ARTICLE_COPY[currentLang]
+  const articleMetaCopy = ARTICLE_META_COPY[currentLang]
+  const editorialNavLabel = SITE_PAGE_CONTENT.editorialPolicy[currentLang].navLabel
   const internalLinkCopy = INTERNAL_LINK_COPY[currentLang]
 
   const articleCards: ArticleCard[] = ARTICLE_CATALOG.map((item) => ({
     id: item.id,
     key: item.key,
     cluster: item.cluster,
-    content: t.articles[item.key],
+    summary: (t.articles[item.key] as ArticleContentShape).intro,
+    content: expandArticleContent(
+      t.articles[item.key] as ArticleContentShape,
+      item.cluster,
+      currentLang,
+    ),
   }))
 
   const articleMeta = articleId ? articleCards.find((item) => item.id === articleId) ?? null : null
   const article = articleMeta?.content ?? null
+  const articleSummary = articleMeta?.summary ?? ''
   const relatedIds = articleId ? ARTICLE_RELATED_MAP[articleId] ?? [] : []
   const allRelatedArticles = [
     ...relatedIds
@@ -830,7 +867,7 @@ export default function ArticlePage() {
       id: item.id,
       path: `/${currentLang}/articles/${item.id}`,
       title: item.content.title,
-      description: item.content.intro,
+      description: item.summary,
     })),
   ]
   const bottomInternalLinks: ArticleLinkTarget[] = [
@@ -838,7 +875,7 @@ export default function ArticlePage() {
       id: item.id,
       path: `/${currentLang}/articles/${item.id}`,
       title: item.content.title,
-      description: item.content.intro,
+      description: item.summary,
     })),
     {
       id: 'articles-index',
@@ -859,11 +896,11 @@ export default function ArticlePage() {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: article.title,
-    description: article.intro,
+    description: articleSummary,
     inLanguage: currentLang,
     mainEntityOfPage: `https://saju-wheat.vercel.app${articlePathByLanguage[currentLang]}`,
     url: `https://saju-wheat.vercel.app${articlePathByLanguage[currentLang]}`,
-    dateModified: '2026-03-21',
+    dateModified: '2026-04-10',
     author: {
       '@type': 'Organization',
       name: currentLang === 'ko' ? '명운판' : 'Myungunpan',
@@ -903,7 +940,7 @@ export default function ArticlePage() {
       <SeoHead
         language={currentLang}
         title={`${article.title} | ${currentLang === 'ko' ? '명운판' : 'Myungunpan'}`}
-        description={article.intro}
+        description={articleSummary}
         pathByLanguage={articlePathByLanguage}
         type="article"
         structuredData={[articleStructuredData, articleBreadcrumb]}
@@ -921,6 +958,16 @@ export default function ArticlePage() {
             <header className="mb-6 border-b border-base-300 pb-6">
               <h1 className="text-2xl sm:text-3xl font-bold mb-2">{article.title}</h1>
               <p className="text-primary">{article.subtitle}</p>
+              <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-base-content/60">
+                <span className="badge badge-outline badge-sm">{articleMetaCopy.badge}</span>
+                <span>{articleMetaCopy.updated}</span>
+                <Link
+                  to={`/${currentLang}${SITE_PAGE_ROUTE_SUFFIX.editorialPolicy}`}
+                  className="link link-primary"
+                >
+                  {editorialNavLabel}
+                </Link>
+              </div>
             </header>
 
             <section className="mb-8 rounded-2xl border border-base-300 bg-base-200/70 p-4">
@@ -932,13 +979,13 @@ export default function ArticlePage() {
             </section>
 
             <div className="prose prose-sm sm:prose max-w-none">
-              <p className="lead text-lg text-base-content/80 mb-8">
-                {article.intro}
-              </p>
+              <div className="mb-8 space-y-4">
+                {renderIntroParagraphs(article.intro)}
+              </div>
 
               <section className="mb-8">
                 <h2 className="text-xl font-bold mb-3">{article.section1Title}</h2>
-                <p>{article.section1Text}</p>
+                <div className="space-y-4">{renderBodyParagraphs(article.section1Text, 'section1')}</div>
               </section>
 
               <section className="not-prose mb-8 rounded-2xl border border-base-300 bg-base-200/60 p-4">
@@ -963,7 +1010,7 @@ export default function ArticlePage() {
 
               <section className="mb-8">
                 <h2 className="text-xl font-bold mb-3">{article.section2Title}</h2>
-                <p>{article.section2Text}</p>
+                <div className="space-y-4">{renderBodyParagraphs(article.section2Text, 'section2')}</div>
               </section>
 
               <section className="not-prose mb-8 rounded-2xl border border-secondary/20 bg-secondary/5 p-5">
@@ -1001,7 +1048,7 @@ export default function ArticlePage() {
 
               <section className="mb-8">
                 <h2 className="text-xl font-bold mb-3">{article.section3Title}</h2>
-                <p>{article.section3Text}</p>
+                <div className="space-y-4">{renderBodyParagraphs(article.section3Text, 'section3')}</div>
               </section>
 
               <section className="not-prose mb-8 rounded-2xl border border-base-300 bg-base-200/60 p-4">
@@ -1026,7 +1073,7 @@ export default function ArticlePage() {
 
               <section className="mb-8">
                 <h2 className="text-xl font-bold mb-3">{article.section4Title}</h2>
-                <p>{article.section4Text}</p>
+                <div className="space-y-4">{renderBodyParagraphs(article.section4Text, 'section4')}</div>
               </section>
             </div>
 
@@ -1076,7 +1123,7 @@ export default function ArticlePage() {
                   >
                     <h3 className="font-semibold text-base-content">{item.content.title}</h3>
                     <p className="text-sm text-primary mt-1">{item.content.subtitle}</p>
-                    <p className="text-sm text-base-content/70 mt-2 line-clamp-3">{item.content.intro}</p>
+                    <p className="text-sm text-base-content/70 mt-2 line-clamp-3">{item.summary}</p>
                   </Link>
                 ))}
               </div>

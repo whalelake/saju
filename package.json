@@ -16,7 +16,8 @@
     "preview": "vite preview",
     "generate-sitemap": "bun scripts/generate-sitemap.ts",
     "generate-icons": "bun scripts/generate-icons.ts",
-    "generate-og-image": "bun scripts/generate-og-image.ts"
+    "generate-og-image": "bun scripts/generate-og-image.ts",
+    "audit-content": "bun scripts/audit-content.ts"
   },
   "dependencies": {
     "react": "^19.2.0",

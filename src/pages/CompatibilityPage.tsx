@@ -83,9 +83,8 @@ const TEN_GOD_LABELS: Record<string, Record<Language, string>> = {
 }
 
 export default function CompatibilityPage() {
-  const { stemId } = useParams<{ stemId: string }>()
+  const { lang, stemId } = useParams<{ lang: string; stemId: string }>()
   const { t, language } = useI18n()
-  const { lang } = useParams()
   const currentLang = (lang || language) as Language
   const isKo = currentLang === 'ko'
   const isJa = currentLang === 'ja'

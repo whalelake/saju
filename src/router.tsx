@@ -6,6 +6,9 @@ import App from './components/App'
 // Lazy-load secondary pages for code splitting
 const GuideIndex = lazy(() => import('./pages/GuideIndex'))
 const LandingPage = lazy(() => import('./pages/LandingPage'))
+const AboutPage = lazy(() => import('./pages/AboutPage'))
+const ContactPage = lazy(() => import('./pages/ContactPage'))
+const EditorialPolicyPage = lazy(() => import('./pages/EditorialPolicyPage'))
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage'))
 const TermsPage = lazy(() => import('./pages/TermsPage'))
 const ArticlesIndex = lazy(() => import('./pages/ArticlesIndex'))
@@ -99,6 +102,18 @@ export const router = createBrowserRouter([
       {
         path: 'privacy',
         element: <PrivacyPage />,
+      },
+      {
+        path: 'about',
+        element: <AboutPage />,
+      },
+      {
+        path: 'contact',
+        element: <ContactPage />,
+      },
+      {
+        path: 'editorial-policy',
+        element: <EditorialPolicyPage />,
       },
       {
         path: 'terms',

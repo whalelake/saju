@@ -93,6 +93,7 @@ export default function ZiweiStarPage() {
         language={currentLang}
         title={seoTitle}
         description={seoDescription}
+        robots="noindex, follow"
         pathByLanguage={{
           ko: `/ko/ziwei/stars/${slug}`,
           en: `/en/ziwei/stars/${slug}`,

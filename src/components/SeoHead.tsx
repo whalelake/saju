@@ -12,6 +12,7 @@ interface Props {
   description: string
   pathByLanguage: Record<Language, string>
   type?: 'website' | 'article'
+  robots?: string
   structuredData?: StructuredData
 }
 
@@ -63,6 +64,7 @@ export default function SeoHead({
   description,
   pathByLanguage,
   type = 'website',
+  robots = 'index, follow',
   structuredData,
 }: Props) {
   useEffect(() => {
@@ -72,7 +74,7 @@ export default function SeoHead({
     document.title = title
 
     setMeta('meta[name="description"]', { name: 'description' }, description)
-    setMeta('meta[name="robots"]', { name: 'robots' }, 'index, follow')
+    setMeta('meta[name="robots"]', { name: 'robots' }, robots)
     setMeta('meta[property="og:title"]', { property: 'og:title' }, title)
     setMeta('meta[property="og:description"]', { property: 'og:description' }, description)
     setMeta('meta[property="og:url"]', { property: 'og:url' }, canonicalUrl)
@@ -118,8 +120,7 @@ export default function SeoHead({
       script.textContent = JSON.stringify(structuredData)
       document.head.appendChild(script)
     }
-  }, [description, language, pathByLanguage, structuredData, title, type])
+  }, [description, language, pathByLanguage, robots, structuredData, title, type])
 
   return null
 }
-

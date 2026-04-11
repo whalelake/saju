@@ -11,6 +11,7 @@ import AdBanner from './AdBanner.tsx'
 import ResultEngagementPanel from './ResultEngagementPanel.tsx'
 import SeoHead from './SeoHead.tsx'
 import SajuView from './saju/SajuView.tsx'
+import { SITE_PAGE_CONTENT, SITE_PAGE_ROUTE_SUFFIX } from '../content/site-pages'
 
 // Lazy loaded components
 const ZiweiView = lazy(() => import('./ziwei/ZiweiView.tsx'))
@@ -18,10 +19,6 @@ const NatalView = lazy(() => import('./natal/NatalView.tsx'))
 const InterpretModal = lazy(() => import('./InterpretModal.tsx'))
 const ShareCard = lazy(() => import('./ShareCard.tsx'))
 const CompareView = lazy(() => import('./CompareView.tsx'))
-const PrivacyPolicy = lazy(() => import('./PrivacyPolicy.tsx'))
-const TermsOfService = lazy(() => import('./TermsOfService.tsx'))
-const AboutPage = lazy(() => import('./AboutPage.tsx'))
-const ContactPage = lazy(() => import('./ContactPage.tsx'))
 const FortuneInfo = lazy(() => import('./FortuneInfo.tsx'))
 import { calculateSaju } from '@orrery/core/saju'
 import { createChart } from '@orrery/core/ziwei'
@@ -254,10 +251,6 @@ export default function App() {
   const [shareOpen, setShareOpen] = useState(false)
   const [compareOpen, setCompareOpen] = useState(false)
   const [settingsOpen, setSettingsOpen] = useState(false)
-  const [privacyOpen, setPrivacyOpen] = useState(false)
-  const [termsOpen, setTermsOpen] = useState(false)
-  const [aboutOpen, setAboutOpen] = useState(false)
-  const [contactOpen, setContactOpen] = useState(false)
   const [infoOpen, setInfoOpen] = useState(false)
   const resultsRef = useRef<HTMLDivElement>(null)
   const formRef = useRef<HTMLDivElement>(null)
@@ -267,6 +260,7 @@ export default function App() {
   const dailyFortuneStatus = birthInput
     ? dailyFortuneCopy.currentReady
     : dailyFortuneCopy.historyReady
+  const editorialNavLabel = SITE_PAGE_CONTENT.editorialPolicy[currentLang as Language].navLabel
 
   function handleSubmit(input: BirthInput) {
     trackEvent('calc_submit', {
@@ -764,34 +758,6 @@ export default function App() {
           />
         )}
 
-        {privacyOpen && (
-          <PrivacyPolicy
-            isOpen={privacyOpen}
-            onClose={() => setPrivacyOpen(false)}
-          />
-        )}
-
-        {termsOpen && (
-          <TermsOfService
-            isOpen={termsOpen}
-            onClose={() => setTermsOpen(false)}
-          />
-        )}
-
-        {aboutOpen && (
-          <AboutPage
-            isOpen={aboutOpen}
-            onClose={() => setAboutOpen(false)}
-          />
-        )}
-
-        {contactOpen && (
-          <ContactPage
-            isOpen={contactOpen}
-            onClose={() => setContactOpen(false)}
-          />
-        )}
-
         {/* 명리학 가이드 모달 */}
         {infoOpen && (
           <dialog className="modal modal-open">
@@ -825,42 +791,48 @@ export default function App() {
         <div className="max-w-2xl mx-auto px-4 py-6">
           <div className="flex flex-col items-center gap-4 text-sm text-base-content/60">
             <div className="flex gap-4 flex-wrap justify-center">
-              <button
+              <Link
+                to={`/${currentLang}${SITE_PAGE_ROUTE_SUFFIX.about}`}
                 className="hover:text-base-content transition-colors"
-                onClick={() => setAboutOpen(true)}
               >
                 {t.about.title}
-              </button>
-              <button
+              </Link>
+              <Link
+                to={`/${currentLang}/guide`}
                 className="hover:text-base-content transition-colors"
-                onClick={() => setInfoOpen(true)}
               >
                 {t.guide.title}
-              </button>
+              </Link>
               <Link
                 to={`/${currentLang}/articles`}
                 className="hover:text-base-content transition-colors"
               >
                 {t.footer.articles}
               </Link>
-              <button
+              <Link
+                to={`/${currentLang}${SITE_PAGE_ROUTE_SUFFIX.editorialPolicy}`}
                 className="hover:text-base-content transition-colors"
-                onClick={() => setPrivacyOpen(true)}
+              >
+                {editorialNavLabel}
+              </Link>
+              <Link
+                to={`/${currentLang}/privacy`}
+                className="hover:text-base-content transition-colors"
               >
                 {t.footer.privacy}
-              </button>
-              <button
+              </Link>
+              <Link
+                to={`/${currentLang}/terms`}
                 className="hover:text-base-content transition-colors"
-                onClick={() => setTermsOpen(true)}
               >
                 {t.footer.terms}
-              </button>
-              <button
+              </Link>
+              <Link
+                to={`/${currentLang}${SITE_PAGE_ROUTE_SUFFIX.contact}`}
                 className="hover:text-base-content transition-colors"
-                onClick={() => setContactOpen(true)}
               >
                 {t.footer.contact}
-              </button>
+              </Link>
             </div>
             <div className="text-center text-xs text-base-content/50 max-w-md">
               <p>{t.footer.disclaimer}</p>

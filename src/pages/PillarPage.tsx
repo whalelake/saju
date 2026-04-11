@@ -148,7 +148,7 @@ function formatJijanggan(branch: string): string {
 
 export default function PillarPage() {
   const { t, language } = useI18n()
-  const { lang, slug } = useParams()
+  const { lang, pillarId: slug } = useParams()
   const currentLang = (lang || language) as Language
   const isKo = currentLang === 'ko'
   const isJa = currentLang === 'ja'
@@ -247,6 +247,7 @@ export default function PillarPage() {
         language={currentLang}
         title={seoTitle}
         description={seoDescription}
+        robots="noindex, follow"
         pathByLanguage={{
           ko: `/ko/pillars/${slug}`,
           en: `/en/pillars/${slug}`,
