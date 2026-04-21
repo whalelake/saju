@@ -1,21 +1,41 @@
 {
-  "date": "2026-03-20",
+  "date": "2026-04-11",
   "url": "https://saju-wheat.vercel.app",
-  "healthScore": 87,
+  "healthScore": 90,
   "issues": [
-    {"id": "ISSUE-001", "title": "언어 전환 시 즉시 UI 업데이트 안 됨", "severity": "Medium", "category": "Functional"},
-    {"id": "ISSUE-002", "title": "콘솔에 400 에러 다수 발생", "severity": "Medium", "category": "Console"},
-    {"id": "ISSUE-003", "title": "AI 해석 버튼 중복 요소", "severity": "Low", "category": "Accessibility"},
-    {"id": "ISSUE-004", "title": "궁합 모달 닫기 버튼 중복", "severity": "Low", "category": "UX"}
+    {
+      "id": "ISSUE-001",
+      "title": "직접 진입한 기사/가이드 상세 페이지가 hydration 전까지 빈 셸로 표시됨",
+      "severity": "High",
+      "category": "Functional"
+    },
+    {
+      "id": "ISSUE-002",
+      "title": "longform 템플릿 문장이 로케일별로 어색하게 결합됨",
+      "severity": "Medium",
+      "category": "Content"
+    },
+    {
+      "id": "ISSUE-003",
+      "title": "광고 미노출 시 기사 내 sponsored 블록이 빈 공간으로 남음",
+      "severity": "Medium",
+      "category": "UX"
+    },
+    {
+      "id": "ISSUE-004",
+      "title": "모바일 홈 상단 유틸리티 컨트롤 밀집도 높음",
+      "severity": "Low",
+      "category": "Accessibility"
+    }
   ],
   "categoryScores": {
-    "console": 70,
+    "console": 100,
     "links": 100,
-    "visual": 100,
-    "functional": 92,
-    "ux": 95,
+    "visual": 89,
+    "functional": 85,
+    "ux": 74,
     "performance": 85,
-    "content": 100,
-    "accessibility": 95
+    "content": 92,
+    "accessibility": 97
   }
 }
