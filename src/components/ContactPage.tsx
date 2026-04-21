@@ -6,7 +6,7 @@ interface ContactPageProps {
 }
 
 export default function ContactPage({ isOpen, onClose }: ContactPageProps) {
-  const { t } = useI18n()
+  const { t, language } = useI18n()
 
   if (!isOpen) return null
 
@@ -21,22 +21,6 @@ export default function ContactPage({ isOpen, onClose }: ContactPageProps) {
           </p>
 
           <div className="space-y-4">
-            {/* Email */}
-            <div className="flex items-start gap-3 p-4 bg-base-200 rounded-lg">
-              <svg className="w-6 h-6 text-primary shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              <div>
-                <h4 className="font-medium text-base-content">{t.contact.email}</h4>
-                <a
-                  href="mailto:myungunpan@gmail.com"
-                  className="link text-primary"
-                >
-                  myungunpan@gmail.com
-                </a>
-              </div>
-            </div>
-
             {/* GitHub Issues */}
             <div className="flex items-start gap-3 p-4 bg-base-200 rounded-lg">
               <svg className="w-6 h-6 text-primary shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
@@ -52,6 +36,24 @@ export default function ContactPage({ isOpen, onClose }: ContactPageProps) {
                   className="link text-primary"
                 >
                   GitHub Issues
+                </a>
+              </div>
+            </div>
+
+            {/* Email */}
+            <div className="flex items-start gap-3 p-4 bg-base-200 rounded-lg">
+              <svg className="w-6 h-6 text-primary shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <div>
+                <h4 className="font-medium text-base-content">
+                  {language === 'ko' ? '개인 문의 (이메일)' : language === 'ja' ? '個人的なお問い合わせ（メール）' : language === 'zh' ? '私人咨询（邮件）' : 'Private inquiries (email)'}
+                </h4>
+                <a
+                  href="mailto:myungunpan@gmail.com"
+                  className="link text-primary"
+                >
+                  myungunpan@gmail.com
                 </a>
               </div>
             </div>

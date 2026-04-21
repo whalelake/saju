@@ -974,6 +974,9 @@ export default function ArticlePage() {
                   {editorialNavLabel}
                 </Link>
               </div>
+              <p className="mt-2 text-xs text-base-content/60">
+                {currentLang === 'ko' ? '명운판 편집팀' : currentLang === 'ja' ? '命運判 編集部' : currentLang === 'zh' ? '命运判 编辑团队' : 'Myungunpan Editorial Team'}
+              </p>
             </header>
 
             <section className={adFillState.top ? 'mb-8 rounded-2xl border border-base-300 bg-base-200/70 p-4' : 'mb-2'}>

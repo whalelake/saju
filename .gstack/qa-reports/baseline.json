@@ -1,41 +1,24 @@
 {
-  "date": "2026-04-11",
+  "date": "2026-04-21",
   "url": "https://saju-wheat.vercel.app",
-  "healthScore": 90,
+  "healthScore": 87,
   "issues": [
-    {
-      "id": "ISSUE-001",
-      "title": "직접 진입한 기사/가이드 상세 페이지가 hydration 전까지 빈 셸로 표시됨",
-      "severity": "High",
-      "category": "Functional"
-    },
-    {
-      "id": "ISSUE-002",
-      "title": "longform 템플릿 문장이 로케일별로 어색하게 결합됨",
-      "severity": "Medium",
-      "category": "Content"
-    },
-    {
-      "id": "ISSUE-003",
-      "title": "광고 미노출 시 기사 내 sponsored 블록이 빈 공간으로 남음",
-      "severity": "Medium",
-      "category": "UX"
-    },
-    {
-      "id": "ISSUE-004",
-      "title": "모바일 홈 상단 유틸리티 컨트롤 밀집도 높음",
-      "severity": "Low",
-      "category": "Accessibility"
-    }
+    { "id": "ISSUE-001", "title": "E-E-A-T: No named author or editorial byline", "severity": "high", "category": "content" },
+    { "id": "ISSUE-002", "title": "404 on legacy guide URL /en/guide/day-master-types", "severity": "high", "category": "functional" },
+    { "id": "ISSUE-003", "title": "About page loading skeleton visible on direct entry", "severity": "medium", "category": "ux" },
+    { "id": "ISSUE-004", "title": "AI interpretation output is very brief (1-2 sentences)", "severity": "medium", "category": "content" },
+    { "id": "ISSUE-005", "title": "Contact uses personal Gmail address", "severity": "medium", "category": "trust" },
+    { "id": "ISSUE-006", "title": "User Guide index page has minimal descriptive text", "severity": "low", "category": "content" },
+    { "id": "ISSUE-007", "title": "Missing lang-switch persistence on article URLs", "severity": "low", "category": "ux" }
   ],
   "categoryScores": {
     "console": 100,
-    "links": 100,
-    "visual": 89,
-    "functional": 85,
-    "ux": 74,
+    "links": 85,
+    "visual": 90,
+    "functional": 92,
+    "ux": 82,
     "performance": 85,
-    "content": 92,
-    "accessibility": 97
+    "content": 80,
+    "accessibility": 78
   }
 }

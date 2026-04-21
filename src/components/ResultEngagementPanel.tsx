@@ -377,10 +377,10 @@ const LINK_LIBRARY: Record<string, RelatedLink> = {
 }
 
 const AI_TEASER_QUESTIONS: Record<LanguageKey, string> = {
-  ko: '방금 계산한 결과를 바탕으로 한 줄 또는 두 문장 이내의 매우 짧은 요약만 해줘. 제목, 목록, 마크다운 없이 바로 요약문만 써줘.',
-  en: 'Using this chart, give only a very short summary in one or two sentences. No headings, bullets, or markdown. Return only the summary.',
-  ja: 'この結果をもとに、一行から二文以内のとても短い要約だけを書いてください。見出し、箇条書き、マークダウンは不要です。',
-  zh: '请基于这份结果只写一到两句话的简短摘要，不要标题、列表或 Markdown，只返回摘要本身。',
+  ko: '방금 계산한 결과를 바탕으로 두 문장 또는 세 문장 이내의 짧은 요약만 해줘. 제목, 목록, 마크다운 없이 바로 요약문만 써줘.',
+  en: 'Using this chart, give only a short summary in two to three sentences. No headings, bullets, or markdown. Return only the summary.',
+  ja: 'この結果をもとに、二文から三文のとても短い要約だけを書いてください。見出し、箇条書き、マークダウンは不要です。',
+  zh: '请基于这份结果只写两到三句话的简短摘要，不要标题、列表或 Markdown，只返回摘要本身。',
 }
 
 function getInputKey(input: BirthInput) {
@@ -411,7 +411,7 @@ function normalizeAiTeaser(raw: string) {
     .replace(/^(한 줄 요약|one-line summary|summary|要約|摘要)\s*[:：-]\s*/i, '')
     .trim()
 
-  return stripped.length > 180 ? `${stripped.slice(0, 177).trimEnd()}...` : stripped
+  return stripped.length > 400 ? `${stripped.slice(0, 397).trimEnd()}...` : stripped
 }
 
 function getSajuTeaser(result: SajuResult, language: LanguageKey) {

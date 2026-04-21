@@ -2,14 +2,14 @@ import { lazy, Suspense } from 'react'
 import { createBrowserRouter, Navigate, Outlet, useParams } from 'react-router'
 import { I18nProvider, type Language } from './i18n'
 import App from './components/App'
+import AboutPage from './pages/AboutPage'
+import ContactPage from './pages/ContactPage'
+import EditorialPolicyPage from './pages/EditorialPolicyPage'
+import PrivacyPage from './pages/PrivacyPage'
+import TermsPage from './pages/TermsPage'
 
 const GuideIndex = lazy(() => import('./pages/GuideIndex'))
 const LandingPage = lazy(() => import('./pages/LandingPage'))
-const AboutPage = lazy(() => import('./pages/AboutPage'))
-const ContactPage = lazy(() => import('./pages/ContactPage'))
-const EditorialPolicyPage = lazy(() => import('./pages/EditorialPolicyPage'))
-const PrivacyPage = lazy(() => import('./pages/PrivacyPage'))
-const TermsPage = lazy(() => import('./pages/TermsPage'))
 const ArticlesIndex = lazy(() => import('./pages/ArticlesIndex'))
 const ArticlePage = lazy(() => import('./pages/ArticlePage'))
 const DreamPage = lazy(() => import('./pages/DreamPage'))
