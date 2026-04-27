@@ -6,6 +6,10 @@
   "installCommand": "bun install",
   "framework": "vite",
   "redirects": [
+    { "source": "/ko", "destination": "/ko/", "permanent": true },
+    { "source": "/en", "destination": "/en/", "permanent": true },
+    { "source": "/ja", "destination": "/ja/", "permanent": true },
+    { "source": "/zh", "destination": "/zh/", "permanent": true },
     { "source": "/en/guide/day-master-types", "destination": "/en/guide/saju/day-master", "permanent": true },
     { "source": "/ko/guide/day-master-types", "destination": "/ko/guide/saju/day-master", "permanent": true },
     { "source": "/ja/guide/day-master-types", "destination": "/ja/guide/saju/day-master", "permanent": true },
@@ -159,8 +163,7 @@
     { "source": "/ja/guide/saju-vs-astrology", "destination": "/ja/guide", "permanent": true },
     { "source": "/zh/guide/saju-vs-astrology", "destination": "/zh/guide", "permanent": true }
   ],
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/index.html" }
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
