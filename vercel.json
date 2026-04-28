@@ -5,6 +5,14 @@
   "outputDirectory": "dist",
   "installCommand": "bun install",
   "framework": "vite",
+  "headers": [
+    {
+      "source": "/",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, follow" }
+      ]
+    }
+  ],
   "redirects": [
     { "source": "/ko", "destination": "/ko/", "permanent": true },
     { "source": "/en", "destination": "/en/", "permanent": true },
