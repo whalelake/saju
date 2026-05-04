@@ -436,31 +436,26 @@ export function expandArticleContent(
       article.intro,
       template.intro,
       buildDynamicParagraph(language, 'intro', article),
-      buildPracticalParagraph(language, 'intro', article),
     ),
     section1Text: joinParagraphs(
       article.section1Text,
       template.section1,
       buildDynamicParagraph(language, 'section1', article),
-      buildPracticalParagraph(language, 'section1', article),
     ),
     section2Text: joinParagraphs(
       article.section2Text,
       template.section2,
       buildDynamicParagraph(language, 'section2', article),
-      buildPracticalParagraph(language, 'section2', article),
     ),
     section3Text: joinParagraphs(
       article.section3Text,
       template.section3,
       buildDynamicParagraph(language, 'section3', article),
-      buildPracticalParagraph(language, 'section3', article),
     ),
     section4Text: joinParagraphs(
       article.section4Text,
       template.section4,
       buildDynamicParagraph(language, 'section4', article),
-      buildPracticalParagraph(language, 'section4', article),
     ),
   }
 }
