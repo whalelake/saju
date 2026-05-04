@@ -50,10 +50,10 @@ export default function ContactPage({ isOpen, onClose }: ContactPageProps) {
                   {language === 'ko' ? '개인 문의 (이메일)' : language === 'ja' ? '個人的なお問い合わせ（メール）' : language === 'zh' ? '私人咨询（邮件）' : 'Private inquiries (email)'}
                 </h4>
                 <a
-                  href="mailto:myungunpan@gmail.com"
+                  href="mailto:whalelake1981@gmail.com"
                   className="link text-primary"
                 >
-                  myungunpan@gmail.com
+                  whalelake1981@gmail.com
                 </a>
               </div>
             </div>

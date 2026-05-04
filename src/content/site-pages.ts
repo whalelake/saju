@@ -65,13 +65,23 @@ export const SITE_PAGE_CONTENT: Record<SitePageKey, Record<Language, SitePageCon
           ],
         },
         {
+          heading: '만든 사람',
+          body: [
+            'whalelake Labs가 2026년 3월 명운판을 만들었습니다.',
+            '소프트웨어 개발자이자 명리학 애호가로서, 오래전부터 사주·자미두수·점성술을 직접 공부해왔습니다. 그런데 기존 서비스는 대부분 유료이거나, 회원가입이 필요하거나, 결과가 단편적이었습니다. 돈을 내지 않고도 누구나 가볍게 자신의 명식을 확인할 수 있는 공간이 필요하다고 생각해 직접 만들었습니다.',
+            '명운판은 세 가지 체계를 한 화면에서 무료로 계산하고 AI로 쉽게 읽을 수 있도록 만든 오픈소스 프로젝트입니다.',
+          ],
+          links: [
+            { label: 'GitHub 저장소 보기', href: 'https://github.com/whalelake/saju', external: true },
+          ],
+        },
+        {
           heading: '공개성과 개인정보',
           body: [
             '명운판의 코어 계산 엔진은 공개 저장소에서 확인할 수 있으며, 서비스의 기본 동작과 데이터 처리 방식도 정책 페이지에서 안내합니다.',
             '개인정보는 가능하면 브라우저 안에서 처리되도록 설계했고, 사용자가 AI 해석을 요청할 때만 필요한 정보가 일시적으로 활용됩니다.',
           ],
           links: [
-            { label: 'GitHub 저장소 보기', href: 'https://github.com/whalelake/saju', external: true },
             { label: '개인정보처리방침', href: '/privacy' },
             { label: '운영 원칙', href: '/editorial-policy' },
           ],
@@ -114,13 +124,23 @@ export const SITE_PAGE_CONTENT: Record<SitePageKey, Record<Language, SitePageCon
           ],
         },
         {
+          heading: 'About the team',
+          body: [
+            'Myungunpan was built by whalelake Labs in March 2026.',
+            'As a software developer with a long-standing interest in Eastern astrology, I wanted a place where anyone could look up their chart without paying or creating an account. Most fortune-telling sites are paywalled, require registration, or only show one system at a time — none of which serves someone who just wants to take a quick, honest look at their own chart.',
+            'Myungunpan is an open-source project. The calculation engine is publicly auditable, and the AI interpretation is a reading aid, not a substitute for genuine study.',
+          ],
+          links: [
+            { label: 'View GitHub repository', href: 'https://github.com/whalelake/saju', external: true },
+          ],
+        },
+        {
           heading: 'Transparency and privacy',
           body: [
             'The core calculation engine is available in a public repository, and the service explains its data handling and site policies openly.',
             'Personal data is kept in the browser whenever possible, and is only used temporarily when a visitor explicitly requests AI interpretation.',
           ],
           links: [
-            { label: 'View GitHub repository', href: 'https://github.com/whalelake/saju', external: true },
             { label: 'Privacy policy', href: '/privacy' },
             { label: 'Editorial policy', href: '/editorial-policy' },
           ],
@@ -163,13 +183,23 @@ export const SITE_PAGE_CONTENT: Record<SitePageKey, Record<Language, SitePageCon
           ],
         },
         {
+          heading: '運営チームについて',
+          body: [
+            '命運盤は2026年3月にwhalelake Labsが制作しました。',
+            'ソフトウェア開発者でありながら命理学に長年親しんできました。既存のサービスの多くは有料だったり、会員登録が必要だったり、一つの体系しか見られないものがほとんどでした。お金をかけずに、気軽に自分の命式を確認できる場所を作りたいと思い、このサービスを開発しました。',
+            '命運盤はオープンソースプロジェクトです。計算エンジンは公開されており、AI解釈は学習の補助ツールとして位置づけています。',
+          ],
+          links: [
+            { label: 'GitHub リポジトリ', href: 'https://github.com/whalelake/saju', external: true },
+          ],
+        },
+        {
           heading: '公開性とプライバシー',
           body: [
             'コア計算エンジンは公開リポジトリで確認でき、データ処理やサイト運営方針も明示しています。',
             '個人データは可能な限りブラウザ内で扱い、AI解釈を明示的に求めた場合のみ一時的に利用されます。',
           ],
           links: [
-            { label: 'GitHub リポジトリ', href: 'https://github.com/whalelake/saju', external: true },
             { label: 'プライバシーポリシー', href: '/privacy' },
             { label: '運営方針', href: '/editorial-policy' },
           ],
@@ -212,13 +242,23 @@ export const SITE_PAGE_CONTENT: Record<SitePageKey, Record<Language, SitePageCon
           ],
         },
         {
+          heading: '关于我们',
+          body: [
+            '命运判由 whalelake Labs 于 2026年3月创建。',
+            '作为一名软件开发者，同时也是多年来对命理学深感兴趣的爱好者，我想打造一个不需要付费、不需要注册，任何人都能随手查看自己命盘的地方。大多数同类网站要么收费，要么需要注册，要么只提供单一体系。',
+            '命运判是一个开源项目。计算引擎代码公开可查，AI 解读是辅助阅读的工具，不是替代深入研究的捷径。',
+          ],
+          links: [
+            { label: '查看 GitHub 仓库', href: 'https://github.com/whalelake/saju', external: true },
+          ],
+        },
+        {
           heading: '公开性与隐私',
           body: [
             '核心计算引擎可以在公开仓库中查看，站点的数据处理方式和政策页面也向用户公开说明。',
             '个人数据尽量保留在浏览器中，只有用户主动请求 AI 解读时才会被临时使用。',
           ],
           links: [
-            { label: '查看 GitHub 仓库', href: 'https://github.com/whalelake/saju', external: true },
             { label: '隐私政策', href: '/privacy' },
             { label: '内容原则', href: '/editorial-policy' },
           ],
@@ -245,7 +285,7 @@ export const SITE_PAGE_CONTENT: Record<SitePageKey, Record<Language, SitePageCon
             '기능 오류나 재현 가능한 버그는 GitHub Issues로 남겨주시면 확인과 추적이 더 쉽습니다.',
           ],
           links: [
-            { label: 'myungunpan@gmail.com', href: 'mailto:myungunpan@gmail.com' },
+            { label: 'whalelake1981@gmail.com', href: 'mailto:whalelake1981@gmail.com' },
             { label: 'GitHub Issues', href: 'https://github.com/whalelake/saju/issues', external: true },
           ],
         },
@@ -286,7 +326,7 @@ export const SITE_PAGE_CONTENT: Record<SitePageKey, Record<Language, SitePageCon
             'For reproducible bugs or feature requests, GitHub Issues makes tracking and follow-up easier.',
           ],
           links: [
-            { label: 'myungunpan@gmail.com', href: 'mailto:myungunpan@gmail.com' },
+            { label: 'whalelake1981@gmail.com', href: 'mailto:whalelake1981@gmail.com' },
             { label: 'GitHub Issues', href: 'https://github.com/whalelake/saju/issues', external: true },
           ],
         },
@@ -327,7 +367,7 @@ export const SITE_PAGE_CONTENT: Record<SitePageKey, Record<Language, SitePageCon
             '再現できるバグや機能要望は GitHub Issues に残していただくと確認と追跡がしやすくなります。',
           ],
           links: [
-            { label: 'myungunpan@gmail.com', href: 'mailto:myungunpan@gmail.com' },
+            { label: 'whalelake1981@gmail.com', href: 'mailto:whalelake1981@gmail.com' },
             { label: 'GitHub Issues', href: 'https://github.com/whalelake/saju/issues', external: true },
           ],
         },
@@ -368,7 +408,7 @@ export const SITE_PAGE_CONTENT: Record<SitePageKey, Record<Language, SitePageCon
             '如果是可以复现的错误或功能建议，使用 GitHub Issues 更方便追踪和后续处理。',
           ],
           links: [
-            { label: 'myungunpan@gmail.com', href: 'mailto:myungunpan@gmail.com' },
+            { label: 'whalelake1981@gmail.com', href: 'mailto:whalelake1981@gmail.com' },
             { label: 'GitHub Issues', href: 'https://github.com/whalelake/saju/issues', external: true },
           ],
         },
